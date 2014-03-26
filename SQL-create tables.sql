@@ -78,3 +78,8 @@ ALTER TABLE cases ADD CONSTRAINT customer_fk FOREIGN KEY(customer) REFERENCES cu
 
 ALTER TABLE sales ADD CONSTRAINT sales_customer_fk FOREIGN KEY(customer) REFERENCES customers(id);
 ALTER TABLE sales ADD CONSTRAINT wood_fk FOREIGN KEY(wood) REFERENCES wood(woodType);
+
+INSERT INTO users VALUES(DEFAULT, 'Borgar', 'Lie');
+INSERT INTO users VALUES(DEFAULT, 'Bjørn', 'Hoxmark');
+INSERT INTO users VALUES(DEFAULT, 'Thomas', 'Haugrud');
+INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen');
