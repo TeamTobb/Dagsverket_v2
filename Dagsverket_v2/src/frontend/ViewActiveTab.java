@@ -20,6 +20,8 @@ public class ViewActiveTab extends javax.swing.JPanel {
      */
     public ViewActiveTab() {
         initComponents();
+        panelCalender.setVisible(false);
+        panelTableView.setVisible(true);
     }
 
    
@@ -34,7 +36,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jButton1 = new javax.swing.JButton();
+        buttonToggle = new javax.swing.JButton();
         panelCalender = new javax.swing.JPanel();
         panelTableView = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -43,14 +45,14 @@ public class ViewActiveTab extends javax.swing.JPanel {
         setBackground(new java.awt.Color(153, 153, 153));
         setLayout(null);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonToggle.setText("Gå til kalender");
+        buttonToggle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonToggleActionPerformed(evt);
             }
         });
-        add(jButton1);
-        jButton1.setBounds(784, 609, 234, 41);
+        add(buttonToggle);
+        buttonToggle.setBounds(784, 609, 234, 41);
 
         panelCalender.setBackground(new java.awt.Color(102, 255, 102));
 
@@ -98,27 +100,29 @@ public class ViewActiveTab extends javax.swing.JPanel {
         panelTableView.setBounds(0, 0, 1024, 600);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggleActionPerformed
        
         if (!panelCalender.isVisible()){
              panelTableView.setVisible(false);
              panelCalender.setVisible(true);
+             buttonToggle.setText("Gå til Tabel");
 
         } else {
             
             panelCalender.setVisible(false);
-             panelTableView.setVisible(true);
+            panelTableView.setVisible(true);
+            buttonToggle.setText("Gå til Kalender");
 
         }
         
         
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonToggleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonToggle;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JPanel panelCalender;

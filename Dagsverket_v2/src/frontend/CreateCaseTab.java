@@ -123,7 +123,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
 
         labelCreateCaseDEmployer.setText("Kunde:");
         add(labelCreateCaseDEmployer);
-        labelCreateCaseDEmployer.setBounds(50, 160, 43, 16);
+        labelCreateCaseDEmployer.setBounds(40, 160, 43, 16);
 
         textFieldCreateCaseEmployer.setToolTipText("");
         textFieldCreateCaseEmployer.setVerifyInputWhenFocusTarget(false);
@@ -270,7 +270,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldCreateCasePrice);
-        textFieldCreateCasePrice.setBounds(724, 34, 80, 28);
+        textFieldCreateCasePrice.setBounds(724, 34, 90, 28);
 
         labelCreateCaseDInspectDate.setText("Befaring: ");
         add(labelCreateCaseDInspectDate);
@@ -318,7 +318,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(jDateChooser1);
         jDateChooser1.setBounds(710, 70, 123, 28);
         add(jDateChooser2);
-        jDateChooser2.setBounds(158, 379, 123, 28);
+        jDateChooser2.setBounds(158, 379, 210, 28);
         add(jDateChooser3);
         jDateChooser3.setBounds(290, 120, 123, 28);
     }// </editor-fold>//GEN-END:initComponents
