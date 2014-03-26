@@ -6,12 +6,15 @@
 
 package frontend;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author Jorgen
  */
 public class ViewActiveTab extends javax.swing.JPanel {
-
+     
+     
     /**
      * Creates new form ViewActiveTab
      */
@@ -19,6 +22,8 @@ public class ViewActiveTab extends javax.swing.JPanel {
         initComponents();
     }
 
+   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,19 +33,95 @@ public class ViewActiveTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jButton1 = new javax.swing.JButton();
+        panelCalender = new javax.swing.JPanel();
+        panelTableView = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(153, 153, 153));
+        setLayout(null);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(784, 609, 234, 41);
+
+        panelCalender.setBackground(new java.awt.Color(102, 255, 102));
+
+        javax.swing.GroupLayout panelCalenderLayout = new javax.swing.GroupLayout(panelCalender);
+        panelCalender.setLayout(panelCalenderLayout);
+        panelCalenderLayout.setHorizontalGroup(
+            panelCalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelCalenderLayout.setVerticalGroup(
+            panelCalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        add(panelCalender);
+        panelCalender.setBounds(-2, 1, 1030, 600);
+
+        panelTableView.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        javax.swing.GroupLayout panelTableViewLayout = new javax.swing.GroupLayout(panelTableView);
+        panelTableView.setLayout(panelTableViewLayout);
+        panelTableViewLayout.setHorizontalGroup(
+            panelTableViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+        );
+        panelTableViewLayout.setVerticalGroup(
+            panelTableViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+        );
+
+        add(panelTableView);
+        panelTableView.setBounds(0, 0, 1024, 600);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        if (!panelCalender.isVisible()){
+             panelTableView.setVisible(false);
+             panelCalender.setVisible(true);
+
+        } else {
+            
+            panelCalender.setVisible(false);
+             panelTableView.setVisible(true);
+
+        }
+        
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JPanel panelCalender;
+    private javax.swing.JPanel panelTableView;
     // End of variables declaration//GEN-END:variables
 }

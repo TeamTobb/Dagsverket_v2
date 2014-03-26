@@ -288,14 +288,14 @@ public class CreateCaseTab extends javax.swing.JPanel {
 
         labelCreateCaseDContacts.setText("Kontaktpersoner:");
         add(labelCreateCaseDContacts);
-        labelCreateCaseDContacts.setBounds(663, 311, 108, 16);
+        labelCreateCaseDContacts.setBounds(570, 310, 108, 16);
 
         textAreaCreateCaseContacts.setColumns(20);
         textAreaCreateCaseContacts.setRows(5);
         jScrollPane7.setViewportView(textAreaCreateCaseContacts);
 
         add(jScrollPane7);
-        jScrollPane7.setBounds(783, 311, 270, 100);
+        jScrollPane7.setBounds(710, 250, 270, 100);
 
         labelCreateCaseDStatus.setText("Status:");
         add(labelCreateCaseDStatus);
@@ -316,7 +316,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseStartDate);
         labelCreateCaseStartDate.setBounds(734, 151, 210, 20);
         add(jDateChooser1);
-        jDateChooser1.setBounds(697, 68, 123, 28);
+        jDateChooser1.setBounds(710, 70, 123, 28);
         add(jDateChooser2);
         jDateChooser2.setBounds(158, 379, 123, 28);
         add(jDateChooser3);
