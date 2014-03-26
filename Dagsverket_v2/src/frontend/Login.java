@@ -6,16 +6,21 @@
 
 package frontend;
 
+import backend.*;
+
 /**
  *
  * @author Jorgen
  */
 public class Login extends javax.swing.JFrame {
-
+    Database db = new Database();
+    Users users = new Users(db);
+    
     /**
      * Creates new form Login
      */
     public Login() {
+        users.updateUserList();
         initComponents();
     }
 
@@ -29,10 +34,11 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        scrollPaneUserList = new javax.swing.JScrollPane();
         labelDChooseUser = new javax.swing.JLabel();
         buttonLogIn = new javax.swing.JButton();
         buttonNewUser = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listUserNames = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +55,13 @@ public class Login extends javax.swing.JFrame {
 
         buttonNewUser.setText("Ny bruker");
 
+        listUserNames.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = users.getUsers();
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listUserNames);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -56,25 +69,25 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelDChooseUser)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(scrollPaneUserList, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelDChooseUser)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buttonNewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelDChooseUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(scrollPaneUserList, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(buttonLogIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonNewUser)
@@ -98,10 +111,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogInActionPerformed
-        String selected = "test";
-        String[] navn = {selected};
         this.dispose();
-        GUI.main(navn);
+        GUI.main(users.getUserByIndex(listUserNames.getSelectedIndex()));
     }//GEN-LAST:event_buttonLogInActionPerformed
 
     /**
@@ -143,7 +154,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton buttonLogIn;
     private javax.swing.JButton buttonNewUser;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDChooseUser;
-    private javax.swing.JScrollPane scrollPaneUserList;
+    private javax.swing.JList listUserNames;
     // End of variables declaration//GEN-END:variables
 }
