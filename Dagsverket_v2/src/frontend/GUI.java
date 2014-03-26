@@ -6,19 +6,21 @@
 
 package frontend;
 
-import java.awt.Color;
+import java.awt.CardLayout;
 
 /**
  *
  * @author Jorgen
  */
 public class GUI extends javax.swing.JFrame {
-
+    private CardLayout cardLayout;
+    
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        addPanels();
     }
 
     /**
@@ -44,13 +46,13 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        panelMain.setSize(new java.awt.Dimension(1024, 768));
         panelMain.setLayout(null);
 
+        panelContent.setMinimumSize(new java.awt.Dimension(1024, 706));
         panelContent.setPreferredSize(new java.awt.Dimension(1024, 706));
-        panelContent.setLayout(null);
+        panelContent.setLayout(new java.awt.CardLayout());
         panelMain.add(panelContent);
         panelContent.setBounds(0, 60, 1024, 725);
 
@@ -159,18 +161,17 @@ public class GUI extends javax.swing.JFrame {
         panelMain.add(panelMenu);
         panelMenu.setBounds(0, 0, 1024, 62);
 
-        getContentPane().add(panelMain);
-        panelMain.setBounds(0, 0, 1024, 768);
+        getContentPane().add(panelMain, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRegisterCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterCaseActionPerformed
-        // TODO add your handling code here:
+        this.cardLayout.show(panelContent, "CreateCaseTab");
     }//GEN-LAST:event_buttonRegisterCaseActionPerformed
 
     private void buttonViewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewHistoryActionPerformed
-        // TODO add your handling code here:
+        this.cardLayout.show(panelContent, "HistoryTab");
     }//GEN-LAST:event_buttonViewHistoryActionPerformed
 
     private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
@@ -178,17 +179,26 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLogOutActionPerformed
 
     private void buttonViewDraftCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewDraftCasesActionPerformed
-        // TODO add your handling code here:
+        this.cardLayout.show(panelContent, "DraftTab");
     }//GEN-LAST:event_buttonViewDraftCasesActionPerformed
 
     private void buttonViewActiveCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActiveCasesActionPerformed
-        // TODO add your handling code here:
+        this.cardLayout.show(panelContent, "ActiveTab");
     }//GEN-LAST:event_buttonViewActiveCasesActionPerformed
 
     private void buttonSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalesActionPerformed
-        // TODO add your handling code here:
+        this.cardLayout.show(panelContent, "SaleTab");
     }//GEN-LAST:event_buttonSalesActionPerformed
 
+    private void addPanels(){
+        cardLayout = (CardLayout) panelContent.getLayout();
+        panelContent.add(new CreateCaseTab(), "CreateCaseTab");        
+        panelContent.add(new ViewActiveTab(), "ActiveTab");
+        panelContent.add(new ViewDraftTab(), "DraftTab");
+        panelContent.add(new ViewHistoryTab(), "HistoryTab");        
+        panelContent.add(new SaleTab(), "SaleTab");            
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -198,6 +208,7 @@ public class GUI extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -215,16 +226,15 @@ public class GUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUI().setVisible(true);
             }
         });
+
     }
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonLogOut;
