@@ -6,10 +6,28 @@
 
 package backend;
 
+import java.util.*;
+
 /**
  *
  * @author Jorgen
  */
 public class Sales {
-    
+    private ArrayList<Sale> sales;
+
+    public Sales() {
+    	this.sales = new ArrayList<Sale>();
+    }
+
+    public ArrayList<Sale> getSales() {
+    	return this.sales;
+    }
+
+    public boolean createSale() {
+    	return false;
+    }
+
+    public void updateSaleList() {
+    	// update sales
+    }
 }
