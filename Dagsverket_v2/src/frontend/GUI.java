@@ -6,6 +6,8 @@
 
 package frontend;
 
+import java.awt.Color;
+
 /**
  *
  * @author Jorgen
@@ -28,21 +30,164 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        panelMain = new javax.swing.JPanel();
+        panelContent = new javax.swing.JPanel();
+        panelMenu = new javax.swing.JPanel();
+        buttonLogOut = new javax.swing.JButton();
+        buttonViewHistory = new javax.swing.JButton();
+        buttonSales = new javax.swing.JButton();
+        buttonRegisterCase = new javax.swing.JButton();
+        labelUserName = new javax.swing.JLabel();
+        buttonViewDraftCases = new javax.swing.JButton();
+        buttonViewActiveCases = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1024, 768));
+        setResizable(false);
+        getContentPane().setLayout(null);
+
+        panelMain.setSize(new java.awt.Dimension(1024, 768));
+        panelMain.setLayout(null);
+
+        panelContent.setPreferredSize(new java.awt.Dimension(1024, 706));
+        panelContent.setLayout(null);
+        panelMain.add(panelContent);
+        panelContent.setBounds(0, 60, 1024, 725);
+
+        panelMenu.setBackground(new java.awt.Color(153, 153, 153));
+
+        buttonLogOut.setBackground(new java.awt.Color(51, 51, 51));
+        buttonLogOut.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonLogOut.setForeground(new java.awt.Color(204, 204, 204));
+        buttonLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLogOutActionPerformed(evt);
+            }
+        });
+
+        buttonViewHistory.setBackground(new java.awt.Color(51, 51, 51));
+        buttonViewHistory.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonViewHistory.setForeground(new java.awt.Color(204, 204, 204));
+        buttonViewHistory.setText("Historie");
+        buttonViewHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonViewHistoryActionPerformed(evt);
+            }
+        });
+
+        buttonSales.setBackground(new java.awt.Color(51, 51, 51));
+        buttonSales.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonSales.setForeground(new java.awt.Color(204, 204, 204));
+        buttonSales.setText("Vedsalg");
+        buttonSales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalesActionPerformed(evt);
+            }
+        });
+
+        buttonRegisterCase.setBackground(new java.awt.Color(51, 51, 51));
+        buttonRegisterCase.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonRegisterCase.setForeground(new java.awt.Color(204, 204, 204));
+        buttonRegisterCase.setText("Reg. oppdrag");
+        buttonRegisterCase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegisterCaseActionPerformed(evt);
+            }
+        });
+
+        labelUserName.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        labelUserName.setText("Jørgen Wilhelmsen");
+
+        buttonViewDraftCases.setBackground(new java.awt.Color(51, 51, 51));
+        buttonViewDraftCases.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonViewDraftCases.setForeground(new java.awt.Color(204, 204, 204));
+        buttonViewDraftCases.setText("Uferdige");
+        buttonViewDraftCases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonViewDraftCasesActionPerformed(evt);
+            }
+        });
+
+        buttonViewActiveCases.setBackground(new java.awt.Color(51, 51, 51));
+        buttonViewActiveCases.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonViewActiveCases.setForeground(new java.awt.Color(204, 204, 204));
+        buttonViewActiveCases.setText("Aktive");
+        buttonViewActiveCases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonViewActiveCasesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
+        panelMenu.setLayout(panelMenuLayout);
+        panelMenuLayout.setHorizontalGroup(
+            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonRegisterCase, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonViewActiveCases, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonViewDraftCases, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonViewHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonSales, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(labelUserName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelMenuLayout.setVerticalGroup(
+            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonRegisterCase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonViewActiveCases, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonViewDraftCases, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonViewHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonSales, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelUserName)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        panelMain.add(panelMenu);
+        panelMenu.setBounds(0, 0, 1024, 62);
+
+        getContentPane().add(panelMain);
+        panelMain.setBounds(0, 0, 1024, 768);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonRegisterCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterCaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRegisterCaseActionPerformed
+
+    private void buttonViewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewHistoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonViewHistoryActionPerformed
+
+    private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonLogOutActionPerformed
+
+    private void buttonViewDraftCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewDraftCasesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonViewDraftCasesActionPerformed
+
+    private void buttonViewActiveCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActiveCasesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonViewActiveCasesActionPerformed
+
+    private void buttonSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSalesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,7 +223,19 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonLogOut;
+    private javax.swing.JButton buttonRegisterCase;
+    private javax.swing.JButton buttonSales;
+    private javax.swing.JButton buttonViewActiveCases;
+    private javax.swing.JButton buttonViewDraftCases;
+    private javax.swing.JButton buttonViewHistory;
+    private javax.swing.JLabel labelUserName;
+    private javax.swing.JPanel panelContent;
+    private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelMenu;
     // End of variables declaration//GEN-END:variables
 }
