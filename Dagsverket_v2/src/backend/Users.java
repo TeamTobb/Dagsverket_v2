@@ -63,7 +63,7 @@ public class Users {
     public String[] getUsers() {
         String[] tempUsers = new String[users.size()];
         for (int i = 0; i < this.users.size(); i++) {
-            tempUsers[i] = this.users.get(i).getFirstname() + ", " + this.users.get(i).getLastname();
+            tempUsers[i] = this.users.get(i).getFirstname() + " " + this.users.get(i).getLastname();
         }
         return tempUsers;
     }
