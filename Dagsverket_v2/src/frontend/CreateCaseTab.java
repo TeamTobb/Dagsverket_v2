@@ -113,7 +113,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseDSupervisorHeader);
         labelCreateCaseDSupervisorHeader.setBounds(294, 44, 68, 16);
 
-        labelCreateCaseDate.setText(dateFormat.format(today.getTime()));
+        labelCreateCaseDate.setText("Insert date" );
         add(labelCreateCaseDate);
         labelCreateCaseDate.setBounds(164, 131, 84, 16);
 
