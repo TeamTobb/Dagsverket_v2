@@ -38,13 +38,17 @@ public class Users {
     	// end
         String sqlStatement = "Select * from users";
         ResultSet rs = db.executeQuery(sqlStatement);
-        while(rs.next()) {
-            users.add(new User(
-                rs.getInt("id"),
-                rs.getString("firstName"),
-                rs.getString("lastName"),
-                ))
-        }
+        try {
+            while(rs.next()) {
+                users.add(new User(
+                    rs.getInt("id"),
+                    rs.getString("firstName"),
+                    rs.getString("lastName")
+                    ));
+            }
+        } catch(SQLException e) {
+            System.out.println("SQLError: " + e);
+        } 
     }
 
     public void createUser(String firstname, String lastname) {
@@ -52,8 +56,24 @@ public class Users {
     	// return error if already exists?
     }
 
-    public ArrayList<User> getUsers() {
-    	return this.users;
+    // public ArrayList<User> getUsers() {
+    // 	return this.users;
+    // }
+
+    public String[] getUsers() {
+        String[] tempUsers = new String[users.size()];
+        for (int i = 0; i < this.users.size(); i++) {
+            tempUsers[i] = this.users.get(i).getFirstname() + ", " + this.users.get(i).getLastname();
+        }
+        return tempUsers;
     }
+
+    public User getUserByIndex(int i) {
+        return this.users.get(i);
+    }
+
+    // GET USER FROM INDEX IN LIST ....
+
+
 
 }
