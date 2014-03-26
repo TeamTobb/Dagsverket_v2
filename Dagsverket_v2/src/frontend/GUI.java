@@ -45,6 +45,7 @@ public class GUI extends javax.swing.JFrame {
         labelUserName = new javax.swing.JLabel();
         buttonViewDraftCases = new javax.swing.JButton();
         buttonViewActiveCases = new javax.swing.JButton();
+        buttonAttendance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1024, 768));
@@ -93,7 +94,7 @@ public class GUI extends javax.swing.JFrame {
         buttonRegisterCase.setBackground(new java.awt.Color(51, 51, 51));
         buttonRegisterCase.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonRegisterCase.setForeground(new java.awt.Color(204, 204, 204));
-        buttonRegisterCase.setText("Reg. oppdrag");
+        buttonRegisterCase.setText("Reg. sak");
         buttonRegisterCase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRegisterCaseActionPerformed(evt);
@@ -123,22 +124,34 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        buttonAttendance.setBackground(new java.awt.Color(51, 51, 51));
+        buttonAttendance.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonAttendance.setForeground(new java.awt.Color(204, 204, 204));
+        buttonAttendance.setText("Oppmøte");
+        buttonAttendance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAttendanceActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttonRegisterCase, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonRegisterCase, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonViewActiveCases, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonViewActiveCases, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonViewDraftCases, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonViewDraftCases, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonViewHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonViewHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSales, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addComponent(buttonSales, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addComponent(labelUserName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +170,8 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(buttonViewHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(buttonSales, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelUserName)))
+                        .addComponent(labelUserName)
+                        .addComponent(buttonAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -178,7 +192,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonViewHistoryActionPerformed
 
     private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        Login.main(null);
     }//GEN-LAST:event_buttonLogOutActionPerformed
 
     private void buttonViewDraftCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewDraftCasesActionPerformed
@@ -193,13 +208,18 @@ public class GUI extends javax.swing.JFrame {
         this.cardLayout.show(panelContent, "SaleTab");
     }//GEN-LAST:event_buttonSalesActionPerformed
 
+    private void buttonAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAttendanceActionPerformed
+        this.cardLayout.show(panelContent, "AttendanceTab");
+    }//GEN-LAST:event_buttonAttendanceActionPerformed
+
     private void addPanels(){
         cardLayout = (CardLayout) panelContent.getLayout();
         panelContent.add(new CreateCaseTab(), "CreateCaseTab");        
         panelContent.add(new ViewActiveTab(), "ActiveTab");
         panelContent.add(new ViewDraftTab(), "DraftTab");
         panelContent.add(new ViewHistoryTab(), "HistoryTab");        
-        panelContent.add(new SaleTab(), "SaleTab");            
+        panelContent.add(new SaleTab(), "SaleTab");     
+        panelContent.add(new AttendanceTab(), "AttendanceTab");
     }
     
     /**
@@ -240,6 +260,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAttendance;
     private javax.swing.JButton buttonLogOut;
     private javax.swing.JButton buttonRegisterCase;
     private javax.swing.JButton buttonSales;
