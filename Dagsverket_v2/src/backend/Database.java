@@ -11,5 +11,27 @@ package backend;
  * @author Jorgen
  */
 public class Database {
+    public static Connection connect() {
+        Connection conn_new = null;
+        try {
+            String databasenavn = "jdbc:derby://localhost:1527/Dagsverket;user=root;password=root"; // no username / pw
+            conn_new  = DriverManager.getConnection(databasenavn);
+        } catch (Exception e) {
+            System.out.println("DatabaseSetup Feil 1: " + e);
+            System.exit(0); // ?? gjor noe annet...?
+        }
+        return conn_new;
+    }
+
+    public static void endConnection(Connection conn) {
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("DatabaseSetup Feil 2: " + e);
+        }
+    }
+
     
 }
