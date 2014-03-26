@@ -7,6 +7,7 @@
 package backend;
 
 import java.util.*;
+import java.sql.*;
 
 /**
  *
@@ -14,9 +15,11 @@ import java.util.*;
  */
 public class Users {
 	private ArrayList<User> users;
+    private Database db;
 
-	public Users() {
+	public Users(Database db) {
 		this.users = new ArrayList<User>();
+        this.db = db;
 	}
 
     public boolean registerUser() {
@@ -33,6 +36,15 @@ public class Users {
     	// create "User" for each in resultset
     	// add each user to "users" arraylist
     	// end
+        String sqlStatement = "Select * from users";
+        ResultSet rs = db.executeQuery(sqlStatement);
+        while(rs.next()) {
+            users.add(new User(
+                rs.getInt("id"),
+                rs.getString("firstName"),
+                rs.getString("lastName"),
+                ))
+        }
     }
 
     public void createUser(String firstname, String lastname) {
