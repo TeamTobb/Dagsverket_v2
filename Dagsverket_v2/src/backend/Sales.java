@@ -47,43 +47,49 @@ public class Sales {
     }
 
     public void updateSaleList() {
-        String sqlStatement = "Select  sales.ID, sales.QUANTITY, customers.FIRSTNAME," +
-        "customers.LASTNAME, customers.PHONENUMBER," +
-        "customers.ADDRESS, customers.POSTALCODE, customers.POSTPLACE," +
-        "wood.WOODTYPE, wood.BAGSIZE, wood.PRICE" +
-        "from sales NATURAL JOIN wood, customers;";
+        String sqlStatement = "Select  sales.ID, sales.QUANTITY, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, customers.ADDRESS, customers.POSTALCODE, customers.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE "
+                + "FROM sales NATURAL JOIN wood, customers";
         ResultSet rs = db.executeQuery(sqlStatement);
+        
         try {
+            //System.out.println(rs.getInt("sales.ID"));
             while(rs.next()) {
                 sales.add(new Sale(
-                    rs.getInt("sales.ID"),
-                    rs.getInt("sales.QUANTITY"),                   
-                    rs.getString("customers.FIRSTNAME"),
-                    rs.getString("customers.LASTNAME"),
-                    rs.getInt("customers.PHONENUMBER"),
-                    rs.getString("customers.ADDRESS"),
-                    rs.getInt("customers.POSTALCODE"),
-                    rs.getString("customers.POSTPLACE"),
-                    rs.getString("wood.WOODTYPE"),
-                    rs.getInt("wood.BAGSIZE"),                    
-                    rs.getInt("wood.PRICE")                     
+                    rs.getInt("ID"),
+                    rs.getInt("QUANTITY"),                   
+                    rs.getString("FIRSTNAME"),
+                    rs.getString("LASTNAME"),
+                    rs.getInt("PHONENUMBER"),
+                    rs.getString("ADDRESS"),
+                    rs.getInt("POSTALCODE"),
+                    rs.getString("POSTPLACE"),
+                    rs.getString("WOODTYPE"),
+                    rs.getInt("BAGSIZE"),                    
+                    rs.getInt("PRICE")                     
                     ));
             }
         } catch(SQLException e) {
             System.out.println("SQLError: " + e);
         } finally {
             db.closeAll();
+            System.out.println("ok");
         }
     }
     
     public static void main(String args[]){
         Database db = new Database();
-        Sales sales = new Sales(db);
+        Sales allSales = new Sales(db);
         db.createConnection();
         
         
-        sales.createSale(10, 1, "Eik");
-       // sales.updateSaleList();
+       allSales.createSale(50, 1, "Eik");
+        allSales.updateSaleList();
+        
+       
+        for(Sale d:allSales.getSales()) {
+            System.out.println(d);
+           
+        }
         
         
     }

@@ -39,4 +39,8 @@ public class Sale {
     public Wood getWood() {
     	return this.wood;
     }
+    
+    public String toString(){
+        return id + ", " + quantity + ", "+ buyer + ", "+ wood;
+    }
 }
