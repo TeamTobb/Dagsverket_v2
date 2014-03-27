@@ -60,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         panelNorth.setBackground(new java.awt.Color(153, 153, 153));
         panelNorth.setPreferredSize(new java.awt.Dimension(530, 62));
 
-        textHeader.setFont(new java.awt.Font("Silom", 1, 48)); // NOI18N
+        textHeader.setFont(new java.awt.Font("Optima", 1, 48)); // NOI18N
         textHeader.setText("DAGSVERKET");
         panelNorth.add(textHeader);
 
@@ -78,7 +78,7 @@ public class Login extends javax.swing.JFrame {
         jScrollPane2.setPreferredSize(new java.awt.Dimension(260, 225));
         jScrollPane2.setSize(new java.awt.Dimension(43, 225));
 
-        listUserNames.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
+        listUserNames.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         listUserNames.setModel(new javax.swing.AbstractListModel() {
             String[] strings = users.getUsers();
             public int getSize() { return strings.length; }
@@ -94,7 +94,7 @@ public class Login extends javax.swing.JFrame {
         panelSouth.setBackground(new java.awt.Color(153, 153, 153));
         panelSouth.setPreferredSize(new java.awt.Dimension(530, 62));
 
-        buttonLogIn.setFont(new java.awt.Font("Silom", 0, 18)); // NOI18N
+        buttonLogIn.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonLogIn.setText("Logg inn");
         buttonLogIn.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class Login extends javax.swing.JFrame {
         });
         panelSouth.add(buttonLogIn);
 
-        buttonNewUser.setFont(new java.awt.Font("Silom", 0, 18)); // NOI18N
+        buttonNewUser.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonNewUser.setText("Ny bruker");
         buttonNewUser.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonNewUser.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class Login extends javax.swing.JFrame {
         });
         panelSouth.add(buttonNewUser);
 
-        buttonDeleteUser.setFont(new java.awt.Font("Silom", 0, 18)); // NOI18N
+        buttonDeleteUser.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonDeleteUser.setText("Slett bruker");
         buttonDeleteUser.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonDeleteUser.addActionListener(new java.awt.event.ActionListener() {
