@@ -15,18 +15,35 @@ public class Sales {
     private ArrayList<Sale> sales;
     private Database db;
     
-    public Sales() {
+    public Sales(Database db) {
     	this.sales = new ArrayList<Sale>();
+        this.db = db;
     }
 
     public ArrayList<Sale> getSales() {
     	return this.sales;
     }
 
-    public boolean createSale() {
+    public boolean createSale(int quantity, int customer, String wood) {
+        int error = 0; 
+        db.createConnection();
         
+        try{
+            PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO sales VALUES(DEFAULT, ?, ?, ?)");
+            sqlStatement.setString(1, String.valueOf(quantity));   
+            sqlStatement.setString(2, String.valueOf(customer));
+            sqlStatement.setString(3, wood);
+            error = db.executeUpdate(sqlStatement);
+        }        
+        catch(SQLException e){
+            System.out.println("feil i createSale preparedStatement: " + e);
+            return false;
+        }     
+        finally{
+            db.closeAll();
+        }
         
-    	return false;
+    	return true;
     }
 
     public void updateSaleList() {
@@ -58,4 +75,17 @@ public class Sales {
             db.closeAll();
         }
     }
+    
+    public static void main(String args[]){
+        Database db = new Database();
+        Sales sales = new Sales(db);
+        db.createConnection();
+        
+        
+        sales.createSale(10, 1, "Eik");
+       // sales.updateSaleList();
+        
+        
+    }
 }
+
