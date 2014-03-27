@@ -103,16 +103,25 @@ public class Cases {
             }
             errors.addAll(checkFields(customerFirstName, customerLastName, phoneNumberInt, subject));
             
-            if(errors == null){
-                String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
-                                       "' AND lastName = '" + customerLastName + "' AND phoneNumber = '" + phoneNumberInt + "'";
-                ResultSet rs = this.db.executeQuery(sqlStatement);
+            if(errors.size()==0){
+                System.out.println("errors == null");
+                // String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
+                 //                      "' AND lastName = '" + customerLastName + "' AND phoneNumber = '" + phoneNumberInt + "'";
+                String sqlStatement = "SELECT id FROM customers WHERE firstName = 'borgar'";
+                                       ResultSet rs = this.db.executeQuery(sqlStatement);
                 try{
-                    if(rs.next()){
-                        customerId = rs.getInt("id");                        
+                    if(rs == null){
+                        
+                        while(rs.next()) {
+                                customerId = rs.getInt("id");
+                                System.out.println("hallooooo");
+                        }
                     }
                     else{
                         this.db.createConnection();
+                        
+                        System.out.println("jeg er i customer insert!");
+                        
                         PreparedStatement insertCustomerStatement = this.db.getConnection().prepareStatement(
                                 "INSERT INTO customers VALUES(DEFAULT, ?, ?, ?)");
                         insertCustomerStatement.setString(1, customerFirstName);
@@ -124,7 +133,7 @@ public class Cases {
                         ResultSet res = this.db.executeQuery(sqlStatement);
                         
                         try{
-                            if(rs.next()){
+                            while(rs.next()){
                                 customerId = rs.getInt("id");
                             }                        
                         }
@@ -140,8 +149,9 @@ public class Cases {
                 }
                 this.db.createConnection();
                 try{
-                    PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("INSERT INTO case VALUES"
-                                                        + "DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
+                    System.out.println("jeg er her :D");
+                    PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("INSERT INTO cases VALUES("
+                                                        + "DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     insertCaseStatement.setString(1, caseAddress);
                     insertCaseStatement.setInt(2, postalCodeInt);
                     insertCaseStatement.setString(3, postPlace);
@@ -173,6 +183,7 @@ public class Cases {
 
 	private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber, String subject) {
 		ArrayList<Integer> errors = new ArrayList<Integer>();
+                System.out.println("checkfields");
                 
         // important: contractor, phone / mail, subject
         if(customerFirstName == null || customerFirstName.trim().equals("")) {

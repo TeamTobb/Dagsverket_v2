@@ -17,14 +17,20 @@ CREATE TABLE cases(
 id INTEGER GENERATED ALWAYS AS IDENTITY, 
 address VARCHAR(30), 
 postalCode INTEGER, 
-postPlace VARCHAR(30), 
-customer INTEGER, 
-status VARCHAR(30), 
+postPlace VARCHAR(30),
+subject VARCHAR(30),
 req_date VARCHAR(30), 
-inspectDate VARCHAR(30),
+req_time VARCHAR(30), 
+description VARCHAR(200),
+price INTEGER,
+checkup_date VARCHAR(30),
 startDate VARCHAR(30), 
-supervisor INTEGER,
+toolList VARCHAR(30),
+contactPerson VARCHAR(30),
+status VARCHAR(30),
 creator INTEGER,
+supervisor INTEGER,
+customer INTEGER, 
 CONSTRAINT cases_pk PRIMARY KEY(id)
 );
 
@@ -87,5 +93,5 @@ INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen');
 INSERT INTO wood VALUES('Eik', 50, 800);
 INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324, 'Adresseveien 1', 7000,'Trondheim');
 INSERT INTO sales VALUES(default, 30, 1, 'Eik');
-INSERT INTO cases VALUES(default, 'jobbAdresseveien 1', 7001, 'Trondheim',1, 'activ', '10.04.2014','09.04.2014', '11.04.2014', 2, 2);
+--INSERT INTO cases VALUES(default, 'jobbAdresseveien 1', 7001, 'Trondheim',1, 'activ', '10.04.2014','09.04.2014', '11.04.2014', 2, 2);
  

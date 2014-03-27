@@ -9,6 +9,8 @@ import backend.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
+import java.util.ArrayList;
+import static javax.swing.JOptionPane.*;
 
 /**
  *
@@ -16,12 +18,14 @@ import java.awt.Color;
  */
 public class CreateCaseTab extends javax.swing.JPanel {
     private Operator op;
+    private Cases cases;
 
     /**
      * Creates new form CreateCaseTab
      */
     public CreateCaseTab(Operator op) {
         this.op = op;
+        this.cases = new Cases(30, op.getDb());
         initComponents();
     }
 
@@ -43,12 +47,12 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelCreateCaseDSupervisorHeader = new javax.swing.JLabel();
         labelCreateCaseDate = new javax.swing.JLabel();
         labelCreateCaseDDate = new javax.swing.JLabel();
-        labelCreateCaseDEmployer = new javax.swing.JLabel();
-        textFieldCreateCaseEmployer = new javax.swing.JTextField();
+        labelCustomerDFirstName = new javax.swing.JLabel();
+        textFieldCustomerFirstName = new javax.swing.JTextField();
         labelCreateCaseDAddress = new javax.swing.JLabel();
         textFieldCreateCaseAddress = new javax.swing.JTextField();
         textFieldCreateCasePostPlace = new javax.swing.JTextField();
-        textFieldCreateCasePostnr = new javax.swing.JTextField();
+        textFieldCreateCasePostalCode = new javax.swing.JTextField();
         labelCreateCaseDPostnr = new javax.swing.JLabel();
         textFieldCreateCasePhone = new javax.swing.JTextField();
         labelCreateCaseDPhone = new javax.swing.JLabel();
@@ -74,9 +78,13 @@ public class CreateCaseTab extends javax.swing.JPanel {
         comboBoxCreateCaseStatus = new javax.swing.JComboBox();
         buttonCreateCaseComplete = new javax.swing.JButton();
         labelCreateCaseStartDate = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        dateFieldCreateCaseInspectDate = new com.toedter.calendar.JDateChooser();
+        dateFieldCreateCaseReqDate = new com.toedter.calendar.JDateChooser();
+        dateFieldCreateCaseStartDate = new com.toedter.calendar.JDateChooser();
+        textFieldCustomerLastName = new javax.swing.JTextField();
+        labelCustomerDLastName = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        textAreaCreateCaseToolList = new javax.swing.JTextArea();
 
         setLayout(null);
 
@@ -122,19 +130,19 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseDDate);
         labelCreateCaseDDate.setBounds(54, 131, 34, 16);
 
-        labelCreateCaseDEmployer.setText("Kunde:");
-        add(labelCreateCaseDEmployer);
-        labelCreateCaseDEmployer.setBounds(40, 160, 43, 16);
+        labelCustomerDFirstName.setText("Kunde:");
+        add(labelCustomerDFirstName);
+        labelCustomerDFirstName.setBounds(40, 160, 43, 16);
 
-        textFieldCreateCaseEmployer.setToolTipText("");
-        textFieldCreateCaseEmployer.setVerifyInputWhenFocusTarget(false);
-        textFieldCreateCaseEmployer.addActionListener(new java.awt.event.ActionListener() {
+        textFieldCustomerFirstName.setToolTipText("");
+        textFieldCustomerFirstName.setVerifyInputWhenFocusTarget(false);
+        textFieldCustomerFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCreateCaseEmployerActionPerformed(evt);
+                textFieldCustomerFirstNameActionPerformed(evt);
             }
         });
-        add(textFieldCreateCaseEmployer);
-        textFieldCreateCaseEmployer.setBounds(135, 151, 274, 28);
+        add(textFieldCustomerFirstName);
+        textFieldCustomerFirstName.setBounds(135, 151, 90, 28);
 
         labelCreateCaseDAddress.setText("Adresse");
         add(labelCreateCaseDAddress);
@@ -159,31 +167,31 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(textFieldCreateCasePostPlace);
         textFieldCreateCasePostPlace.setBounds(233, 214, 177, 28);
 
-        textFieldCreateCasePostnr.setToolTipText("...");
-        textFieldCreateCasePostnr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCreateCasePostnrActionPerformed(evt);
-            }
-        });
-        textFieldCreateCasePostnr.addFocusListener(new java.awt.event.FocusAdapter() {
+        textFieldCreateCasePostalCode.setToolTipText("...");
+        textFieldCreateCasePostalCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldCreateCasePostnrFocusLost(evt);
+                textFieldCreateCasePostalCodeFocusLost(evt);
             }
         });
-        textFieldCreateCasePostnr.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        textFieldCreateCasePostalCode.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                textFieldCreateCasePostnrInputMethodTextChanged(evt);
+                textFieldCreateCasePostalCodeInputMethodTextChanged(evt);
             }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
-        textFieldCreateCasePostnr.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                textFieldCreateCasePostnrPropertyChange(evt);
+        textFieldCreateCasePostalCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldCreateCasePostalCodeActionPerformed(evt);
             }
         });
-        add(textFieldCreateCasePostnr);
-        textFieldCreateCasePostnr.setBounds(135, 214, 92, 28);
+        textFieldCreateCasePostalCode.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                textFieldCreateCasePostalCodePropertyChange(evt);
+            }
+        });
+        add(textFieldCreateCasePostalCode);
+        textFieldCreateCasePostalCode.setBounds(135, 214, 92, 28);
 
         labelCreateCaseDPostnr.setText("Postnr");
         add(labelCreateCaseDPostnr);
@@ -296,7 +304,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         jScrollPane7.setViewportView(textAreaCreateCaseContacts);
 
         add(jScrollPane7);
-        jScrollPane7.setBounds(710, 250, 270, 100);
+        jScrollPane7.setBounds(700, 300, 270, 100);
 
         labelCreateCaseDStatus.setText("Status:");
         add(labelCreateCaseDStatus);
@@ -316,12 +324,33 @@ public class CreateCaseTab extends javax.swing.JPanel {
         buttonCreateCaseComplete.setBounds(684, 581, 260, 50);
         add(labelCreateCaseStartDate);
         labelCreateCaseStartDate.setBounds(734, 151, 210, 20);
-        add(jDateChooser1);
-        jDateChooser1.setBounds(710, 70, 123, 28);
-        add(jDateChooser2);
-        jDateChooser2.setBounds(158, 379, 210, 28);
-        add(jDateChooser3);
-        jDateChooser3.setBounds(670, 140, 123, 28);
+        add(dateFieldCreateCaseInspectDate);
+        dateFieldCreateCaseInspectDate.setBounds(710, 70, 123, 28);
+        add(dateFieldCreateCaseReqDate);
+        dateFieldCreateCaseReqDate.setBounds(158, 379, 210, 28);
+        add(dateFieldCreateCaseStartDate);
+        dateFieldCreateCaseStartDate.setBounds(670, 140, 123, 28);
+
+        textFieldCustomerLastName.setToolTipText("");
+        textFieldCustomerLastName.setVerifyInputWhenFocusTarget(false);
+        textFieldCustomerLastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldCustomerLastNameActionPerformed(evt);
+            }
+        });
+        add(textFieldCustomerLastName);
+        textFieldCustomerLastName.setBounds(330, 150, 90, 28);
+
+        labelCustomerDLastName.setText("etternavn");
+        add(labelCustomerDLastName);
+        labelCustomerDLastName.setBounds(240, 150, 80, 16);
+
+        textAreaCreateCaseToolList.setColumns(20);
+        textAreaCreateCaseToolList.setRows(5);
+        jScrollPane8.setViewportView(textAreaCreateCaseToolList);
+
+        add(jScrollPane8);
+        jScrollPane8.setBounds(700, 190, 270, 100);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxCreateCaseSupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCreateCaseSupervisorActionPerformed
@@ -329,9 +358,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxCreateCaseSupervisorActionPerformed
 
-    private void textFieldCreateCaseEmployerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCreateCaseEmployerActionPerformed
+    private void textFieldCustomerFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCustomerFirstNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCreateCaseEmployerActionPerformed
+    }//GEN-LAST:event_textFieldCustomerFirstNameActionPerformed
 
     private void textFieldCreateCaseAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCreateCaseAddressActionPerformed
         // TODO add your handling code here:
@@ -341,23 +370,23 @@ public class CreateCaseTab extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCreateCasePostPlaceActionPerformed
 
-    private void textFieldCreateCasePostnrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostnrActionPerformed
+    private void textFieldCreateCasePostalCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostalCodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCreateCasePostnrActionPerformed
+    }//GEN-LAST:event_textFieldCreateCasePostalCodeActionPerformed
 
-    private void textFieldCreateCasePostnrFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostnrFocusLost
+    private void textFieldCreateCasePostalCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostalCodeFocusLost
         // TODO add your handling code here:
-        textFieldCreateCasePostPlace.setText(textFieldCreateCasePostnr.getText());
+        textFieldCreateCasePostPlace.setText(textFieldCreateCasePostalCode.getText());
         // set Field ut i fra postnr = poststed i database!!!
-    }//GEN-LAST:event_textFieldCreateCasePostnrFocusLost
+    }//GEN-LAST:event_textFieldCreateCasePostalCodeFocusLost
 
-    private void textFieldCreateCasePostnrInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostnrInputMethodTextChanged
+    private void textFieldCreateCasePostalCodeInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostalCodeInputMethodTextChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCreateCasePostnrInputMethodTextChanged
+    }//GEN-LAST:event_textFieldCreateCasePostalCodeInputMethodTextChanged
 
-    private void textFieldCreateCasePostnrPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostnrPropertyChange
+    private void textFieldCreateCasePostalCodePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_textFieldCreateCasePostalCodePropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCreateCasePostnrPropertyChange
+    }//GEN-LAST:event_textFieldCreateCasePostalCodePropertyChange
 
     private void textFieldCreateCasePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCreateCasePhoneActionPerformed
         // TODO add your handling code here:
@@ -425,47 +454,52 @@ public class CreateCaseTab extends javax.swing.JPanel {
     }//GEN-LAST:event_calCreateCaseStartDatePropertyChange
 
     private void buttonCreateCaseCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateCaseCompleteActionPerformed
-        labelCreateCaseDEmployer.setForeground(Color.black);
+        Date reqDate = dateFieldCreateCaseReqDate.getDate();
+        Date inspectDate = dateFieldCreateCaseInspectDate.getDate();
+        Date startDate = dateFieldCreateCaseStartDate.getDate();
+        
+        String reqDateString = String.format("%1$td-%1$tm-%1$tY", reqDate);
+        String inspectDateString = String.format("%1$td-%1$tm-%1$tY", inspectDate);
+        String startDateString = String.format("%1$td-%1$tm-%1$tY", startDate);
+        
+        
+        ArrayList<Integer> errors = this.cases.createCase(
+                op.getUser().getId(),
+                textFieldCustomerFirstName.getText().trim(),
+                textFieldCustomerLastName.getText().trim(),
+                textFieldCreateCaseAddress.getText().trim(),
+                textFieldCreateCasePostalCode.getText().trim(),
+                textFieldCreateCasePostPlace.getText().trim(),
+                textFieldCreateCasePhone.getText().trim(),
+                textFieldCreateCaseSubject.getText().trim(),
+                reqDateString,
+                ComboBoxCreateCaseReqTime.getSelectedItem().toString(),
+                textAreaCreateCaseDescription.getText().trim(),
+                2,
+                //op.getUsers().getUserByFullName(comboBoxCreateCaseSupervisor.getSelectedItem().toString()).getId(),
+                textFieldCreateCasePrice.getText().trim(),
+                inspectDateString,
+                startDateString,
+                textAreaCreateCaseToolList.getText().trim(),
+                textAreaCreateCaseContacts.getText().trim(),
+                comboBoxCreateCaseStatus.getSelectedItem().toString()
+        );
+        
+        labelCustomerDFirstName.setForeground(Color.black);
+        labelCustomerDLastName.setForeground(Color.black);        
         labelCreateCaseDPhone.setForeground(Color.black);
         labelCreateCaseDSubject.setForeground(Color.black);
-        String contractor = textFieldCreateCaseEmployer.getText();
-        int postnummer = 0;
-        int telephone = 0;
-        try{
-            telephone = Integer.parseInt(textFieldCreateCasePhone.getText().trim());
-        } catch(NumberFormatException e){
-            System.out.println("Feil telefonnumer. Bare tall");
-        }
-        String gateAdresse = textFieldCreateCaseAddress.getText().trim();
-        try{
-            postnummer = Integer.parseInt(textFieldCreateCasePostnr.getText().trim());
-        }
-        catch(NumberFormatException e){
-            System.out.println("Feil postnummer. Bare tall");
-        }
-        String poststed = textFieldCreateCasePostPlace.getText().trim();
-        String topic = textFieldCreateCaseSubject.getText().trim();
-        String description = textAreaCreateCaseDescription.getText().trim();
 
-        String ansvarlige = (String)comboBoxCreateCaseSupervisor.getSelectedItem();
-
-        String befaring = labelCreateCaseInspectDate.getText().trim();
-
-        /* BRUKES IKKE LENGRE
-        String[] arbeidstakere = new String[jList3.getModel().getSize()];
-        for(int i = 0; i<arbeidstakere.length; i++){
-            arbeidstakere[i] = (String) jList3.getModel().getElementAt(i);
-        }
-        */
-        String[] arbeidstakere = null;
-        String status = (String)comboBoxCreateCaseStatus.getSelectedItem();
-
-        String date = labelCreateCaseDate.getText().trim();
-        String time = "";
-        String epostAdresse = "";
         
-        // one param: op.users.getUserByFullName(list....getString???).getId()
-        
+        if(errors != null){
+            for(Integer i : errors){
+                System.out.println("error " + i);
+            }                        
+        }
+        else{
+            showMessageDialog(null, "WOHOOO");
+        }
+
       //  ArrayList<Integer> create_errors = op.createEvent(contractor, arbeidstakere, telephone, epostAdresse, gateAdresse, postnummer, poststed, ansvarlige, befaring, date, time, topic, description, status);
         // op.createEventTest(contractor, arbeidstakere, telephone, epostAdresse, gateAdresse, postnummer, poststed, ansvarlige, befaring, topic, description, status);
 
@@ -494,22 +528,26 @@ public class CreateCaseTab extends javax.swing.JPanel {
         }*/
     }//GEN-LAST:event_buttonCreateCaseCompleteActionPerformed
 
+    private void textFieldCustomerLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCustomerLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldCustomerLastNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBoxCreateCaseReqTime;
     private javax.swing.JButton buttonCreateCaseComplete;
     private javax.swing.JComboBox comboBoxCreateCaseStatus;
     private javax.swing.JComboBox comboBoxCreateCaseSupervisor;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser dateFieldCreateCaseInspectDate;
+    private com.toedter.calendar.JDateChooser dateFieldCreateCaseReqDate;
+    private com.toedter.calendar.JDateChooser dateFieldCreateCaseStartDate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel labelCreateCaseDAddress;
     private javax.swing.JLabel labelCreateCaseDContacts;
     private javax.swing.JLabel labelCreateCaseDDate;
     private javax.swing.JLabel labelCreateCaseDDescription;
-    private javax.swing.JLabel labelCreateCaseDEmployer;
     private javax.swing.JLabel labelCreateCaseDEquipment;
     private javax.swing.JLabel labelCreateCaseDInspectDate;
     private javax.swing.JLabel labelCreateCaseDName;
@@ -530,14 +568,18 @@ public class CreateCaseTab extends javax.swing.JPanel {
     private javax.swing.JLabel labelCreateCaseName;
     private javax.swing.JLabel labelCreateCaseReqDate;
     private javax.swing.JLabel labelCreateCaseStartDate;
+    private javax.swing.JLabel labelCustomerDFirstName;
+    private javax.swing.JLabel labelCustomerDLastName;
     private javax.swing.JTextArea textAreaCreateCaseContacts;
     private javax.swing.JTextArea textAreaCreateCaseDescription;
+    private javax.swing.JTextArea textAreaCreateCaseToolList;
     private javax.swing.JTextField textFieldCreateCaseAddress;
-    private javax.swing.JTextField textFieldCreateCaseEmployer;
     private javax.swing.JTextField textFieldCreateCasePhone;
     private javax.swing.JTextField textFieldCreateCasePostPlace;
-    private javax.swing.JTextField textFieldCreateCasePostnr;
+    private javax.swing.JTextField textFieldCreateCasePostalCode;
     private javax.swing.JTextField textFieldCreateCasePrice;
     private javax.swing.JTextField textFieldCreateCaseSubject;
+    private javax.swing.JTextField textFieldCustomerFirstName;
+    private javax.swing.JTextField textFieldCustomerLastName;
     // End of variables declaration//GEN-END:variables
 }
