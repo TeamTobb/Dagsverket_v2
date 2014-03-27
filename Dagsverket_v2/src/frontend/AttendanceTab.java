@@ -28,19 +28,93 @@ public class AttendanceTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        panelLeft = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        panelCenter = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        panelRight = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 0));
+        setPreferredSize(new java.awt.Dimension(1024, 690));
+        setLayout(new java.awt.BorderLayout());
+
+        panelLeft.setBackground(new java.awt.Color(255, 255, 255));
+        panelLeft.setPreferredSize(new java.awt.Dimension(425, 690));
+
+        jButton1.setText("jButton1");
+
+        javax.swing.GroupLayout panelLeftLayout = new javax.swing.GroupLayout(panelLeft);
+        panelLeft.setLayout(panelLeftLayout);
+        panelLeftLayout.setHorizontalGroup(
+            panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftLayout.createSequentialGroup()
+                .addGap(0, 328, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelLeftLayout.setVerticalGroup(
+            panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftLayout.createSequentialGroup()
+                .addGap(0, 529, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
+
+        add(panelLeft, java.awt.BorderLayout.WEST);
+
+        panelCenter.setBackground(new java.awt.Color(0, 0, 204));
+        panelCenter.setPreferredSize(new java.awt.Dimension(174, 690));
+
+        jButton2.setText("jButton2");
+
+        javax.swing.GroupLayout panelCenterLayout = new javax.swing.GroupLayout(panelCenter);
+        panelCenter.setLayout(panelCenterLayout);
+        panelCenterLayout.setHorizontalGroup(
+            panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCenterLayout.createSequentialGroup()
+                .addGap(0, 77, Short.MAX_VALUE)
+                .addComponent(jButton2))
+        );
+        panelCenterLayout.setVerticalGroup(
+            panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCenterLayout.createSequentialGroup()
+                .addGap(0, 529, Short.MAX_VALUE)
+                .addComponent(jButton2))
+        );
+
+        add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelRight.setBackground(new java.awt.Color(255, 0, 0));
+        panelRight.setPreferredSize(new java.awt.Dimension(425, 690));
+
+        jButton3.setText("jButton3");
+
+        javax.swing.GroupLayout panelRightLayout = new javax.swing.GroupLayout(panelRight);
+        panelRight.setLayout(panelRightLayout);
+        panelRightLayout.setHorizontalGroup(
+            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
+                .addContainerGap(322, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
+        );
+        panelRightLayout.setVerticalGroup(
+            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
+                .addContainerGap(523, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
+        );
+
+        add(panelRight, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelLeft;
+    private javax.swing.JPanel panelRight;
     // End of variables declaration//GEN-END:variables
 }

@@ -58,7 +58,7 @@ public class GUI extends javax.swing.JFrame {
         panelContent.setPreferredSize(new java.awt.Dimension(1024, 706));
         panelContent.setLayout(new java.awt.CardLayout());
         panelMain.add(panelContent);
-        panelContent.setBounds(0, 60, 1024, 725);
+        panelContent.setBounds(0, 60, 1024, 690);
 
         panelMenu.setBackground(new java.awt.Color(153, 153, 153));
 
