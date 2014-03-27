@@ -23,18 +23,14 @@ public class Database {
         this.stm = null;
     }
     
-    public Connection createConnection() {
-        Connection conn_new = null;
+    public void createConnection() {
         try {
             String databasenavn = "jdbc:derby://localhost:1527/Dagsverket;user=root;password=root"; // no username / pw
-            conn_new  = DriverManager.getConnection(databasenavn);
+            this.conn  = DriverManager.getConnection(databasenavn);
         } catch (Exception e) {
             System.out.println("Feil i database.createConnection: " + e);
-            System.exit(0); // ?? gjor noe annet...?
         }
-        return conn_new;
     }
-
     
     //perhaps not needed cause of previously declared closeAll-method.
     public boolean endConnection(Connection conn) {
@@ -50,7 +46,7 @@ public class Database {
     }
     
     public ResultSet executeQuery(String sqlStatement){
-        this.conn = createConnection();
+        createConnection();
         try{
             stm = this.conn.createStatement();
             rs = stm.executeQuery(sqlStatement);
@@ -61,6 +57,24 @@ public class Database {
         return rs;
     }
     
+    public int executeUpdate(PreparedStatement sqlStatement){
+        int result = 0;
+        try{
+            result = sqlStatement.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println("feil i database.executeUpdate: " + e);
+        }
+        finally{
+            try{
+                sqlStatement.close();
+            }
+            catch(SQLException e){
+                System.out.println("feil i database.executeUpdate (close preparedstatement)" + e);
+            }
+        }
+        return result;        
+    }
     public void closeAll(){
         try{
             if(this.rs!=null){
@@ -114,6 +128,10 @@ public class Database {
             System.out.println("feil i database.rollback: " + e);
         }
         return false;
+    }
+    
+    public Connection getConnection(){
+        return this.conn; 
     }
     
     //perhaps not needed cause of previously declared closeAll-method.

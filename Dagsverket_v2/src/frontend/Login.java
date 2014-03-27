@@ -7,6 +7,12 @@
 package frontend;
 
 import backend.*;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import static javax.swing.JOptionPane.*;
 
 /**
  *
@@ -54,6 +60,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         buttonNewUser.setText("Ny bruker");
+        buttonNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNewUserActionPerformed(evt);
+            }
+        });
 
         listUserNames.setModel(new javax.swing.AbstractListModel() {
             String[] strings = users.getUsers();
@@ -114,6 +125,31 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
         GUI.main(users.getUserByIndex(listUserNames.getSelectedIndex()));
     }//GEN-LAST:event_buttonLogInActionPerformed
+
+    private void buttonNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewUserActionPerformed
+      JTextField textfieldFirstName = new JTextField(5);
+      JTextField textfieldLastName = new JTextField(5);
+      JPanel panelNewUser = new JPanel();
+      panelNewUser.add(new JLabel("Fornavn:"));
+      panelNewUser.add(textfieldFirstName);
+      panelNewUser.add(Box.createHorizontalStrut(15)); // a spacer
+      panelNewUser.add(new JLabel("Etternavn:"));
+      panelNewUser.add(textfieldLastName);
+      
+      int result = JOptionPane.showConfirmDialog(null, panelNewUser, 
+               "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
+      if (result == JOptionPane.OK_OPTION) {
+          int error = users.createUser(textfieldFirstName.getText(), textfieldLastName.getText());
+          if(error == 0){
+              showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
+          }
+          else{
+              users.updateUserList();
+              listUserNames.setListData(users.getUsers());
+              listUserNames.updateUI();
+          }          
+      }
+    }//GEN-LAST:event_buttonNewUserActionPerformed
 
     /**
      * @param args the command line arguments

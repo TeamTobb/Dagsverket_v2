@@ -18,8 +18,8 @@ public class Users {
     private Database db;
 
 	public Users(Database db) {
-		this.users = new ArrayList<User>();
-        this.db = db;
+            this.users = new ArrayList<User>();
+            this.db = db;
 	}
 
     public boolean registerUser() {
@@ -36,6 +36,7 @@ public class Users {
     	// create "User" for each in resultset
     	// add each user to "users" arraylist
     	// end
+        this.users = new ArrayList<User>();
         String sqlStatement = "Select * from users";
         ResultSet rs = db.executeQuery(sqlStatement);
         try {
@@ -54,9 +55,23 @@ public class Users {
         }
     }
 
-    public void createUser(String firstname, String lastname) {
-    	// send a user to database
-    	// return error if already exists?
+    public int createUser(String firstname, String lastname) {
+        int error = 0; 
+        db.createConnection();
+        try{
+            PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO users VALUES(DEFAULT, ?, ?)");
+            sqlStatement.setString(1, firstname);
+            sqlStatement.setString(2, lastname);       
+            error = db.executeUpdate(sqlStatement);
+        }        
+        catch(SQLException e){
+            System.out.println("feil i createUser preparedStatement: " + e);
+            return 0;
+        }     
+        finally{
+            db.closeAll();
+        }
+        return error;
     }
 
     // public ArrayList<User> getUsers() {
