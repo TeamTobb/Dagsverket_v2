@@ -6,12 +6,20 @@
 
 package backend;
 
+import java.awt.Color;
 import java.util.*;
 import java.sql.*;
 
 
 
 public class Sales {
+    public static int WRONG_PHONE_FORMAT = 1;
+    public static int WRONG_POSTALCODE_FORMAT = 2;
+    public static int WRONG_QUANTITY_FORMAT = 3;
+    public static int NO_CONTRACTOR_FIRSTNAME = 4;
+    public static int NO_CONTRACTOR_LASTNAME = 5;
+    public static int NO_CONTACT_INFO = 6;
+    
     private ArrayList<Sale> sales;
     private Database db;
     
@@ -24,28 +32,71 @@ public class Sales {
     	return this.sales;
     }
 
-    public boolean createSale(int quantity, String customerFirstname, String customerLastname, String phoneNumber, String wood) {
-        int error = 0; 
+    public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
+                                String postnr, String adresse, String quantity) {
+        ArrayList<Integer> errors = new ArrayList<Integer>(); 
         int customerId = 0; 
+        int telephone = 0;
+        int quantityNr = 0;
+        int postCode = 0; 
+        
+        try{
+            telephone = Integer.parseInt(phoneNumber.trim());
+        } catch(NumberFormatException e){
+            System.out.println("Feil telefonnumer. Bare tall" + e);
+            errors.add(WRONG_PHONE_FORMAT);
+        }
+        
+        try{
+            postCode = Integer.parseInt(postnr.trim());
+        }
+        catch(NumberFormatException e){
+            System.out.println("Feil postnummer. Bare tall"+e);
+            errors.add(WRONG_POSTALCODE_FORMAT);
+        }
+        
+        try{
+            quantityNr = Integer.parseInt(quantity.trim());
+        }
+        catch(NumberFormatException e){
+            System.out.println("Feil antall. Bare tall"+e);
+            errors.add(WRONG_QUANTITY_FORMAT);
+        }
+        
+       //fyll opp denne med alt
+        errors.addAll(checkFields(customerFirstName , customerLastName, telephone));
+        
+        return errors;
+        
+        
+        
+        
+        
+        
+        //legg til Customer DB
+        
+        
+        //legg til Wood DB
+        
+        /*
         
         db.createConnection();
-        
         try{
             PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO sales VALUES(DEFAULT, ?, ?, ?)");
             sqlStatement.setString(1, String.valueOf(quantity));   
             sqlStatement.setInt(2, customerId);
-            sqlStatement.setString(3, wood);
-            error = db.executeUpdate(sqlStatement);
+            sqlStatement.setString(3, "Eik");
+            db.executeUpdate(sqlStatement);
         }        
         catch(SQLException e){
             System.out.println("feil i createSale preparedStatement: " + e);
-            return false;
+            
         }     
         finally{
             db.closeAll();
         }
+        */
         
-    	return true;
     }
 
     public void updateSaleList() {
@@ -80,6 +131,22 @@ public class Sales {
         }
     }
     
+     private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber) {
+		ArrayList<Integer> errors = new ArrayList<Integer>();
+                
+        // important: contractor, phone / mail, subject
+        if(customerFirstName == null || customerFirstName.trim().equals("")) {
+    		errors.add(NO_CONTRACTOR_FIRSTNAME);
+    	}                
+    	if(customerLastName == null || customerLastName.trim().equals("")) {
+    		errors.add(NO_CONTRACTOR_LASTNAME);
+    	} 
+        if(phoneNumber <= 0) {
+            errors.add(NO_CONTACT_INFO);
+        }
+        return errors;
+	}
+    
     public static void main(String args[]){
         Database db = new Database();
         Sales allSales = new Sales(db);
@@ -97,5 +164,8 @@ public class Sales {
         
         
     }
+    
+    
+   
 }
 

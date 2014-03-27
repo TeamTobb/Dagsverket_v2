@@ -218,7 +218,7 @@ public class GUI extends javax.swing.JFrame {
         panelContent.add(new ViewActiveTab(), "ActiveTab");
         panelContent.add(new ViewDraftTab(), "DraftTab");
         panelContent.add(new ViewHistoryTab(), "HistoryTab");        
-        panelContent.add(new SaleTab(), "SaleTab");     
+        panelContent.add(new SaleTab(op), "SaleTab");     
         panelContent.add(new AttendanceTab(), "AttendanceTab");
     }
     

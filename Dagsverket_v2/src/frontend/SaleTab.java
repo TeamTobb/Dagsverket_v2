@@ -6,23 +6,25 @@
 
 package frontend;
 
-import backend.Sales;
+import backend.*;
+
 import java.awt.Color;
+
 
 /**
  *
  * @author Jorgen
  */
 public class SaleTab extends javax.swing.JPanel {
-    // private Operator op;
-    // private Sales sales;
+     private Operator op;
+     private Sales sales;
 
     /**
      * Creates new form SaleTab
      */
-    public SaleTab() {
-        // this.op = op;
-       //  this.sales = new Sales();
+    public SaleTab(Operator op) {
+       this.op = op;
+       this.sales = new Sales(op.getDb());
         initComponents();
     }
 
@@ -406,7 +408,6 @@ public class SaleTab extends javax.swing.JPanel {
         labelDQuanitity.setForeground(Color.black);
         
         
-        // createSale()
         
         
         String firstName = textFieldFirstName.getText().trim();
@@ -416,30 +417,7 @@ public class SaleTab extends javax.swing.JPanel {
         int postCode = 0;
         int quantity = 0;
         String status = (String)comboBoxWoodType.getSelectedItem();
-        
-        try{
-            telephone = Integer.parseInt(textFieldPhone.getText().trim());
-        } catch(NumberFormatException e){
-            System.out.println("Feil telefonnumer. Bare tall");
-            labelDPhone.setForeground(Color.red);
-
-        }
-        
-        try{
-            postCode = Integer.parseInt(textFieldPostnr.getText().trim());
-        }
-        catch(NumberFormatException e){
-            System.out.println("Feil postnummer. Bare tall");
-            labelDPostnr.setForeground(Color.red);
-        }
-        
-        try{
-            quantity = Integer.parseInt(textFieldQuantity.getText().trim());
-        }
-        catch(NumberFormatException e){
-            labelDQuanitity.setForeground(Color.red);
-            System.out.println("Feil antall. Bare tall");
-        }
+       
         
         
         
