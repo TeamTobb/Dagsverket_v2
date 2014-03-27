@@ -29,92 +29,133 @@ public class AttendanceTab extends javax.swing.JPanel {
     private void initComponents() {
 
         panelLeft = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        tableNotAttending = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         panelCenter = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        buttonMoveToAttending = new javax.swing.JButton();
+        buttonMoveToNotAttending = new javax.swing.JButton();
+        buttonRegisterNewEmployer = new javax.swing.JButton();
         panelRight = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        tableAttending = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 0));
         setPreferredSize(new java.awt.Dimension(1024, 690));
         setLayout(new java.awt.BorderLayout());
 
-        panelLeft.setBackground(new java.awt.Color(255, 255, 255));
         panelLeft.setPreferredSize(new java.awt.Dimension(425, 690));
+        panelLeft.setLayout(new javax.swing.BoxLayout(panelLeft, javax.swing.BoxLayout.LINE_AXIS));
 
-        jButton1.setText("jButton1");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableNotAttending.setViewportView(jTable1);
 
-        javax.swing.GroupLayout panelLeftLayout = new javax.swing.GroupLayout(panelLeft);
-        panelLeft.setLayout(panelLeftLayout);
-        panelLeftLayout.setHorizontalGroup(
-            panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftLayout.createSequentialGroup()
-                .addGap(0, 328, Short.MAX_VALUE)
-                .addComponent(jButton1))
-        );
-        panelLeftLayout.setVerticalGroup(
-            panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftLayout.createSequentialGroup()
-                .addGap(0, 529, Short.MAX_VALUE)
-                .addComponent(jButton1))
-        );
+        panelLeft.add(tableNotAttending);
 
         add(panelLeft, java.awt.BorderLayout.WEST);
 
-        panelCenter.setBackground(new java.awt.Color(0, 0, 204));
+        panelCenter.setBackground(new java.awt.Color(153, 153, 153));
         panelCenter.setPreferredSize(new java.awt.Dimension(174, 690));
 
-        jButton2.setText("jButton2");
+        buttonMoveToAttending.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonMoveToAttending.setText("->");
+        buttonMoveToAttending.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMoveToAttendingActionPerformed(evt);
+            }
+        });
+
+        buttonMoveToNotAttending.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonMoveToNotAttending.setText("<-");
+
+        buttonRegisterNewEmployer.setFont(new java.awt.Font("Optima", 1, 14)); // NOI18N
+        buttonRegisterNewEmployer.setText("Registrer ny person");
+        buttonRegisterNewEmployer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegisterNewEmployerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCenterLayout = new javax.swing.GroupLayout(panelCenter);
         panelCenter.setLayout(panelCenterLayout);
         panelCenterLayout.setHorizontalGroup(
             panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCenterLayout.createSequentialGroup()
-                .addGap(0, 77, Short.MAX_VALUE)
-                .addComponent(jButton2))
+            .addGroup(panelCenterLayout.createSequentialGroup()
+                .addGroup(panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCenterLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(buttonRegisterNewEmployer))
+                    .addGroup(panelCenterLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCenterLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37))
         );
         panelCenterLayout.setVerticalGroup(
             panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCenterLayout.createSequentialGroup()
-                .addGap(0, 529, Short.MAX_VALUE)
-                .addComponent(jButton2))
+            .addGroup(panelCenterLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(buttonRegisterNewEmployer, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         add(panelCenter, java.awt.BorderLayout.CENTER);
 
-        panelRight.setBackground(new java.awt.Color(255, 0, 0));
         panelRight.setPreferredSize(new java.awt.Dimension(425, 690));
+        panelRight.setLayout(new javax.swing.BoxLayout(panelRight, javax.swing.BoxLayout.LINE_AXIS));
 
-        jButton3.setText("jButton3");
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableAttending.setViewportView(jTable2);
 
-        javax.swing.GroupLayout panelRightLayout = new javax.swing.GroupLayout(panelRight);
-        panelRight.setLayout(panelRightLayout);
-        panelRightLayout.setHorizontalGroup(
-            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
-                .addContainerGap(322, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
-        );
-        panelRightLayout.setVerticalGroup(
-            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
-                .addContainerGap(523, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
-        );
+        panelRight.add(tableAttending);
 
         add(panelRight, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonMoveToAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToAttendingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonMoveToAttendingActionPerformed
+
+    private void buttonRegisterNewEmployerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterNewEmployerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRegisterNewEmployerActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton buttonMoveToAttending;
+    private javax.swing.JButton buttonMoveToNotAttending;
+    private javax.swing.JButton buttonRegisterNewEmployer;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelLeft;
     private javax.swing.JPanel panelRight;
+    private javax.swing.JScrollPane tableAttending;
+    private javax.swing.JScrollPane tableNotAttending;
     // End of variables declaration//GEN-END:variables
 }
