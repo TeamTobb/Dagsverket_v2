@@ -89,6 +89,15 @@ public class Users {
     public User getUserByIndex(int i) {
         return this.users.get(i);
     }
+    
+    public User getUserByFullName(String fullName){
+        for(User u : users){
+            if(fullName.equals(u)){
+                return u;
+            }
+        }
+        return null;
+    }
 
     // GET USER FROM INDEX IN LIST ....
 

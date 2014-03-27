@@ -32,4 +32,8 @@ public class User {
     public String getLastname() {
     	return this.lastname;
     }
+    
+    public String toString(){
+        return this.firstname + " " + this.lastname;
+    }
 }

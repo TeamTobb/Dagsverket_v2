@@ -5,22 +5,23 @@
  */
 
 package frontend;
+import backend.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.text.DateFormat;
 
 /**
  *
  * @author Jorgen
  */
 public class CreateCaseTab extends javax.swing.JPanel {
+    private Operator op;
 
     /**
      * Creates new form CreateCaseTab
      */
-    public CreateCaseTab() {
+    public CreateCaseTab(Operator op) {
+        this.op = op;
         initComponents();
     }
 
@@ -83,7 +84,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseDName);
         labelCreateCaseDName.setBounds(54, 74, 36, 16);
 
-        labelCreateCaseName.setText("getName");
+        labelCreateCaseName.setText(op.getUser());
         add(labelCreateCaseName);
         labelCreateCaseName.setBounds(164, 74, 84, 16);
 
@@ -96,14 +97,14 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseHeader);
         labelCreateCaseHeader.setBounds(84, 14, 135, 29);
 
-        comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(op.getUsers().getUsers()));
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxCreateCaseSupervisorActionPerformed(evt);
             }
         });
         add(comboBoxCreateCaseSupervisor);
-        comboBoxCreateCaseSupervisor.setBounds(334, 64, 96, 27);
+        comboBoxCreateCaseSupervisor.setBounds(334, 64, 210, 27);
 
         labelCreateCaseDSupervisor.setText("Navn:");
         add(labelCreateCaseDSupervisor);
@@ -320,7 +321,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(jDateChooser2);
         jDateChooser2.setBounds(158, 379, 210, 28);
         add(jDateChooser3);
-        jDateChooser3.setBounds(290, 120, 123, 28);
+        jDateChooser3.setBounds(670, 140, 123, 28);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxCreateCaseSupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCreateCaseSupervisorActionPerformed
@@ -462,6 +463,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         String date = labelCreateCaseDate.getText().trim();
         String time = "";
         String epostAdresse = "";
+        
+        // one param: op.users.getUserByFullName(list....getString???).getId()
+        
       //  ArrayList<Integer> create_errors = op.createEvent(contractor, arbeidstakere, telephone, epostAdresse, gateAdresse, postnummer, poststed, ansvarlige, befaring, date, time, topic, description, status);
         // op.createEventTest(contractor, arbeidstakere, telephone, epostAdresse, gateAdresse, postnummer, poststed, ansvarlige, befaring, topic, description, status);
 

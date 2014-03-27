@@ -5,7 +5,6 @@
  */
 
 package frontend;
-
 import backend.*;
 import java.awt.CardLayout;
 
@@ -14,14 +13,15 @@ import java.awt.CardLayout;
  * @author Jorgen
  */
 public class GUI extends javax.swing.JFrame {
-    private User user; 
+      
+    private Operator op; 
     private CardLayout cardLayout;
     
     /**
      * Creates new form GUI
      */
-    public GUI(User user) {        
-        this.user = user;
+    public GUI(User user) {
+        this.op = new Operator(user);       
         initComponents();
         addPanels();
     }
@@ -102,7 +102,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         labelUserName.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
-        labelUserName.setText(this.user.getFirstname() + ", " + this.user.getLastname().substring(0, 1));
+        labelUserName.setText(this.op.getUser().getFirstname() + ", " + this.op.getUser().getLastname().substring(0, 1));
 
         buttonViewDraftCases.setBackground(new java.awt.Color(51, 51, 51));
         buttonViewDraftCases.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
@@ -214,7 +214,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void addPanels(){
         cardLayout = (CardLayout) panelContent.getLayout();
-        panelContent.add(new CreateCaseTab(), "CreateCaseTab");        
+        panelContent.add(new CreateCaseTab(op), "CreateCaseTab");        
         panelContent.add(new ViewActiveTab(), "ActiveTab");
         panelContent.add(new ViewDraftTab(), "DraftTab");
         panelContent.add(new ViewHistoryTab(), "HistoryTab");        
@@ -225,7 +225,7 @@ public class GUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(final User user) {                
+    public static void main(final User user) {  
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

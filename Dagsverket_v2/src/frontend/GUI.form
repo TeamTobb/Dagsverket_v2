@@ -188,7 +188,7 @@
                   <Font name="Optima" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.user.getFirstname() + &quot;, &quot; + this.user.getLastname().substring(0, 1)" type="code"/>
+                  <Connection code="this.op.getUser().getFirstname() + &quot;, &quot; + this.op.getUser().getLastname().substring(0, 1)" type="code"/>
                 </Property>
               </Properties>
             </Component>
