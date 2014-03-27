@@ -47,7 +47,9 @@ public class Sales {
     }
 
     public void updateSaleList() {
-        String sqlStatement = "Select  sales.ID, sales.QUANTITY, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, customers.ADDRESS, customers.POSTALCODE, customers.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE "
+        String sqlStatement = "Select  sales.ID, sales.QUANTITY, customers.FIRSTNAME, "
+                + "customers.LASTNAME, customers.PHONENUMBER, customers.ADDRESS, "
+                + "customers.POSTALCODE, customers.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE "
                 + "FROM sales NATURAL JOIN wood, customers";
         ResultSet rs = db.executeQuery(sqlStatement);
         
