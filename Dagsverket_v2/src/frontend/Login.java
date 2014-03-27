@@ -51,7 +51,7 @@ public class Login extends javax.swing.JFrame {
         buttonDeleteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 51));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         panelMain.setBackground(new java.awt.Color(204, 0, 0));
         panelMain.setPreferredSize(new java.awt.Dimension(530, 474));
