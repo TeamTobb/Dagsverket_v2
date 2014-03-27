@@ -72,7 +72,6 @@ public class Login extends javax.swing.JFrame {
         panelCenter.setSize(new java.awt.Dimension(0, 225));
         panelCenter.setLayout(new javax.swing.BoxLayout(panelCenter, javax.swing.BoxLayout.LINE_AXIS));
 
-        jScrollPane2.setBorder(null);
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setMaximumSize(new java.awt.Dimension(32767, 225));
         jScrollPane2.setMinimumSize(new java.awt.Dimension(23, 225));
@@ -85,7 +84,6 @@ public class Login extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        listUserNames.setSize(new java.awt.Dimension(0, 0));
         jScrollPane2.setViewportView(listUserNames);
 
         panelCenter.add(jScrollPane2);
@@ -96,6 +94,7 @@ public class Login extends javax.swing.JFrame {
         panelSouth.setBackground(new java.awt.Color(153, 153, 153));
         panelSouth.setPreferredSize(new java.awt.Dimension(530, 62));
 
+        buttonLogIn.setFont(new java.awt.Font("Silom", 0, 18)); // NOI18N
         buttonLogIn.setText("Logg inn");
         buttonLogIn.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +104,7 @@ public class Login extends javax.swing.JFrame {
         });
         panelSouth.add(buttonLogIn);
 
+        buttonNewUser.setFont(new java.awt.Font("Silom", 0, 18)); // NOI18N
         buttonNewUser.setText("Ny bruker");
         buttonNewUser.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonNewUser.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +114,7 @@ public class Login extends javax.swing.JFrame {
         });
         panelSouth.add(buttonNewUser);
 
+        buttonDeleteUser.setFont(new java.awt.Font("Silom", 0, 18)); // NOI18N
         buttonDeleteUser.setText("Slett bruker");
         buttonDeleteUser.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonDeleteUser.addActionListener(new java.awt.event.ActionListener() {
