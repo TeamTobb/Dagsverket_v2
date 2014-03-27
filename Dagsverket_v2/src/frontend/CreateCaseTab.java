@@ -84,7 +84,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseDName);
         labelCreateCaseDName.setBounds(54, 74, 36, 16);
 
-        labelCreateCaseName.setText(op.getUser());
+        labelCreateCaseName.setText(op.getUser().toString());
         add(labelCreateCaseName);
         labelCreateCaseName.setBounds(164, 74, 84, 16);
 
