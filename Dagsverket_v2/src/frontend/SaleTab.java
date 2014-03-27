@@ -7,17 +7,22 @@
 package frontend;
 
 import backend.Sales;
+import java.awt.Color;
 
 /**
  *
  * @author Jorgen
  */
 public class SaleTab extends javax.swing.JPanel {
+    // private Operator op;
+    // private Sales sales;
 
     /**
      * Creates new form SaleTab
      */
     public SaleTab() {
+        // this.op = op;
+       //  this.sales = new Sales();
         initComponents();
     }
 
@@ -56,9 +61,9 @@ public class SaleTab extends javax.swing.JPanel {
         labelDPrice = new javax.swing.JLabel();
         textFieldPrice = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelHeader = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        buttonFerdig = new javax.swing.JButton();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -310,16 +315,16 @@ public class SaleTab extends javax.swing.JPanel {
 
         panelRight.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        jLabel1.setFont(new java.awt.Font("Optima", 1, 36)); // NOI18N
-        jLabel1.setText("Ved bestilling");
-        jPanel4.add(jLabel1);
+        labelHeader.setFont(new java.awt.Font("Optima", 1, 36)); // NOI18N
+        labelHeader.setText("Ved bestilling");
+        jPanel4.add(labelHeader);
 
         panelRight.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
-        jButton1.setText("Ferdig");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonFerdig.setText("Ferdig");
+        buttonFerdig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonFerdigActionPerformed(evt);
             }
         });
 
@@ -329,14 +334,14 @@ public class SaleTab extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(383, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(buttonFerdig)
                 .addGap(46, 46, 46))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(buttonFerdig)
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
@@ -391,15 +396,59 @@ public class SaleTab extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldPriceActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonFerdigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFerdigActionPerformed
+        labelDPhone.setForeground(Color.black);
+        labelDLastName.setForeground(Color.black);
+        labelDFirstName.setForeground(Color.black);
+        labelDWoodType.setForeground(Color.black);
+        labelDPostnr.setForeground(Color.black);
+        labelDAddress.setForeground(Color.black);
+        labelDQuanitity.setForeground(Color.black);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        // createSale()
+        
+        
+        String firstName = textFieldFirstName.getText().trim();
+        String lastName = textFieldLastName.getText().trim();
+        int telephone = 0;
+        String address = textFieldAddress.getText().trim();
+        int postCode = 0;
+        int quantity = 0;
+        String status = (String)comboBoxWoodType.getSelectedItem();
+        
+        try{
+            telephone = Integer.parseInt(textFieldPhone.getText().trim());
+        } catch(NumberFormatException e){
+            System.out.println("Feil telefonnumer. Bare tall");
+            labelDPhone.setForeground(Color.red);
+
+        }
+        
+        try{
+            postCode = Integer.parseInt(textFieldPostnr.getText().trim());
+        }
+        catch(NumberFormatException e){
+            System.out.println("Feil postnummer. Bare tall");
+            labelDPostnr.setForeground(Color.red);
+        }
+        
+        try{
+            quantity = Integer.parseInt(textFieldQuantity.getText().trim());
+        }
+        catch(NumberFormatException e){
+            labelDQuanitity.setForeground(Color.red);
+            System.out.println("Feil antall. Bare tall");
+        }
+        
+        
+        
+    }//GEN-LAST:event_buttonFerdigActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonFerdig;
     private javax.swing.JComboBox comboBoxWoodType;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -416,6 +465,7 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JLabel labelDPrice;
     private javax.swing.JLabel labelDQuanitity;
     private javax.swing.JLabel labelDWoodType;
+    private javax.swing.JLabel labelHeader;
     private javax.swing.JPanel panelLeft;
     private javax.swing.JPanel panelRight;
     private javax.swing.JTextField textFieldAddress;

@@ -24,14 +24,16 @@ public class Sales {
     	return this.sales;
     }
 
-    public boolean createSale(int quantity, int customer, String wood) {
+    public boolean createSale(int quantity, String customerFirstname, String customerLastname, String phoneNumber, String wood) {
         int error = 0; 
+        int customerId = 0; 
+        
         db.createConnection();
         
         try{
             PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO sales VALUES(DEFAULT, ?, ?, ?)");
             sqlStatement.setString(1, String.valueOf(quantity));   
-            sqlStatement.setString(2, String.valueOf(customer));
+            sqlStatement.setInt(2, customerId);
             sqlStatement.setString(3, wood);
             error = db.executeUpdate(sqlStatement);
         }        
@@ -84,7 +86,7 @@ public class Sales {
         db.createConnection();
         
         
-       allSales.createSale(50, 1, "Eik");
+       //allSales.createSale(50, 1, "Eik");
         allSales.updateSaleList();
         
        
