@@ -14,9 +14,13 @@ import java.sql.*;
  */
 public class Database {
     private Connection conn; 
+    private ResultSet rs; 
+    private Statement stm; 
     
     public Database(){
-        this.conn = createConnection();
+        this.conn = null;
+        this.rs = null; 
+        this.stm = null;
     }
     
     public Connection createConnection() {
@@ -31,6 +35,8 @@ public class Database {
         return conn_new;
     }
 
+    
+    //perhaps not needed cause of previously declared closeAll-method.
     public boolean endConnection(Connection conn) {
         try {
             if (conn != null) {
@@ -44,17 +50,50 @@ public class Database {
     }
     
     public ResultSet executeQuery(String sqlStatement){
-        ResultSet res = null;
+        this.conn = createConnection();
         try{
-            Statement stm = this.conn.createStatement();
-            res = stm.executeQuery(sqlStatement);
+            stm = this.conn.createStatement();
+            rs = stm.executeQuery(sqlStatement);
         }   
         catch(SQLException e){
             System.out.println("feil i database.executeQuery: " + e);
-        }                
-        return res;
+        }
+        return rs;
     }
     
+    public void closeAll(){
+        try{
+            if(this.rs!=null){
+                this.rs.close();
+                this.rs = null; 
+            }
+        }
+        catch(SQLException e){
+            System.out.println("feil i close resultset: " + e);
+        }        
+        
+        try{
+            if(this.stm!=null){
+                this.stm.close();
+                this.stm = null;
+            }
+        }
+        catch(SQLException e){
+            System.out.println("feil i statement close: " + e);
+        }
+        
+        try{
+            if(this.conn!= null){
+                this.conn.close();
+                this.conn = null;
+            }
+        }
+        catch(SQLException e){
+            System.out.println("feil i connection close: " + e);
+        }
+    }
+    
+    //perhaps not needed cause of previously declared closeAll-method.
     public boolean closeStatement(Statement stm){
         try{
             stm.close();
@@ -77,6 +116,7 @@ public class Database {
         return false;
     }
     
+    //perhaps not needed cause of previously declared closeAll-method.
     public boolean closeResultSet(ResultSet res){
         try{
             res.close();

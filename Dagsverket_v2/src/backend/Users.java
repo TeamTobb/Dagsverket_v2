@@ -45,10 +45,13 @@ public class Users {
                     rs.getString("firstName"),
                     rs.getString("lastName")
                     ));
-            }
+            }            
         } catch(SQLException e) {
             System.out.println("SQLError: " + e);
         } 
+        finally{
+            db.closeAll();
+        }
     }
 
     public void createUser(String firstname, String lastname) {
