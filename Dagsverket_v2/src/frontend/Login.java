@@ -39,83 +39,101 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        labelDChooseUser = new javax.swing.JLabel();
+        panelMain = new javax.swing.JPanel();
+        panelNorth = new javax.swing.JPanel();
+        textHeader = new javax.swing.JLabel();
+        panelCenter = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listUserNames = new javax.swing.JList();
+        panelSouth = new javax.swing.JPanel();
         buttonLogIn = new javax.swing.JButton();
         buttonNewUser = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listUserNames = new javax.swing.JList();
+        buttonDeleteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 51));
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        panelMain.setBackground(new java.awt.Color(204, 0, 0));
+        panelMain.setPreferredSize(new java.awt.Dimension(530, 474));
+        panelMain.setLayout(new java.awt.BorderLayout());
 
-        labelDChooseUser.setText("Velg bruker:");
+        panelNorth.setBackground(new java.awt.Color(153, 153, 153));
+        panelNorth.setPreferredSize(new java.awt.Dimension(530, 62));
 
-        buttonLogIn.setText("Logg inn");
-        buttonLogIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonLogInActionPerformed(evt);
-            }
-        });
+        textHeader.setFont(new java.awt.Font("Silom", 1, 48)); // NOI18N
+        textHeader.setText("DAGSVERKET");
+        panelNorth.add(textHeader);
 
-        buttonNewUser.setText("Ny bruker");
-        buttonNewUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonNewUserActionPerformed(evt);
-            }
-        });
+        panelMain.add(panelNorth, java.awt.BorderLayout.NORTH);
 
+        panelCenter.setMaximumSize(new java.awt.Dimension(32767, 225));
+        panelCenter.setMinimumSize(new java.awt.Dimension(23, 225));
+        panelCenter.setPreferredSize(new java.awt.Dimension(530, 225));
+        panelCenter.setSize(new java.awt.Dimension(0, 225));
+        panelCenter.setLayout(new javax.swing.BoxLayout(panelCenter, javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setMaximumSize(new java.awt.Dimension(32767, 225));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(23, 225));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(260, 225));
+        jScrollPane2.setSize(new java.awt.Dimension(43, 225));
+
+        listUserNames.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         listUserNames.setModel(new javax.swing.AbstractListModel() {
             String[] strings = users.getUsers();
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(listUserNames);
+        listUserNames.setSize(new java.awt.Dimension(0, 0));
+        jScrollPane2.setViewportView(listUserNames);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(labelDChooseUser)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonNewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelDChooseUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonLogIn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonNewUser)
-                .addContainerGap())
-        );
+        panelCenter.add(jScrollPane2);
+        jScrollPane2.getAccessibleContext().setAccessibleName("Dagsverket");
+
+        panelMain.add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelSouth.setBackground(new java.awt.Color(153, 153, 153));
+        panelSouth.setPreferredSize(new java.awt.Dimension(530, 62));
+
+        buttonLogIn.setText("Logg inn");
+        buttonLogIn.setPreferredSize(new java.awt.Dimension(150, 50));
+        buttonLogIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLogInActionPerformed(evt);
+            }
+        });
+        panelSouth.add(buttonLogIn);
+
+        buttonNewUser.setText("Ny bruker");
+        buttonNewUser.setPreferredSize(new java.awt.Dimension(150, 50));
+        buttonNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNewUserActionPerformed(evt);
+            }
+        });
+        panelSouth.add(buttonNewUser);
+
+        buttonDeleteUser.setText("Slett bruker");
+        buttonDeleteUser.setPreferredSize(new java.awt.Dimension(150, 50));
+        buttonDeleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteUserActionPerformed(evt);
+            }
+        });
+        panelSouth.add(buttonDeleteUser);
+
+        panelMain.add(panelSouth, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -150,6 +168,10 @@ public class Login extends javax.swing.JFrame {
           }          
       }
     }//GEN-LAST:event_buttonNewUserActionPerformed
+
+    private void buttonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonDeleteUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,11 +209,15 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonDeleteUser;
     private javax.swing.JButton buttonLogIn;
     private javax.swing.JButton buttonNewUser;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelDChooseUser;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList listUserNames;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelNorth;
+    private javax.swing.JPanel panelSouth;
+    private javax.swing.JLabel textHeader;
     // End of variables declaration//GEN-END:variables
 }
