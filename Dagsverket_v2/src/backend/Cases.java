@@ -88,8 +88,8 @@ public class Cases {
                         rs.getInt("postalcode"),
                         rs.getString("postplace"),
                         rs.getString("subject"),
-                        rs.getString("reqdate"),
-                        rs.getString("reqtime"),
+                        rs.getString("req_date"),
+                        rs.getString("req_time"),
                         rs.getString("description"),
                         rs.getInt("price"),
                         rs.getString("checkup_date"),
@@ -240,9 +240,10 @@ public class Cases {
         Database db = new Database();
         Cases c = new Cases(30, db);
         c.updateCaseList();
-        Case n1 = c.getCaseById(1);
+        Case n1 = c.getCaseById(4);
         if(n1 != null) {
-            System.out.println(n1.getDescription());
+            System.out.println("Description: " + n1.getDescription());
+            System.out.println("Price: " + n1.getPrice());
         }
     }
 }
