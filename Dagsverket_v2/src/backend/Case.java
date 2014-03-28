@@ -17,27 +17,46 @@ public class Case {
     private int id;
     private String address;
     private int postalCode;
-    private Customer employer;
-    private String status;
+    private String postPlace;
+    private String subject;
     private String reqDate;
-    private String inspectDate;
+    private String reqTime;
+    private String description;
+    private int price;
+    private String checkup_date;
     private String startDate;
+    private String toolList;
+    private String contactPerson;
+    private String status;
+    private int creatorId; // user which created the case, reference to id from "users" arraylist
+    private int supervisorId; // user which is going attending the case, reference to id from "users" arraylist
 
-    // public Case(int id, String address, int postalCode, String firstname, String lastname, int phoneNumber, String customerAddress, int customerPostalCode, String customerPostPlace, String status, String reqDate, String inspectDate, String startDate) {
-    public Case(int id, int creator, String customerFirstName, String customerLastName, String caseAddress, 
-                                            String postalCode, String postPlace, String phoneNumber, String subject, 
-                                            String reqDate, String reqTime, String description, int supervisor,
-                                            String price, String checkupDate, String startDate, String toolList,
-                                            String contactPerson, String status) {
+    // last variables for customer
+    // customerId
+    // customerFirstName
+    // customerLastName
+    // customerPhoneNumber
+
+    private Customer employer;
+
+    public Case(int id, String address, int postalCode, String postPlace, String subject, String reqDate, String reqTime, String description, int price, String checkup_date, String startDate, String toolList, String contactPerson, String status, int creatorId, int supervisorId, int customerId, String customerFirstName, String customerLastName, int customerPhoneNumber) {
         this.id = id;
         this.address = address;
         this.postalCode = postalCode;
-        //this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
-        this.employer = new Customer()
-        this.status = status;
+        this.postPlace = postPlace;
+        this.subject = subject;
         this.reqDate = reqDate;
-        this.inspectDate = inspectDate;
+        this.reqTime = reqTime;
+        this.description = description;
+        this.price = price;
+        this.checkup_date = checkup_date;
         this.startDate = startDate;
+        this.toolList = toolList;
+        this.contactPerson = contactPerson;
+        this.status = status;
+        this.creatorId = creatorId;
+        this.supervisorId = supervisorId;
+        this.employer = new Customer(int customerId, String customerFirstName, String customerLastName, int customerPhoneNumber);
     }
 
     /**
