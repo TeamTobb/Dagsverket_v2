@@ -50,4 +50,7 @@ public class Customer {
     public int getPhoneNumber() {
         return phoneNumber;
     }
+    public String getFullName(){
+        return this.firstname + " " + this.lastname;
+    }
 }

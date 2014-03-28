@@ -78,9 +78,9 @@ public class Cases {
         return null;
     }
 
-    public void updateCaseList() {
+    public void updateCaseList(String status) {
         this.cases = new ArrayList<Case>();
-        String sqlStatement = "select * from cases natural join customers";
+        String sqlStatement = "SELECT * from cases,customers WHERE customer = customers.id AND status = '" + status + "'";
         ResultSet rs = db.executeQuery(sqlStatement);
         try {
             while(rs.next()) {
@@ -241,11 +241,12 @@ public class Cases {
     public static void main(String[] args) {
         Database db = new Database();
         Cases c = new Cases(30, db);
-        c.updateCaseList();
+      //  c.updateCaseList();
         Case n1 = c.getCaseById(4);
         if(n1 != null) {
             System.out.println("Description: " + n1.getDescription());
             System.out.println("Price: " + n1.getPrice());
         }
     }
+    
 }

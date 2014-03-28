@@ -6,6 +6,9 @@
 
 package backend;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jorgen
@@ -14,12 +17,14 @@ public class Operator {
     private Database db; 
     private User user; 
     private Users users; 
+    private Cases cases;
     
     public Operator(User user){
         this.db = new Database(); 
         this.users = new Users(getDb()); 
         this.user = user;
         users.updateUserList();
+        this.cases = new Cases(15, this.db);
     }    
 
     /**
@@ -42,4 +47,23 @@ public class Operator {
     public Users getUsers() {
         return users;
     }        
+    
+    public Cases getCases(){
+        return this.cases;
+    }
+    
+    public void updateList(JTable table, String status){
+    
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       model.setRowCount(0);
+       Object[] insertTable = new Object[3];
+       this.getCases().updateCaseList(status);
+       
+       for(int i = 0; i<this.getCases().getCases().size(); i++){
+           insertTable[0] = this.getCases().getCases().get(i).getEmployer().getFullName();
+           insertTable[1] = this.getCases().getCases().get(i).getPostPlace();
+           insertTable[2] = this.getCases().getCases().get(i).getReqTime();
+           model.insertRow(table.getRowCount(), insertTable);          
+       }    
+    }
 }

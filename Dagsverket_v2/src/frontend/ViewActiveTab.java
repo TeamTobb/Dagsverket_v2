@@ -6,26 +6,33 @@
 
 package frontend;
 
-import java.awt.CardLayout;
+import backend.*;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jorgen
  */
 public class ViewActiveTab extends javax.swing.JPanel {
+    private Operator op;
      
      
     /**
      * Creates new form ViewActiveTab
      */
-    public ViewActiveTab() {
+    public ViewActiveTab(Operator op) {
         initComponents();
         panelCalender.setVisible(false);
         panelTableView.setVisible(true);
+        this.op = op;
     }
-
-   
     
+    public JTable getTable(){
+        return jTable2;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,7 +108,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggleActionPerformed
-       
         if (!panelCalender.isVisible()){
              panelTableView.setVisible(false);
              panelCalender.setVisible(true);

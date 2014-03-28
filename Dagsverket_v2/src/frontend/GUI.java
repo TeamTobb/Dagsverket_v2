@@ -16,12 +16,19 @@ public class GUI extends javax.swing.JFrame {
       
     private Operator op; 
     private CardLayout cardLayout;
+    private CreateCaseTab createCaseTab; 
+    private ViewActiveTab viewActiveTab;
+    private ViewDraftTab viewDraftTab; 
+    private ViewHistoryTab viewHistoryTab;
+    private SaleTab saleTab; 
+    private AttendanceTab attendanceTab;
     
+
     /**
      * Creates new form GUI
      */
     public GUI(User user) {
-        this.op = new Operator(user);       
+        this.op = new Operator(user); 
         initComponents();
         addPanels();
     }
@@ -188,6 +195,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonRegisterCaseActionPerformed
 
     private void buttonViewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewHistoryActionPerformed
+        op.updateList(this.viewHistoryTab.getTable(), "Ferdig");
         this.cardLayout.show(panelContent, "HistoryTab");
     }//GEN-LAST:event_buttonViewHistoryActionPerformed
 
@@ -197,11 +205,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLogOutActionPerformed
 
     private void buttonViewDraftCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewDraftCasesActionPerformed
+        op.updateList(this.viewDraftTab.getTable(), "Uferdig");
         this.cardLayout.show(panelContent, "DraftTab");
     }//GEN-LAST:event_buttonViewDraftCasesActionPerformed
 
     private void buttonViewActiveCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActiveCasesActionPerformed
         this.cardLayout.show(panelContent, "ActiveTab");
+        op.updateList(this.viewActiveTab.getTable(), "Aktiv");
     }//GEN-LAST:event_buttonViewActiveCasesActionPerformed
 
     private void buttonSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalesActionPerformed
@@ -213,13 +223,20 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAttendanceActionPerformed
 
     private void addPanels(){
+        this.createCaseTab = new CreateCaseTab(op);
+        this.viewActiveTab = new ViewActiveTab(op); 
+        this.viewDraftTab = new ViewDraftTab(); 
+        this.viewHistoryTab = new ViewHistoryTab();
+        this.saleTab = new SaleTab(op); 
+        this.attendanceTab = new AttendanceTab();
+        
         cardLayout = (CardLayout) panelContent.getLayout();
-        panelContent.add(new CreateCaseTab(op), "CreateCaseTab");        
-        panelContent.add(new ViewActiveTab(), "ActiveTab");
-        panelContent.add(new ViewDraftTab(), "DraftTab");
-        panelContent.add(new ViewHistoryTab(), "HistoryTab");        
-        panelContent.add(new SaleTab(op), "SaleTab");     
-        panelContent.add(new AttendanceTab(), "AttendanceTab");
+        panelContent.add(this.createCaseTab, "CreateCaseTab");        
+        panelContent.add(this.viewActiveTab, "ActiveTab");
+        panelContent.add(this.viewDraftTab, "DraftTab");
+        panelContent.add(this.viewHistoryTab, "HistoryTab");        
+        panelContent.add(this.saleTab, "SaleTab");     
+        panelContent.add(this.attendanceTab, "AttendanceTab");
     }
     
     /**

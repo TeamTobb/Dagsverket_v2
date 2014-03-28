@@ -6,6 +6,8 @@
 
 package frontend;
 
+import javax.swing.JTable;
+
 /**
  *
  * @author Jorgen
@@ -17,6 +19,10 @@ public class ViewDraftTab extends javax.swing.JPanel {
      */
     public ViewDraftTab() {
         initComponents();
+    }
+    
+    public JTable getTable(){
+        return jTable1;
     }
 
     /**
