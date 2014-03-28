@@ -462,7 +462,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         String inspectDateString = String.format("%1$td-%1$tm-%1$tY", inspectDate);
         String startDateString = String.format("%1$td-%1$tm-%1$tY", startDate);
         
-        
+                System.out.println(comboBoxCreateCaseSupervisor.getSelectedItem().toString());
+
+                
         ArrayList<Integer> errors = this.cases.createCase(
                 op.getUser().getId(),
                 textFieldCustomerFirstName.getText().trim(),
@@ -475,8 +477,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 reqDateString,
                 ComboBoxCreateCaseReqTime.getSelectedItem().toString(),
                 textAreaCreateCaseDescription.getText().trim(),
-                2,
-                //op.getUsers().getUserByFullName(comboBoxCreateCaseSupervisor.getSelectedItem().toString()).getId(),
+                op.getUsers().getUserIdByFullName(comboBoxCreateCaseSupervisor.getSelectedItem().toString()),
                 textFieldCreateCasePrice.getText().trim(),
                 inspectDateString,
                 startDateString,
@@ -484,7 +485,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textAreaCreateCaseContacts.getText().trim(),
                 comboBoxCreateCaseStatus.getSelectedItem().toString()
         );
-        
+                
         labelCustomerDFirstName.setForeground(Color.black);
         labelCustomerDLastName.setForeground(Color.black);        
         labelCreateCaseDPhone.setForeground(Color.black);

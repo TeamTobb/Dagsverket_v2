@@ -27,7 +27,7 @@ public class Case {
 		this.id = id;
 		this.address = address;
 		this.postalCode = postalCode;
-		this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
+		// this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
 		this.status = status;
 		this.reqDate = reqDate;
 		this.inspectDate = inspectDate;
@@ -41,7 +41,7 @@ public class Case {
 		this.id = 0; // ?
 		this.address = address;
 		this.postalCode = postalCode;
-        this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
+        // this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
         this.status = status;
 		this.reqDate = reqDate;
 		this.inspectDate = inspectDate;
