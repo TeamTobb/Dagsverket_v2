@@ -24,7 +24,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
      */
     public CreateCaseTab(Operator op) {
         this.op = op;
-        this.cases = new Cases(30, op.getDb());
+        this.cases = new Cases(op.getDb());
         initComponents();
     }
 

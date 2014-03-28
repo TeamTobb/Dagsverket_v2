@@ -24,7 +24,7 @@ public class Operator {
         this.users = new Users(getDb()); 
         this.user = user;
         users.updateUserList();
-        this.cases = new Cases(15, this.db);
+        this.cases = new Cases(this.db);
     }    
 
     /**

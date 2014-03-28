@@ -24,7 +24,7 @@ public class Cases {
     private Database db; 
 	private ArrayList<Case> cases;
 
-	public Cases(int max, Database db) { // remove max
+	public Cases(Database db) { // remove max
             this.db = db;
             this.cases = new ArrayList<Case>();
 	}
@@ -240,7 +240,7 @@ public class Cases {
 
     public static void main(String[] args) {
         Database db = new Database();
-        Cases c = new Cases(30, db);
+        Cases c = new Cases(db);
       //  c.updateCaseList();
         Case n1 = c.getCaseById(4);
         if(n1 != null) {
