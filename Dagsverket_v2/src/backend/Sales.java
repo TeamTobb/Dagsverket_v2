@@ -16,9 +16,14 @@ public class Sales {
     public static int WRONG_PHONE_FORMAT = 1;
     public static int WRONG_POSTALCODE_FORMAT = 2;
     public static int WRONG_QUANTITY_FORMAT = 3;
-    public static int NO_CONTRACTOR_FIRSTNAME = 4;
-    public static int NO_CONTRACTOR_LASTNAME = 5;
-    public static int NO_CONTACT_INFO = 6;
+    public static int NO_CUSTOMER_FIRSTNAME = 4;
+    public static int NO_CUSTOMER_LASTNAME = 5;
+    public static int NO_ADDRESS_INFO = 6;
+    public static int NO_QUANTITY = 7; 
+    public static int NO_POSTNUMBER = 8; 
+    public static int NO_WOODTYPE = 9; 
+    public static int NO_PHONENUMBER = 10;
+    public static int WRONG_POSTNUMBER = 11; 
     
     private ArrayList<Sale> sales;
     private Database db;
@@ -33,9 +38,8 @@ public class Sales {
     }
 
     public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
-                                String postnr, String adresse, String quantity) {
+                                         String postnr, String adresse, String quantity) {
         ArrayList<Integer> errors = new ArrayList<Integer>(); 
-        int customerId = 0; 
         int telephone = 0;
         int quantityNr = 0;
         int postCode = 0; 
@@ -64,12 +68,12 @@ public class Sales {
         }
         
        //fyll opp denne med alt
-        errors.addAll(checkFields(customerFirstName , customerLastName, telephone));
+        errors.addAll(checkFields(customerFirstName, customerLastName, telephone, woodType, postCode, adresse, quantityNr));
         
+        //return errors;
+        if (errors.isEmpty()==false){
         return errors;
-        
-        
-        
+        }
         
         
         
@@ -96,7 +100,7 @@ public class Sales {
             db.closeAll();
         }
         */
-        
+        return errors;
     }
 
     public void updateSaleList() {
@@ -131,19 +135,37 @@ public class Sales {
         }
     }
     
-     private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber) {
-		ArrayList<Integer> errors = new ArrayList<Integer>();
+    
+    
+    
+     private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber, 
+                                            String woodType, int postnr, String adresse, int quantity) {
+        ArrayList<Integer> errors = new ArrayList<Integer>();
                 
-        // important: contractor, phone / mail, subject
+        
         if(customerFirstName == null || customerFirstName.trim().equals("")) {
-    		errors.add(NO_CONTRACTOR_FIRSTNAME);
+            errors.add(NO_CUSTOMER_FIRSTNAME);
     	}                
     	if(customerLastName == null || customerLastName.trim().equals("")) {
-    		errors.add(NO_CONTRACTOR_LASTNAME);
+            errors.add(NO_CUSTOMER_LASTNAME);
     	} 
+        if(woodType == null || woodType.trim().equals("")) {
+            errors.add(NO_WOODTYPE);
+    	}      
+        if(adresse == null || adresse.trim().equals("")) {
+            errors.add(NO_ADDRESS_INFO);
+    	}      
         if(phoneNumber <= 0) {
-            errors.add(NO_CONTACT_INFO);
+            errors.add(NO_PHONENUMBER);
         }
+        if(quantity<0) {
+            errors.add(NO_QUANTITY);
+            
+        }
+        if((postnr <0) || (postnr>10000)){
+            errors.add(WRONG_POSTNUMBER);
+        }
+        
         return errors;
 	}
     
@@ -152,14 +174,20 @@ public class Sales {
         Sales allSales = new Sales(db);
         db.createConnection();
         
+
         
        //allSales.createSale(50, 1, "Eik");
         allSales.updateSaleList();
         
-       
+        //allSales.createSale("fornavnTest", "etternavnTest", "91323324", "Eik", "1400", "adresseTest", "10");
+        /*
         for(Sale d:allSales.getSales()) {
             System.out.println(d);
            
+        }
+        */
+        for(int d:allSales.createSale("fornavnTest", "etternavnTest", "10090099", "Eik", "1400", "adresseTest", "10")){
+            System.out.println(d);
         }
         
         

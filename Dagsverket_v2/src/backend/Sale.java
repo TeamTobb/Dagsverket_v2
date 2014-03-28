@@ -20,7 +20,7 @@ public class Sale {
     public Sale(int id, int quantity, String firstname, String lastname, int phoneNumber, String address, int postalCode, String postPlace, String woodType, int bagSize, int price) {
     	this.id = id;
     	this.quantity = quantity;
-    	this.buyer = new Customer(firstname, lastname, phoneNumber, address, postalCode, postPlace);
+    	this.buyer = new Customer(firstname, lastname, phoneNumber); //hvor er adressen? 
     	this.wood = new Wood(woodType, bagSize, price);
     }
 
