@@ -69,6 +69,13 @@ public class Cases {
     //     }
     // }
 
+    public Case getCaseById(int id) {
+        if(id <= this.cases.size() && id != 0) {
+            return this.cases.get(id);
+        }
+        return null;
+    }
+
     public void updateCaseList() {
         this.cases = new ArrayList<Case>();
         String sqlStatement = "select * from cases natural join customers";
@@ -228,4 +235,14 @@ public class Cases {
         }
         return errors;
 	}
+
+    public static void main(String[] args) {
+        Database db = new Database();
+        Cases c = new Cases(30, db);
+        c.updateCaseList();
+        Case n1 = c.getCaseById(1);
+        if(n1 != null) {
+            System.out.println(n1.getDescription());
+        }
+    }
 }
