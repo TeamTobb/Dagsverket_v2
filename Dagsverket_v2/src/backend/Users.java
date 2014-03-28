@@ -89,14 +89,26 @@ public class Users {
     public User getUserByIndex(int i) {
         return this.users.get(i);
     }
-    
+    /*
     public User getUserByFullName(String fullName){
         for(User u : users){
+            System.out.println("forloop");
             if(fullName.equals(u)){
                 return u;
             }
         }
+        System.out.println("haiiaiiiiadifiasd");
         return null;
+    }
+    */
+    public int getUserIdByFullName(String fullName){
+        for(User u : users){
+            if(fullName.equals(u.toString())){
+                return u.getId();
+            }
+        }
+        System.out.println("If this happens, give an error message?");
+        return -1;
     }
 
     // GET USER FROM INDEX IN LIST ....

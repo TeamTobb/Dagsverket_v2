@@ -23,42 +23,21 @@ public class Case {
 	private String inspectDate;
 	private String startDate;
 
-	public Case(int id, String address, int postalCode, String firstname, String lastname, int phoneNumber, String customerAddress, int customerPostalCode, String customerPostPlace, String status, String reqDate, String inspectDate, String startDate) {
+	// public Case(int id, String address, int postalCode, String firstname, String lastname, int phoneNumber, String customerAddress, int customerPostalCode, String customerPostPlace, String status, String reqDate, String inspectDate, String startDate) {
+    public Case(int id, int creator, String customerFirstName, String customerLastName, String caseAddress, 
+                                            String postalCode, String postPlace, String phoneNumber, String subject, 
+                                            String reqDate, String reqTime, String description, int supervisor,
+                                            String price, String checkupDate, String startDate, String toolList,
+                                            String contactPerson, String status) {
 		this.id = id;
 		this.address = address;
 		this.postalCode = postalCode;
-		this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
+		//this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
+        this.employer = new Customer()
 		this.status = status;
 		this.reqDate = reqDate;
 		this.inspectDate = inspectDate;
 		this.startDate = startDate;
-	}
-
-    // ALWAYS GET FROM DATABASE AND NOT ON REGISTER???
-
-	// no ID
-	public Case(String address, int postalCode, String firstname, String lastname, int phoneNumber, String customerAddress, int customerPostalCode, String customerPostPlace, String status, String reqDate, String inspectDate, String startDate) {
-		this.id = 0; // ?
-		this.address = address;
-		this.postalCode = postalCode;
-        this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
-        this.status = status;
-		this.reqDate = reqDate;
-		this.inspectDate = inspectDate;
-		this.startDate = startDate;
-	}
-
-	public boolean INSERT_TO_DB() {
-		// INSERT HERE, use DATABASE
-		// DO THIS IS CASES??
-		return false;
-	}
-
-	public boolean UPDATE_CASE_IN_DB() {
-		// UPDATE HERE, use DATABASE
-
-		// DO THIS IS CASES??
-		return false;
 	}
 
     /**

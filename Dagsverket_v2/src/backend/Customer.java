@@ -23,16 +23,6 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 
-    // ALWAYS GET FROM DATABASE AND NOT ON REGISTER???
-
-	// No ID field, from registerCase.
-	public Customer(String firstname, String lastname, int phoneNumber) {
-		this.id = 0; // ?
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.phoneNumber = phoneNumber;
-	}
-
     /**
      * @return the id
      */

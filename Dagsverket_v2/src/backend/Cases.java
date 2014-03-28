@@ -22,34 +22,16 @@ public class Cases {
     public static int WRONG_POSTALCODE_FORMAT = 6;
     public static int WRONG_PRICE_FORMAT = 7;
     private Database db; 
-    
-    
+	private ArrayList<Case> cases;
 
-	ArrayList<Case> test = new ArrayList<Case>();
-
-	public Cases(int max, Database db) {
-            this.db = db;            
-		// TA BORT ALT DETTE
-		// ResultSet abc = getCasesFromDatabase(max);
-		// try {
-		// 	while(abc.next()) {
-		// 	Case newCase = new Case(
-		// 		abc.getInt("phone"),
-  //           	abc.getString("employer"),
-  //           	abc.getString("address"),
-  //           	abc.getInt("postnr"),
-  //           	abc.getString("postplace")
-		// 		);
-		// 	this.test.add(newCase);
-		// 	}
-		// } catch(SQLException e) {
-		// 	System.out.println(e);
-		// }
+	public Cases(int max, Database db) { // remove max
+            this.db = db;
+            this.cases = new ArrayList<Case>();
 	}
 
 	public boolean updateCaseList(String status, int start, int end) {
-		test = null;
-		// UPDATE WHOLE LIST FROM DB WITH CORRECT STATUS...
+		this.cases = new ArrayList<Case>();
+        // UPDATE WHOLE LIST FROM DB WITH CORRECT STATUS...
 		// FROM START TO END?
 		return false;
 	}
@@ -60,11 +42,10 @@ public class Cases {
 	// 	// hent all data fra database
 	// 	// MAX angir hvor mange du vil hente
 	// 	Statement setning = this.conn.createStatement();
- //        String SQL = "select * from events";
- //        ResultSet test123 = setning.executeQuery(SQL);
- //        // DETTE SKAL EGENTLIG GJORES I DATABASE
+    //  String SQL = "select * from events";
+    //  ResultSet test123 = setning.executeQuery(SQL);
+    //  DETTE SKAL EGENTLIG GJORES I DATABASE
 	// 	return test123;
-	// }
 
 	public ArrayList<Case> getCases() {
 		return this.test;

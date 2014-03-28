@@ -88,7 +88,7 @@ INSERT INTO users VALUES(DEFAULT, 'Thomas', 'Haugrud');
 INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen');
 
 INSERT INTO wood VALUES('Eik', 50, 800);
-INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324, 'Adresseveien 1', 7000,'Trondheim');
+INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324);
 INSERT INTO sales VALUES(default, 30, 1, 'Eik');
 --INSERT INTO cases VALUES(default, 'jobbAdresseveien 1', 7001, 'Trondheim',1, 'activ', '10.04.2014','09.04.2014', '11.04.2014', 2, 2);
  
