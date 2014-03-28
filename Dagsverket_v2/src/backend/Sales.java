@@ -44,7 +44,7 @@ public class Sales {
         int quantityNr = 0;
         int postCode = 0; 
         int customerId = 0;
-        
+        System.out.println("Lager en");
         try{
             telephone = Integer.parseInt(phoneNumber.trim());
         } catch(NumberFormatException e){
@@ -222,7 +222,7 @@ public class Sales {
 
         
       
-        allSales.updateSaleList();
+        //allSales.updateSaleList();
         
         /*
         for(Sale d:allSales.getSales()) {

@@ -205,7 +205,7 @@ public class SaleTab extends javax.swing.JPanel {
             }
         });
 
-        comboBoxWoodType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxWoodType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eik", "Item 2", "Item 3", "Item 4" }));
 
         labelDWoodType.setText("Type");
 
@@ -405,20 +405,15 @@ public class SaleTab extends javax.swing.JPanel {
         labelDWoodType.setForeground(Color.black);
         labelDPostnr.setForeground(Color.black);
         labelDAddress.setForeground(Color.black);
-        labelDQuanitity.setForeground(Color.black);
-        
-        
-        
-        
-        String firstName = textFieldFirstName.getText().trim();
-        String lastName = textFieldLastName.getText().trim();
-        int telephone = 0;
-        String address = textFieldAddress.getText().trim();
-        int postCode = 0;
-        int quantity = 0;
-        String status = (String)comboBoxWoodType.getSelectedItem();
-       
-        
+        labelDQuanitity.setForeground(Color.blue);
+        //String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
+                                         //String postnr, String address, String quantity, String postalPlace
+        sales.createSale(textFieldFirstName.getText().trim(), textFieldLastName.getText().trim(), 
+                         textFieldPhone.getText().trim(), (String)comboBoxWoodType.getSelectedItem(),
+                         textFieldPostnr.getText().trim(), textFieldAddress.getText().trim(), 
+                         textFieldQuantity.getText().trim(), textFieldPostPlace.getText().trim());
+                         
+              
         
         
     }//GEN-LAST:event_buttonFerdigActionPerformed
