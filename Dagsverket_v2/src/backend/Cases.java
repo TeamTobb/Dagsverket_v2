@@ -105,51 +105,41 @@ public class Cases {
             
             if(errors.size()==0){
                 System.out.println("errors == null");
-                // String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
-                 //                      "' AND lastName = '" + customerLastName + "' AND phoneNumber = '" + phoneNumberInt + "'";
-                String sqlStatement = "SELECT id FROM customers WHERE firstName = 'borgar'";
-                                       ResultSet rs = this.db.executeQuery(sqlStatement);
+                 String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
+                                       "' AND lastName = '" + customerLastName + "' AND phoneNumber = " + phoneNumberInt;
+                ResultSet rs = this.db.executeQuery(sqlStatement);
                 try{
-                    if(rs == null){
-                        
-                        while(rs.next()) {
+                    if(rs.next()){                        
                                 customerId = rs.getInt("id");
-                                System.out.println("hallooooo");
-                        }
                     }
                     else{
-                        this.db.createConnection();
-                        
-                        System.out.println("jeg er i customer insert!");
-                        
+                        this.db.createConnection();                        
                         PreparedStatement insertCustomerStatement = this.db.getConnection().prepareStatement(
                                 "INSERT INTO customers VALUES(DEFAULT, ?, ?, ?)");
                         insertCustomerStatement.setString(1, customerFirstName);
                         insertCustomerStatement.setString(2, customerLastName); 
                         insertCustomerStatement.setInt(3, phoneNumberInt);                         
                         insertCustomerStatement.executeUpdate();
-                        db.closeAll();
-                        
+                        db.closeAll();                        
                         ResultSet res = this.db.executeQuery(sqlStatement);
                         
                         try{
-                            while(rs.next()){
-                                customerId = rs.getInt("id");
+                            while(res.next()){
+                                customerId = res.getInt("id");
                             }                        
                         }
                         catch(SQLException e){
-                            System.out.println("feil " + e);                            
+                            System.out.println("feil 1 " + e);                            
                         }
                     }
                 }catch(SQLException e){
-                    System.out.println("feil " + e);
+                    System.out.println("feil 2 " + e);
                 }
                 finally{                    
                     db.closeAll();
                 }
                 this.db.createConnection();
                 try{
-                    System.out.println("jeg er her :D");
                     PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("INSERT INTO cases VALUES("
                                                         + "DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     insertCaseStatement.setString(1, caseAddress);
@@ -183,7 +173,6 @@ public class Cases {
 
 	private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber, String subject) {
 		ArrayList<Integer> errors = new ArrayList<Integer>();
-                System.out.println("checkfields");
                 
         // important: contractor, phone / mail, subject
         if(customerFirstName == null || customerFirstName.trim().equals("")) {

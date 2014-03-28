@@ -62,9 +62,6 @@ id INTEGER GENERATED ALWAYS AS IDENTITY,
 firstName VARCHAR(30), 
 lastName VARCHAR(30), 
 phoneNumber INTEGER, 
-address VARCHAR(30), 
-postalCode INTEGER, 
-postPlace VARCHAR(30), 
 CONSTRAINT customers_pk PRIMARY KEY(id)
 );
 

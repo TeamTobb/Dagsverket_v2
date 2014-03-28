@@ -79,7 +79,7 @@ public class Database {
         try{
             if(this.rs!=null){
                 this.rs.close();
-                this.rs = null; 
+                //this.rs = null; 
             }
         }
         catch(SQLException e){
@@ -89,7 +89,7 @@ public class Database {
         try{
             if(this.stm!=null){
                 this.stm.close();
-                this.stm = null;
+                //this.stm = null;
             }
         }
         catch(SQLException e){
@@ -99,7 +99,7 @@ public class Database {
         try{
             if(this.conn!= null){
                 this.conn.close();
-                this.conn = null;
+                //this.conn = null;
             }
         }
         catch(SQLException e){
