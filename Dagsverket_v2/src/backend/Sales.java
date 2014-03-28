@@ -104,7 +104,7 @@ public class Sales {
     }
 
     public void updateSaleList() {
-        String sqlStatement = "Select  sales.ID, sales.QUANTITY, customers.FIRSTNAME, "
+        String sqlStatement = "Select  sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, "
                 + "customers.LASTNAME, customers.PHONENUMBER, customers.ADDRESS, "
                 + "customers.POSTALCODE, customers.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE "
                 + "FROM sales NATURAL JOIN wood, customers";
@@ -115,7 +115,8 @@ public class Sales {
             while(rs.next()) {
                 sales.add(new Sale(
                     rs.getInt("ID"),
-                    rs.getInt("QUANTITY"),                   
+                    rs.getInt("QUANTITY"),
+                    rs.getInt("CUSTOMER"),
                     rs.getString("FIRSTNAME"),
                     rs.getString("LASTNAME"),
                     rs.getInt("PHONENUMBER"),
