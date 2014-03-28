@@ -70,8 +70,10 @@ public class Cases {
     // }
 
     public Case getCaseById(int id) {
-        if(id <= this.cases.size() && id != 0) {
-            return this.cases.get(id);
+        for (Case c : this.cases) {
+            if(c.getId() == id) {
+                return c;
+            } 
         }
         return null;
     }
