@@ -98,7 +98,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDate">
+    <Component class="javax.swing.JLabel" name="labelDate">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;Insert date&quot; " type="code"/>
@@ -110,7 +110,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDDate">
+    <Component class="javax.swing.JLabel" name="labelDDate">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dato:"/>
       </Properties>
@@ -144,7 +144,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDAddress">
+    <Component class="javax.swing.JLabel" name="labelDAddress">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adresse"/>
       </Properties>
@@ -154,12 +154,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldCreateCaseAddress">
+    <Component class="javax.swing.JTextField" name="textFieldAddress">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="..."/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCreateCaseAddressActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldAddressActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -167,13 +167,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldCreateCasePostPlace">
+    <Component class="javax.swing.JTextField" name="textFieldPostPlace">
       <Properties>
         <Property name="text" type="java.lang.String" value="updateOnPostnr"/>
         <Property name="toolTipText" type="java.lang.String" value="..."/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCreateCasePostPlaceActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPostPlaceActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -181,15 +181,15 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldCreateCasePostalCode">
+    <Component class="javax.swing.JTextField" name="textFieldPostalCode">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="..."/>
       </Properties>
       <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldCreateCasePostalCodeFocusLost"/>
-        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="textFieldCreateCasePostalCodeInputMethodTextChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCreateCasePostalCodeActionPerformed"/>
-        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="textFieldCreateCasePostalCodePropertyChange"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldPostalCodeFocusLost"/>
+        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="textFieldPostalCodeInputMethodTextChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPostalCodeActionPerformed"/>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="textFieldPostalCodePropertyChange"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -197,7 +197,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDPostnr">
+    <Component class="javax.swing.JLabel" name="labelDPostalCode">
       <Properties>
         <Property name="text" type="java.lang.String" value="Postnr"/>
       </Properties>
@@ -207,9 +207,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldCreateCasePhone">
+    <Component class="javax.swing.JTextField" name="textFieldPhone">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCreateCasePhoneActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPhoneActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -217,7 +217,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDPhone">
+    <Component class="javax.swing.JLabel" name="labelDPhone">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telefon:"/>
       </Properties>
@@ -227,7 +227,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDSubject">
+    <Component class="javax.swing.JLabel" name="labelDSubject">
       <Properties>
         <Property name="text" type="java.lang.String" value="Arbeidets art:"/>
       </Properties>
@@ -237,9 +237,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldCreateCaseSubject">
+    <Component class="javax.swing.JTextField" name="textFieldSubject">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCreateCaseSubjectActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldSubjectActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -247,7 +247,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDReqDate">
+    <Component class="javax.swing.JLabel" name="labelDReqDate">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xd8;nsket oppstart:"/>
       </Properties>
@@ -292,7 +292,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDDescription">
+    <Component class="javax.swing.JLabel" name="labelDDescription">
       <Properties>
         <Property name="text" type="java.lang.String" value="Beskrivelse / Annet:"/>
       </Properties>
@@ -314,7 +314,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="textAreaCreateCaseDescription">
+        <Component class="javax.swing.JTextArea" name="textAreaDescription">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -322,7 +322,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDPrice">
+    <Component class="javax.swing.JLabel" name="labelDPrice">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pris:"/>
       </Properties>
@@ -332,9 +332,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldCreateCasePrice">
+    <Component class="javax.swing.JTextField" name="textFieldPrice">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCreateCasePriceActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPriceActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -359,7 +359,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDStartDate">
+    <Component class="javax.swing.JLabel" name="labelDStartDate">
       <Properties>
         <Property name="text" type="java.lang.String" value="Avtalt oppstart:"/>
       </Properties>
@@ -369,7 +369,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDEquipment">
+    <Component class="javax.swing.JLabel" name="labelDEquipment">
       <Properties>
         <Property name="text" type="java.lang.String" value="Utstyrsliste:"/>
       </Properties>
@@ -379,7 +379,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDContacts">
+    <Component class="javax.swing.JLabel" name="labelDContacts">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kontaktpersoner:"/>
       </Properties>
@@ -401,7 +401,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="textAreaCreateCaseContacts">
+        <Component class="javax.swing.JTextArea" name="textAreaContacts">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -409,7 +409,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="labelCreateCaseDStatus">
+    <Component class="javax.swing.JLabel" name="labelDStatus">
       <Properties>
         <Property name="text" type="java.lang.String" value="Status:"/>
       </Properties>
@@ -419,7 +419,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboBoxCreateCaseStatus">
+    <Component class="javax.swing.JComboBox" name="comboBoxStatus">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
@@ -435,12 +435,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonCreateCaseComplete">
+    <Component class="javax.swing.JButton" name="buttonComplete">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ferdig"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCreateCaseCompleteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCompleteActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -455,21 +455,21 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="dateFieldCreateCaseInspectDate">
+    <Component class="com.toedter.calendar.JDateChooser" name="dateFieldInspectDate">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="710" y="70" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="dateFieldCreateCaseReqDate">
+    <Component class="com.toedter.calendar.JDateChooser" name="dateFieldReqDate">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="158" y="379" width="210" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="dateFieldCreateCaseStartDate">
+    <Component class="com.toedter.calendar.JDateChooser" name="dateFieldStartDate">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="670" y="140" width="-1" height="-1"/>
@@ -512,7 +512,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="textAreaCreateCaseToolList">
+        <Component class="javax.swing.JTextArea" name="textAreaToolList">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
