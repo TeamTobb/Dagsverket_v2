@@ -56,62 +56,75 @@ public class Case {
         this.status = status;
         this.creatorId = creatorId;
         this.supervisorId = supervisorId;
-        this.employer = new Customer(int customerId, String customerFirstName, String customerLastName, int customerPhoneNumber);
+        this.employer = new Customer(customerId, customerFirstName, customerLastName, customerPhoneNumber);
     }
 
-    /**
-     * @return the id
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * @return the address
-     */
     public String getAddress() {
         return address;
     }
 
-    /**
-     * @return the postalCode
-     */
     public int getPostalCode() {
         return postalCode;
     }
 
-    /**
-     * @return the employer
-     */
-    public Customer getEmployer() {
-        return employer;
+    public String getPostPlace() {
+        return postPlace;
     }
 
-    /**
-     * @return the status
-     */
-    public String getStatus() {
-        return status;
+    public String getSubject() {
+        return subject;
     }
 
-    /**
-     * @return the reqDate
-     */
     public String getReqDate() {
         return reqDate;
     }
 
-    /**
-     * @return the inspectDate
-     */
-    public String getInspectDate() {
-        return inspectDate;
+    public String getReqTime() {
+        return reqTime;
     }
 
-    /**
-     * @return the startDate
-     */
+    public String getDescription() {
+        return description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getCheckup_date() {
+        return checkup_date;
+    }
+
     public String getStartDate() {
         return startDate;
     }
+
+    public String getToolList() {
+        return toolList;
+    }
+
+    public String getContactPerson() {
+        return contactPerson;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public int getCreatorId() {
+        return creatorId;
+    }
+
+    public int getSupervisorId() {
+        return supervisorId;
+    }
+
+    public Customer getEmployer() {
+        return employer;
+    }
+    
 }
