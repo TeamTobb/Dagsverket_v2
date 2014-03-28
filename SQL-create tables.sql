@@ -54,6 +54,9 @@ id INTEGER GENERATED ALWAYS AS IDENTITY,
 quantity INTEGER, 
 customer INTEGER, 
 wood VARCHAR(30), 
+postalCode INTEGER,
+postPlace VARCHAR(30), 
+address VARCHAR(30),
 CONSTRAINT sales_pk PRIMARY KEY(id)
 );
 
@@ -89,6 +92,6 @@ INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen');
 
 INSERT INTO wood VALUES('Eik', 50, 800);
 INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324);
-INSERT INTO sales VALUES(default, 30, 1, 'Eik');
+INSERT INTO sales VALUES(default, 30, 1, 'Eik', 1400, 'Ski', 'humleveien 13');
 --INSERT INTO cases VALUES(default, 'jobbAdresseveien 1', 7001, 'Trondheim',1, 'activ', '10.04.2014','09.04.2014', '11.04.2014', 2, 2);
  

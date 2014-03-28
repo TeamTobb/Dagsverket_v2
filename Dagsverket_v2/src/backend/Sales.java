@@ -38,11 +38,12 @@ public class Sales {
     }
 
     public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
-                                         String postnr, String adresse, String quantity) {
+                                         String postnr, String address, String quantity, String postalPlace) {
         ArrayList<Integer> errors = new ArrayList<Integer>(); 
         int telephone = 0;
         int quantityNr = 0;
         int postCode = 0; 
+        int customerId = 0;
         
         try{
             telephone = Integer.parseInt(phoneNumber.trim());
@@ -68,45 +69,43 @@ public class Sales {
         }
         
        //fyll opp denne med alt
-        errors.addAll(checkFields(customerFirstName, customerLastName, telephone, woodType, postCode, adresse, quantityNr));
+        errors.addAll(checkFields(customerFirstName, customerLastName, telephone, woodType, postCode, address, quantityNr));
         
         //return errors;
-        if (errors.isEmpty()==false){
-        return errors;
-        }
+        if (errors.isEmpty()==true){
         
-        
-        
-        //legg til Customer DB
-        
-        
-        //legg til Wood DB
-        
-        /*
-        
-        db.createConnection();
-        try{
-            PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO sales VALUES(DEFAULT, ?, ?, ?)");
-            sqlStatement.setString(1, String.valueOf(quantity));   
-            sqlStatement.setInt(2, customerId);
-            sqlStatement.setString(3, "Eik");
-            db.executeUpdate(sqlStatement);
-        }        
-        catch(SQLException e){
-            System.out.println("feil i createSale preparedStatement: " + e);
-            
-        }     
-        finally{
-            db.closeAll();
-        }
-        */
+        //legg til Customer DB eller/og hent ut customer ID. 
+            customerId = addCustomer(customerFirstName, customerLastName, telephone);
+
+
+            db.createConnection();
+            try{
+                PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO sales VALUES(DEFAULT, ?, ?, ?, ?, ?, ?)");
+                sqlStatement.setString(1, String.valueOf(quantity));   
+                sqlStatement.setInt(2, customerId);
+                sqlStatement.setString(3, woodType);
+                sqlStatement.setInt(4, postCode);
+                sqlStatement.setString(5, postalPlace);
+                sqlStatement.setString(6, address);
+
+                db.executeUpdate(sqlStatement);
+            }        
+            catch(SQLException e){
+                System.out.println("feil i createSale preparedStatement: " + e);
+
+            }     
+            finally{
+                db.closeAll();
+            }       
+
+            }
         return errors;
     }
 
     public void updateSaleList() {
         String sqlStatement = "Select  sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, "
-                + "customers.LASTNAME, customers.PHONENUMBER, customers.ADDRESS, "
-                + "customers.POSTALCODE, customers.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE "
+                + "customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, "
+                + "sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE "
                 + "FROM sales NATURAL JOIN wood, customers";
         ResultSet rs = db.executeQuery(sqlStatement);
         
@@ -169,6 +168,51 @@ public class Sales {
         
         return errors;
 	}
+     
+     
+     private int addCustomer(String customerFirstName, String customerLastName, int telephone){
+        int customerId =0;
+                
+         String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
+                                       "' AND lastName = '" + customerLastName + "' AND phoneNumber = " + telephone;
+                ResultSet rs = this.db.executeQuery(sqlStatement);
+                try{
+                    if(rs.next()){                        
+                                customerId = rs.getInt("id");
+                    }
+                    else{
+                        this.db.createConnection();      
+                        PreparedStatement insertCustomerStatement = this.db.getConnection().prepareStatement(
+                                "INSERT INTO customers VALUES(DEFAULT, ?, ?, ?)");
+                        insertCustomerStatement.setString(1, customerFirstName);
+                        insertCustomerStatement.setString(2, customerLastName); 
+                        insertCustomerStatement.setInt(3, telephone); 
+                        
+                        insertCustomerStatement.executeUpdate();
+                        db.closeAll();                        
+                        ResultSet res = this.db.executeQuery(sqlStatement);
+                        
+                       
+                        
+                        try{
+                            while(res.next()){
+                                customerId = res.getInt("id");
+                            }                        
+                        }
+                        catch(SQLException e){
+                            System.out.println("feil 1 " + e);                            
+                        }
+                    }
+                }catch(SQLException e){
+                    System.out.println("feil 2 " + e);
+                }
+                finally{                    
+                    db.closeAll();
+                }
+         return customerId;
+     }
+     
+     
     
     public static void main(String args[]){
         Database db = new Database();
@@ -177,21 +221,20 @@ public class Sales {
         
 
         
-       //allSales.createSale(50, 1, "Eik");
+      
         allSales.updateSaleList();
         
-        //allSales.createSale("fornavnTest", "etternavnTest", "91323324", "Eik", "1400", "adresseTest", "10");
         /*
         for(Sale d:allSales.getSales()) {
             System.out.println(d);
            
         }
-        */
-        for(int d:allSales.createSale("fornavnTest", "etternavnTest", "10090099", "Eik", "1400", "adresseTest", "10")){
+        
+        for(int d:allSales.createSale("BJørn", "Hox", "91323324", "Eik", "1400", "Humlevien", "15", "Ski")){
             System.out.println(d);
         }
         
-        
+        */      
     }
     
     
