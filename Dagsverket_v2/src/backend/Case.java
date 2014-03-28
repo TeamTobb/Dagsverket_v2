@@ -32,14 +32,48 @@ public class Case {
 		this.id = id;
 		this.address = address;
 		this.postalCode = postalCode;
+<<<<<<< HEAD
 		//this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
         this.employer = new Customer()
+=======
+		// this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
+>>>>>>> FETCH_HEAD
 		this.status = status;
 		this.reqDate = reqDate;
 		this.inspectDate = inspectDate;
 		this.startDate = startDate;
 	}
 
+<<<<<<< HEAD
+=======
+    // ALWAYS GET FROM DATABASE AND NOT ON REGISTER???
+
+	// no ID
+	public Case(String address, int postalCode, String firstname, String lastname, int phoneNumber, String customerAddress, int customerPostalCode, String customerPostPlace, String status, String reqDate, String inspectDate, String startDate) {
+		this.id = 0; // ?
+		this.address = address;
+		this.postalCode = postalCode;
+        // this.employer = new Customer(firstname, lastname, phoneNumber, customerAddress, customerPostalCode, customerPostPlace);
+        this.status = status;
+		this.reqDate = reqDate;
+		this.inspectDate = inspectDate;
+		this.startDate = startDate;
+	}
+
+	public boolean INSERT_TO_DB() {
+		// INSERT HERE, use DATABASE
+		// DO THIS IS CASES??
+		return false;
+	}
+
+	public boolean UPDATE_CASE_IN_DB() {
+		// UPDATE HERE, use DATABASE
+
+		// DO THIS IS CASES??
+		return false;
+	}
+
+>>>>>>> FETCH_HEAD
     /**
      * @return the id
      */
