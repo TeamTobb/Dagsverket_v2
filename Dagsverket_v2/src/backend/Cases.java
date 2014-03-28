@@ -29,12 +29,12 @@ public class Cases {
             this.cases = new ArrayList<Case>();
 	}
 
-	public boolean updateCaseList(String status, int start, int end) {
-		this.cases = new ArrayList<Case>();
-        // UPDATE WHOLE LIST FROM DB WITH CORRECT STATUS...
-		// FROM START TO END?
-		return false;
-	}
+	// public boolean updateCaseList(String status, int start, int end) {
+	// 	this.cases = new ArrayList<Case>();
+ //        // UPDATE WHOLE LIST FROM DB WITH CORRECT STATUS...
+	// 	// FROM START TO END?
+	// 	return false;
+	// }
 
 	// DETTE ER LURT, SLIK AT NAAR VI SKAL SE PAA DETALJER SAA KAN VI HENTE EN CASE FRA LISTEN.
 
@@ -47,8 +47,66 @@ public class Cases {
     //  DETTE SKAL EGENTLIG GJORES I DATABASE
 	// 	return test123;
 
+    // select * from cases natural join customers;
+
+    //  public void updateUserList() {
+    //     this.users = new ArrayList<User>();
+    //     String sqlStatement = "Select * from users";
+    //     ResultSet rs = db.executeQuery(sqlStatement);
+    //     try {
+    //         while(rs.next()) {
+    //             users.add(new User(
+    //                 rs.getInt("id"),
+    //                 rs.getString("firstName"),
+    //                 rs.getString("lastName")
+    //                 ));
+    //         }            
+    //     } catch(SQLException e) {
+    //         System.out.println("SQLError: " + e);
+    //     } 
+    //     finally{
+    //         db.closeAll();
+    //     }
+    // }
+
+    public void updateCaseList() {
+        this.cases = new ArrayList<Case>();
+        String sqlStatement = "select * from cases natural join customers";
+        ResultSet rs = db.executeQuery(sqlStatement);
+        try {
+            while(rs.next()) {
+                this.cases.add(new Case(
+                        rs.getInt("id"),
+                        rs.getString("address"),
+                        rs.getInt("postalcode"),
+                        rs.getString("postplace"),
+                        rs.getString("subject"),
+                        rs.getString("reqdate"),
+                        rs.getString("reqtime"),
+                        rs.getString("description"),
+                        rs.getInt("price"),
+                        rs.getString("checkup_date"),
+                        rs.getString("startdate"),
+                        rs.getString("toollist"),
+                        rs.getString("contactperson"),
+                        rs.getString("status"),
+                        rs.getInt("creator"),
+                        rs.getInt("supervisor"),
+                        rs.getInt("customer"),
+                        rs.getString("firstname"),
+                        rs.getString("lastname"),
+                        rs.getInt("phonenumber")
+                    ));
+            }
+        } catch(SQLException e) {
+            System.out.println("SQLError: " + e);
+        } finally {
+            db.closeAll();
+        }
+    }
+
 	public ArrayList<Case> getCases() {
-		return this.test;
+		return this.cases;
 	}
 
 	public ArrayList<Integer> createCase(int creator, String customerFirstName, String customerLastName, String caseAddress, 
