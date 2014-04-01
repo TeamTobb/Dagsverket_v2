@@ -52,8 +52,7 @@ public class Operator {
         return this.cases;
     }
     
-    public void updateList(JTable table, String status){
-    
+    public void updateList(JTable table, String status){    
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        model.setRowCount(0);
        Object[] insertTable = new Object[3];

@@ -488,7 +488,12 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDSubject.setForeground(Color.black);            
         labelDPhone.setForeground(Color.black);           
         labelDPostalCode.setForeground(Color.black);            
-        labelDPrice.setForeground(Color.black);                            
+        labelDPrice.setForeground(Color.black);   
+        setErrors(errors);
+    }
+    
+    
+    public void setErrors(ArrayList<Integer> errors){
         for(Integer i : errors){
             if(i == Cases.NO_CONTRACTOR_FIRSTNAME){
                 labelCustomerDFirstName.setForeground(Color.red);
@@ -510,8 +515,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
             if(i == Cases.WRONG_PRICE_FORMAT){
                 labelDPrice.setForeground(Color.red);            
-            }
-        }
+            }                
+        }        
     }//GEN-LAST:event_buttonCompleteActionPerformed
 
     private void textFieldCustomerLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCustomerLastNameActionPerformed

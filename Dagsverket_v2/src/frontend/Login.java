@@ -142,7 +142,8 @@ public class Login extends javax.swing.JFrame {
 
     private void buttonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogInActionPerformed
         this.dispose();
-        GUI.main(users.getUserByIndex(listUserNames.getSelectedIndex()));
+        User selectedUser = users.getUserByIndex(listUserNames.getSelectedIndex());
+        GUI.main(selectedUser);
     }//GEN-LAST:event_buttonLogInActionPerformed
 
     private void buttonNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewUserActionPerformed
