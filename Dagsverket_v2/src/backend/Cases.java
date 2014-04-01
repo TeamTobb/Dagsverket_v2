@@ -14,13 +14,13 @@ import java.sql.*;
  * @author Jorgen
  */
 public class Cases {
-    public static int NO_CONTRACTOR_FIRSTNAME = 1;
-    public static int NO_CONTRACTOR_LASTNAME = 2;
-    public static int NO_CONTACT_INFO = 3;
-    public static int NO_SUBJECT = 4;
-    public static int WRONG_PHONE_FORMAT = 5;
-    public static int WRONG_POSTALCODE_FORMAT = 6;
-    public static int WRONG_PRICE_FORMAT = 7;
+    public static final int NO_CONTRACTOR_FIRSTNAME = 1;
+    public static final int NO_CONTRACTOR_LASTNAME = 2;
+    public static final int NO_CONTACT_INFO = 3;
+    public static final int NO_SUBJECT = 4;
+    public static final int WRONG_PHONE_FORMAT = 5;
+    public static final int WRONG_POSTALCODE_FORMAT = 6;
+    public static final int WRONG_PRICE_FORMAT = 7;
     private Database db; 
 	private ArrayList<Case> cases;
 
