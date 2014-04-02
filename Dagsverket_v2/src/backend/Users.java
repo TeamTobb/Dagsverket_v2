@@ -22,10 +22,6 @@ public class Users {
             this.db = db;
 	}
 
-    public boolean registerUser() {
-    	return false;
-    }
-
     public boolean deleteUser() {
     	return false;
     }
