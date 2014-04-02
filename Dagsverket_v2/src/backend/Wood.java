@@ -32,4 +32,20 @@ public class Wood {
     public int getPrice() {
     	return this.price;
     }
+
+    public void setWoodType(String woodType) {
+        this.woodType = woodType;
+    }
+
+    public void setBagSize(int bagSize) {
+        this.bagSize = bagSize;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
+    
+    
+    
 }

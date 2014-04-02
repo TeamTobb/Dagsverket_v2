@@ -36,6 +36,10 @@ public class Sales {
     public ArrayList<Sale> getSales() {
     	return this.sales;
     }
+    
+    public void deleteSale(){
+        //add delete data TODO
+    }   
 
     public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
                                          String postnr, String address, String quantity, String postalPlace) {
