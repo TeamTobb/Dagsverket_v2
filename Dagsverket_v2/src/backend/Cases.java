@@ -167,7 +167,7 @@ public class Cases {
                         insertCustomerStatement.setString(1, customerFirstName);
                         insertCustomerStatement.setString(2, customerLastName); 
                         insertCustomerStatement.setInt(3, phoneNumberInt);                         
-                        insertCustomerStatement.executeUpdate();
+                        db.executeUpdate(insertCustomerStatement);
                         db.closeAll();                        
                         ResultSet res = this.db.executeQuery(sqlStatement);
                         
@@ -207,7 +207,8 @@ public class Cases {
                     insertCaseStatement.setInt(15, supervisor);
                     insertCaseStatement.setInt(16, customerId);
                     
-                    insertCaseStatement.executeUpdate();
+                   // insertCaseStatement.executeUpdate();
+                    db.executeUpdate(insertCaseStatement);
                     
                 }catch(SQLException e){
                     System.out.println("feil i insertCase: " + e);
