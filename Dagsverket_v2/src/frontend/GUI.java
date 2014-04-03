@@ -111,7 +111,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         labelUserName.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
-        labelUserName.setText(this.op.getUser().getFirstname() + ", " + this.op.getUser().getLastname().substring(0, 1));
+        labelUserName.setText(this.op.getUser().getFirstname() + " " + this.op.getUser().getLastname().substring(0, 1));
 
         buttonViewDraftCases.setBackground(new java.awt.Color(51, 51, 51));
         buttonViewDraftCases.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
