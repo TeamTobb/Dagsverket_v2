@@ -18,6 +18,7 @@ public class Operator {
     private User user; 
     private Users users; 
     private Cases cases;
+    private Employees employees; 
     
     public Operator(User user){
         this.db = new Database(); 
@@ -25,6 +26,7 @@ public class Operator {
         this.user = user;
         users.updateUserList();
         this.cases = new Cases(this.db);
+        this.employees = new Employees(this.db);
     }    
 
     /**
@@ -65,4 +67,9 @@ public class Operator {
            model.insertRow(table.getRowCount(), insertTable);          
        }    
     }
+
+    public Employees getEmployees() {
+        return employees;
+    }
+    
 }

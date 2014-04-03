@@ -18,7 +18,7 @@ public class Employee {
 	private String lastRegDate;
 	private int attendanceWithoutWork; // legg til denne i databasen
 
-	public Employee(int id, String firstName, String lastName, String lastWorkDate, String lastRegDate, int attendanceWithoutWork) {
+            public Employee(int id, String firstName, String lastName, String lastWorkDate, String lastRegDate, int attendanceWithoutWork) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;

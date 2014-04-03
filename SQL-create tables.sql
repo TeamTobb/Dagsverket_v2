@@ -40,6 +40,7 @@ firstName VARCHAR(30),
 lastName VARCHAR(30),
 lastWorkDate VARCHAR(30),
 lastRegDate VARCHAR(30),
+attendanceWithoutWork INTEGER,
 CONSTRAINT employees_pk PRIMARY KEY(id)
 );
 

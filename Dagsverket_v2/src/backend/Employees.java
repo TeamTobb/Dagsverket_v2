@@ -6,7 +6,16 @@
 
 package backend;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  *
@@ -15,6 +24,8 @@ import java.util.*;
 public class Employees {
     private ArrayList<Employee> employees;
     private Database db;
+    public static final int WRONG_FIRSTNAME = 1; 
+    public static final int WRONG_LASTNAME = 2;
 
     public Employees(Database db) {
     	this.employees = new ArrayList<Employee>();
@@ -31,7 +42,57 @@ public class Employees {
     }
 
     public void updateEmployeeList() {
-    	// add to employee arraylist
+    	this.employees = new ArrayList<Employee>();
+        String sqlStatement = "SELECT * from employees";
+        ResultSet rs = db.executeQuery(sqlStatement);
+        try {
+            while(rs.next()) {
+                this.employees.add(new Employee(
+                        rs.getInt("id"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("lastWorkDate"),
+                        rs.getString("lastRegDate"),
+                        rs.getInt("attendanceWithoutWork")
+                ));
+            }
+        } catch(SQLException e) {
+            System.out.println("SQLError: " + e);
+        } finally {
+            db.closeAll();
+        }
+    }
+    
+    public void updateGUILists(JTable left, JTable right){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        Calendar cal = Calendar.getInstance();
+        String currentDate = dateFormat.format(cal.getTime());       
+        DefaultTableModel modelLeft = (DefaultTableModel) left.getModel();
+        DefaultTableModel modelRight = (DefaultTableModel) right.getModel();
+        modelLeft.setRowCount(0);
+        modelRight.setRowCount(0);
+        Object[] insertTable = new Object[6];
+        updateEmployeeList();
+        
+        for(int i = 0; i<this.employees.size(); i++){
+            if(this.employees.get(i).getLastRegDate().equals(currentDate)){
+                insertTable[0] = this.employees.get(i).getId();           
+                insertTable[1] = this.employees.get(i).getFirstName();
+                insertTable[2] = this.employees.get(i).getLastName();
+                insertTable[3] = this.employees.get(i).getLastWorkDate();
+                insertTable[4] = this.employees.get(i).getLastRegDate();
+                insertTable[5] = this.employees.get(i).getAttendanceWithoutWork();                      
+                modelRight.insertRow(right.getRowCount(), insertTable);   
+            } else{
+                insertTable[0] = this.employees.get(i).getId();           
+                insertTable[1] = this.employees.get(i).getFirstName();
+                insertTable[2] = this.employees.get(i).getLastName();
+                insertTable[3] = this.employees.get(i).getLastWorkDate();
+                insertTable[4] = this.employees.get(i).getLastRegDate();
+                insertTable[5] = this.employees.get(i).getAttendanceWithoutWork();                      
+                modelLeft.insertRow(left.getRowCount(), insertTable);                   
+            }      
+       }    
     }
 
     public ArrayList<Employee> getEmployees() {
@@ -42,19 +103,36 @@ public class Employees {
     	// check for errors, return them, or add a new employee to database
     	ArrayList<Integer> errors = checkFields(firstName, lastName);
 
-    	if(errors == null) {
-    		// add new employee
-
-    		// standard null for lastworkdate, lastregdate etc?
-
+    	if(errors.isEmpty()) {
+            try{
+                this.db.createConnection();
+                PreparedStatement insertEmployeeStatement = this.db.getConnection().prepareStatement(
+                                "INSERT INTO employees VALUES(DEFAULT, ?, ?, ' ', ' ', 0)");   
+                insertEmployeeStatement.setString(1, firstName);
+                insertEmployeeStatement.setString(2, lastName);                
+                db.executeUpdate(insertEmployeeStatement);
+                
+            }
+            catch(SQLException e){
+                System.out.println("feil i employees.createEmployee" + e);
+            }
+            finally{
+                db.closeAll();
+            }
     	}
 
     	return errors;
     }
 
     private ArrayList<Integer> checkFields(String firstName, String lastName) {
-    	// return errorlist
-    	return null;
+        ArrayList<Integer> errors = new ArrayList<Integer>();
+    	if(firstName.trim().equals("")){
+            errors.add(WRONG_FIRSTNAME);
+        }
+        if(lastName.trim().equals("")){
+            errors.add(WRONG_LASTNAME);
+        }
+    	return errors;
     }
 
 

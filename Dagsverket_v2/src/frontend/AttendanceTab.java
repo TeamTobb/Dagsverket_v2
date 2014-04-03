@@ -6,16 +6,29 @@
 
 package frontend;
 
+import backend.Operator;
+import java.util.ArrayList;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jorgen
  */
 public class AttendanceTab extends javax.swing.JPanel {
+    private Operator op; 
 
     /**
      * Creates new form AttendanceTab
      */
-    public AttendanceTab() {
+    public AttendanceTab(Operator op) {
+        this.op = op;
         initComponents();
     }
 
@@ -30,14 +43,14 @@ public class AttendanceTab extends javax.swing.JPanel {
 
         panelLeft = new javax.swing.JPanel();
         tableNotAttending = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableLeft = new javax.swing.JTable();
         panelCenter = new javax.swing.JPanel();
         buttonMoveToAttending = new javax.swing.JButton();
         buttonMoveToNotAttending = new javax.swing.JButton();
         buttonRegisterNewEmployer = new javax.swing.JButton();
         panelRight = new javax.swing.JPanel();
         tableAttending = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableRight = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 0));
         setPreferredSize(new java.awt.Dimension(1024, 690));
@@ -46,7 +59,7 @@ public class AttendanceTab extends javax.swing.JPanel {
         panelLeft.setPreferredSize(new java.awt.Dimension(425, 690));
         panelLeft.setLayout(new javax.swing.BoxLayout(panelLeft, javax.swing.BoxLayout.LINE_AXIS));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableLeft.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,7 +70,7 @@ public class AttendanceTab extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableNotAttending.setViewportView(jTable1);
+        tableNotAttending.setViewportView(tableLeft);
 
         panelLeft.add(tableNotAttending);
 
@@ -119,7 +132,7 @@ public class AttendanceTab extends javax.swing.JPanel {
         panelRight.setPreferredSize(new java.awt.Dimension(425, 690));
         panelRight.setLayout(new javax.swing.BoxLayout(panelRight, javax.swing.BoxLayout.LINE_AXIS));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableRight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -130,7 +143,7 @@ public class AttendanceTab extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableAttending.setViewportView(jTable2);
+        tableAttending.setViewportView(tableRight);
 
         panelRight.add(tableAttending);
 
@@ -138,24 +151,56 @@ public class AttendanceTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMoveToAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToAttendingActionPerformed
-        // TODO add your handling code here:
+        System.out.println(tableLeft.getSelectedRow());
     }//GEN-LAST:event_buttonMoveToAttendingActionPerformed
 
     private void buttonRegisterNewEmployerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterNewEmployerActionPerformed
-        // TODO add your handling code here:
+      ArrayList<Integer> errors = new ArrayList<Integer>();
+      JTextField textfieldFirstName = new JTextField(5);
+      JTextField textfieldLastName = new JTextField(5);
+      JPanel panelNewEmployee = new JPanel();
+      panelNewEmployee.add(new JLabel("Fornavn:"));
+      panelNewEmployee.add(textfieldFirstName);
+      panelNewEmployee.add(Box.createHorizontalStrut(15));
+      panelNewEmployee.add(new JLabel("Etternavn:"));
+      panelNewEmployee.add(textfieldLastName);
+      
+      
+      int result = JOptionPane.showConfirmDialog(null, panelNewEmployee, 
+               "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
+      if (result == JOptionPane.OK_OPTION) {
+        errors = this.op.getEmployees().createEmployee(
+        textfieldFirstName.getText().trim(), textfieldLastName.getText().trim());  
+        this.op.getEmployees().updateGUILists(tableLeft, tableRight);
+      }
+      if(!errors.isEmpty()){
+        showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
+      }
+      else{  
+          System.out.println("WOHOOOOO");
+      }          
     }//GEN-LAST:event_buttonRegisterNewEmployerActionPerformed
 
+    public JTable getTableLeft() {
+        return tableLeft;
+    }
+
+    public JTable getTableRight() {
+        return tableRight;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonMoveToAttending;
     private javax.swing.JButton buttonMoveToNotAttending;
     private javax.swing.JButton buttonRegisterNewEmployer;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelLeft;
     private javax.swing.JPanel panelRight;
     private javax.swing.JScrollPane tableAttending;
+    private javax.swing.JTable tableLeft;
     private javax.swing.JScrollPane tableNotAttending;
+    private javax.swing.JTable tableRight;
     // End of variables declaration//GEN-END:variables
 }
