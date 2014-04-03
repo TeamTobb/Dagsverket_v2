@@ -55,6 +55,8 @@ public class GUI extends javax.swing.JFrame {
         buttonAttendance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(1024, 768));
         setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
