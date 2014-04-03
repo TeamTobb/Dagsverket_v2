@@ -9,6 +9,12 @@ package frontend;
 import backend.*;
 
 import java.awt.Color;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 /**
@@ -18,6 +24,7 @@ import java.awt.Color;
 public class SaleTab extends javax.swing.JPanel {
      private Operator op;
      private Sales sales;
+     private Woods woods;
 
     /**
      * Creates new form SaleTab
@@ -25,7 +32,9 @@ public class SaleTab extends javax.swing.JPanel {
     public SaleTab(Operator op) {
        this.op = op;
        this.sales = new Sales(op.getDb());
-        initComponents();
+       this.woods = new Woods(op.getDb());
+       this.woods.updateWoodList(); //TODO Flytte til gui 
+       initComponents();
     }
 
     /**
@@ -66,6 +75,7 @@ public class SaleTab extends javax.swing.JPanel {
         labelHeader = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         buttonFerdig = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -205,151 +215,171 @@ public class SaleTab extends javax.swing.JPanel {
             }
         });
 
-        comboBoxWoodType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eik", "Item 2", "Item 3", "Item 4" }));
+        comboBoxWoodType.setModel(new javax.swing.DefaultComboBoxModel(
+            woods.getWoodsStringList()));
+    comboBoxWoodType.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            comboBoxWoodTypeActionPerformed(evt);
+        }
+    });
 
-        labelDWoodType.setText("Type");
+    labelDWoodType.setText("Type");
 
-        labelDPrice.setText("Pris");
+    labelDPrice.setText("Pris");
 
-        textFieldPrice.setEditable(false);
-        textFieldPrice.setToolTipText("...");
-        textFieldPrice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPriceActionPerformed(evt);
-            }
-        });
+    textFieldPrice.setEditable(false);
+    textFieldPrice.setToolTipText("...");
+    textFieldPrice.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            textFieldPriceActionPerformed(evt);
+        }
+    });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+    jPanel3.setLayout(jPanel3Layout);
+    jPanel3Layout.setHorizontalGroup(
+        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(78, 78, 78)
+                    .addComponent(labelDPhone))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(labelDPhone))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(textFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addGap(69, 69, 69)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(labelDLastName)
-                                        .addComponent(labelDFirstName))
-                                    .addGap(47, 47, 47)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(7, 7, 7)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(labelDPostnr)
-                                            .addGap(61, 61, 61)
-                                            .addComponent(textFieldPostnr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(6, 6, 6)
-                                            .addComponent(textFieldPostPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(labelDAddress)
-                                            .addGap(51, 51, 51)
-                                            .addComponent(textFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(labelDWoodType)
-                                                .addComponent(labelDQuanitity)
-                                                .addComponent(labelDPrice))
-                                            .addGap(64, 64, 64)
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                                    .addComponent(comboBoxWoodType, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(0, 0, Short.MAX_VALUE))
-                                                .addComponent(textFieldQuantity)
-                                                .addComponent(textFieldPrice)))))))))
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDFirstName)
-                    .addComponent(textFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDLastName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(labelDPhone))
-                    .addComponent(textFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(labelDAddress))
-                    .addComponent(textFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(labelDPostnr))
-                    .addComponent(textFieldPostnr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldPostPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxWoodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDWoodType))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDQuanitity)
-                    .addComponent(textFieldQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDPrice)
-                    .addComponent(textFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
+                        .addContainerGap()
+                        .addComponent(textFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelDLastName)
+                                    .addComponent(labelDFirstName))
+                                .addGap(47, 47, 47)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(labelDPostnr)
+                                        .addGap(61, 61, 61)
+                                        .addComponent(textFieldPostnr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(textFieldPostPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(labelDAddress)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(textFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(labelDWoodType)
+                                            .addComponent(labelDQuanitity)
+                                            .addComponent(labelDPrice))
+                                        .addGap(64, 64, 64)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addComponent(comboBoxWoodType, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(textFieldQuantity)
+                                            .addComponent(textFieldPrice)))))))))
+            .addContainerGap(59, Short.MAX_VALUE))
+    );
+    jPanel3Layout.setVerticalGroup(
+        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGap(27, 27, 27)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(labelDFirstName)
+                .addComponent(textFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(textFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelDLastName))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(6, 6, 6)
+                    .addComponent(labelDPhone))
+                .addComponent(textFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(51, 51, 51)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(6, 6, 6)
+                    .addComponent(labelDAddress))
+                .addComponent(textFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(6, 6, 6)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(7, 7, 7)
+                    .addComponent(labelDPostnr))
+                .addComponent(textFieldPostnr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textFieldPostPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(61, 61, 61)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(comboBoxWoodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelDWoodType))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(labelDQuanitity)
+                .addComponent(textFieldQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(labelDPrice)
+                .addComponent(textFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(123, Short.MAX_VALUE))
+    );
 
-        panelRight.add(jPanel3, java.awt.BorderLayout.CENTER);
+    panelRight.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        labelHeader.setFont(new java.awt.Font("Optima", 1, 36)); // NOI18N
-        labelHeader.setText("Ved bestilling");
-        jPanel4.add(labelHeader);
+    labelHeader.setFont(new java.awt.Font("Optima", 1, 36)); // NOI18N
+    labelHeader.setText("Ved bestilling");
+    jPanel4.add(labelHeader);
 
-        panelRight.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+    panelRight.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
-        buttonFerdig.setText("Ferdig");
-        buttonFerdig.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonFerdigActionPerformed(evt);
-            }
-        });
+    buttonFerdig.setText("Ferdig");
+    buttonFerdig.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonFerdigActionPerformed(evt);
+        }
+    });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(383, Short.MAX_VALUE)
-                .addComponent(buttonFerdig)
-                .addGap(46, 46, 46))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonFerdig)
-                .addContainerGap(65, Short.MAX_VALUE))
-        );
+    jButton1.setText("Legg til vedtype");
+    jButton1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton1ActionPerformed(evt);
+        }
+    });
 
-        panelRight.add(jPanel5, java.awt.BorderLayout.PAGE_END);
+    javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+    jPanel5.setLayout(jPanel5Layout);
+    jPanel5Layout.setHorizontalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jButton1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+            .addComponent(buttonFerdig)
+            .addGap(46, 46, 46))
+    );
+    jPanel5Layout.setVerticalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(buttonFerdig))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(14, 14, 14)
+                    .addComponent(jButton1)))
+            .addContainerGap(57, Short.MAX_VALUE))
+    );
 
-        add(panelRight);
+    panelRight.add(jPanel5, java.awt.BorderLayout.PAGE_END);
+
+    add(panelRight);
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldQuantityActionPerformed
@@ -395,7 +425,9 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldLastNameActionPerformed
 
     private void textFieldPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPriceActionPerformed
-        // TODO add your handling code here:
+       
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_textFieldPriceActionPerformed
 
     private void buttonFerdigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFerdigActionPerformed
@@ -418,10 +450,43 @@ public class SaleTab extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonFerdigActionPerformed
 
+    private void comboBoxWoodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxWoodTypeActionPerformed
+        textFieldPrice.setText(sales.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
+    }//GEN-LAST:event_comboBoxWoodTypeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      JTextField textfieldWoodType = new JTextField(10);
+      JTextField textfieldPrice = new JTextField(5);
+      JTextField textfieldBagSize = new JTextField(5);
+      
+      JPanel panelWood = new JPanel();
+      panelWood.add(new JLabel("Vedtype:"));
+      panelWood.add(textfieldWoodType);
+      panelWood.add(Box.createHorizontalStrut(15)); // a spacer
+      panelWood.add(new JLabel("Bag størrelse:"));
+      panelWood.add(textfieldPrice);
+      panelWood.add(Box.createHorizontalStrut(15)); // a spacer
+      panelWood.add(new JLabel("Pris:"));
+      panelWood.add(textfieldBagSize);
+      
+      int result = JOptionPane.showConfirmDialog(null, panelWood, 
+            "Skriv inn vedtype, bagstørrelse og pris på den nye vedtypen", JOptionPane.OK_CANCEL_OPTION);
+      if (result == JOptionPane.OK_OPTION) {          
+           woods.addWood(textfieldWoodType.getText(), textfieldBagSize.getText(),textfieldPrice.getText());
+           
+           
+      }
+      
+      woods.updateWoodList();
+      comboBoxWoodType.repaint();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFerdig;
     private javax.swing.JComboBox comboBoxWoodType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

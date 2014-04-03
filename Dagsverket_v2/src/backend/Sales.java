@@ -216,6 +216,36 @@ public class Sales {
          return customerId;
      }
      
+     public String getPrice(String Combobox, String quantity){
+        double cost = 0; 
+        String costString = ""; 
+        int woodTypePrice = 0; 
+        int quanitityWood = 0; 
+        
+        
+        //Check the values and Parse.  
+        try{
+            woodTypePrice = Integer.parseInt(Combobox.trim());
+        } catch(NumberFormatException e){
+            System.out.println("Feil combobox. Bare tall" + e);  //OVERFLADISK, skal sjekket når den blir lagd
+        }
+        try{
+            quanitityWood = Integer.parseInt(quantity.trim());
+        } catch(NumberFormatException e){
+            System.out.println("Feil antall. Bare tall" + e);  //OVERFLADISK, skal sjekket når den blir lagd
+        }
+        
+         cost = woodTypePrice*quanitityWood;
+         
+         if (cost==0.0){
+             return costString;
+         } else {
+             costString = ""+cost;
+         }
+         
+         return costString;
+     }
+     
      
     
     public static void main(String args[]){
