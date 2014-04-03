@@ -7,7 +7,12 @@
 package frontend;
 
 import backend.Operator;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,6 +28,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AttendanceTab extends javax.swing.JPanel {
     private Operator op; 
+    DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+    Calendar cal = Calendar.getInstance();
+    String currentDate = dateFormat.format(cal.getTime());  
 
     /**
      * Creates new form AttendanceTab
@@ -152,6 +160,20 @@ public class AttendanceTab extends javax.swing.JPanel {
 
     private void buttonMoveToAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToAttendingActionPerformed
         System.out.println(tableLeft.getSelectedRow());
+        String firstName = (String)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 1);
+        String lastName = (String)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 2);
+//        
+//        try{
+//            PreparedStatement updateEmployeeRegDate = this.op.getDb().getConnection().prepareStatement(
+//                    "UPDATE employees SET lastRegDate=');       
+//            
+//        }
+//        catch(SQLException e){
+//            System.out.println("feil i attendancetab.move" + e);
+//        }
+//                
+// 
+        System.out.println(firstName + lastName);        
     }//GEN-LAST:event_buttonMoveToAttendingActionPerformed
 
     private void buttonRegisterNewEmployerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterNewEmployerActionPerformed

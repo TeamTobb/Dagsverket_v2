@@ -222,6 +222,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void buttonAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAttendanceActionPerformed
         this.cardLayout.show(panelContent, "AttendanceTab");
+        this.op.getEmployees().updateGUILists(this.attendanceTab.getTableLeft(), this.attendanceTab.getTableRight());
     }//GEN-LAST:event_buttonAttendanceActionPerformed
 
     private void addPanels(){
@@ -230,7 +231,7 @@ public class GUI extends javax.swing.JFrame {
         this.viewDraftTab = new ViewDraftTab(); 
         this.viewHistoryTab = new ViewHistoryTab();
         this.saleTab = new SaleTab(op); 
-        this.attendanceTab = new AttendanceTab();
+        this.attendanceTab = new AttendanceTab(op);
         
         cardLayout = (CardLayout) panelContent.getLayout();
         panelContent.add(this.createCaseTab, "CreateCaseTab");        
