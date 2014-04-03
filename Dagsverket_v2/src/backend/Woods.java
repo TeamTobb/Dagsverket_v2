@@ -27,7 +27,7 @@ public class Woods {
     }
     
     public String[] getWoodsStringList(){
-        System.out.println("getWoodStringList");
+       
 
         String[] tempWoodList = new String[woods.size()];
         
@@ -40,7 +40,7 @@ public class Woods {
     }
     
     public void updateWoodList() {
-        //System.out.println("Updating woodList");
+        
         String sqlStatement = "Select woodtype, bagsize, price FROM wood";
         ResultSet rs = db.executeQuery(sqlStatement);
         
@@ -100,7 +100,7 @@ public class Woods {
      }
     
      public int getWoodTypePrice(String woodType){
-        String sqlStatement = "Select price FROM wood WHERE woodtype ='Eik'";
+        String sqlStatement = "Select price FROM wood WHERE woodtype ='"+woodType.trim()+"'";
         ResultSet rs = db.executeQuery(sqlStatement);
         int result =0; 
         try {
