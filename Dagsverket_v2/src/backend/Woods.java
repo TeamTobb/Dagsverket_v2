@@ -40,7 +40,7 @@ public class Woods {
     }
     
     public void updateWoodList() {
-        System.out.println("Updating woodList");
+        //System.out.println("Updating woodList");
         String sqlStatement = "Select woodtype, bagsize, price FROM wood";
         ResultSet rs = db.executeQuery(sqlStatement);
         
@@ -97,8 +97,53 @@ public class Woods {
                 
         }
         
+     }
+    
+     public int getWoodTypePrice(String woodType){
+        String sqlStatement = "Select price FROM wood WHERE woodtype ='Eik'";
+        ResultSet rs = db.executeQuery(sqlStatement);
+        int result =0; 
+        try {
+            //System.out.println(rs.getInt("sales.ID"));
+            while(rs.next()) {
+                   result = rs.getInt("price");
+            }
+        } catch(SQLException e) {
+            System.out.println("SQLError: " + e);
+        } finally {
+            db.closeAll();
+            System.out.println("ok");
+            
+        }
+           
+        return result;
+     }
+     
+     public String getPrice(String Combobox, String quantity){
+        double cost = 0; 
+        String costString = ""; 
+        int woodTypePrice = getWoodTypePrice(Combobox);
+        int quanitityWood = 0; 
         
         
+        //Check the values and Parse.  
+        try{
+            quanitityWood = Integer.parseInt(quantity.trim());
+        } catch(NumberFormatException e){
+            System.out.println("Feil antall. Bare tall" + e);  //OVERFLADISK, skal sjekket når den blir lagd
+        }
+         
+        
+        
+         cost = woodTypePrice*quanitityWood;
+         
+         if (cost==0.0){
+             return costString;
+         } else {
+             costString = ""+cost;
+         }
+         
+         return costString;
      }
     
     public static void main(String[] args) {
@@ -114,7 +159,8 @@ public class Woods {
         for (int i = 0; i<1;i++){
             System.out.println(listen[i]);            
         }
-        testWoods.addWood("Bjørk", "11", "100");
+        
+       
         
     }
     

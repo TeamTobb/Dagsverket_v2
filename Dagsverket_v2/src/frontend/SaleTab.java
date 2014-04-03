@@ -214,6 +214,11 @@ public class SaleTab extends javax.swing.JPanel {
                 textFieldQuantityActionPerformed(evt);
             }
         });
+        textFieldQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldQuantityKeyTyped(evt);
+            }
+        });
 
         comboBoxWoodType.setModel(new javax.swing.DefaultComboBoxModel(
             woods.getWoodsStringList()));
@@ -383,7 +388,7 @@ public class SaleTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldQuantityActionPerformed
-        // TODO add your handling code here:
+        textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
     }//GEN-LAST:event_textFieldQuantityActionPerformed
 
     private void textFieldPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPhoneActionPerformed
@@ -425,7 +430,7 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldLastNameActionPerformed
 
     private void textFieldPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPriceActionPerformed
-       
+            
         
 // TODO add your handling code here:
     }//GEN-LAST:event_textFieldPriceActionPerformed
@@ -451,7 +456,7 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonFerdigActionPerformed
 
     private void comboBoxWoodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxWoodTypeActionPerformed
-        textFieldPrice.setText(sales.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
+        textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
     }//GEN-LAST:event_comboBoxWoodTypeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -481,6 +486,10 @@ public class SaleTab extends javax.swing.JPanel {
       comboBoxWoodType.repaint();
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textFieldQuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldQuantityKeyTyped
+textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldQuantityKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
