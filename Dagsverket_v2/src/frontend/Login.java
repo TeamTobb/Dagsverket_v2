@@ -147,14 +147,18 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLogInActionPerformed
 
     private void buttonNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewUserActionPerformed
-      JTextField textfieldFirstName = new JTextField(5);
-      JTextField textfieldLastName = new JTextField(5);
+      JTextField textfieldFirstName = new JTextField(8);
+      JTextField textfieldLastName = new JTextField(8);
       JPanel panelNewUser = new JPanel();
       panelNewUser.add(new JLabel("Fornavn:"));
       panelNewUser.add(textfieldFirstName);
       panelNewUser.add(Box.createHorizontalStrut(15)); // a spacer
       panelNewUser.add(new JLabel("Etternavn:"));
       panelNewUser.add(textfieldLastName);
+      
+      /* Maks characters som input */
+      textfieldFirstName.setDocument(new JTextFieldLimit(12));
+      textfieldLastName.setDocument(new JTextFieldLimit(12));
       
       int result = JOptionPane.showConfirmDialog(null, panelNewUser, 
                "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);

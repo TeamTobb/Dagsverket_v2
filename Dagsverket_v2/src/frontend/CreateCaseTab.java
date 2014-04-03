@@ -133,6 +133,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCustomerDFirstName);
         labelCustomerDFirstName.setBounds(40, 160, 43, 16);
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
         textFieldCustomerFirstName.setToolTipText("");
         textFieldCustomerFirstName.setVerifyInputWhenFocusTarget(false);
         textFieldCustomerFirstName.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +149,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelDAddress);
         labelDAddress.setBounds(34, 186, 50, 16);
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
         textFieldAddress.setToolTipText("...");
         textFieldAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +170,14 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(textFieldPostPlace);
         textFieldPostPlace.setBounds(233, 214, 177, 28);
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldPostalCode.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
         textFieldPostalCode.setToolTipText("...");
+        textFieldPostalCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPostalCodeActionPerformed(evt);
+            }
+        });
         textFieldPostalCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldPostalCodeFocusLost(evt);
@@ -177,11 +188,6 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldPostalCodeInputMethodTextChanged(evt);
             }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-        textFieldPostalCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPostalCodeActionPerformed(evt);
             }
         });
         textFieldPostalCode.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -196,6 +202,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelDPostalCode);
         labelDPostalCode.setBounds(34, 221, 40, 16);
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldPhone.setDocument(new JTextFieldLimit(8)); // endre tallet for å endre limit
         textFieldPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPhoneActionPerformed(evt);
@@ -212,6 +220,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelDSubject);
         labelDSubject.setBounds(34, 338, 85, 16);
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldSubject.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
         textFieldSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldSubjectActionPerformed(evt);
@@ -272,6 +282,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelDPrice);
         labelDPrice.setBounds(564, 34, 27, 16);
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldPrice.setDocument(new JTextFieldLimit(6)); // endre tallet for å endre limit
+        textFieldPrice.setText("1750");
         textFieldPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPriceActionPerformed(evt);
@@ -330,6 +343,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(dateFieldStartDate);
         dateFieldStartDate.setBounds(670, 140, 123, 28);
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
         textFieldCustomerLastName.setToolTipText("");
         textFieldCustomerLastName.setVerifyInputWhenFocusTarget(false);
         textFieldCustomerLastName.addActionListener(new java.awt.event.ActionListener() {
