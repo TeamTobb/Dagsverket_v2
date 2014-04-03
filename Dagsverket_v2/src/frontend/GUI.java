@@ -213,7 +213,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void buttonViewActiveCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActiveCasesActionPerformed
         this.cardLayout.show(panelContent, "ActiveTab");
-        op.updateList(this.viewActiveTab.getTable(), "Aktiv");
+        op.updateActiveList(this.viewActiveTab.getTable(), "Aktiv");
+        //op.updateList(this.viewActiveTab.getTable(), "Aktiv");
     }//GEN-LAST:event_buttonViewActiveCasesActionPerformed
 
     private void buttonSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalesActionPerformed

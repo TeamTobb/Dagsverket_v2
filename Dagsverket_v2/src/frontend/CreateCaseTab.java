@@ -359,6 +359,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCustomerDLastName);
         labelCustomerDLastName.setBounds(240, 150, 80, 16);
 
+        textAreaToolList.setDocument(new JTextFieldLimit(100));
         textAreaToolList.setColumns(20);
         textAreaToolList.setRows(5);
         jScrollPane8.setViewportView(textAreaToolList);

@@ -541,6 +541,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textAreaToolList.setDocument(new JTextFieldLimit(100));"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

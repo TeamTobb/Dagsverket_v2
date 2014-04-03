@@ -25,7 +25,7 @@ public class Users {
     public boolean deleteUser() {
     	return false;
     }
-
+       
     public void updateUserList() {
         this.users = new ArrayList<User>();
         String sqlStatement = "Select * from users";
@@ -79,6 +79,14 @@ public class Users {
 
     public User getUserByIndex(int i) {
         return this.users.get(i);
+    }
+    
+    public User getUserById(int id){
+        for(User u : users){
+            if(u.getId()==id){
+            return u;}
+        }
+        return null;
     }
     
     public User getUserByFullName(String fullName){

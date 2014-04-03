@@ -77,7 +77,7 @@ public class Cases {
         }
         return null;
     }
-
+    
     public void updateCaseList(String status) {
         this.cases = new ArrayList<Case>();
         String sqlStatement = "SELECT * from cases,customers WHERE customer = customers.id AND status = '" + status + "'";

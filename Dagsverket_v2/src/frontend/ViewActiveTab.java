@@ -87,7 +87,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Saksnummer", "Emne", "Utførelsesdato", "Ansvarlig"
             }
         ));
         jScrollPane2.setViewportView(jTable2);

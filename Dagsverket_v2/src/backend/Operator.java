@@ -68,6 +68,20 @@ public class Operator {
        }    
     }
 
+    public void updateActiveList(JTable table, String status){    
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       model.setRowCount(0);
+       Object[] insertTable = new Object[4];
+       this.getCases().updateCaseList(status);
+       
+       for(int i = 0; i<this.getCases().getCases().size(); i++){
+           insertTable[0] = this.getCases().getCases().get(i).getId();
+           insertTable[1] = this.getCases().getCases().get(i).getSubject();
+           insertTable[2] = this.getCases().getCases().get(i).getStartDate();
+           insertTable[3] = this.users.getUserById(this.getCases().getCases().get(i).getSupervisorId()).toString();
+           model.insertRow(table.getRowCount(), insertTable);                     
+       }    
+    }
     public Employees getEmployees() {
         return employees;
     }
