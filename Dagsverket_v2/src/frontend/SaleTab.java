@@ -214,9 +214,19 @@ public class SaleTab extends javax.swing.JPanel {
                 textFieldQuantityActionPerformed(evt);
             }
         });
+        textFieldQuantity.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                textFieldQuantityInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
         textFieldQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 textFieldQuantityKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textFieldQuantityKeyReleased(evt);
             }
         });
 
@@ -488,8 +498,17 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void textFieldQuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldQuantityKeyTyped
-textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));        // TODO add your handling code here:
+        //Not in Use
     }//GEN-LAST:event_textFieldQuantityKeyTyped
+
+    private void textFieldQuantityInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_textFieldQuantityInputMethodTextChanged
+        //Not in Use
+    }//GEN-LAST:event_textFieldQuantityInputMethodTextChanged
+
+    private void textFieldQuantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldQuantityKeyReleased
+            textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldQuantityKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
