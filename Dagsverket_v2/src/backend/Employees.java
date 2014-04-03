@@ -22,6 +22,9 @@ import java.util.Calendar;
  * @author borgarlie
  */
 public class Employees {
+    DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+    Calendar cal = Calendar.getInstance();
+    String currentDate = dateFormat.format(cal.getTime());   
     private ArrayList<Employee> employees;
     private Database db;
     public static final int WRONG_FIRSTNAME = 1; 
@@ -63,10 +66,7 @@ public class Employees {
         }
     }
     
-    public void updateGUILists(JTable left, JTable right){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
-        Calendar cal = Calendar.getInstance();
-        String currentDate = dateFormat.format(cal.getTime());       
+    public void updateGUILists(JTable left, JTable right){    
         DefaultTableModel modelLeft = (DefaultTableModel) left.getModel();
         DefaultTableModel modelRight = (DefaultTableModel) right.getModel();
         modelLeft.setRowCount(0);
@@ -75,24 +75,80 @@ public class Employees {
         updateEmployeeList();
         
         for(int i = 0; i<this.employees.size(); i++){
-            if(this.employees.get(i).getLastRegDate().equals(currentDate)){
                 insertTable[0] = this.employees.get(i).getId();           
                 insertTable[1] = this.employees.get(i).getFirstName();
                 insertTable[2] = this.employees.get(i).getLastName();
-                insertTable[3] = this.employees.get(i).getLastWorkDate();
-                insertTable[4] = this.employees.get(i).getLastRegDate();
-                insertTable[5] = this.employees.get(i).getAttendanceWithoutWork();                      
-                modelRight.insertRow(right.getRowCount(), insertTable);   
-            } else{
-                insertTable[0] = this.employees.get(i).getId();           
-                insertTable[1] = this.employees.get(i).getFirstName();
-                insertTable[2] = this.employees.get(i).getLastName();
-                insertTable[3] = this.employees.get(i).getLastWorkDate();
-                insertTable[4] = this.employees.get(i).getLastRegDate();
-                insertTable[5] = this.employees.get(i).getAttendanceWithoutWork();                      
-                modelLeft.insertRow(left.getRowCount(), insertTable);                   
-            }      
+                insertTable[5] = this.employees.get(i).getLastWorkDate();
+                insertTable[3] = this.employees.get(i).getLastRegDate();
+                insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
+                if(this.employees.get(i).getLastRegDate().equals(currentDate)){
+                    modelRight.insertRow(right.getRowCount(), insertTable);   
+                }
+                else{
+                    modelLeft.insertRow(left.getRowCount(), insertTable);
+                }
        }    
+    }
+    
+    public void moveToAttended(String firstName, String lastName, JTable tableLeft, JTable tableRight){      
+        try{
+            this.db.createConnection();            
+            PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
+                    "UPDATE employees SET lastRegDate='" + currentDate + 
+                    "' WHERE firstName = '" + firstName + "' AND lastName = '" + lastName + "'"); 
+            this.db.executeUpdate(updateEmployeeRegDate);
+        }
+        catch(SQLException e){
+            System.out.println("feil i attendancetab.move" + e);
+        }
+        finally{
+            this.db.closeAll();
+        }       
+        
+        try{
+            this.db.createConnection();            
+            PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
+                    "UPDATE employees SET attendanceWithoutWork=attendanceWithoutWork +1 WHERE firstName = '"
+                            + firstName + "' AND lastName = '" + lastName + "'"); 
+            this.db.executeUpdate(updateEmployeeRegDate);
+        }
+        catch(SQLException e){
+            System.out.println("feil i attendancetab.move" + e);
+        }
+        finally{
+            this.updateGUILists(tableLeft, tableRight);
+            this.db.closeAll();
+        }     
+    }
+    
+    public void moveToNotAttended(String firstName, String lastName, JTable tableLeft, JTable tableRight){
+        try{
+            this.db.createConnection();            
+            PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
+                    "UPDATE employees SET lastRegDate ='' WHERE firstName = '" + firstName + "' AND lastName = '" + lastName + "'"); 
+            this.db.executeUpdate(updateEmployeeRegDate);
+        }
+        catch(SQLException e){
+            System.out.println("feil i attendancetab.move" + e);
+        }
+        finally{
+            this.db.closeAll();
+        }       
+        
+        try{
+            this.db.createConnection();            
+            PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
+                    "UPDATE employees SET attendanceWithoutWork=attendanceWithoutWork -1 WHERE firstName = '"
+                            + firstName + "' AND lastName = '" + lastName + "'"); 
+            this.db.executeUpdate(updateEmployeeRegDate);
+        }
+        catch(SQLException e){
+            System.out.println("feil i attendancetab.move" + e);
+        }
+        finally{
+            this.updateGUILists(tableLeft, tableRight);
+            this.db.closeAll();
+        }         
     }
 
     public ArrayList<Employee> getEmployees() {
