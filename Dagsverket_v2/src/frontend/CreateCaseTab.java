@@ -89,15 +89,15 @@ public class CreateCaseTab extends javax.swing.JPanel {
 
         labelCreateCaseDName.setText("Navn:");
         add(labelCreateCaseDName);
-        labelCreateCaseDName.setBounds(54, 74, 36, 16);
+        labelCreateCaseDName.setBounds(30, 70, 36, 16);
 
         labelCreateCaseName.setText(op.getUser().toString());
         add(labelCreateCaseName);
-        labelCreateCaseName.setBounds(164, 74, 84, 16);
+        labelCreateCaseName.setBounds(90, 70, 180, 16);
 
         labelCreateCaseDNameHeader.setText("Mottatt av:");
         add(labelCreateCaseDNameHeader);
-        labelCreateCaseDNameHeader.setBounds(54, 44, 68, 16);
+        labelCreateCaseDNameHeader.setBounds(30, 40, 68, 16);
 
         labelCreateCaseHeader.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         labelCreateCaseHeader.setText("Nytt oppdrag ");
@@ -111,15 +111,15 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(comboBoxCreateCaseSupervisor);
-        comboBoxCreateCaseSupervisor.setBounds(334, 64, 210, 27);
+        comboBoxCreateCaseSupervisor.setBounds(340, 60, 210, 27);
 
         labelCreateCaseDSupervisor.setText("Navn:");
         add(labelCreateCaseDSupervisor);
-        labelCreateCaseDSupervisor.setBounds(294, 74, 36, 16);
+        labelCreateCaseDSupervisor.setBounds(300, 70, 36, 16);
 
         labelCreateCaseDSupervisorHeader.setText("Utføres av:");
         add(labelCreateCaseDSupervisorHeader);
-        labelCreateCaseDSupervisorHeader.setBounds(294, 44, 68, 16);
+        labelCreateCaseDSupervisorHeader.setBounds(300, 40, 68, 16);
 
         labelDate.setText("Insert date" );
         add(labelDate);
@@ -127,11 +127,11 @@ public class CreateCaseTab extends javax.swing.JPanel {
 
         labelDDate.setText("Dato:");
         add(labelDDate);
-        labelDDate.setBounds(54, 131, 34, 16);
+        labelDDate.setBounds(30, 130, 34, 16);
 
         labelCustomerDFirstName.setText("Kunde:");
         add(labelCustomerDFirstName);
-        labelCustomerDFirstName.setBounds(40, 160, 43, 16);
+        labelCustomerDFirstName.setBounds(30, 160, 43, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
@@ -158,7 +158,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldAddress);
-        textFieldAddress.setBounds(135, 180, 274, 28);
+        textFieldAddress.setBounds(135, 180, 280, 28);
 
         textFieldPostPlace.setText("updateOnPostnr");
         textFieldPostPlace.setToolTipText("...");
@@ -168,7 +168,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldPostPlace);
-        textFieldPostPlace.setBounds(233, 214, 177, 28);
+        textFieldPostPlace.setBounds(233, 214, 180, 28);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPostalCode.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
@@ -210,7 +210,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldPhone);
-        textFieldPhone.setBounds(135, 248, 270, 28);
+        textFieldPhone.setBounds(135, 248, 280, 28);
 
         labelDPhone.setText("Telefon:");
         add(labelDPhone);
@@ -291,7 +291,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldPrice);
-        textFieldPrice.setBounds(724, 34, 90, 28);
+        textFieldPrice.setBounds(714, 34, 100, 28);
 
         labelCreateCaseDInspectDate.setText("Befaring: ");
         add(labelCreateCaseDInspectDate);
@@ -337,11 +337,11 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseStartDate);
         labelCreateCaseStartDate.setBounds(734, 151, 210, 20);
         add(dateFieldInspectDate);
-        dateFieldInspectDate.setBounds(710, 70, 123, 28);
+        dateFieldInspectDate.setBounds(710, 70, 130, 28);
         add(dateFieldReqDate);
         dateFieldReqDate.setBounds(158, 379, 210, 28);
         add(dateFieldStartDate);
-        dateFieldStartDate.setBounds(670, 140, 123, 28);
+        dateFieldStartDate.setBounds(700, 140, 170, 28);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
