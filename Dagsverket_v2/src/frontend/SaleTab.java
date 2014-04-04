@@ -489,15 +489,12 @@ public class SaleTab extends javax.swing.JPanel {
             "Skriv inn vedtype, bagstørrelse og pris på den nye vedtypen", JOptionPane.OK_CANCEL_OPTION);
       if (result == JOptionPane.OK_OPTION) {          
            woods.addWood(textfieldWoodType.getText(), textfieldBagSize.getText(),textfieldPrice.getText());
-           
-           
+           DefaultComboBoxModel model = new DefaultComboBoxModel(woods.getWoodsStringList());           
+           model.addElement(textfieldWoodType.getText());
+           comboBoxWoodType.setModel(model);
       }
       
-      woods.updateWoodList();
-      DefaultComboBoxModel model = new DefaultComboBoxModel(woods.getWoodsStringList());
-      comboBoxWoodType.setModel( model );
-      
-      
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
