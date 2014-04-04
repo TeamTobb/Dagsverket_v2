@@ -14,11 +14,13 @@ public class User {
 	private int id;
 	private String firstname;
     private String lastname;
+    private int status;
 
-    public User(int id, String firstname, String lastname) {
+    public User(int id, String firstname, String lastname, int status) {
     	this.id = id;
     	this.firstname = firstname;
     	this.lastname = lastname;
+        this.status = status;
     }
 
     public int getId() {
@@ -32,6 +34,10 @@ public class User {
     public String getLastname() {
     	return this.lastname;
     }
+
+    public int getStatus() {
+        return status;
+    }        
     
     public String toString(){
         return this.firstname + " " + this.lastname;

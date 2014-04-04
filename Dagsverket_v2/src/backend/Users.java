@@ -26,17 +26,18 @@ public class Users {
     	return false;
     }
        
-    public void updateUserList() {
+    public void updateUserList(int status) {
         this.users = new ArrayList<User>();
-        String sqlStatement = "Select * from users";
+        String sqlStatement = "Select * from users WHERE status = " + status;
         ResultSet rs = db.executeQuery(sqlStatement);
         try {
             while(rs.next()) {
                 users.add(new User(
                     rs.getInt("id"),
                     rs.getString("firstName"),
-                    rs.getString("lastName")
-                    ));
+                    rs.getString("lastName"), 
+                    rs.getInt("status")
+                ));
             }            
         } catch(SQLException e) {
             System.out.println("SQLError: " + e);
@@ -50,7 +51,7 @@ public class Users {
         int error = 0; 
         db.createConnection();
         try{
-            PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO users VALUES(DEFAULT, ?, ?)");
+            PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO users VALUES(DEFAULT, ?, ?, 1)");
             sqlStatement.setString(1, firstname);
             sqlStatement.setString(2, lastname);       
             error = db.executeUpdate(sqlStatement);

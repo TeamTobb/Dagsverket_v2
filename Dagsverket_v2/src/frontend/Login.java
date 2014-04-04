@@ -7,6 +7,8 @@
 package frontend;
 
 import backend.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,7 +28,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        users.updateUserList();
+        users.updateUserList(1);
         initComponents();
     }
 
@@ -168,7 +170,7 @@ public class Login extends javax.swing.JFrame {
               showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
           }
           else{
-              users.updateUserList();
+              users.updateUserList(1);
               listUserNames.setListData(users.getUsers());
               listUserNames.updateUI();
           }          
@@ -176,7 +178,26 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonNewUserActionPerformed
 
     private void buttonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteUserActionPerformed
-        // TODO add your handling code here:
+        System.out.println(listUserNames.getSelectedValue()); 
+        this.users.updateUserList(1);
+        String[] names = ((String)listUserNames.getSelectedValue()).split(" ");
+        try{
+            db.createConnection();
+            PreparedStatement updateUser = db.getConnection().prepareStatement(
+                    "UPDATE users SET status = 0 WHERE firstName = ? AND lastNAme = ?");
+            updateUser.setString(1, names[0]);
+            updateUser.setString(2, names[1]);  
+            db.executeUpdate(updateUser);
+            users.updateUserList(1);
+            listUserNames.setListData(users.getUsers());
+            listUserNames.updateUI();
+        }
+        catch(SQLException e){
+            System.out.println("feil i delete user: " +e);
+        }
+        finally{
+            db.closeAll();
+        }
     }//GEN-LAST:event_buttonDeleteUserActionPerformed
 
     /**

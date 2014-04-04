@@ -10,6 +10,7 @@ CREATE TABLE users(
 id INTEGER GENERATED ALWAYS AS IDENTITY,
 firstName VARCHAR(30),
 lastName VARCHAR(30),
+status INTEGER,
 CONSTRAINT users_pk PRIMARY KEY(id)
 );
 
@@ -86,10 +87,10 @@ ALTER TABLE cases ADD CONSTRAINT customer_fk FOREIGN KEY(customer) REFERENCES cu
 ALTER TABLE sales ADD CONSTRAINT sales_customer_fk FOREIGN KEY(customer) REFERENCES customers(id);
 ALTER TABLE sales ADD CONSTRAINT wood_fk FOREIGN KEY(wood) REFERENCES wood(woodType);
 
-INSERT INTO users VALUES(DEFAULT, 'Borgar', 'Lie');
-INSERT INTO users VALUES(DEFAULT, 'Bjørn', 'Hoxmark');
-INSERT INTO users VALUES(DEFAULT, 'Thomas', 'Haugrud');
-INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen');
+INSERT INTO users VALUES(DEFAULT, 'Borgar', 'Lie', 1);
+INSERT INTO users VALUES(DEFAULT, 'Bjørn', 'Hoxmark', 1);
+INSERT INTO users VALUES(DEFAULT, 'Thomas', 'Haugrud', 1);
+INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen', 1);
 
 INSERT INTO wood VALUES('Eik', 50, 800);
 INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324);
