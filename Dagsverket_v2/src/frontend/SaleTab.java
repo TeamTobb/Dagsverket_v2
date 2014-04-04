@@ -10,6 +10,7 @@ import backend.*;
 
 import java.awt.Color;
 import javax.swing.Box;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -493,7 +494,10 @@ public class SaleTab extends javax.swing.JPanel {
       }
       
       woods.updateWoodList();
-      comboBoxWoodType.repaint();
+      DefaultComboBoxModel model = new DefaultComboBoxModel(woods.getWoodsStringList());
+      comboBoxWoodType.setModel( model );
+      
+      
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

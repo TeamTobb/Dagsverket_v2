@@ -97,6 +97,8 @@ public class Woods {
                 
         }
         
+       
+        
      }
     
      public int getWoodTypePrice(String woodType){
@@ -145,6 +147,12 @@ public class Woods {
          
          return costString;
      }
+
+    public ArrayList<Wood> getWoods() {
+        return woods;
+    }
+     
+     
     
     public static void main(String[] args) {
         Database db = new Database();

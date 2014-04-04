@@ -44,10 +44,10 @@ public class ViewActiveTab extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonToggle = new javax.swing.JButton();
-        panelCalender = new javax.swing.JPanel();
         panelTableView = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        panelCalender = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(153, 153, 153));
         setLayout(null);
@@ -60,6 +60,51 @@ public class ViewActiveTab extends javax.swing.JPanel {
         });
         add(buttonToggle);
         buttonToggle.setBounds(784, 609, 234, 41);
+
+        panelTableView.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Saksnummer", "Emne", "Utførelsesdato", "Ansvarlig"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setMinWidth(80);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(80);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(140);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(140);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(140);
+        }
+
+        javax.swing.GroupLayout panelTableViewLayout = new javax.swing.GroupLayout(panelTableView);
+        panelTableView.setLayout(panelTableViewLayout);
+        panelTableViewLayout.setHorizontalGroup(
+            panelTableViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+        );
+        panelTableViewLayout.setVerticalGroup(
+            panelTableViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+        );
+
+        add(panelTableView);
+        panelTableView.setBounds(0, 0, 1024, 600);
 
         panelCalender.setBackground(new java.awt.Color(102, 255, 102));
 
@@ -76,35 +121,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
 
         add(panelCalender);
         panelCalender.setBounds(-2, 1, 1030, 600);
-
-        panelTableView.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Saksnummer", "Emne", "Utførelsesdato", "Ansvarlig"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        javax.swing.GroupLayout panelTableViewLayout = new javax.swing.GroupLayout(panelTableView);
-        panelTableView.setLayout(panelTableViewLayout);
-        panelTableViewLayout.setHorizontalGroup(
-            panelTableViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
-        );
-        panelTableViewLayout.setVerticalGroup(
-            panelTableViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-        );
-
-        add(panelTableView);
-        panelTableView.setBounds(0, 0, 1024, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggleActionPerformed
