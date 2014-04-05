@@ -9,6 +9,7 @@ package frontend;
 import backend.*;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
@@ -18,10 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-/**
- *
- * @author Jorgen
- */
 public class SaleTab extends javax.swing.JPanel {
     
      private Sales sales;
@@ -36,6 +33,8 @@ public class SaleTab extends javax.swing.JPanel {
        this.woods = new Woods(new Database());
        this.woods.updateWoodList(); //TODO Flytte til gui 
        initComponents();
+       this.sales.updateWoodSaleList(jTable2);
+
     }
 
     /**
@@ -50,6 +49,7 @@ public class SaleTab extends javax.swing.JPanel {
         panelLeft = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
+        buttonUpdateTable = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -84,12 +84,21 @@ public class SaleTab extends javax.swing.JPanel {
 
         jToggleButton1.setText("Old Sale");
 
+        buttonUpdateTable.setText("Oppdater Liste");
+        buttonUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonUpdateTableActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(323, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(buttonUpdateTable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -98,6 +107,10 @@ public class SaleTab extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jToggleButton1)
                 .addGap(0, 56, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonUpdateTable)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelLeft.add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -110,10 +123,15 @@ public class SaleTab extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Salg id", "Kjøper", "Antall", "Status"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setMinWidth(60);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(60);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,7 +199,6 @@ public class SaleTab extends javax.swing.JPanel {
             }
         });
 
-        textFieldPostPlace.setText("updateOnPostnr");
         textFieldPostPlace.setToolTipText("...");
         textFieldPostPlace.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -344,7 +361,7 @@ public class SaleTab extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(labelDPrice)
                 .addComponent(textFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(123, Short.MAX_VALUE))
+            .addContainerGap(124, Short.MAX_VALUE))
     );
 
     panelRight.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -390,7 +407,7 @@ public class SaleTab extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(14, 14, 14)
                     .addComponent(buttonAddWoodType)))
-            .addContainerGap(57, Short.MAX_VALUE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
 
     panelRight.add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -420,8 +437,6 @@ public class SaleTab extends javax.swing.JPanel {
 
     private void textFieldPostnrFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldPostnrFocusLost
         // TODO add your handling code here:
-        textFieldPostPlace.setText(textFieldPostnr.getText());
-        // set Field ut i fra postnr = poststed i database!!!
     }//GEN-LAST:event_textFieldPostnrFocusLost
 
     private void textFieldPostnrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPostnrActionPerformed
@@ -447,6 +462,7 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldPriceActionPerformed
 
     private void buttonDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDoneActionPerformed
+        ArrayList<Integer> errors = new ArrayList<Integer>();
         labelDPhone.setForeground(Color.black);
         labelDLastName.setForeground(Color.black);
         labelDFirstName.setForeground(Color.black);
@@ -456,14 +472,25 @@ public class SaleTab extends javax.swing.JPanel {
         labelDQuanitity.setForeground(Color.blue);
         //String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
                                          //String postnr, String address, String quantity, String postalPlace
-        sales.createSale(textFieldFirstName.getText().trim(), textFieldLastName.getText().trim(), 
+        errors =  sales.createSale(textFieldFirstName.getText().trim(), textFieldLastName.getText().trim(), 
                          textFieldPhone.getText().trim(), (String)comboBoxWoodType.getSelectedItem(),
                          textFieldPostnr.getText().trim(), textFieldAddress.getText().trim(), 
                          textFieldQuantity.getText().trim(), textFieldPostPlace.getText().trim());
-                         
-              
+       
         
+       System.out.println(errors.size());
+      
+       /*
+       if (errors.isEmpty()){
        this.sales.updateWoodSaleList(jTable2);
+       labelDPhone.setText("");
+       labelDLastName.setText("");
+       labelDFirstName.setText("");
+       labelDWoodType.setText("");
+       labelDPostnr.setText("");
+       labelDAddress.setText("");
+       labelDQuanitity.setText("");
+       }*/
     }//GEN-LAST:event_buttonDoneActionPerformed
 
     private void comboBoxWoodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxWoodTypeActionPerformed
@@ -512,10 +539,17 @@ public class SaleTab extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldQuantityKeyReleased
 
+    private void buttonUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateTableActionPerformed
+        this.sales.updateWoodSaleList(jTable2);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_buttonUpdateTableActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddWoodType;
     private javax.swing.JButton buttonDone;
+    private javax.swing.JButton buttonUpdateTable;
     private javax.swing.JComboBox comboBoxWoodType;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
