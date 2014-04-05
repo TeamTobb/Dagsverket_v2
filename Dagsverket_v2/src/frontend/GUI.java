@@ -231,7 +231,7 @@ public class GUI extends javax.swing.JFrame {
         this.viewActiveTab = new ViewActiveTab(); 
         this.viewDraftTab = new ViewDraftTab(); 
         this.viewHistoryTab = new ViewHistoryTab();
-        this.saleTab = new SaleTab(new Database()); 
+        this.saleTab = new SaleTab(); 
         this.attendanceTab = new AttendanceTab();
         
         cardLayout = (CardLayout) panelContent.getLayout();
