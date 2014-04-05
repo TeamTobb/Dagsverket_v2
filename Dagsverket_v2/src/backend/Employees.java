@@ -65,6 +65,98 @@ public class Employees {
             db.closeAll();
         }
     }
+    public void addToCase(int caseId, int employeeId){
+        try{
+            db.createConnection();
+            PreparedStatement sqlStatement = db.getConnection().prepareStatement(
+                                        "INSERT INTO events_has_employees VALUES(?, ?)");
+            sqlStatement.setInt(1, caseId);
+            sqlStatement.setInt(2, employeeId);            
+            db.executeUpdate(sqlStatement);
+        }catch(SQLException e){
+            System.out.println("feil i addToCase: " + e);
+        }
+        finally{
+            db.closeAll();
+        }
+    }
+    
+    public void updateEmployeeAvailable(JTable left, JTable right, int caseId){
+        this.employees = new ArrayList<Employee>();
+        String sqlStatement = "SELECT * FROM employees WHERE id NOT IN("
+                             + "SELECT employees.id FROM employees INNER JOIN events_has_employees "
+                             + "ON employees.id = events_has_employees.EMPLOYEE_ID WHERE case_id = " + caseId + ")";
+        ResultSet rs = db.executeQuery(sqlStatement);
+        
+        
+        try{
+            while(rs.next()){
+                this.employees.add(new Employee(
+                    rs.getInt("id"),
+                    rs.getString("firstName"),
+                    rs.getString("lastName"),
+                    rs.getString("lastWorkDate"),
+                    rs.getString("lastRegDate"),
+                    rs.getInt("attendanceWithoutWork")));                                
+            }
+        }
+        catch(SQLException e){
+            System.out.println("feil i udateEmployeeAvailable: " + e);
+        }
+        finally{
+            db.closeAll();
+        }        
+        DefaultTableModel modelLeft = (DefaultTableModel)left.getModel();
+        modelLeft.setRowCount(0);
+        
+        Object[] insertTable = new Object[6];                
+        for(int i = 0; i<this.employees.size(); i++){
+            insertTable[0] = this.employees.get(i).getId();           
+            insertTable[1] = this.employees.get(i).getFirstName();
+            insertTable[2] = this.employees.get(i).getLastName();
+            insertTable[5] = this.employees.get(i).getLastWorkDate();
+            insertTable[3] = this.employees.get(i).getLastRegDate();
+            insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
+            modelLeft.insertRow(left.getRowCount(), insertTable);
+        }          
+        
+        this.employees = new ArrayList<Employee>();
+        sqlStatement = "SELECT * FROM employees INNER JOIN events_has_employees "
+                       + "ON employees.id = events_has_employees.EMPLOYEE_ID WHERE case_id = " + caseId;
+        ResultSet rs2 = db.executeQuery(sqlStatement);        
+        
+        try{
+            while(rs2.next()){
+                this.employees.add(new Employee(
+                    rs2.getInt("id"),
+                    rs2.getString("firstName"),
+                    rs2.getString("lastName"),
+                    rs2.getString("lastWorkDate"),
+                    rs2.getString("lastRegDate"),
+                    rs2.getInt("attendanceWithoutWork")));                                
+            }
+        }
+        catch(SQLException e){
+            System.out.println("feil i udateEmployeeAvailable: " + e);
+        }
+        finally{
+            db.closeAll();
+        }   
+        
+        DefaultTableModel modelRight = (DefaultTableModel)right.getModel();
+        modelRight.setRowCount(0);
+        
+        insertTable = new Object[6];                
+        for(int i = 0; i<this.employees.size(); i++){
+            insertTable[0] = this.employees.get(i).getId();           
+            insertTable[1] = this.employees.get(i).getFirstName();
+            insertTable[2] = this.employees.get(i).getLastName();
+            insertTable[5] = this.employees.get(i).getLastWorkDate();
+            insertTable[3] = this.employees.get(i).getLastRegDate();
+            insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
+            modelRight.insertRow(right.getRowCount(), insertTable);
+        }    
+    }
     
     public void updateGUILists(JTable left, JTable right){    
         DefaultTableModel modelLeft = (DefaultTableModel) left.getModel();
@@ -189,6 +281,10 @@ public class Employees {
             errors.add(WRONG_LASTNAME);
         }
     	return errors;
+    }
+    
+    public void addEmployee(){
+        
     }
 
 

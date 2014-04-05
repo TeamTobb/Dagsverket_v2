@@ -19,7 +19,8 @@ import javax.swing.table.DefaultTableModel;
 public class ViewActiveTab extends javax.swing.JPanel {     
     private Cases cases; 
     private Users users;
-     
+    private addEmployeeFrame addEmployeeFrame;  
+    private Employees employees;
     /**
      * Creates new form ViewActiveTab
      */
@@ -29,6 +30,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
         panelTableView.setVisible(true);
         this.cases = new Cases();
         this.users = new Users();
+        this.employees = new Employees();
     }
     
     public void updateList(){    
@@ -60,23 +62,24 @@ public class ViewActiveTab extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonToggle = new javax.swing.JButton();
+        buttonAddEmployee = new javax.swing.JButton();
         panelTableView = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         panelCalender = new javax.swing.JPanel();
+        buttonToggle1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 153));
         setLayout(null);
 
-        buttonToggle.setText("Gå til kalender");
-        buttonToggle.addActionListener(new java.awt.event.ActionListener() {
+        buttonAddEmployee.setText("Legg til arbeidere");
+        buttonAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonToggleActionPerformed(evt);
+                buttonAddEmployeeActionPerformed(evt);
             }
         });
-        add(buttonToggle);
-        buttonToggle.setBounds(784, 609, 234, 41);
+        add(buttonAddEmployee);
+        buttonAddEmployee.setBounds(520, 610, 234, 41);
 
         panelTableView.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -138,30 +141,34 @@ public class ViewActiveTab extends javax.swing.JPanel {
 
         add(panelCalender);
         panelCalender.setBounds(-2, 1, 1030, 600);
+
+        buttonToggle1.setText("Gå til kalender");
+        buttonToggle1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonToggle1ActionPerformed(evt);
+            }
+        });
+        add(buttonToggle1);
+        buttonToggle1.setBounds(784, 609, 234, 41);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggleActionPerformed
-        if (!panelCalender.isVisible()){
-             panelTableView.setVisible(false);
-             panelCalender.setVisible(true);
-             buttonToggle.setText("Gå til Tabel");
+    private void buttonAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddEmployeeActionPerformed
+        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+        this.addEmployeeFrame = new addEmployeeFrame(id);
+        addEmployeeFrame.setVisible(true);
+        System.out.println("DETTE ER ID: " + id);
+        this.employees.updateEmployeeAvailable(addEmployeeFrame.getTableLeft(), addEmployeeFrame.getTableRight(), id);
+    }//GEN-LAST:event_buttonAddEmployeeActionPerformed
 
-        } else {
-            
-            panelCalender.setVisible(false);
-            panelTableView.setVisible(true);
-            buttonToggle.setText("Gå til Kalender");
-
-        }
-        
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_buttonToggleActionPerformed
+    private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonToggle1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAddEmployee;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton buttonToggle;
+    private javax.swing.JButton buttonToggle1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JPanel panelCalender;
