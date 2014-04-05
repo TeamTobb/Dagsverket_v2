@@ -21,13 +21,16 @@ import static javax.swing.JOptionPane.*;
  * @author Jorgen
  */
 public class Login extends javax.swing.JFrame {
-    Database db = new Database();
-    Users users = new Users(db);
+    private Database db;
+    private Users users;
+    
     
     /**
      * Creates new form Login
      */
     public Login() {
+        this.db = new Database();
+        this.users = new Users();
         users.updateUserList(1);
         initComponents();
     }
@@ -145,6 +148,8 @@ public class Login extends javax.swing.JFrame {
     private void buttonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogInActionPerformed
         this.dispose();
         User selectedUser = users.getUserByIndex(listUserNames.getSelectedIndex());
+        users.setCurrentUser(selectedUser);
+        System.out.println(selectedUser.toString());
         GUI.main(selectedUser);
     }//GEN-LAST:event_buttonLogInActionPerformed
 

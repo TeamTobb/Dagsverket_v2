@@ -16,19 +16,36 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorgen
  */
-public class ViewActiveTab extends javax.swing.JPanel {
-    private Operator op;
-     
+public class ViewActiveTab extends javax.swing.JPanel {     
+    private Cases cases; 
+    private Users users;
      
     /**
      * Creates new form ViewActiveTab
      */
-    public ViewActiveTab(Operator op) {
+    public ViewActiveTab() {
         initComponents();
         panelCalender.setVisible(false);
         panelTableView.setVisible(true);
-        this.op = op;
+        this.cases = new Cases();
+        this.users = new Users();
     }
+    
+    public void updateList(){    
+    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+    model.setRowCount(0);
+    Object[] insertTable = new Object[4];
+    this.cases.updateCaseList("Aktiv");
+
+    for(int i = 0; i<this.cases.getCases().size(); i++){
+        insertTable[0] = this.cases.getCases().get(i).getId();
+        insertTable[1] = this.cases.getCases().get(i).getSubject();
+        insertTable[2] = this.cases.getCases().get(i).getStartDate();
+        insertTable[3] = this.users.getUserById(this.cases.getCases().get(i).getSupervisorId()).toString();
+        model.insertRow(jTable2.getRowCount(), insertTable);                     
+       }    
+    }
+    
     
     public JTable getTable(){
         return jTable2;

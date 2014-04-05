@@ -22,12 +22,12 @@ public class Cases {
     public static final int WRONG_POSTALCODE_FORMAT = 6;
     public static final int WRONG_PRICE_FORMAT = 7;
     private Database db; 
-	private ArrayList<Case> cases;
+    private ArrayList<Case> cases;
 
-	public Cases(Database db) { // remove max
-            this.db = db;
-            this.cases = new ArrayList<Case>();
-	}
+    public Cases() { // remove max
+        this.db = new Database();
+        this.cases = new ArrayList<Case>();
+    }
 
 	// public boolean updateCaseList(String status, int start, int end) {
 	// 	this.cases = new ArrayList<Case>();
@@ -241,7 +241,7 @@ public class Cases {
 
     public static void main(String[] args) {
         Database db = new Database();
-        Cases c = new Cases(db);
+        Cases c = new Cases();
       //  c.updateCaseList();
         Case n1 = c.getCaseById(4);
         if(n1 != null) {

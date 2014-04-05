@@ -13,8 +13,6 @@ import java.awt.CardLayout;
  * @author Jorgen
  */
 public class GUI extends javax.swing.JFrame {
-      
-    private Operator op; 
     private CardLayout cardLayout;
     private CreateCaseTab createCaseTab; 
     private ViewActiveTab viewActiveTab;
@@ -22,15 +20,17 @@ public class GUI extends javax.swing.JFrame {
     private ViewHistoryTab viewHistoryTab;
     private SaleTab saleTab; 
     private AttendanceTab attendanceTab;
-    
-
+    private Database db;   
+    private Employees employees;
+    private Users users;
     /**
      * Creates new form GUI
      */
-    public GUI(User user) {
-        this.op = new Operator(user); 
+    public GUI(User currentUser) {
         initComponents();
         addPanels();
+        this.employees = new Employees();
+        this.users = new Users();
     }
     
     /**
@@ -111,7 +111,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         labelUserName.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
-        labelUserName.setText(this.op.getUser().getFirstname() + " " + this.op.getUser().getLastname().substring(0, 1));
+        labelUserName.setText(users.currentUser.getFirstname() + " " + users.currentUser.getLastname().substring(0, 1));
 
         buttonViewDraftCases.setBackground(new java.awt.Color(51, 51, 51));
         buttonViewDraftCases.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
@@ -197,7 +197,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonRegisterCaseActionPerformed
 
     private void buttonViewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewHistoryActionPerformed
-        op.updateList(this.viewHistoryTab.getTable(), "Ferdig");
+        this.viewHistoryTab.updateList();
         this.cardLayout.show(panelContent, "HistoryTab");
     }//GEN-LAST:event_buttonViewHistoryActionPerformed
 
@@ -207,13 +207,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLogOutActionPerformed
 
     private void buttonViewDraftCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewDraftCasesActionPerformed
-        op.updateList(this.viewDraftTab.getTable(), "Uferdig");
+        this.viewDraftTab.updateList();
         this.cardLayout.show(panelContent, "DraftTab");
     }//GEN-LAST:event_buttonViewDraftCasesActionPerformed
 
     private void buttonViewActiveCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActiveCasesActionPerformed
         this.cardLayout.show(panelContent, "ActiveTab");
-        op.updateActiveList(this.viewActiveTab.getTable(), "Aktiv");
+        this.viewActiveTab.updateList();
         //op.updateList(this.viewActiveTab.getTable(), "Aktiv");
     }//GEN-LAST:event_buttonViewActiveCasesActionPerformed
 
@@ -223,16 +223,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void buttonAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAttendanceActionPerformed
         this.cardLayout.show(panelContent, "AttendanceTab");
-        this.op.getEmployees().updateGUILists(this.attendanceTab.getTableLeft(), this.attendanceTab.getTableRight());
+        this.employees.updateGUILists(this.attendanceTab.getTableLeft(), this.attendanceTab.getTableRight());
     }//GEN-LAST:event_buttonAttendanceActionPerformed
 
     private void addPanels(){
-        this.createCaseTab = new CreateCaseTab(op);
-        this.viewActiveTab = new ViewActiveTab(op); 
+        this.createCaseTab = new CreateCaseTab();
+        this.viewActiveTab = new ViewActiveTab(); 
         this.viewDraftTab = new ViewDraftTab(); 
         this.viewHistoryTab = new ViewHistoryTab();
-        this.saleTab = new SaleTab(op); 
-        this.attendanceTab = new AttendanceTab(op);
+        this.saleTab = new SaleTab(new Database()); 
+        this.attendanceTab = new AttendanceTab();
         
         cardLayout = (CardLayout) panelContent.getLayout();
         panelContent.add(this.createCaseTab, "CreateCaseTab");        
@@ -246,7 +246,7 @@ public class GUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(final User user) {  
+    public static void main(final User currentUser) {  
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -274,7 +274,7 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI(user).setVisible(true);
+                new GUI(currentUser).setVisible(true);
             }
         });
 

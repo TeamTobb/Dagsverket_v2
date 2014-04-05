@@ -14,13 +14,25 @@ import java.sql.*;
  * @author Jorgen
  */
 public class Users {
-	private ArrayList<User> users;
+    private ArrayList<User> users;
     private Database db;
+    public static User currentUser;
 
-	public Users(Database db) {
-            this.users = new ArrayList<User>();
-            this.db = db;
-	}
+    public Users() {
+        this.users = new ArrayList<User>();
+        this.db = new Database();        
+        updateUserList(1);
+    }
+    
+    public void setCurrentUser(User newCurrentUser){
+        currentUser = newCurrentUser;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+    
+    
 
     public boolean deleteUser() {
     	return false;

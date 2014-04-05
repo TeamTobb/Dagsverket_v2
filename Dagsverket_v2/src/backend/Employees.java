@@ -30,9 +30,9 @@ public class Employees {
     public static final int WRONG_FIRSTNAME = 1; 
     public static final int WRONG_LASTNAME = 2;
 
-    public Employees(Database db) {
+    public Employees() {
     	this.employees = new ArrayList<Employee>();
-    	this.db = db;
+    	this.db = new Database();
     }
 
     public Employee getEmployeeById(int id) {

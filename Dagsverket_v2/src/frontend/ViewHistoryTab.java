@@ -6,23 +6,40 @@
 
 package frontend;
 
+import backend.*;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jorgen
  */
 public class ViewHistoryTab extends javax.swing.JPanel {
+    private Cases cases;
+    private Users users;
 
     /**
      * Creates new form ViewHistoryTab
      */
     public ViewHistoryTab() {
+        this.cases = new Cases(); 
+        this.users = new Users(); 
         initComponents();
-    }
+    }    
     
-    public JTable getTable(){
-        return jTable1;
+    public void updateList(){    
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        Object[] insertTable = new Object[4];
+        this.cases.updateCaseList("Ferdig");
+
+        for(int i = 0; i<this.cases.getCases().size(); i++){
+            insertTable[0] = this.cases.getCases().get(i).getId();
+            insertTable[1] = this.cases.getCases().get(i).getSubject();
+            insertTable[2] = this.cases.getCases().get(i).getStartDate();
+            insertTable[3] = this.users.getUserById(this.cases.getCases().get(i).getSupervisorId()).toString();
+            model.insertRow(jTable1.getRowCount(), insertTable);                     
+        }    
     }
 
     /**

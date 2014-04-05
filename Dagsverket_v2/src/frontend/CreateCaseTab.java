@@ -16,15 +16,15 @@ import java.util.ArrayList;
  * @author Jorgen
  */
 public class CreateCaseTab extends javax.swing.JPanel {
-    private Operator op;
     private Cases cases;
+    private Users users;
 
     /**
      * Creates new form CreateCaseTab
      */
-    public CreateCaseTab(Operator op) {
-        this.op = op;
-        this.cases = new Cases(op.getDb());
+    public CreateCaseTab() {
+        this.cases = new Cases();
+        this.users = new Users();
         initComponents();
     }
 
@@ -91,7 +91,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseDName);
         labelCreateCaseDName.setBounds(30, 70, 36, 16);
 
-        labelCreateCaseName.setText(op.getUser().toString());
+        labelCreateCaseName.setText(users.currentUser.toString());
         add(labelCreateCaseName);
         labelCreateCaseName.setBounds(90, 70, 180, 16);
 
@@ -104,7 +104,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseHeader);
         labelCreateCaseHeader.setBounds(84, 14, 135, 29);
 
-        comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(op.getUsers().getUsers()));
+        comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(this.users.getUsers()));
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxCreateCaseSupervisorActionPerformed(evt);
@@ -478,7 +478,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         String startDateString = String.format("%1$td-%1$tm-%1$tY", startDate);
         
         ArrayList<Integer> errors = this.cases.createCase(
-        op.getUser().getId(),
+        users.currentUser.getId(),
         textFieldCustomerFirstName.getText().trim(),
         textFieldCustomerLastName.getText().trim(),
         textFieldAddress.getText().trim(),
@@ -489,7 +489,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         reqDateString,
         ComboBoxCreateCaseReqTime.getSelectedItem().toString(),
         textAreaDescription.getText().trim(),
-        op.getUsers().getUserIdByFullName(comboBoxCreateCaseSupervisor.getSelectedItem().toString()),
+        this.users.getUserIdByFullName(comboBoxCreateCaseSupervisor.getSelectedItem().toString()),
         textFieldPrice.getText().trim(),
         inspectDateString,
         startDateString,

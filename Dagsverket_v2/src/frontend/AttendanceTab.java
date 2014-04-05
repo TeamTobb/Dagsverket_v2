@@ -6,7 +6,7 @@
 
 package frontend;
 
-import backend.Operator;
+import backend.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,13 +24,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Jorgen
  */
 public class AttendanceTab extends javax.swing.JPanel {
-    private Operator op; 
-
+    private Employees employees;
     /**
      * Creates new form AttendanceTab
      */
-    public AttendanceTab(Operator op) {
-        this.op = op;
+    public AttendanceTab() {
+        this.employees = new Employees();
         initComponents();
     }
 
@@ -160,7 +159,7 @@ public class AttendanceTab extends javax.swing.JPanel {
     private void buttonMoveToAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToAttendingActionPerformed
         String firstName = (String)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 1);
         String lastName = (String)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 2);        
-        this.op.getEmployees().moveToAttended(firstName, lastName, tableLeft, tableRight);
+        this.employees.moveToAttended(firstName, lastName, tableLeft, tableRight);
        
     }//GEN-LAST:event_buttonMoveToAttendingActionPerformed
 
@@ -179,9 +178,9 @@ public class AttendanceTab extends javax.swing.JPanel {
       int result = JOptionPane.showConfirmDialog(null, panelNewEmployee, 
                "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
       if (result == JOptionPane.OK_OPTION) {
-        errors = this.op.getEmployees().createEmployee(
+        errors = this.employees.createEmployee(
         textfieldFirstName.getText().trim(), textfieldLastName.getText().trim());  
-        this.op.getEmployees().updateGUILists(tableLeft, tableRight);
+        this.employees.updateGUILists(tableLeft, tableRight);
       }
       if(!errors.isEmpty()){
         showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
@@ -194,7 +193,7 @@ public class AttendanceTab extends javax.swing.JPanel {
     private void buttonMoveToNotAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToNotAttendingActionPerformed
         String firstName = (String)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 1);
         String lastName = (String)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 2);        
-        this.op.getEmployees().moveToNotAttended(firstName, lastName, tableLeft, tableRight);       
+        this.employees.moveToNotAttended(firstName, lastName, tableLeft, tableRight);       
     }//GEN-LAST:event_buttonMoveToNotAttendingActionPerformed
 
     public JTable getTableLeft() {
