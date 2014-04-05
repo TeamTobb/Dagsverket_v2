@@ -52,7 +52,7 @@
           <SubComponents>
             <Component class="javax.swing.JToggleButton" name="jToggleButton1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jToggleButton1"/>
+                <Property name="text" type="java.lang.String" value="Old Sale"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -428,9 +428,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonAddWoodType" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="233" max="32767" attributes="0"/>
-                      <Component id="buttonFerdig" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonDone" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -441,11 +441,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonFerdig" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonDone" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonAddWoodType" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="57" max="32767" attributes="0"/>
@@ -454,20 +454,20 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="buttonFerdig">
+            <Component class="javax.swing.JButton" name="buttonDone">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ferdig"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonFerdigActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDoneActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="buttonAddWoodType">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Legg til vedtype"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddWoodTypeActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

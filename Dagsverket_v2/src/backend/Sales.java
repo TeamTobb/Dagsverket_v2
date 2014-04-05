@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package backend;
 
 import java.awt.Color;
 import java.util.*;
 import java.sql.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -28,9 +24,9 @@ public class Sales {
     private ArrayList<Sale> sales;
     private Database db;
     
-    public Sales(Database db) {
+    public Sales() {
     	this.sales = new ArrayList<Sale>();
-        this.db = db;
+        this.db = new Database();
     }
 
     public ArrayList<Sale> getSales() {
@@ -107,15 +103,14 @@ public class Sales {
     }
 
     public void updateSaleList() {
-        String sqlStatement = "Select  sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, "
-                + "customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, "
-                + "sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE "
-                + "FROM sales NATURAL JOIN wood, customers";
+        sales = new ArrayList<Sale>();
+        String sqlStatement = "Select DISTINCT sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE";
         ResultSet rs = db.executeQuery(sqlStatement);
         
         try {
             //System.out.println(rs.getInt("sales.ID"));
             while(rs.next()) {
+                System.out.println("en Next i UpdateSaleList");
                 sales.add(new Sale(
                     rs.getInt("ID"),
                     rs.getInt("QUANTITY"),
@@ -216,25 +211,49 @@ public class Sales {
          return customerId;
      }
      
+      public void updateWoodSaleList(JTable table){
+          System.out.println(sales.size());
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       model.setRowCount(0);
+       
+       updateSaleList();
+       if (!sales.isEmpty()){
+       Object[] insertTable = new Object[4];
+       
+         
+       
+       
+       for(int i = 0; i<this.sales.size(); i++){
+           
+           insertTable[0] = this.sales.get(i).getId();          
+           insertTable[1] = this.sales.get(i).getBuyer().getFullName();          
+           insertTable[2] = this.sales.get(i).getQuantity();
+           insertTable[3] = "empty";
+           model.insertRow(table.getRowCount(), insertTable);                     
+       } 
+       }
+    }
+     
      
      
      
     
     public static void main(String args[]){
         Database db = new Database();
-        Sales allSales = new Sales(db);
+        Sales allSales = new Sales();
         db.createConnection();
         
 
         
       
-        //allSales.updateSaleList();
+        allSales.updateSaleList();
         
-        /*
+        
         for(Sale d:allSales.getSales()) {
             System.out.println(d);
            
         }
+        /*
         
         for(int d:allSales.createSale("BJørn", "Hox", "91323324", "Eik", "1400", "Humlevien", "15", "Ski")){
             System.out.println(d);
@@ -246,4 +265,3 @@ public class Sales {
     
    
 }
-

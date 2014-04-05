@@ -23,17 +23,17 @@ import javax.swing.JTextField;
  * @author Jorgen
  */
 public class SaleTab extends javax.swing.JPanel {
-     private Operator op;
+    
      private Sales sales;
      private Woods woods;
 
     /**
      * Creates new form SaleTab
      */
-    public SaleTab(Operator op) {
-       this.op = op;
-       this.sales = new Sales(op.getDb());
-       this.woods = new Woods(op.getDb());
+    public SaleTab() {
+       
+       this.sales = new Sales();
+       this.woods = new Woods(new Database());
        this.woods.updateWoodList(); //TODO Flytte til gui 
        initComponents();
     }
@@ -75,14 +75,14 @@ public class SaleTab extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         labelHeader = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        buttonFerdig = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttonDone = new javax.swing.JButton();
+        buttonAddWoodType = new javax.swing.JButton();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
         panelLeft.setLayout(new java.awt.BorderLayout());
 
-        jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.setText("Old Sale");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -355,17 +355,17 @@ public class SaleTab extends javax.swing.JPanel {
 
     panelRight.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
-    buttonFerdig.setText("Ferdig");
-    buttonFerdig.addActionListener(new java.awt.event.ActionListener() {
+    buttonDone.setText("Ferdig");
+    buttonDone.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            buttonFerdigActionPerformed(evt);
+            buttonDoneActionPerformed(evt);
         }
     });
 
-    jButton1.setText("Legg til vedtype");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
+    buttonAddWoodType.setText("Legg til vedtype");
+    buttonAddWoodType.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton1ActionPerformed(evt);
+            buttonAddWoodTypeActionPerformed(evt);
         }
     });
 
@@ -375,9 +375,9 @@ public class SaleTab extends javax.swing.JPanel {
         jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jButton1)
+            .addComponent(buttonAddWoodType)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
-            .addComponent(buttonFerdig)
+            .addComponent(buttonDone)
             .addGap(46, 46, 46))
     );
     jPanel5Layout.setVerticalGroup(
@@ -386,10 +386,10 @@ public class SaleTab extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(buttonFerdig))
+                    .addComponent(buttonDone))
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(14, 14, 14)
-                    .addComponent(jButton1)))
+                    .addComponent(buttonAddWoodType)))
             .addContainerGap(57, Short.MAX_VALUE))
     );
 
@@ -446,7 +446,7 @@ public class SaleTab extends javax.swing.JPanel {
 // TODO add your handling code here:
     }//GEN-LAST:event_textFieldPriceActionPerformed
 
-    private void buttonFerdigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFerdigActionPerformed
+    private void buttonDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDoneActionPerformed
         labelDPhone.setForeground(Color.black);
         labelDLastName.setForeground(Color.black);
         labelDFirstName.setForeground(Color.black);
@@ -463,14 +463,14 @@ public class SaleTab extends javax.swing.JPanel {
                          
               
         
-        
-    }//GEN-LAST:event_buttonFerdigActionPerformed
+       this.sales.updateWoodSaleList(jTable2);
+    }//GEN-LAST:event_buttonDoneActionPerformed
 
     private void comboBoxWoodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxWoodTypeActionPerformed
         textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
     }//GEN-LAST:event_comboBoxWoodTypeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonAddWoodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddWoodTypeActionPerformed
       JTextField textfieldWoodType = new JTextField(10);
       JTextField textfieldPrice = new JTextField(5);
       JTextField textfieldBagSize = new JTextField(5);
@@ -496,7 +496,7 @@ public class SaleTab extends javax.swing.JPanel {
       
 
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonAddWoodTypeActionPerformed
 
     private void textFieldQuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldQuantityKeyTyped
         //Not in Use
@@ -513,9 +513,9 @@ public class SaleTab extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonFerdig;
+    private javax.swing.JButton buttonAddWoodType;
+    private javax.swing.JButton buttonDone;
     private javax.swing.JComboBox comboBoxWoodType;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
