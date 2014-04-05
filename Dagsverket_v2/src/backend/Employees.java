@@ -80,14 +80,28 @@ public class Employees {
             db.closeAll();
         }
     }
+
+    public void removeFromCase(int caseId, int employeeId){
+        db.createConnection(); 
+        try{
+            PreparedStatement sqlStatement = db.getConnection().prepareStatement("DELETE FROM events_has_employees WHERE case_id = ? and employee_id = ?");
+            sqlStatement.setInt(1, caseId);
+            sqlStatement.setInt(2, employeeId);
+            db.executeUpdate(sqlStatement);            
+        }catch(SQLException e){
+            System.out.println("feil i removeFromCase: " + e);
+        }
+        finally{
+            db.closeAll(); 
+        }
+    }
     
     public void updateEmployeeAvailable(JTable left, JTable right, int caseId){
         this.employees = new ArrayList<Employee>();
         String sqlStatement = "SELECT * FROM employees WHERE id NOT IN("
                              + "SELECT employees.id FROM employees INNER JOIN events_has_employees "
                              + "ON employees.id = events_has_employees.EMPLOYEE_ID WHERE case_id = " + caseId + ")";
-        ResultSet rs = db.executeQuery(sqlStatement);
-        
+        ResultSet rs = db.executeQuery(sqlStatement);        
         
         try{
             while(rs.next()){

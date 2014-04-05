@@ -58,7 +58,6 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelCenter = new javax.swing.JPanel();
         buttonAddToCase = new javax.swing.JButton();
         buttonRemoveFromCase = new javax.swing.JButton();
-        buttonRegisterNewEmployer = new javax.swing.JButton();
         buttonFinish = new javax.swing.JButton();
         panelRight = new javax.swing.JPanel();
         tableAttending = new javax.swing.JScrollPane();
@@ -108,14 +107,6 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             }
         });
 
-        buttonRegisterNewEmployer.setFont(new java.awt.Font("Optima", 1, 14)); // NOI18N
-        buttonRegisterNewEmployer.setText("Registrer ny person");
-        buttonRegisterNewEmployer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRegisterNewEmployerActionPerformed(evt);
-            }
-        });
-
         buttonFinish.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonFinish.setText("Ferdig");
         buttonFinish.addActionListener(new java.awt.event.ActionListener() {
@@ -131,29 +122,23 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             .addGroup(panelCenterLayout.createSequentialGroup()
                 .addGroup(panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(buttonRegisterNewEmployer))
-                    .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(buttonAddToCase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCenterLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(buttonRemoveFromCase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonAddToCase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonRemoveFromCase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(buttonFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
+                        .addGap(52, 52, 52)
+                        .addComponent(buttonFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68))
         );
         panelCenterLayout.setVerticalGroup(
             panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCenterLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(238, 238, 238)
                 .addComponent(buttonAddToCase, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(buttonRegisterNewEmployer, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addComponent(buttonRemoveFromCase, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(18, 18, 18)
                 .addComponent(buttonFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -211,39 +196,13 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAddToCaseActionPerformed
 
     private void buttonRemoveFromCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveFromCaseActionPerformed
-//        String firstName = (String)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 1);
-//        String lastName = (String)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 2);
-//        this.employees.moveToNotAttended(firstName, lastName, tableLeft, tableRight);
+        int employeeId = (int)tableRight.getValueAt(tableRight.getSelectedRow(), 0);
+        employees.removeFromCase(caseId, employeeId);  
+        employees.updateEmployeeAvailable(tableLeft, tableRight, caseId);
     }//GEN-LAST:event_buttonRemoveFromCaseActionPerformed
 
-    private void buttonRegisterNewEmployerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterNewEmployerActionPerformed
-//        ArrayList<Integer> errors = new ArrayList<Integer>();
-//        JTextField textfieldFirstName = new JTextField(5);
-//        JTextField textfieldLastName = new JTextField(5);
-//        JPanel panelNewEmployee = new JPanel();
-//        panelNewEmployee.add(new JLabel("Fornavn:"));
-//        panelNewEmployee.add(textfieldFirstName);
-//        panelNewEmployee.add(Box.createHorizontalStrut(15));
-//        panelNewEmployee.add(new JLabel("Etternavn:"));
-//        panelNewEmployee.add(textfieldLastName);
-//
-//        int result = JOptionPane.showConfirmDialog(null, panelNewEmployee,
-//            "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
-//        if (result == JOptionPane.OK_OPTION) {
-//            errors = this.employees.createEmployee(
-//                textfieldFirstName.getText().trim(), textfieldLastName.getText().trim());
-//            this.employees.updateGUILists(tableLeft, tableRight);
-//        }
-//        if(!errors.isEmpty()){
-//            showMessageDialog(null, "FEIL: Databasen ikke oppdatert");
-//        }
-//        else{
-//            System.out.println("WOHOOOOO");
-//        }
-    }//GEN-LAST:event_buttonRegisterNewEmployerActionPerformed
-
     private void buttonFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinishActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_buttonFinishActionPerformed
 
     /**
@@ -284,7 +243,6 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddToCase;
     private javax.swing.JButton buttonFinish;
-    private javax.swing.JButton buttonRegisterNewEmployer;
     private javax.swing.JButton buttonRemoveFromCase;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelCenter;
