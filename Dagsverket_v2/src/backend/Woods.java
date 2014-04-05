@@ -88,8 +88,9 @@ public class Woods {
                 "INSERT INTO wood VALUES(?,?,?)");
         addWoodStatement.setString(1, woodType);
         addWoodStatement.setInt(2, bagSize); 
-        addWoodStatement.setInt(3, price); 
-
+        addWoodStatement.setInt(3, price);
+            System.out.println("price = " +price);
+            System.out.println("bagSize = "+ bagSize);
         addWoodStatement.executeUpdate();
         db.closeAll();                        
         } catch(SQLException e){

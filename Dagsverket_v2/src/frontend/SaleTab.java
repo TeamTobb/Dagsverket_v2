@@ -480,10 +480,11 @@ public class SaleTab extends javax.swing.JPanel {
       panelWood.add(textfieldWoodType);
       panelWood.add(Box.createHorizontalStrut(15)); // a spacer
       panelWood.add(new JLabel("Bag størrelse:"));
-      panelWood.add(textfieldPrice);
+      panelWood.add(textfieldBagSize);
       panelWood.add(Box.createHorizontalStrut(15)); // a spacer
       panelWood.add(new JLabel("Pris:"));
-      panelWood.add(textfieldBagSize);
+      panelWood.add(textfieldPrice);
+      
       
       int result = JOptionPane.showConfirmDialog(null, panelWood, 
             "Skriv inn vedtype, bagstørrelse og pris på den nye vedtypen", JOptionPane.OK_CANCEL_OPTION);
@@ -507,7 +508,7 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldQuantityInputMethodTextChanged
 
     private void textFieldQuantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldQuantityKeyReleased
-            textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
+        textFieldPrice.setText(woods.getPrice(comboBoxWoodType.getSelectedItem().toString(), textFieldQuantity.getText()));
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldQuantityKeyReleased
 
