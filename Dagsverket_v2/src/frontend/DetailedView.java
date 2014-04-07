@@ -323,8 +323,36 @@ public class DetailedView extends javax.swing.JFrame {
         labelDReqDate.setText("Ønsket oppstart");
 
         comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(this.users.getUsers()));
-        comboBoxCreateCaseSupervisor.setSelectedIndex(this.users.currentUser.getId() - 1
+
+        
+        // find the corresponding id from combobox that matches the database supervisor id
+
+        ComboBoxModel model = comboBoxCreateCaseSupervisor.getModel();
+
+        int size = model.getSize();
+        boolean found = false;
+
+        for (int i = 0; i < size; i++) {
+            System.out.println("HHHEEELLLO");
+            // instanceof?
+            String tempStringUser = (String)model.getElementAt(i);
+            System.out.println(tempStringUser + " " + this.users.getUserIdByFullName(tempStringUser));
+
+            int tempUserId = this.users.getUserIdByFullName(tempStringUser);
+            if(tempUserId == this.currentCase.getSupervisorId()) {
+                System.out.println("I DONT WANT TO LIVE IN THIS WORLD");
+                found = true;
+                comboBoxCreateCaseSupervisor.setSelectedIndex(i
         );
+                i = size;
+            }
+        }
+
+        if(!found) {
+            comboBoxCreateCaseSupervisor.setSelectedIndex(-1
+        );
+        }
+
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxCreateCaseSupervisorActionPerformed(evt);
