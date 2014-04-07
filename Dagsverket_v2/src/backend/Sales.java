@@ -44,7 +44,8 @@ public class Sales {
         int quantityNr = 0;
         int postCode = 0; 
         int customerId = 0;
-        System.out.println("Lager en");
+        
+        
         try{
             telephone = Integer.parseInt(phoneNumber.trim());
         } catch(NumberFormatException e){
@@ -140,7 +141,6 @@ public class Sales {
      private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber, 
                                             String woodType, int postnr, String adresse, int quantity) {
         ArrayList<Integer> errors = new ArrayList<Integer>();
-                
         
         if(customerFirstName == null || customerFirstName.trim().equals("")) {
             errors.add(NO_CUSTOMER_FIRSTNAME);
@@ -158,8 +158,7 @@ public class Sales {
             errors.add(NO_PHONENUMBER);
         }
         if(quantity<0) {
-            errors.add(NO_QUANTITY);
-            
+            errors.add(NO_QUANTITY);            
         }
         if((postnr <0) || (postnr>10000)){
             errors.add(WRONG_POSTNUMBER);

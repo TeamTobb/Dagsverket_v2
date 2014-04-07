@@ -131,6 +131,10 @@ public class SaleTab extends javax.swing.JPanel {
             jTable2.getColumnModel().getColumn(0).setMinWidth(60);
             jTable2.getColumnModel().getColumn(0).setPreferredWidth(60);
             jTable2.getColumnModel().getColumn(0).setMaxWidth(60);
+            jTable2.getColumnModel().getColumn(0).setHeaderValue("Salg id");
+            jTable2.getColumnModel().getColumn(1).setHeaderValue("Kjøper");
+            jTable2.getColumnModel().getColumn(2).setHeaderValue("Antall");
+            jTable2.getColumnModel().getColumn(3).setHeaderValue("Status");
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -480,17 +484,72 @@ public class SaleTab extends javax.swing.JPanel {
         
        System.out.println(errors.size());
       
-       /*
+       
        if (errors.isEmpty()){
-       this.sales.updateWoodSaleList(jTable2);
-       labelDPhone.setText("");
-       labelDLastName.setText("");
-       labelDFirstName.setText("");
-       labelDWoodType.setText("");
-       labelDPostnr.setText("");
-       labelDAddress.setText("");
-       labelDQuanitity.setText("");
-       }*/
+            System.out.println("Clearing");
+            this.sales.updateWoodSaleList(jTable2);
+            /*
+            labelDPhone.setText(" ");
+            labelDLastName.setText(" ");
+            labelDFirstName.setText(" ");
+            labelDWoodType.setText("");
+            labelDPostnr.setText(" ");
+            labelDAddress.setText(" ");
+            labelDQuanitity.setText(" ");
+            */
+       }
+       
+       /*
+       
+        public static int WRONG_PHONE_FORMAT = 1;
+        public static int WRONG_POSTALCODE_FORMAT = 2;
+        public static int WRONG_QUANTITY_FORMAT = 3;
+        public static int NO_CUSTOMER_FIRSTNAME = 4;
+        public static int NO_CUSTOMER_LASTNAME = 5;
+        public static int NO_ADDRESS_INFO = 6;
+        public static int NO_QUANTITY = 7; 
+        public static int NO_POSTNUMBER = 8; 
+        public static int NO_WOODTYPE = 9; 
+        public static int NO_PHONENUMBER = 10;
+        public static int WRONG_POSTNUMBER = 11; 
+    
+       */
+       
+       
+        for(Integer i : errors){
+            if(i == Sales.NO_CUSTOMER_FIRSTNAME){
+                labelDFirstName.setForeground(Color.red);
+            }
+            if(i == Sales.NO_CUSTOMER_LASTNAME){
+                labelDLastName.setForeground(Color.red);                            
+            }
+            
+            if(i == Sales.NO_PHONENUMBER){
+                labelDPhone.setForeground(Color.red);            
+            }
+            
+            if(i == Sales.WRONG_PHONE_FORMAT){
+                labelDPhone.setForeground(Color.red);            
+            }
+            if(i == Sales.NO_ADDRESS_INFO){
+                labelDAddress.setForeground(Color.red);           
+            }            
+            if(i == Sales.WRONG_POSTALCODE_FORMAT){
+                labelDPostnr.setForeground(Color.red);            
+            }
+            if(i == Sales.WRONG_POSTNUMBER){
+                labelDPostnr.setForeground(Color.red);            
+            }
+            if(i == Sales.WRONG_QUANTITY_FORMAT){
+                labelDQuanitity.setForeground(Color.red);            
+            }
+            if(i == Sales.NO_QUANTITY){
+                labelDQuanitity.setForeground(Color.red);            
+            }
+            
+           
+        }       
+       
     }//GEN-LAST:event_buttonDoneActionPerformed
 
     private void comboBoxWoodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxWoodTypeActionPerformed
