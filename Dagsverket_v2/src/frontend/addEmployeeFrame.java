@@ -31,17 +31,9 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         this.caseId = caseId;
         this.employees = new Employees();
         initComponents();
-    }
-
-    public JTable getTableLeft() {
-        return tableLeft;
-    }
-
-    public JTable getTableRight() {
-        return tableRight;
+        this.employees.updateEmployeeAvailable(tableLeft, tableRight, this.caseId);        
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -190,15 +182,23 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAddToCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddToCaseActionPerformed
-        int employeeId = (int)tableLeft.getValueAt(tableLeft.getSelectedRow(), 0);
+        try{
+            int employeeId = (int)tableLeft.getValueAt(tableLeft.getSelectedRow(), 0);        
         employees.addToCase(caseId, employeeId);  
         employees.updateEmployeeAvailable(tableLeft, tableRight, caseId);
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg en arbeider"); 
+        }
     }//GEN-LAST:event_buttonAddToCaseActionPerformed
 
     private void buttonRemoveFromCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveFromCaseActionPerformed
-        int employeeId = (int)tableRight.getValueAt(tableRight.getSelectedRow(), 0);
-        employees.removeFromCase(caseId, employeeId);  
-        employees.updateEmployeeAvailable(tableLeft, tableRight, caseId);
+        try{
+            int employeeId = (int)tableRight.getValueAt(tableRight.getSelectedRow(), 0);        
+            employees.removeFromCase(caseId, employeeId);  
+            employees.updateEmployeeAvailable(tableLeft, tableRight, caseId);
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg en arbeider");
+        }
     }//GEN-LAST:event_buttonRemoveFromCaseActionPerformed
 
     private void buttonFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinishActionPerformed
