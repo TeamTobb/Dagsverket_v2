@@ -39,7 +39,7 @@ public class Sales {
     }   
 
     public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
-                                         String postnr, String address, String quantity, String postalPlace) {
+                                         String postnr, String address, String quantity, String postalPlace, String status) {
         ArrayList<Integer> errors = new ArrayList<Integer>(); 
         int telephone = 0;
         int quantityNr = 0;
@@ -82,14 +82,14 @@ public class Sales {
 
             db.createConnection();
             try{
-                PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO sales VALUES(DEFAULT, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement sqlStatement = db.getConnection().prepareStatement("INSERT INTO sales VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?)");
                 sqlStatement.setString(1, String.valueOf(quantity));   
                 sqlStatement.setInt(2, customerId);
                 sqlStatement.setString(3, woodType);
                 sqlStatement.setInt(4, postCode);
                 sqlStatement.setString(5, postalPlace);
                 sqlStatement.setString(6, address);
-
+                sqlStatement.setString(7, status);
                 db.executeUpdate(sqlStatement);
             }        
             catch(SQLException e){
@@ -106,7 +106,7 @@ public class Sales {
 
     public void updateSaleList() {
         sales = new ArrayList<Sale>();
-        String sqlStatement = "Select DISTINCT sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE";
+        String sqlStatement = "Select DISTINCT sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE, sales.STATUS FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE";
         ResultSet rs = db.executeQuery(sqlStatement);
         
         try {
@@ -125,8 +125,8 @@ public class Sales {
                     rs.getString("POSTPLACE"),
                     rs.getString("WOODTYPE"),
                     rs.getInt("BAGSIZE"),                    
-                    rs.getInt("PRICE")                     
-                    ));
+                    rs.getInt("PRICE"),                     
+                    rs.getString("STATUS")));
             }
         } catch(SQLException e) {
             System.out.println("SQLError: " + e);
@@ -228,7 +228,7 @@ public class Sales {
                 insertTable[0] = this.sales.get(i).getId();          
                 insertTable[1] = this.sales.get(i).getBuyer().getFullName();          
                 insertTable[2] = this.sales.get(i).getQuantity();
-                insertTable[3] = "empty";
+                insertTable[3] = this.sales.get(i).getStatus();
                 model.insertRow(table.getRowCount(), insertTable);                     
             } 
        }
@@ -289,13 +289,7 @@ public class Sales {
             System.out.println(d);
            
         }
-        /*
-        
-        for(int d:allSales.createSale("BJørn", "Hox", "91323324", "Eik", "1400", "Humlevien", "15", "Ski")){
-            System.out.println(d);
-        }
-        
-        */      
+      
     }
     
     

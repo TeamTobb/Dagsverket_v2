@@ -476,12 +476,12 @@ public class SaleTab extends javax.swing.JPanel {
         labelDWoodType.setForeground(Color.black);
         labelDPostnr.setForeground(Color.black);
         labelDAddress.setForeground(Color.black);
-        labelDQuanitity.setForeground(Color.blue);
+        labelDQuanitity.setForeground(Color.black);
         
         errors =  sales.createSale(textFieldFirstName.getText().trim(), textFieldLastName.getText().trim(), 
                          textFieldPhone.getText().trim(), (String)comboBoxWoodType.getSelectedItem(),
                          textFieldPostnr.getText().trim(), textFieldAddress.getText().trim(), 
-                         textFieldQuantity.getText().trim(), textFieldPostPlace.getText().trim());
+                         textFieldQuantity.getText().trim(), textFieldPostPlace.getText().trim(), "Ikke levert");
        
         
        System.out.println(errors.size());
@@ -499,6 +499,7 @@ public class SaleTab extends javax.swing.JPanel {
             textFieldPostnr.setText("");
             textFieldAddress.setText("");
             textFieldQuantity.setText("");
+            textFieldPrice.setText("");
             
        } else {
            for(Integer i : errors){
@@ -592,8 +593,10 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonUpdateTableActionPerformed
 
     private void buttonMoreInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoreInfoActionPerformed
+        if (jTable2.getSelectedRow()!=-1){
+            sales.getMoreInfoFromSale(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());            
+        }
         
-        sales.getMoreInfoFromSale(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());
         
     }//GEN-LAST:event_buttonMoreInfoActionPerformed
 

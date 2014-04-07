@@ -18,9 +18,10 @@ public class Sale {
     private String address;
     private int postalCode;
     private String postPlace;
+    private String status;
 
     // firstname -> postPlace = customer data
-    public Sale(int id, int quantity, int customerId, String firstname, String lastname, int phoneNumber, String address, int postalCode, String postPlace, String woodType, int bagSize, int price) {
+    public Sale(int id, int quantity, int customerId, String firstname, String lastname, int phoneNumber, String address, int postalCode, String postPlace, String woodType, int bagSize, int price, String status) {
     	this.id = id;
     	this.quantity = quantity;
     	this.buyer = new Customer(customerId, firstname, lastname, phoneNumber); //hvor er adressen? 
@@ -28,6 +29,7 @@ public class Sale {
         this.address = address;
         this.postalCode = postalCode;
         this.postPlace = postPlace;
+        this.status = status;
     }
 
     public int getId() {
@@ -56,6 +58,10 @@ public class Sale {
 
     public String getPostPlace() {
         return postPlace;
+    }
+
+    public String getStatus() {
+        return status;
     }
     
     
