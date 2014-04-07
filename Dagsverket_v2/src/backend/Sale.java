@@ -15,6 +15,9 @@ public class Sale {
     private int quantity;
     private Customer buyer;
     private Wood wood;
+    private String address;
+    private int postalCode;
+    private String postPlace;
 
     // firstname -> postPlace = customer data
     public Sale(int id, int quantity, int customerId, String firstname, String lastname, int phoneNumber, String address, int postalCode, String postPlace, String woodType, int bagSize, int price) {
@@ -22,6 +25,9 @@ public class Sale {
     	this.quantity = quantity;
     	this.buyer = new Customer(customerId, firstname, lastname, phoneNumber); //hvor er adressen? 
     	this.wood = new Wood(woodType, bagSize, price);
+        this.address = address;
+        this.postalCode = postalCode;
+        this.postPlace = postPlace;
     }
 
     public int getId() {
@@ -39,6 +45,20 @@ public class Sale {
     public Wood getWood() {
     	return this.wood;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getPostalCode() {
+        return postalCode;
+    }
+
+    public String getPostPlace() {
+        return postPlace;
+    }
+    
+    
     
     public String toString(){
         return id + ", " + quantity + ", "+ buyer + ", "+ wood;

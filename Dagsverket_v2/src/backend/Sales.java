@@ -1,5 +1,6 @@
 package backend;
 
+import frontend.MoreInfoOnSale;
 import java.awt.Color;
 import java.util.*;
 import java.sql.*;
@@ -217,21 +218,57 @@ public class Sales {
        
        updateSaleList();
        if (!sales.isEmpty()){
-       Object[] insertTable = new Object[4];
-       
-         
-       
-       
-       for(int i = 0; i<this.sales.size(); i++){
-           
-           insertTable[0] = this.sales.get(i).getId();          
-           insertTable[1] = this.sales.get(i).getBuyer().getFullName();          
-           insertTable[2] = this.sales.get(i).getQuantity();
-           insertTable[3] = "empty";
-           model.insertRow(table.getRowCount(), insertTable);                     
-       } 
+            Object[] insertTable = new Object[4];
+
+
+
+
+            for(int i = 0; i<this.sales.size(); i++){
+
+                insertTable[0] = this.sales.get(i).getId();          
+                insertTable[1] = this.sales.get(i).getBuyer().getFullName();          
+                insertTable[2] = this.sales.get(i).getQuantity();
+                insertTable[3] = "empty";
+                model.insertRow(table.getRowCount(), insertTable);                     
+            } 
        }
     }
+      
+      
+      public boolean getMoreInfoFromSale(String saleId){
+          
+          System.out.println("saleId = "+saleId);
+          int index = getIndexFromId(saleId);
+          
+          
+          
+          MoreInfoOnSale moreInfoView = new MoreInfoOnSale(
+                  sales.get(index).getBuyer().getFirstname(),
+                  sales.get(index).getBuyer().getLastname(),
+                  ""+sales.get(index).getBuyer().getPhoneNumber(),
+                  sales.get(index).getWood().getWoodType(),                    
+                  ""+sales.get(index).getPostalCode(),  
+                  sales.get(index).getAddress(), 
+                   ""+sales.get(index).getQuantity(), 
+                  sales.get(index).getPostPlace());
+          moreInfoView.setVisible(true);
+          
+          
+          return true;
+      }
+      
+      private int getIndexFromId(String idString){
+          int id = 0;
+          id = Integer.parseInt(idString);
+          
+         for (int i =0; i < sales.size(); i++){
+             if (sales.get(i).getId()==id){
+                 return i;
+             }
+             
+         }
+          return -1;
+      }
      
      
      

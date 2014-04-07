@@ -50,6 +50,7 @@ public class SaleTab extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         buttonUpdateTable = new javax.swing.JButton();
+        buttonMoreInfo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -91,6 +92,13 @@ public class SaleTab extends javax.swing.JPanel {
             }
         });
 
+        buttonMoreInfo.setText("Mer info");
+        buttonMoreInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMoreInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,19 +106,21 @@ public class SaleTab extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonUpdateTable)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(buttonMoreInfo)
+                .addGap(41, 41, 41)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jToggleButton1)
-                .addGap(0, 56, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttonUpdateTable)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonUpdateTable)
+                    .addComponent(buttonMoreInfo)
+                    .addComponent(jToggleButton1))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         panelLeft.add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -131,10 +141,6 @@ public class SaleTab extends javax.swing.JPanel {
             jTable2.getColumnModel().getColumn(0).setMinWidth(60);
             jTable2.getColumnModel().getColumn(0).setPreferredWidth(60);
             jTable2.getColumnModel().getColumn(0).setMaxWidth(60);
-            jTable2.getColumnModel().getColumn(0).setHeaderValue("Salg id");
-            jTable2.getColumnModel().getColumn(1).setHeaderValue("Kjøper");
-            jTable2.getColumnModel().getColumn(2).setHeaderValue("Antall");
-            jTable2.getColumnModel().getColumn(3).setHeaderValue("Status");
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -404,14 +410,11 @@ public class SaleTab extends javax.swing.JPanel {
     jPanel5Layout.setVerticalGroup(
         jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel5Layout.createSequentialGroup()
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(buttonDone))
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(14, 14, 14)
-                    .addComponent(buttonAddWoodType)))
-            .addContainerGap(56, Short.MAX_VALUE))
+            .addGap(21, 21, 21)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonAddWoodType)
+                .addComponent(buttonDone))
+            .addContainerGap(49, Short.MAX_VALUE))
     );
 
     panelRight.add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -588,10 +591,17 @@ public class SaleTab extends javax.swing.JPanel {
 // TODO add your handling code here:
     }//GEN-LAST:event_buttonUpdateTableActionPerformed
 
+    private void buttonMoreInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoreInfoActionPerformed
+        
+        sales.getMoreInfoFromSale(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());
+        
+    }//GEN-LAST:event_buttonMoreInfoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddWoodType;
     private javax.swing.JButton buttonDone;
+    private javax.swing.JButton buttonMoreInfo;
     private javax.swing.JButton buttonUpdateTable;
     private javax.swing.JComboBox comboBoxWoodType;
     private javax.swing.JPanel jPanel1;
