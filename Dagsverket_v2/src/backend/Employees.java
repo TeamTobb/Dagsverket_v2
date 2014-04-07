@@ -143,13 +143,13 @@ public class Employees {
         modelLeft.setRowCount(0);
         
         Object[] insertTable = new Object[6];                
-        for(int i = 0; i<this.employees.size(); i++){
-            insertTable[0] = this.employees.get(i).getId();           
-            insertTable[1] = this.employees.get(i).getFirstName();
-            insertTable[2] = this.employees.get(i).getLastName();
-            insertTable[5] = this.employees.get(i).getLastWorkDate();
-            insertTable[3] = this.employees.get(i).getLastRegDate();
-            insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
+        for (Employee employee : this.employees) {
+            insertTable[0] = employee.getId();
+            insertTable[1] = employee.getFirstName();
+            insertTable[2] = employee.getLastName();
+            insertTable[5] = employee.getLastWorkDate();
+            insertTable[3] = employee.getLastRegDate();
+            insertTable[4] = employee.getAttendanceWithoutWork(); 
             modelLeft.insertRow(left.getRowCount(), insertTable);
         }          
         
@@ -179,13 +179,13 @@ public class Employees {
         modelRight.setRowCount(0);
         
         insertTable = new Object[6];                
-        for(int i = 0; i<this.employees.size(); i++){
-            insertTable[0] = this.employees.get(i).getId();           
-            insertTable[1] = this.employees.get(i).getFirstName();
-            insertTable[2] = this.employees.get(i).getLastName();
-            insertTable[5] = this.employees.get(i).getLastWorkDate();
-            insertTable[3] = this.employees.get(i).getLastRegDate();
-            insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
+        for (Employee employee : this.employees) {
+            insertTable[0] = employee.getId();
+            insertTable[1] = employee.getFirstName();
+            insertTable[2] = employee.getLastName();
+            insertTable[5] = employee.getLastWorkDate();
+            insertTable[3] = employee.getLastRegDate();
+            insertTable[4] = employee.getAttendanceWithoutWork(); 
             modelRight.insertRow(right.getRowCount(), insertTable);
         }    
     }
@@ -199,17 +199,16 @@ public class Employees {
         Object[] insertTable = new Object[6];
         updateEmployeeList();
         
-        for(int i = 0; i<this.employees.size(); i++){
-            insertTable[0] = this.employees.get(i).getId();           
-            insertTable[1] = this.employees.get(i).getFirstName();
-            insertTable[2] = this.employees.get(i).getLastName();
-            insertTable[5] = this.employees.get(i).getLastWorkDate();
-            insertTable[3] = this.employees.get(i).getLastRegDate();
-            insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
-            if(this.employees.get(i).getLastRegDate().equals(currentDate)){
-                modelRight.insertRow(right.getRowCount(), insertTable);   
-            }
-            else{
+        for (Employee employee : this.employees) {
+            insertTable[0] = employee.getId();
+            insertTable[1] = employee.getFirstName();
+            insertTable[2] = employee.getLastName();
+            insertTable[5] = employee.getLastWorkDate();
+            insertTable[3] = employee.getLastRegDate();
+            insertTable[4] = employee.getAttendanceWithoutWork();
+            if (employee.getLastRegDate().equals(currentDate)) {
+                modelRight.insertRow(right.getRowCount(), insertTable);
+            } else {
                 modelLeft.insertRow(left.getRowCount(), insertTable);
             }
         }    
