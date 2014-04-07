@@ -64,7 +64,7 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
         buttonUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelDFirstName.setText("Fornavn");
 
