@@ -157,8 +157,12 @@ public class AttendanceTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMoveToAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToAttendingActionPerformed
-        int employeeId = (int)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 0);            
-        this.employees.moveToAttended(employeeId, tableLeft, tableRight);
+        try{
+            int employeeId = (int)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 0);                 
+            this.employees.moveToAttended(employeeId, tableLeft, tableRight);
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg en arbeider");
+        }
        
     }//GEN-LAST:event_buttonMoveToAttendingActionPerformed
 
@@ -175,10 +179,15 @@ public class AttendanceTab extends javax.swing.JPanel {
             
       int result = JOptionPane.showConfirmDialog(null, panelNewEmployee, 
                "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
-      if (result == JOptionPane.OK_OPTION) {
-        errors = this.employees.createEmployee(
-        textfieldFirstName.getText().trim(), textfieldLastName.getText().trim());  
-        this.employees.updateGUILists(tableLeft, tableRight);
+      if (result == JOptionPane.OK_OPTION) { 
+          if(textfieldFirstName.getText().trim().equals("") || textfieldLastName.getText().trim().equals("")){
+              showMessageDialog(null, "Vennligst skriv inn minst én bokstav i hvert felt");
+          }
+          else{
+            errors = this.employees.createEmployee(
+            textfieldFirstName.getText().trim(), textfieldLastName.getText().trim());  
+            this.employees.updateGUILists(tableLeft, tableRight);                        
+          }
       }
       if(!errors.isEmpty()){
         showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
@@ -188,8 +197,12 @@ public class AttendanceTab extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonRegisterNewEmployerActionPerformed
 
     private void buttonMoveToNotAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToNotAttendingActionPerformed
-        int employeeId = (int)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 0);     
-        this.employees.moveToNotAttended(employeeId, tableLeft, tableRight);       
+        try{
+            int employeeId = (int)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 0);
+            this.employees.moveToNotAttended(employeeId, tableLeft, tableRight);       
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg en arbeider");
+        }       
     }//GEN-LAST:event_buttonMoveToNotAttendingActionPerformed
 
     public JTable getTableLeft() {
