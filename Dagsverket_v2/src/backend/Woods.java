@@ -57,28 +57,39 @@ public class Woods {
             System.out.println("SQLError: " + e);
         } finally {
             db.closeAll();
-            System.out.println("ok");
+            System.out.println("updateWoodList OK.");
             
         }
     }
     
     
     
-    public void addWood(String woodType, String bagSizeString, String priceString){
+    public boolean addWood(String woodType, String bagSizeString, String priceString){
         int bagSize = 0;
         int price = 0;
+        
+        //Checks if the input is valid
+        
+        if ((woodType.equals(""))||(bagSizeString.equals(""))||(priceString.equals(""))){
+            System.out.println("BLANK");
+            return false; 
+        }
+        
+        
         
         try{
             bagSize = Integer.parseInt(bagSizeString.trim());
         } catch(NumberFormatException e){
-            System.out.println("Feil bag Size. Bare tall" + e);
+            System.out.println("error in bagSize" + e);
+            return false;
            
         }
         
         try{
             price = Integer.parseInt(priceString.trim());
         } catch(NumberFormatException e){
-            System.out.println("Feil price. Bare tall" + e);
+            System.out.println("error in price" + e);
+            return false;
            
         }
         
@@ -98,7 +109,7 @@ public class Woods {
                 
         }
         
-       
+        return true;
         
      }
     

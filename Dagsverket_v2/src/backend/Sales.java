@@ -69,13 +69,13 @@ public class Sales {
             errors.add(WRONG_QUANTITY_FORMAT);
         }
         
-       //fyll opp denne med alt
+       //fills up the arraylist "errors" with the the value of the issue. 
         errors.addAll(checkFields(customerFirstName, customerLastName, telephone, woodType, postCode, address, quantityNr));
         
         //return errors;
         if (errors.isEmpty()==true){
         
-        //legg til Customer DB eller/og hent ut customer ID. 
+            //legg til Customer DB eller/og hent ut customer ID. 
             customerId = addCustomer(customerFirstName, customerLastName, telephone);
 
 

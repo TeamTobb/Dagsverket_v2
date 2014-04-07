@@ -474,8 +474,7 @@ public class SaleTab extends javax.swing.JPanel {
         labelDPostnr.setForeground(Color.black);
         labelDAddress.setForeground(Color.black);
         labelDQuanitity.setForeground(Color.blue);
-        //String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
-                                         //String postnr, String address, String quantity, String postalPlace
+        
         errors =  sales.createSale(textFieldFirstName.getText().trim(), textFieldLastName.getText().trim(), 
                          textFieldPhone.getText().trim(), (String)comboBoxWoodType.getSelectedItem(),
                          textFieldPostnr.getText().trim(), textFieldAddress.getText().trim(), 
@@ -488,35 +487,18 @@ public class SaleTab extends javax.swing.JPanel {
        if (errors.isEmpty()){
             System.out.println("Clearing");
             this.sales.updateWoodSaleList(jTable2);
-            /*
-            labelDPhone.setText(" ");
-            labelDLastName.setText(" ");
-            labelDFirstName.setText(" ");
-            labelDWoodType.setText("");
-            labelDPostnr.setText(" ");
-            labelDAddress.setText(" ");
-            labelDQuanitity.setText(" ");
-            */
-       }
-       
-       /*
-       
-        public static int WRONG_PHONE_FORMAT = 1;
-        public static int WRONG_POSTALCODE_FORMAT = 2;
-        public static int WRONG_QUANTITY_FORMAT = 3;
-        public static int NO_CUSTOMER_FIRSTNAME = 4;
-        public static int NO_CUSTOMER_LASTNAME = 5;
-        public static int NO_ADDRESS_INFO = 6;
-        public static int NO_QUANTITY = 7; 
-        public static int NO_POSTNUMBER = 8; 
-        public static int NO_WOODTYPE = 9; 
-        public static int NO_PHONENUMBER = 10;
-        public static int WRONG_POSTNUMBER = 11; 
-    
-       */
-       
-       
-        for(Integer i : errors){
+            
+            //Clear all the fields
+            textFieldPhone.setText("");
+            textFieldPostPlace.setText("");
+            textFieldLastName.setText("");
+            textFieldFirstName.setText("");
+            textFieldPostnr.setText("");
+            textFieldAddress.setText("");
+            textFieldQuantity.setText("");
+            
+       } else {
+           for(Integer i : errors){
             if(i == Sales.NO_CUSTOMER_FIRSTNAME){
                 labelDFirstName.setForeground(Color.red);
             }
@@ -545,11 +527,9 @@ public class SaleTab extends javax.swing.JPanel {
             }
             if(i == Sales.NO_QUANTITY){
                 labelDQuanitity.setForeground(Color.red);            
-            }
-            
-           
-        }       
-       
+            } 
+        }      
+       }       
     }//GEN-LAST:event_buttonDoneActionPerformed
 
     private void comboBoxWoodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxWoodTypeActionPerformed
@@ -574,11 +554,15 @@ public class SaleTab extends javax.swing.JPanel {
       
       int result = JOptionPane.showConfirmDialog(null, panelWood, 
             "Skriv inn vedtype, bagstørrelse og pris på den nye vedtypen", JOptionPane.OK_CANCEL_OPTION);
-      if (result == JOptionPane.OK_OPTION) {          
-           woods.addWood(textfieldWoodType.getText(), textfieldBagSize.getText(),textfieldPrice.getText());
-           DefaultComboBoxModel model = new DefaultComboBoxModel(woods.getWoodsStringList());           
-           model.addElement(textfieldWoodType.getText());
-           comboBoxWoodType.setModel(model);
+      if (result == JOptionPane.OK_OPTION) {  
+           if (woods.addWood(textfieldWoodType.getText(), textfieldBagSize.getText(),textfieldPrice.getText())){
+               DefaultComboBoxModel model = new DefaultComboBoxModel(woods.getWoodsStringList());           
+               model.addElement(textfieldWoodType.getText());
+               comboBoxWoodType.setModel(model);
+           } else {               
+            showMessageDialog(null, "Alle feltene må være utfylt","Error",JOptionPane.WARNING_MESSAGE);            
+           }
+           
       }
       
 
