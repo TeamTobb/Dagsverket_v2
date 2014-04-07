@@ -86,8 +86,9 @@ public class DetailedView extends javax.swing.JFrame {
         comboBoxCreateCaseSupervisor = new javax.swing.JComboBox();
         jScrollPane8 = new javax.swing.JScrollPane();
         textAreaToolList = new javax.swing.JTextArea();
+        labelCreateCaseHeader = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1024, 706));
         setPreferredSize(new java.awt.Dimension(1024, 706));
 
@@ -103,10 +104,12 @@ public class DetailedView extends javax.swing.JFrame {
 
         textAreaDescription.setColumns(20);
         textAreaDescription.setRows(5);
+        textAreaDescription.setText(this.currentCase.getDescription());
         jScrollPane1.setViewportView(textAreaDescription);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
+        textFieldAddress.setText(this.currentCase.getAddress());
         textFieldAddress.setToolTipText("...");
         textFieldAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +119,7 @@ public class DetailedView extends javax.swing.JFrame {
 
         labelCreateCaseDNameHeader.setText("Mottatt av");
 
-        textFieldPostPlace.setText("updateOnPostnr");
+        textFieldPostPlace.setText(this.currentCase.getPostPlace());
         textFieldPostPlace.setToolTipText("...");
         textFieldPostPlace.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +129,7 @@ public class DetailedView extends javax.swing.JFrame {
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPostalCode.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
+        textFieldPostalCode.setText("" + this.currentCase.getPostalCode());
         textFieldPostalCode.setToolTipText("...");
         textFieldPostalCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +160,7 @@ public class DetailedView extends javax.swing.JFrame {
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPhone.setDocument(new JTextFieldLimit(8)); // endre tallet for å endre limit
+        textFieldPhone.setText("" + this.currentCase.getEmployer().getPhoneNumber());
         textFieldPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPhoneActionPerformed(evt);
@@ -165,10 +170,11 @@ public class DetailedView extends javax.swing.JFrame {
         labelCustomerDFirstName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelCustomerDFirstName.setText("Kunde");
 
-        labelDate.setText("case info..");
+        labelDate.setText("fuck this shit..");
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
+        textFieldCustomerLastName.setText(this.currentCase.getEmployer().getLastname());
         textFieldCustomerLastName.setToolTipText("");
         textFieldCustomerLastName.setVerifyInputWhenFocusTarget(false);
         textFieldCustomerLastName.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +187,7 @@ public class DetailedView extends javax.swing.JFrame {
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
+        textFieldCustomerFirstName.setText(this.currentCase.getEmployer().getFirstname());
         textFieldCustomerFirstName.setToolTipText("");
         textFieldCustomerFirstName.setVerifyInputWhenFocusTarget(false);
         textFieldCustomerFirstName.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +197,7 @@ public class DetailedView extends javax.swing.JFrame {
         });
 
         buttonComplete.setBackground(new java.awt.Color(0, 153, 51));
-        buttonComplete.setText("Ferdig");
+        buttonComplete.setText("Oppdater info");
         buttonComplete.setToolTipText("");
         buttonComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +219,7 @@ public class DetailedView extends javax.swing.JFrame {
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldSubject.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
+        textFieldSubject.setText(this.currentCase.getSubject());
         textFieldSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldSubjectActionPerformed(evt);
@@ -222,11 +230,12 @@ public class DetailedView extends javax.swing.JFrame {
 
         textAreaContacts.setColumns(20);
         textAreaContacts.setRows(5);
+        textAreaContacts.setText(this.currentCase.getContactPerson());
         jScrollPane7.setViewportView(textAreaContacts);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPrice.setDocument(new JTextFieldLimit(6)); // endre tallet for å endre limit
-        textFieldPrice.setText("1750");
+        textFieldPrice.setText("" + this.currentCase.getPrice());
         textFieldPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPriceActionPerformed(evt);
@@ -235,7 +244,7 @@ public class DetailedView extends javax.swing.JFrame {
 
         labelDSubject.setText("Arbeidets art");
 
-        labelCreateCaseName.setText(users.currentUser.toString());
+        labelCreateCaseName.setText(this.users.getUserById(this.currentCase.getCreatorId()).toString());
 
         labelDPhone.setText("Telefon:");
 
@@ -276,13 +285,20 @@ public class DetailedView extends javax.swing.JFrame {
         textAreaToolList.setDocument(new JTextFieldLimit(100));
         textAreaToolList.setColumns(20);
         textAreaToolList.setRows(5);
+        textAreaToolList.setText(this.currentCase.getToolList());
         jScrollPane8.setViewportView(textAreaToolList);
+
+        labelCreateCaseHeader.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        labelCreateCaseHeader.setText("Detaljer Sak nr: " + this.currentCase.getId());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(422, Short.MAX_VALUE)
+                .addComponent(labelCreateCaseHeader)
+                .addGap(444, 444, 444))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -389,7 +405,10 @@ public class DetailedView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 706, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(labelCreateCaseHeader)
+                .addContainerGap(658, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -484,9 +503,9 @@ public class DetailedView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -671,6 +690,7 @@ public class DetailedView extends javax.swing.JFrame {
     private javax.swing.JLabel labelCreateCaseDNameHeader;
     private javax.swing.JLabel labelCreateCaseDReqTime;
     private javax.swing.JLabel labelCreateCaseDSupervisorHeader;
+    private javax.swing.JLabel labelCreateCaseHeader;
     private javax.swing.JLabel labelCreateCaseName;
     private javax.swing.JLabel labelCustomerDFirstName;
     private javax.swing.JLabel labelCustomerDLastName;
