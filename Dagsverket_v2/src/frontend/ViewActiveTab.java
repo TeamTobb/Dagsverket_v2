@@ -7,8 +7,10 @@
 package frontend;
 
 import backend.*;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -167,7 +169,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
         int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0); 
         String address = this.cases.getCaseById(id).getAddress();
         String[] addressArray = address.split(" ");
-        String addressURL = "https://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";        
+        String addressURL = "http://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";        
         for(int i = 0; i<addressArray.length; i++){
             if(i<addressArray.length-1){
                 addressURL+= addressArray[i] + "+";            
@@ -182,8 +184,13 @@ public class ViewActiveTab extends javax.swing.JPanel {
         addressURL += "+";   
         addressURL += this.cases.getCaseById(id).getPostPlace();
         addressURL+="/";
-        System.out.println(addressURL);
         
+        try {
+            Desktop d = Desktop.getDesktop();
+            d.browse(new URI(addressURL)); 
+        } catch(IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+         } 
     }//GEN-LAST:event_buttonDrivingRouteActionPerformed
 
     private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
