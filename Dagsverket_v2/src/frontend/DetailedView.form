@@ -633,7 +633,7 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(this.users.getUsers())" type="code"/>
             </Property>
             <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.users.currentUser.getId() - 1&#xa;    " type="code"/>
+              <Connection code="getSupervisorIdFromCombobox()&#xa;    " type="code"/>
             </Property>
           </Properties>
           <Events>

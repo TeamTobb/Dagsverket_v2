@@ -323,36 +323,8 @@ public class DetailedView extends javax.swing.JFrame {
         labelDReqDate.setText("Ønsket oppstart");
 
         comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(this.users.getUsers()));
-
-        
-        // find the corresponding id from combobox that matches the database supervisor id
-
-        ComboBoxModel model = comboBoxCreateCaseSupervisor.getModel();
-
-        int size = model.getSize();
-        boolean found = false;
-
-        for (int i = 0; i < size; i++) {
-            System.out.println("HHHEEELLLO");
-            // instanceof?
-            String tempStringUser = (String)model.getElementAt(i);
-            System.out.println(tempStringUser + " " + this.users.getUserIdByFullName(tempStringUser));
-
-            int tempUserId = this.users.getUserIdByFullName(tempStringUser);
-            if(tempUserId == this.currentCase.getSupervisorId()) {
-                System.out.println("I DONT WANT TO LIVE IN THIS WORLD");
-                found = true;
-                comboBoxCreateCaseSupervisor.setSelectedIndex(i
+        comboBoxCreateCaseSupervisor.setSelectedIndex(getSupervisorIdFromCombobox()
         );
-                i = size;
-            }
-        }
-
-        if(!found) {
-            comboBoxCreateCaseSupervisor.setSelectedIndex(-1
-        );
-        }
-
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxCreateCaseSupervisorActionPerformed(evt);
@@ -716,6 +688,21 @@ public class DetailedView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxCreateCaseSupervisorActionPerformed
 
+    private int getSupervisorIdFromCombobox() {
+        // borgar mix, skal finne en id som stemmer overens med combo box ut i fra database, works?
+        ComboBoxModel model = comboBoxCreateCaseSupervisor.getModel();
+        int size = model.getSize();
+        for (int i = 0; i < size; i++) {
+            // instanceof?
+            String tempStringUser = (String)model.getElementAt(i);
+            int tempUserId = this.users.getUserIdByFullName(tempStringUser);
+            if(tempUserId == this.currentCase.getSupervisorId()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     /**
      * @param args the command line arguments
      */
