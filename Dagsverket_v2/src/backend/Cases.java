@@ -239,6 +239,133 @@ public class Cases {
         return errors;
 	}
 
+    public ArrayList<Integer> updateCase(int creator, String customerFirstName, String customerLastName, String caseAddress, 
+                                            String postalCode, String postPlace, String phoneNumber, String subject, 
+                                            String reqDate, String reqTime, String description, int supervisor,
+                                            String price, String checkupDate, String startDate, String toolList,
+                                            String contactPerson, String status) {
+        int phoneNumberInt = 0;
+        int priceInt = 0; 
+        int postalCodeInt = 0;
+        int customerId = 0; 
+        ArrayList<Integer> errors = new ArrayList<Integer>();           
+        try{
+            priceInt = Integer.parseInt(price);
+        }
+        catch(NumberFormatException e){
+            System.out.println("feil i price parseint" + e);
+            errors.add(WRONG_PRICE_FORMAT);
+        }            
+        try{
+            postalCodeInt = Integer.parseInt(postalCode);
+        }
+        catch(NumberFormatException e){
+            System.out.println("feil i postalcode parseint" + e);
+            errors.add(WRONG_POSTALCODE_FORMAT);                
+        }            
+          try{
+            phoneNumberInt = Integer.parseInt(phoneNumber);
+        }
+        catch(NumberFormatException e){
+            System.out.println("feil i phonenumber parseint" + e);
+            errors.add(WRONG_PHONE_FORMAT);                
+        }
+        errors.addAll(checkFields(customerFirstName, customerLastName, phoneNumberInt, subject));
+
+        if(errors.size()==0){
+            System.out.println("errors == null");
+            String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
+                                   "' AND lastName = '" + customerLastName + "' AND phoneNumber = " + phoneNumberInt;
+            ResultSet rs = this.db.executeQuery(sqlStatement);
+            try{
+                if(rs.next()){                        
+                            customerId = rs.getInt("id");
+                }
+                else{
+                    this.db.createConnection();                        
+                    PreparedStatement insertCustomerStatement = this.db.getConnection().prepareStatement(
+                            "INSERT INTO customers VALUES(DEFAULT, ?, ?, ?)");
+                    insertCustomerStatement.setString(1, customerFirstName);
+                    insertCustomerStatement.setString(2, customerLastName); 
+                    insertCustomerStatement.setInt(3, phoneNumberInt);                         
+                    db.executeUpdate(insertCustomerStatement);
+                    db.closeAll();                        
+                    ResultSet res = this.db.executeQuery(sqlStatement);
+                    
+                    try{
+                        while(res.next()){
+                            customerId = res.getInt("id");
+                        }                        
+                    }
+                    catch(SQLException e){
+                        System.out.println("feil 1 " + e);                            
+                    }
+                }
+            }catch(SQLException e){
+                System.out.println("feil 2 " + e);
+            }
+            finally{                    
+                db.closeAll();
+            }
+            this.db.createConnection();
+            try{
+
+                // i "viewet" maa vi oppdatere alle felt naar vi gaar inn paa en case, slik at de stemmer med det gamle
+
+                // skift til en update statement -- done
+
+                PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("UPDATE cases SET address = ?, postalcode = ?, postplace = ?, subject = ?, req_date = ?, req_time = ?, description = ?, price = ?, checkup_date = ?, startdate = ?, toollist = ?, contactperson = ?, status = ?, creator = ?, supervisor = ?, customerId = ?");
+                insertCaseStatement.setString(1, caseAddress);
+                insertCaseStatement.setInt(2, postalCodeInt);
+                insertCaseStatement.setString(3, postPlace);
+                insertCaseStatement.setString(4, subject);
+                insertCaseStatement.setString(5, reqDate);
+                insertCaseStatement.setString(6, reqTime);
+                insertCaseStatement.setString(7, description);
+                insertCaseStatement.setInt(8, priceInt);
+                insertCaseStatement.setString(9, checkupDate);
+                insertCaseStatement.setString(10, startDate);
+                insertCaseStatement.setString(11, toolList);
+                insertCaseStatement.setString(12, contactPerson);
+                insertCaseStatement.setString(13, status);
+                insertCaseStatement.setInt(14, creator);
+                insertCaseStatement.setInt(15, supervisor);
+                insertCaseStatement.setInt(16, customerId);
+
+                // rs.getInt("id"),
+                // rs.getString("address"),
+                // rs.getInt("postalcode"),
+                // rs.getString("postplace"),
+                // rs.getString("subject"),
+                // rs.getString("req_date"),
+                // rs.getString("req_time"),
+                // rs.getString("description"),
+                // rs.getInt("price"),
+                // rs.getString("checkup_date"),
+                // rs.getString("startdate"),
+                // rs.getString("toollist"),
+                // rs.getString("contactperson"),
+                // rs.getString("status"),
+                // rs.getInt("creator"),
+                // rs.getInt("supervisor"),
+                // rs.getInt("customer"),
+                // rs.getString("firstname"),
+                // rs.getString("lastname"),
+                // rs.getInt("phonenumber")
+                
+               // insertCaseStatement.executeUpdate();
+                db.executeUpdate(insertCaseStatement);
+                
+            }catch(SQLException e){
+                System.out.println("feil i updateCase: " + e);
+            }     
+            finally{
+                db.closeAll();
+            }
+        }
+        return errors;
+    }
+
     public static void main(String[] args) {
         Database db = new Database();
         Cases c = new Cases();

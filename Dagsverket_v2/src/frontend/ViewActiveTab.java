@@ -21,6 +21,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
     private Users users;
     private addEmployeeFrame addEmployeeFrame;  
     private Employees employees;
+    private DetailedView detailedView;
     /**
      * Creates new form ViewActiveTab
      */
@@ -142,7 +143,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
         add(panelCalender);
         panelCalender.setBounds(-2, 1, 1030, 600);
 
-        buttonToggle1.setText("Gå til kalender");
+        buttonToggle1.setText("Detaljer");
         buttonToggle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonToggle1ActionPerformed(evt);
@@ -156,12 +157,13 @@ public class ViewActiveTab extends javax.swing.JPanel {
         int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
         this.addEmployeeFrame = new addEmployeeFrame(id);
         addEmployeeFrame.setVisible(true);
-        System.out.println("DETTE ER ID: " + id);
-        this.employees.updateEmployeeAvailable(addEmployeeFrame.getTableLeft(), addEmployeeFrame.getTableRight(), id);
     }//GEN-LAST:event_buttonAddEmployeeActionPerformed
 
     private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
-        // TODO add your handling code here:
+        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+        Case currentCase = cases.getCaseById(id);
+        this.detailedView = new DetailedView(currentCase);
+        this.detailedView.setVisible(true);
     }//GEN-LAST:event_buttonToggle1ActionPerformed
 
 

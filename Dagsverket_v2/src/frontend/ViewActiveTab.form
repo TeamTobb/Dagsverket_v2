@@ -142,7 +142,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="buttonToggle1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="G&#xe5; til kalender"/>
+        <Property name="text" type="java.lang.String" value="Detaljer"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonToggle1ActionPerformed"/>

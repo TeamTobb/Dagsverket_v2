@@ -80,6 +80,23 @@ public class Employees {
             db.closeAll();
         }
     }
+    
+    public void setAntUtenZero(int employeeId){
+        db.createConnection();
+        try{
+            PreparedStatement sqlStatement = db.getConnection().prepareStatement(
+                                            "UPDATE employees SET attendanceWithoutWork = 0 "
+                                                    + "WHERE employees.id = ?");
+            sqlStatement.setInt(1, employeeId);
+            db.executeUpdate(sqlStatement);
+        }
+        catch(SQLException e){
+            System.out.println("feil i setAntUtenZero: " + e);
+        }
+        finally{
+            db.closeAll();
+        }
+    }
 
     public void removeFromCase(int caseId, int employeeId){
         db.createConnection(); 
@@ -97,10 +114,12 @@ public class Employees {
     }
     
     public void updateEmployeeAvailable(JTable left, JTable right, int caseId){
+        currentDate = dateFormat.format(cal.getTime());           
         this.employees = new ArrayList<Employee>();
         String sqlStatement = "SELECT * FROM employees WHERE id NOT IN("
                              + "SELECT employees.id FROM employees INNER JOIN events_has_employees "
-                             + "ON employees.id = events_has_employees.EMPLOYEE_ID WHERE case_id = " + caseId + ")";
+                             + "ON employees.id = events_has_employees.EMPLOYEE_ID WHERE case_id = " + caseId + ")"
+                             + "AND lastRegDate = '" + currentDate + "'";
         ResultSet rs = db.executeQuery(sqlStatement);        
         
         try{
@@ -124,13 +143,13 @@ public class Employees {
         modelLeft.setRowCount(0);
         
         Object[] insertTable = new Object[6];                
-        for(int i = 0; i<this.employees.size(); i++){
-            insertTable[0] = this.employees.get(i).getId();           
-            insertTable[1] = this.employees.get(i).getFirstName();
-            insertTable[2] = this.employees.get(i).getLastName();
-            insertTable[5] = this.employees.get(i).getLastWorkDate();
-            insertTable[3] = this.employees.get(i).getLastRegDate();
-            insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
+        for (Employee employee : this.employees) {
+            insertTable[0] = employee.getId();
+            insertTable[1] = employee.getFirstName();
+            insertTable[2] = employee.getLastName();
+            insertTable[5] = employee.getLastWorkDate();
+            insertTable[3] = employee.getLastRegDate();
+            insertTable[4] = employee.getAttendanceWithoutWork(); 
             modelLeft.insertRow(left.getRowCount(), insertTable);
         }          
         
@@ -155,19 +174,18 @@ public class Employees {
         }
         finally{
             db.closeAll();
-        }   
-        
+        }           
         DefaultTableModel modelRight = (DefaultTableModel)right.getModel();
         modelRight.setRowCount(0);
         
         insertTable = new Object[6];                
-        for(int i = 0; i<this.employees.size(); i++){
-            insertTable[0] = this.employees.get(i).getId();           
-            insertTable[1] = this.employees.get(i).getFirstName();
-            insertTable[2] = this.employees.get(i).getLastName();
-            insertTable[5] = this.employees.get(i).getLastWorkDate();
-            insertTable[3] = this.employees.get(i).getLastRegDate();
-            insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
+        for (Employee employee : this.employees) {
+            insertTable[0] = employee.getId();
+            insertTable[1] = employee.getFirstName();
+            insertTable[2] = employee.getLastName();
+            insertTable[5] = employee.getLastWorkDate();
+            insertTable[3] = employee.getLastRegDate();
+            insertTable[4] = employee.getAttendanceWithoutWork(); 
             modelRight.insertRow(right.getRowCount(), insertTable);
         }    
     }
@@ -181,29 +199,28 @@ public class Employees {
         Object[] insertTable = new Object[6];
         updateEmployeeList();
         
-        for(int i = 0; i<this.employees.size(); i++){
-                insertTable[0] = this.employees.get(i).getId();           
-                insertTable[1] = this.employees.get(i).getFirstName();
-                insertTable[2] = this.employees.get(i).getLastName();
-                insertTable[5] = this.employees.get(i).getLastWorkDate();
-                insertTable[3] = this.employees.get(i).getLastRegDate();
-                insertTable[4] = this.employees.get(i).getAttendanceWithoutWork(); 
-                if(this.employees.get(i).getLastRegDate().equals(currentDate)){
-                    modelRight.insertRow(right.getRowCount(), insertTable);   
-                }
-                else{
-                    modelLeft.insertRow(left.getRowCount(), insertTable);
-                }
-       }    
+        for (Employee employee : this.employees) {
+            insertTable[0] = employee.getId();
+            insertTable[1] = employee.getFirstName();
+            insertTable[2] = employee.getLastName();
+            insertTable[5] = employee.getLastWorkDate();
+            insertTable[3] = employee.getLastRegDate();
+            insertTable[4] = employee.getAttendanceWithoutWork();
+            if (employee.getLastRegDate().equals(currentDate)) {
+                modelRight.insertRow(right.getRowCount(), insertTable);
+            } else {
+                modelLeft.insertRow(left.getRowCount(), insertTable);
+            }
+        }    
     }
     
-    public void moveToAttended(String firstName, String lastName, JTable tableLeft, JTable tableRight){   
+    public void moveToAttended(int employeeId, JTable tableLeft, JTable tableRight){   
     currentDate = dateFormat.format(cal.getTime());           
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
                     "UPDATE employees SET lastRegDate='" + currentDate + 
-                    "' WHERE firstName = '" + firstName + "' AND lastName = '" + lastName + "'"); 
+                    "' WHERE id = " + employeeId); 
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
@@ -216,8 +233,7 @@ public class Employees {
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
-                    "UPDATE employees SET attendanceWithoutWork=attendanceWithoutWork +1 WHERE firstName = '"
-                            + firstName + "' AND lastName = '" + lastName + "'"); 
+                    "UPDATE employees SET attendanceWithoutWork=attendanceWithoutWork +1 WHERE id = " + employeeId);
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
@@ -229,11 +245,11 @@ public class Employees {
         }     
     }
     
-    public void moveToNotAttended(String firstName, String lastName, JTable tableLeft, JTable tableRight){
+    public void moveToNotAttended(int employeeId, JTable tableLeft, JTable tableRight){
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
-                    "UPDATE employees SET lastRegDate ='' WHERE firstName = '" + firstName + "' AND lastName = '" + lastName + "'"); 
+                    "UPDATE employees SET lastRegDate ='' WHERE id = " + employeeId); 
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
@@ -246,8 +262,8 @@ public class Employees {
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
-                    "UPDATE employees SET attendanceWithoutWork=attendanceWithoutWork -1 WHERE firstName = '"
-                            + firstName + "' AND lastName = '" + lastName + "'"); 
+                    "UPDATE employees SET attendanceWithoutWork=attendanceWithoutWork -1 WHERE id = " + employeeId
+                    + "AND attendanceWithoutWork >0");
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
@@ -274,8 +290,7 @@ public class Employees {
                                 "INSERT INTO employees VALUES(DEFAULT, ?, ?, ' ', ' ', 0)");   
                 insertEmployeeStatement.setString(1, firstName);
                 insertEmployeeStatement.setString(2, lastName);                
-                db.executeUpdate(insertEmployeeStatement);
-                
+                db.executeUpdate(insertEmployeeStatement);                
             }
             catch(SQLException e){
                 System.out.println("feil i employees.createEmployee" + e);
@@ -284,7 +299,6 @@ public class Employees {
                 db.closeAll();
             }
     	}
-
     	return errors;
     }
 
@@ -297,23 +311,5 @@ public class Employees {
             errors.add(WRONG_LASTNAME);
         }
     	return errors;
-    }
-    
-    public void addEmployee(){
-        
-    }
-
-
-    // HOW SHOULD WE HANDLE ATTEND AND REMOVE ATTEND?
-
-    public boolean attend() {
-    	// update for todays date
-    	return false;
-    }
-
-    public boolean removeAttend() {
-    	// reset update? how? keep track of old attend?
-    	// add LastAttend backup in database?
-    	return false;
     }
 }

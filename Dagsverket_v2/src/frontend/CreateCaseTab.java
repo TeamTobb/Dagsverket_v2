@@ -10,6 +10,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.text.DateFormat;
+import java.util.Calendar;
 
 /**
  *
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 public class CreateCaseTab extends javax.swing.JPanel {
     private Cases cases;
     private Users users;
+    public static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public static Calendar today = Calendar.getInstance();
 
     /**
      * Creates new form CreateCaseTab
@@ -37,12 +41,10 @@ public class CreateCaseTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelCreateCaseDName = new javax.swing.JLabel();
         labelCreateCaseName = new javax.swing.JLabel();
         labelCreateCaseDNameHeader = new javax.swing.JLabel();
         labelCreateCaseHeader = new javax.swing.JLabel();
         comboBoxCreateCaseSupervisor = new javax.swing.JComboBox();
-        labelCreateCaseDSupervisor = new javax.swing.JLabel();
         labelCreateCaseDSupervisorHeader = new javax.swing.JLabel();
         labelDate = new javax.swing.JLabel();
         labelDDate = new javax.swing.JLabel();
@@ -67,7 +69,6 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDPrice = new javax.swing.JLabel();
         textFieldPrice = new javax.swing.JTextField();
         labelCreateCaseDInspectDate = new javax.swing.JLabel();
-        labelCreateCaseInspectDate = new javax.swing.JLabel();
         labelDStartDate = new javax.swing.JLabel();
         labelDEquipment = new javax.swing.JLabel();
         labelDContacts = new javax.swing.JLabel();
@@ -76,7 +77,6 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDStatus = new javax.swing.JLabel();
         comboBoxStatus = new javax.swing.JComboBox();
         buttonComplete = new javax.swing.JButton();
-        labelCreateCaseStartDate = new javax.swing.JLabel();
         dateFieldInspectDate = new com.toedter.calendar.JDateChooser();
         dateFieldReqDate = new com.toedter.calendar.JDateChooser();
         dateFieldStartDate = new com.toedter.calendar.JDateChooser();
@@ -87,22 +87,18 @@ public class CreateCaseTab extends javax.swing.JPanel {
 
         setLayout(null);
 
-        labelCreateCaseDName.setText("Navn:");
-        add(labelCreateCaseDName);
-        labelCreateCaseDName.setBounds(30, 70, 36, 16);
-
         labelCreateCaseName.setText(users.currentUser.toString());
         add(labelCreateCaseName);
-        labelCreateCaseName.setBounds(90, 70, 180, 16);
+        labelCreateCaseName.setBounds(150, 80, 180, 16);
 
-        labelCreateCaseDNameHeader.setText("Mottatt av:");
+        labelCreateCaseDNameHeader.setText("Mottatt av");
         add(labelCreateCaseDNameHeader);
-        labelCreateCaseDNameHeader.setBounds(30, 40, 68, 16);
+        labelCreateCaseDNameHeader.setBounds(70, 80, 64, 16);
 
-        labelCreateCaseHeader.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelCreateCaseHeader.setText("Nytt oppdrag ");
+        labelCreateCaseHeader.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        labelCreateCaseHeader.setText("Oppdragsregistrering");
         add(labelCreateCaseHeader);
-        labelCreateCaseHeader.setBounds(84, 14, 135, 29);
+        labelCreateCaseHeader.setBounds(410, 30, 280, 29);
 
         comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(this.users.getUsers()));
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
@@ -111,27 +107,25 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(comboBoxCreateCaseSupervisor);
-        comboBoxCreateCaseSupervisor.setBounds(340, 60, 210, 27);
+        comboBoxCreateCaseSupervisor.setBounds(640, 90, 280, 27);
 
-        labelCreateCaseDSupervisor.setText("Navn:");
-        add(labelCreateCaseDSupervisor);
-        labelCreateCaseDSupervisor.setBounds(300, 70, 36, 16);
-
-        labelCreateCaseDSupervisorHeader.setText("Utføres av:");
+        labelCreateCaseDSupervisorHeader.setText("Utføres av");
         add(labelCreateCaseDSupervisorHeader);
-        labelCreateCaseDSupervisorHeader.setBounds(300, 40, 68, 16);
+        labelCreateCaseDSupervisorHeader.setBounds(570, 90, 64, 16);
 
-        labelDate.setText("Insert date" );
+        labelDate.setText("get case info.."
+        );
         add(labelDate);
-        labelDate.setBounds(164, 131, 84, 16);
+        labelDate.setBounds(150, 100, 84, 16);
 
-        labelDDate.setText("Dato:");
+        labelDDate.setText("Dato");
         add(labelDDate);
-        labelDDate.setBounds(30, 130, 34, 16);
+        labelDDate.setBounds(100, 100, 30, 16);
 
-        labelCustomerDFirstName.setText("Kunde:");
+        labelCustomerDFirstName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelCustomerDFirstName.setText("Kunde");
         add(labelCustomerDFirstName);
-        labelCustomerDFirstName.setBounds(30, 160, 43, 16);
+        labelCustomerDFirstName.setBounds(30, 150, 100, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
@@ -143,11 +137,11 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldCustomerFirstName);
-        textFieldCustomerFirstName.setBounds(135, 151, 90, 28);
+        textFieldCustomerFirstName.setBounds(135, 151, 120, 28);
 
         labelDAddress.setText("Adresse");
         add(labelDAddress);
-        labelDAddress.setBounds(34, 186, 50, 16);
+        labelDAddress.setBounds(80, 180, 50, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
@@ -158,7 +152,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldAddress);
-        textFieldAddress.setBounds(135, 180, 280, 28);
+        textFieldAddress.setBounds(135, 180, 360, 28);
 
         textFieldPostPlace.setText("updateOnPostnr");
         textFieldPostPlace.setToolTipText("...");
@@ -168,7 +162,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldPostPlace);
-        textFieldPostPlace.setBounds(233, 214, 180, 28);
+        textFieldPostPlace.setBounds(233, 214, 260, 28);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPostalCode.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
@@ -200,7 +194,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
 
         labelDPostalCode.setText("Postnr");
         add(labelDPostalCode);
-        labelDPostalCode.setBounds(34, 221, 40, 16);
+        labelDPostalCode.setBounds(90, 220, 40, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPhone.setDocument(new JTextFieldLimit(8)); // endre tallet for å endre limit
@@ -210,15 +204,15 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldPhone);
-        textFieldPhone.setBounds(135, 248, 280, 28);
+        textFieldPhone.setBounds(135, 248, 360, 28);
 
         labelDPhone.setText("Telefon:");
         add(labelDPhone);
-        labelDPhone.setBounds(34, 254, 51, 16);
+        labelDPhone.setBounds(80, 250, 51, 16);
 
-        labelDSubject.setText("Arbeidets art:");
+        labelDSubject.setText("Arbeidets art");
         add(labelDSubject);
-        labelDSubject.setBounds(34, 338, 85, 16);
+        labelDSubject.setBounds(50, 340, 81, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldSubject.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
@@ -228,15 +222,15 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldSubject);
-        textFieldSubject.setBounds(135, 332, 275, 28);
+        textFieldSubject.setBounds(135, 332, 360, 28);
 
-        labelDReqDate.setText("Ønsket oppstart:");
+        labelDReqDate.setText("Ønsket oppstart");
         add(labelDReqDate);
-        labelDReqDate.setBounds(34, 384, 106, 16);
+        labelDReqDate.setBounds(30, 370, 102, 16);
 
-        labelCreateCaseDReqTime.setText("Kl.");
+        labelCreateCaseDReqTime.setText("Kl");
         add(labelCreateCaseDReqTime);
-        labelCreateCaseDReqTime.setBounds(417, 381, 20, 16);
+        labelCreateCaseDReqTime.setBounds(400, 370, 20, 16);
 
         String[] tider = new String[48];
         int teller = 0;
@@ -263,24 +257,24 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(ComboBoxCreateCaseReqTime);
-        ComboBoxCreateCaseReqTime.setBounds(437, 381, 72, 27);
+        ComboBoxCreateCaseReqTime.setBounds(420, 370, 72, 27);
         add(labelCreateCaseReqDate);
         labelCreateCaseReqDate.setBounds(287, 391, 120, 16);
 
-        labelDDescription.setText("Beskrivelse / Annet:");
+        labelDDescription.setText("Beskrivelse / Annet");
         add(labelDDescription);
-        labelDDescription.setBounds(34, 441, 126, 16);
+        labelDDescription.setBounds(10, 450, 122, 16);
 
         textAreaDescription.setColumns(20);
         textAreaDescription.setRows(5);
         jScrollPane1.setViewportView(textAreaDescription);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(136, 470, 350, 160);
+        jScrollPane1.setBounds(140, 450, 350, 160);
 
         labelDPrice.setText("Pris:");
         add(labelDPrice);
-        labelDPrice.setBounds(564, 34, 27, 16);
+        labelDPrice.setBounds(610, 150, 27, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPrice.setDocument(new JTextFieldLimit(6)); // endre tallet for å endre limit
@@ -291,57 +285,55 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldPrice);
-        textFieldPrice.setBounds(714, 34, 100, 28);
+        textFieldPrice.setBounds(640, 150, 280, 28);
 
         labelCreateCaseDInspectDate.setText("Befaring: ");
         add(labelCreateCaseDInspectDate);
-        labelCreateCaseDInspectDate.setBounds(564, 74, 80, 16);
-        add(labelCreateCaseInspectDate);
-        labelCreateCaseInspectDate.setBounds(826, 84, 210, 20);
+        labelCreateCaseDInspectDate.setBounds(580, 180, 80, 16);
 
-        labelDStartDate.setText("Avtalt oppstart:");
+        labelDStartDate.setText("Avtalt oppstart");
         add(labelDStartDate);
-        labelDStartDate.setBounds(564, 151, 98, 16);
+        labelDStartDate.setBounds(540, 260, 94, 16);
 
-        labelDEquipment.setText("Utstyrsliste:");
+        labelDEquipment.setText("Utstyrsliste");
         add(labelDEquipment);
-        labelDEquipment.setBounds(564, 191, 76, 16);
+        labelDEquipment.setBounds(560, 300, 72, 16);
 
-        labelDContacts.setText("Kontaktpersoner:");
+        labelDContacts.setText("Kontaktpersoner");
         add(labelDContacts);
-        labelDContacts.setBounds(570, 310, 108, 16);
+        labelDContacts.setBounds(530, 410, 104, 16);
 
         textAreaContacts.setColumns(20);
         textAreaContacts.setRows(5);
         jScrollPane7.setViewportView(textAreaContacts);
 
         add(jScrollPane7);
-        jScrollPane7.setBounds(700, 300, 270, 100);
+        jScrollPane7.setBounds(640, 410, 270, 100);
 
-        labelDStatus.setText("Status:");
+        labelDStatus.setText("Status");
         add(labelDStatus);
-        labelDStatus.setBounds(564, 421, 60, 16);
+        labelDStatus.setBounds(580, 580, 60, 16);
 
         comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Uferdig", "Aktiv", "Ferdig" }));
         add(comboBoxStatus);
-        comboBoxStatus.setBounds(684, 421, 102, 27);
+        comboBoxStatus.setBounds(630, 580, 280, 27);
 
+        buttonComplete.setBackground(new java.awt.Color(0, 153, 51));
         buttonComplete.setText("Ferdig");
+        buttonComplete.setToolTipText("");
         buttonComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCompleteActionPerformed(evt);
             }
         });
         add(buttonComplete);
-        buttonComplete.setBounds(684, 581, 260, 50);
-        add(labelCreateCaseStartDate);
-        labelCreateCaseStartDate.setBounds(734, 151, 210, 20);
+        buttonComplete.setBounds(630, 630, 290, 50);
         add(dateFieldInspectDate);
-        dateFieldInspectDate.setBounds(710, 70, 130, 28);
+        dateFieldInspectDate.setBounds(640, 180, 280, 28);
         add(dateFieldReqDate);
-        dateFieldReqDate.setBounds(158, 379, 210, 28);
+        dateFieldReqDate.setBounds(140, 370, 250, 28);
         add(dateFieldStartDate);
-        dateFieldStartDate.setBounds(700, 140, 170, 28);
+        dateFieldStartDate.setBounds(640, 250, 280, 28);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
@@ -353,11 +345,11 @@ public class CreateCaseTab extends javax.swing.JPanel {
             }
         });
         add(textFieldCustomerLastName);
-        textFieldCustomerLastName.setBounds(330, 150, 90, 28);
+        textFieldCustomerLastName.setBounds(330, 150, 170, 28);
 
-        labelCustomerDLastName.setText("etternavn");
+        labelCustomerDLastName.setText("Etternavn");
         add(labelCustomerDLastName);
-        labelCustomerDLastName.setBounds(240, 150, 80, 16);
+        labelCustomerDLastName.setBounds(270, 150, 80, 16);
 
         textAreaToolList.setDocument(new JTextFieldLimit(100));
         textAreaToolList.setColumns(20);
@@ -365,7 +357,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         jScrollPane8.setViewportView(textAreaToolList);
 
         add(jScrollPane8);
-        jScrollPane8.setBounds(700, 190, 270, 100);
+        jScrollPane8.setBounds(640, 300, 270, 100);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxCreateCaseSupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCreateCaseSupervisorActionPerformed
@@ -444,7 +436,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
     private void calCreateCaseInspectDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calCreateCaseInspectDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_calCreateCaseInspectDateActionPerformed
-
+/*
     private void calCreateCaseInspectDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calCreateCaseInspectDatePropertyChange
         if (evt.getNewValue() instanceof Date){
             Date dato = (Date)evt.getNewValue();
@@ -454,11 +446,11 @@ public class CreateCaseTab extends javax.swing.JPanel {
             labelCreateCaseInspectDate.setText(date);
         }
     }//GEN-LAST:event_calCreateCaseInspectDatePropertyChange
-
+*/
     private void calCreateCaseStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calCreateCaseStartDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_calCreateCaseStartDateActionPerformed
-
+/*
     private void calCreateCaseStartDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calCreateCaseStartDatePropertyChange
         if (evt.getNewValue() instanceof Date){
             Date dato = (Date)evt.getNewValue();
@@ -467,7 +459,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
             labelCreateCaseStartDate.setText(date);
         }
     }//GEN-LAST:event_calCreateCaseStartDatePropertyChange
-
+*/
     private void buttonCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCompleteActionPerformed
         Date reqDate = dateFieldReqDate.getDate();
         Date inspectDate = dateFieldInspectDate.getDate();
@@ -552,16 +544,12 @@ public class CreateCaseTab extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel labelCreateCaseDInspectDate;
-    private javax.swing.JLabel labelCreateCaseDName;
     private javax.swing.JLabel labelCreateCaseDNameHeader;
     private javax.swing.JLabel labelCreateCaseDReqTime;
-    private javax.swing.JLabel labelCreateCaseDSupervisor;
     private javax.swing.JLabel labelCreateCaseDSupervisorHeader;
     private javax.swing.JLabel labelCreateCaseHeader;
-    private javax.swing.JLabel labelCreateCaseInspectDate;
     private javax.swing.JLabel labelCreateCaseName;
     private javax.swing.JLabel labelCreateCaseReqDate;
-    private javax.swing.JLabel labelCreateCaseStartDate;
     private javax.swing.JLabel labelCustomerDFirstName;
     private javax.swing.JLabel labelCustomerDLastName;
     private javax.swing.JLabel labelDAddress;
