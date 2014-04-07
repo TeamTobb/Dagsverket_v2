@@ -200,6 +200,7 @@ public class DetailedView extends javax.swing.JFrame {
         labelDPostalCode.setText("Postnr");
 
         comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Uferdig", "Aktiv", "Ferdig" }));
+        comboBoxStatus.setSelectedIndex(getStatusIdFromCombobox());
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPhone.setDocument(new JTextFieldLimit(8)); // endre tallet for å endre limit
@@ -314,6 +315,7 @@ public class DetailedView extends javax.swing.JFrame {
             }
         }
         ComboBoxCreateCaseReqTime.setModel(new javax.swing.DefaultComboBoxModel(tider));
+        ComboBoxCreateCaseReqTime.setSelectedIndex(getReqTimeIdFromCombobox());
         ComboBoxCreateCaseReqTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxCreateCaseReqTimeActionPerformed(evt);
@@ -697,6 +699,34 @@ public class DetailedView extends javax.swing.JFrame {
             String tempStringUser = (String)model.getElementAt(i);
             int tempUserId = this.users.getUserIdByFullName(tempStringUser);
             if(tempUserId == this.currentCase.getSupervisorId()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+     private int getReqTimeIdFromCombobox() {
+        // borgar mix, skal finne en id som stemmer overens med combo box ut i fra database, works?
+        ComboBoxModel model = ComboBoxCreateCaseReqTime.getModel();
+        int size = model.getSize();
+        for (int i = 0; i < size; i++) {
+            // instanceof?
+            String tempStringTime = (String)model.getElementAt(i);
+            if(tempStringTime.equals(this.currentCase.getReqTime())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+     
+    private int getStatusIdFromCombobox() {
+        // borgar mix, skal finne en id som stemmer overens med combo box ut i fra database, works?
+        ComboBoxModel model = comboBoxStatus.getModel();
+        int size = model.getSize();
+        for (int i = 0; i < size; i++) {
+            // instanceof?
+            String tempStatus = (String)model.getElementAt(i);
+            if(tempStatus.equals(this.currentCase.getStatus())) {
                 return i;
             }
         }
