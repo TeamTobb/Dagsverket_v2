@@ -61,7 +61,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
         textFieldPrice = new javax.swing.JTextField();
         textFieldWoodType = new javax.swing.JTextField();
         buttonClose = new javax.swing.JButton();
-        buttonUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -273,8 +272,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
             }
         });
 
-        buttonUpdate.setText("Oppdater");
-
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Vedsalg");
 
@@ -289,11 +286,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
                 .addGap(251, 251, 251)
                 .addComponent(jLabel1))
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(buttonUpdate)
-                    .addContainerGap(413, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,11 +297,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(buttonClose)
                 .addGap(0, 44, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(602, Short.MAX_VALUE)
-                    .addComponent(buttonUpdate)
-                    .addGap(32, 32, 32)))
         );
 
         pack();
@@ -373,7 +360,7 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldPriceActionPerformed
 
     private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
-        
+       this.dispose();        
         
 // TODO add your handling code here:
     }//GEN-LAST:event_buttonCloseActionPerformed
@@ -436,7 +423,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClose;
-    private javax.swing.JButton buttonUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel labelDAddress;
