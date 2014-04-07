@@ -288,17 +288,14 @@ public class Sales {
      
      
      
-     public void updateWoodSaleListDelivered(JTable table){
+     public void updateWoodSaleListDelivered(JTable table, String sort){
         System.out.println(sales.size());
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
 
-        updateSaleListWithDelivered();
+        updateSaleListWhere(sort);
         if (!sales.isEmpty()){
              Object[] insertTable = new Object[4];
-
-
-
 
              for(int i = 0; i<this.sales.size(); i++){
 
@@ -312,9 +309,15 @@ public class Sales {
         //updateSaleList();
     }
      
-     public void updateSaleListWithDelivered() {
+     public void updateSaleListWhere(String sort){
         sales = new ArrayList<Sale>();
-        String sqlStatement = "Select sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE, sales.STATUS FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE WHERE sales.STATUS = 'levert'";
+        String sqlStatement = "Select sales.ID, sales.QUANTITY, sales.CUSTOMER, "
+                + "customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, "
+                + "sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE, sales.STATUS "
+                + "FROM sales inner join customers on sales.CUSTOMER = customers.id "
+                + "INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE WHERE sales.STATUS = '"
+                + sort
+                + "'";
         ResultSet rs = db.executeQuery(sqlStatement);
         
         try {
@@ -348,9 +351,6 @@ public class Sales {
         Database db = new Database();
         Sales allSales = new Sales();
         db.createConnection();
-        
-
-        
       
         allSales.updateSaleList();
         
