@@ -59,6 +59,7 @@ wood VARCHAR(30),
 postalCode INTEGER,
 postPlace VARCHAR(30), 
 address VARCHAR(30),
+status VARCHAR(30),
 CONSTRAINT sales_pk PRIMARY KEY(id)
 );
 
