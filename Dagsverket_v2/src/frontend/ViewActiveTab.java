@@ -63,24 +63,25 @@ public class ViewActiveTab extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonAddEmployee = new javax.swing.JButton();
+        buttonDrivingRoute = new javax.swing.JButton();
         panelTableView = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         panelCalender = new javax.swing.JPanel();
         buttonToggle1 = new javax.swing.JButton();
+        buttonAddEmployee1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 153));
         setLayout(null);
 
-        buttonAddEmployee.setText("Legg til arbeidere");
-        buttonAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+        buttonDrivingRoute.setText("Se kjørerute");
+        buttonDrivingRoute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddEmployeeActionPerformed(evt);
+                buttonDrivingRouteActionPerformed(evt);
             }
         });
-        add(buttonAddEmployee);
-        buttonAddEmployee.setBounds(520, 610, 234, 41);
+        add(buttonDrivingRoute);
+        buttonDrivingRoute.setBounds(240, 610, 234, 41);
 
         panelTableView.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -151,13 +152,39 @@ public class ViewActiveTab extends javax.swing.JPanel {
         });
         add(buttonToggle1);
         buttonToggle1.setBounds(784, 609, 234, 41);
+
+        buttonAddEmployee1.setText("Legg til arbeidere");
+        buttonAddEmployee1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddEmployee1ActionPerformed(evt);
+            }
+        });
+        add(buttonAddEmployee1);
+        buttonAddEmployee1.setBounds(520, 610, 234, 41);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddEmployeeActionPerformed
-        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
-        this.addEmployeeFrame = new addEmployeeFrame(id);
-        addEmployeeFrame.setVisible(true);
-    }//GEN-LAST:event_buttonAddEmployeeActionPerformed
+    private void buttonDrivingRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDrivingRouteActionPerformed
+        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0); 
+        String address = this.cases.getCaseById(id).getAddress();
+        String[] addressArray = address.split(" ");
+        String addressURL = "https://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";        
+        for(int i = 0; i<addressArray.length; i++){
+            if(i<addressArray.length-1){
+                addressURL+= addressArray[i] + "+";            
+            }
+            else{
+                addressURL += addressArray[i];
+            }
+        }        
+        addressURL += ",";        
+        String postalCode = "+"+this.cases.getCaseById(id).getPostalCode();
+        addressURL += postalCode;
+        addressURL += "+";   
+        addressURL += this.cases.getCaseById(id).getPostPlace();
+        addressURL+="/";
+        System.out.println(addressURL);
+        
+    }//GEN-LAST:event_buttonDrivingRouteActionPerformed
 
     private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
         int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
@@ -166,9 +193,14 @@ public class ViewActiveTab extends javax.swing.JPanel {
         this.detailedView.setVisible(true);
     }//GEN-LAST:event_buttonToggle1ActionPerformed
 
+    private void buttonAddEmployee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddEmployee1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAddEmployee1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAddEmployee;
+    private javax.swing.JButton buttonAddEmployee1;
+    private javax.swing.JButton buttonDrivingRoute;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonToggle1;
     private javax.swing.JScrollPane jScrollPane2;
