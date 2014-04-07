@@ -106,7 +106,7 @@ public class Sales {
 
     public void updateSaleList() {
         sales = new ArrayList<Sale>();
-        String sqlStatement = "Select DISTINCT sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE, sales.STATUS FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE";
+        String sqlStatement = "Select sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE, sales.STATUS FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE";
         ResultSet rs = db.executeQuery(sqlStatement);
         
         try {
@@ -240,8 +240,6 @@ public class Sales {
           System.out.println("saleId = "+saleId);
           int index = getIndexFromId(saleId);
           
-          
-          
           MoreInfoOnSale moreInfoView = new MoreInfoOnSale(
                   sales.get(index).getBuyer().getFirstname(),
                   sales.get(index).getBuyer().getLastname(),
@@ -252,7 +250,6 @@ public class Sales {
                    ""+sales.get(index).getQuantity(), 
                   sales.get(index).getPostPlace());
           moreInfoView.setVisible(true);
-          
           
           return true;
       }
@@ -269,10 +266,83 @@ public class Sales {
          }
           return -1;
       }
+      
+      public boolean deliverWood(String idString){
+         try{
+            this.db.createConnection();            
+            PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
+                    "UPDATE sales SET status ='" + "levert" + 
+                    "' WHERE id = " + idString); 
+            this.db.executeUpdate(updateEmployeeRegDate);
+        } catch(SQLException e){
+            System.out.println("feil i deliverWood()"+e);
+        }
+        finally{
+            this.db.closeAll();
+        }       
+        
+          
+          
+          return true;
+      }
      
      
      
+     public void updateWoodSaleListDelivered(JTable table){
+        System.out.println(sales.size());
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+
+        updateSaleListWithDelivered();
+        if (!sales.isEmpty()){
+             Object[] insertTable = new Object[4];
+
+
+
+
+             for(int i = 0; i<this.sales.size(); i++){
+
+                 insertTable[0] = this.sales.get(i).getId();          
+                 insertTable[1] = this.sales.get(i).getBuyer().getFullName();          
+                 insertTable[2] = this.sales.get(i).getQuantity();
+                 insertTable[3] = this.sales.get(i).getStatus();
+                 model.insertRow(table.getRowCount(), insertTable);                     
+             } 
+        }
+        //updateSaleList();
+    }
      
+     public void updateSaleListWithDelivered() {
+        sales = new ArrayList<Sale>();
+        String sqlStatement = "Select sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE, sales.STATUS FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE WHERE sales.STATUS = 'levert'";
+        ResultSet rs = db.executeQuery(sqlStatement);
+        
+        try {
+            //System.out.println(rs.getInt("sales.ID"));
+            while(rs.next()) {
+                System.out.println("en Next i UpdateSaleList");
+                sales.add(new Sale(
+                    rs.getInt("ID"),
+                    rs.getInt("QUANTITY"),
+                    rs.getInt("CUSTOMER"),
+                    rs.getString("FIRSTNAME"),
+                    rs.getString("LASTNAME"),
+                    rs.getInt("PHONENUMBER"),
+                    rs.getString("ADDRESS"),
+                    rs.getInt("POSTALCODE"),
+                    rs.getString("POSTPLACE"),
+                    rs.getString("WOODTYPE"),
+                    rs.getInt("BAGSIZE"),                    
+                    rs.getInt("PRICE"),                     
+                    rs.getString("STATUS")));
+            }
+        } catch(SQLException e) {
+            System.out.println("SQLError: " + e);
+        } finally {
+            db.closeAll();
+            System.out.println("ok");
+        }
+    }
     
     public static void main(String args[]){
         Database db = new Database();

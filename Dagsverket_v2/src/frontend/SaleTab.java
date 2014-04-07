@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 
@@ -48,10 +49,10 @@ public class SaleTab extends javax.swing.JPanel {
 
         panelLeft = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         buttonUpdateTable = new javax.swing.JButton();
         buttonMoreInfo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        buttonSwapDeliverSale = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -84,8 +85,6 @@ public class SaleTab extends javax.swing.JPanel {
 
         panelLeft.setLayout(new java.awt.BorderLayout());
 
-        jToggleButton1.setText("Old Sale");
-
         buttonUpdateTable.setText("Oppdater Liste");
         buttonUpdateTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +99,19 @@ public class SaleTab extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("levert");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        buttonSwapDeliverSale.setText("Se leverte salg");
+        buttonSwapDeliverSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSwapDeliverSaleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,16 +119,14 @@ public class SaleTab extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(282, 282, 282)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(buttonMoreInfo)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(buttonUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSwapDeliverSale))
+                .addGap(302, 302, 302)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonMoreInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,8 +137,8 @@ public class SaleTab extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(buttonMoreInfo))
+                    .addComponent(buttonMoreInfo)
+                    .addComponent(buttonSwapDeliverSale))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -164,14 +173,13 @@ public class SaleTab extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
         );
 
         panelLeft.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -343,7 +351,7 @@ public class SaleTab extends javax.swing.JPanel {
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addComponent(textFieldQuantity)
                                             .addComponent(textFieldPrice)))))))))
-            .addContainerGap(68, Short.MAX_VALUE))
+            .addContainerGap(91, Short.MAX_VALUE))
     );
     jPanel3Layout.setVerticalGroup(
         jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,7 +427,7 @@ public class SaleTab extends javax.swing.JPanel {
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(buttonAddWoodType)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
             .addComponent(buttonDone)
             .addGap(46, 46, 46))
     );
@@ -616,11 +624,25 @@ public class SaleTab extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonMoreInfoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buttonSwapDeliverSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSwapDeliverSaleActionPerformed
+       if (jTable2.getSelectedRow()!=-1){
+            sales.deliverWood(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());  
+             this.sales.updateWoodSaleList(jTable2);
+             
+        }
+    }//GEN-LAST:event_buttonSwapDeliverSaleActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddWoodType;
     private javax.swing.JButton buttonDone;
     private javax.swing.JButton buttonMoreInfo;
+    private javax.swing.JButton buttonSwapDeliverSale;
     private javax.swing.JButton buttonUpdateTable;
     private javax.swing.JComboBox comboBoxWoodType;
     private javax.swing.JButton jButton1;
@@ -631,7 +653,6 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelDAddress;
     private javax.swing.JLabel labelDFirstName;
     private javax.swing.JLabel labelDLastName;
