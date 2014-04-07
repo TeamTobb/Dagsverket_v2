@@ -24,11 +24,11 @@ import java.util.Calendar;
 public class Employees {
     DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
     Calendar cal = Calendar.getInstance();
-    String currentDate = dateFormat.format(cal.getTime());   
     private ArrayList<Employee> employees;
     private Database db;
     public static final int WRONG_FIRSTNAME = 1; 
     public static final int WRONG_LASTNAME = 2;
+    private String currentDate;
 
     public Employees() {
     	this.employees = new ArrayList<Employee>();
@@ -172,7 +172,8 @@ public class Employees {
         }    
     }
     
-    public void updateGUILists(JTable left, JTable right){    
+    public void updateGUILists(JTable left, JTable right){ 
+        currentDate = dateFormat.format(cal.getTime());   
         DefaultTableModel modelLeft = (DefaultTableModel) left.getModel();
         DefaultTableModel modelRight = (DefaultTableModel) right.getModel();
         modelLeft.setRowCount(0);
@@ -196,7 +197,8 @@ public class Employees {
        }    
     }
     
-    public void moveToAttended(String firstName, String lastName, JTable tableLeft, JTable tableRight){      
+    public void moveToAttended(String firstName, String lastName, JTable tableLeft, JTable tableRight){   
+    currentDate = dateFormat.format(cal.getTime());           
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
