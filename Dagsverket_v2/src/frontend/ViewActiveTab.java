@@ -156,7 +156,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
         int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
         this.addEmployeeFrame = new addEmployeeFrame(id);
         addEmployeeFrame.setVisible(true);
-        System.out.println("DETTE ER ID: " + id);
         this.employees.updateEmployeeAvailable(addEmployeeFrame.getTableLeft(), addEmployeeFrame.getTableRight(), id);
     }//GEN-LAST:event_buttonAddEmployeeActionPerformed
 

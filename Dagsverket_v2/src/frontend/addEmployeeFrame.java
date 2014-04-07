@@ -202,6 +202,11 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonRemoveFromCaseActionPerformed
 
     private void buttonFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinishActionPerformed
+        int employeeId;
+        for(int i = 0; i<tableRight.getRowCount(); i++){
+            employeeId = (int)tableRight.getValueAt(i, 0);
+            employees.setAntUtenZero(employeeId);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_buttonFinishActionPerformed
 

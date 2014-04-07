@@ -157,9 +157,8 @@ public class AttendanceTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMoveToAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToAttendingActionPerformed
-        String firstName = (String)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 1);
-        String lastName = (String)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 2);        
-        this.employees.moveToAttended(firstName, lastName, tableLeft, tableRight);
+        int employeeId = (int)tableLeft.getModel().getValueAt(tableLeft.getSelectedRow(), 0);            
+        this.employees.moveToAttended(employeeId, tableLeft, tableRight);
        
     }//GEN-LAST:event_buttonMoveToAttendingActionPerformed
 
@@ -173,8 +172,7 @@ public class AttendanceTab extends javax.swing.JPanel {
       panelNewEmployee.add(Box.createHorizontalStrut(15));
       panelNewEmployee.add(new JLabel("Etternavn:"));
       panelNewEmployee.add(textfieldLastName);
-      
-      
+            
       int result = JOptionPane.showConfirmDialog(null, panelNewEmployee, 
                "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
       if (result == JOptionPane.OK_OPTION) {
@@ -185,15 +183,13 @@ public class AttendanceTab extends javax.swing.JPanel {
       if(!errors.isEmpty()){
         showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
       }
-      else{  
-          System.out.println("WOHOOOOO");
+      else{            
       }          
     }//GEN-LAST:event_buttonRegisterNewEmployerActionPerformed
 
     private void buttonMoveToNotAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoveToNotAttendingActionPerformed
-        String firstName = (String)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 1);
-        String lastName = (String)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 2);        
-        this.employees.moveToNotAttended(firstName, lastName, tableLeft, tableRight);       
+        int employeeId = (int)tableRight.getModel().getValueAt(tableRight.getSelectedRow(), 0);     
+        this.employees.moveToNotAttended(employeeId, tableLeft, tableRight);       
     }//GEN-LAST:event_buttonMoveToNotAttendingActionPerformed
 
     public JTable getTableLeft() {
