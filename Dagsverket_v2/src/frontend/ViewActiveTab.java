@@ -206,7 +206,9 @@ public class ViewActiveTab extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonToggle1ActionPerformed
 
     private void buttonAddEmployee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddEmployee1ActionPerformed
-        // TODO add your handling code here:
+        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+        this.addEmployeeFrame = new addEmployeeFrame(id);
+        this.addEmployeeFrame.setVisible(true);
     }//GEN-LAST:event_buttonAddEmployee1ActionPerformed
 
 
