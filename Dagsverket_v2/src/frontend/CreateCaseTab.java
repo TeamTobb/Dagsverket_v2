@@ -109,9 +109,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(comboBoxCreateCaseSupervisor);
         comboBoxCreateCaseSupervisor.setBounds(640, 90, 280, 27);
 
-        labelCreateCaseDSupervisorHeader.setText("Utføres av");
+        labelCreateCaseDSupervisorHeader.setText("Ansvarlig");
         add(labelCreateCaseDSupervisorHeader);
-        labelCreateCaseDSupervisorHeader.setBounds(570, 90, 64, 16);
+        labelCreateCaseDSupervisorHeader.setBounds(570, 90, 59, 16);
 
         labelDate.setText("get case info.."
         );
@@ -272,9 +272,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(140, 450, 350, 160);
 
-        labelDPrice.setText("Pris:");
+        labelDPrice.setText("Pris");
         add(labelDPrice);
-        labelDPrice.setBounds(610, 150, 27, 16);
+        labelDPrice.setBounds(610, 150, 23, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPrice.setDocument(new JTextFieldLimit(6)); // endre tallet for å endre limit
@@ -287,7 +287,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(textFieldPrice);
         textFieldPrice.setBounds(640, 150, 280, 28);
 
-        labelCreateCaseDInspectDate.setText("Befaring: ");
+        labelCreateCaseDInspectDate.setText("Befaring");
         add(labelCreateCaseDInspectDate);
         labelCreateCaseDInspectDate.setBounds(580, 180, 80, 16);
 

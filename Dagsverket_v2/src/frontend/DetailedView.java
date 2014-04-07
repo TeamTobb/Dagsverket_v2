@@ -135,13 +135,13 @@ public class DetailedView extends javax.swing.JFrame {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 706));
 
-        labelCreateCaseDInspectDate.setText("Befaring: ");
+        labelCreateCaseDInspectDate.setText("Befaring");
 
         labelDContacts.setText("Kontaktpersoner");
 
         labelCreateCaseDReqTime.setText("Kl");
 
-        labelCreateCaseDSupervisorHeader.setText("Utføres av");
+        labelCreateCaseDSupervisorHeader.setText("Ansvarlig");
 
         textAreaDescription.setColumns(20);
         textAreaDescription.setRows(5);
@@ -228,7 +228,7 @@ public class DetailedView extends javax.swing.JFrame {
             }
         });
 
-        labelDPrice.setText("Pris:");
+        labelDPrice.setText("Pris");
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
@@ -323,36 +323,8 @@ public class DetailedView extends javax.swing.JFrame {
         labelDReqDate.setText("Ønsket oppstart");
 
         comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(this.users.getUsers()));
-
-        // borgar mix, skal finne en id som stemmer overens med combo box ut i fra database, works?
-
-        ComboBoxModel model = comboBoxCreateCaseSupervisor.getModel();
-
-        int size = model.getSize();
-        boolean found = false;
-
-        for (int i = 0; i < size; i++) {
-            System.out.println("HHHEEELLLO");
-            // instanceof?
-            String tempStringUser = (String)model.getElementAt(i);
-            System.out.println(tempStringUser + " " + this.users.getUserIdByFullName(tempStringUser));
-
-            int tempUserId = this.users.getUserIdByFullName(tempStringUser);
-            if(tempUserId == this.currentCase.getSupervisorId()) {
-                System.out.println("I DONT WANT TO LIVE IN THIS WORLD");
-                found = true;
-                comboBoxCreateCaseSupervisor.setSelectedIndex(i
+        comboBoxCreateCaseSupervisor.setSelectedIndex(this.users.currentUser.getId() - 1
         );
-                i = size;
-            }
-        }
-
-        if(!found) {
-            comboBoxCreateCaseSupervisor.setSelectedIndex(-1
-        );
-        }
-
-        
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxCreateCaseSupervisorActionPerformed(evt);

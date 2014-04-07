@@ -70,7 +70,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelCreateCaseDSupervisorHeader">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Utf&#xf8;res av"/>
+        <Property name="text" type="java.lang.String" value="Ansvarlig"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -320,7 +320,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="labelDPrice">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pris:"/>
+        <Property name="text" type="java.lang.String" value="Pris"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -346,7 +346,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelCreateCaseDInspectDate">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Befaring: "/>
+        <Property name="text" type="java.lang.String" value="Befaring"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

@@ -320,7 +320,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="labelCreateCaseDInspectDate">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Befaring: "/>
+            <Property name="text" type="java.lang.String" value="Befaring"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelDContacts">
@@ -335,7 +335,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelCreateCaseDSupervisorHeader">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Utf&#xf8;res av"/>
+            <Property name="text" type="java.lang.String" value="Ansvarlig"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -476,7 +476,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelDPrice">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pris:"/>
+            <Property name="text" type="java.lang.String" value="Pris"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textFieldCustomerFirstName">
