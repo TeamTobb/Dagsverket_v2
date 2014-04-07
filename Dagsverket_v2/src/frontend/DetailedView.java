@@ -12,12 +12,18 @@ import frontend.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
+import javax.swing.*;
 
 /**
  *
  * @author borgarlie
  */
 public class DetailedView extends javax.swing.JFrame {
+    
+    private DateFormat formatter;
+    private Date req_date;
+    private Date checkup_date;
+    private Date startDate;
     
     private Cases cases;
     private Users users;
@@ -32,6 +38,41 @@ public class DetailedView extends javax.swing.JFrame {
         this.cases = new Cases();
         this.users = new Users();
         this.currentCase = currentCase;
+        this.formatter = new SimpleDateFormat("dd-MM-yy");
+        // format reqDate
+        if(!this.currentCase.getReqDate().trim().equals("")) {
+            try {
+                this.req_date = this.formatter.parse(this.currentCase.getReqDate());
+            } catch(Exception e) {
+                System.out.println("ERROR in parse date");
+            }
+        }
+        else {
+            this.req_date = null;
+        }
+        // format checkupdate
+        if(!this.currentCase.getReqDate().trim().equals("")) {
+            try {
+                this.checkup_date = this.formatter.parse(this.currentCase.getCheckup_date());
+            } catch(Exception e) {
+                System.out.println("ERROR in parse date");
+            }
+        }
+        else {
+            this.checkup_date = null;
+        }
+        if(!this.currentCase.getReqDate().trim().equals("")) {
+            try {
+                this.startDate = this.formatter.parse(this.currentCase.getStartDate());
+            } catch(Exception e) {
+                System.out.println("ERROR in parse date");
+            }
+        }
+        else {
+            // something else?
+            this.startDate = null;
+        }
+        
         initComponents();
     }
 
@@ -117,6 +158,8 @@ public class DetailedView extends javax.swing.JFrame {
             }
         });
 
+        dateFieldStartDate.setDate(this.startDate);
+
         labelCreateCaseDNameHeader.setText("Mottatt av");
 
         textFieldPostPlace.setText(this.currentCase.getPostPlace());
@@ -167,6 +210,8 @@ public class DetailedView extends javax.swing.JFrame {
             }
         });
 
+        dateFieldReqDate.setDate(this.req_date);
+
         labelCustomerDFirstName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelCustomerDFirstName.setText("Kunde");
 
@@ -214,6 +259,8 @@ public class DetailedView extends javax.swing.JFrame {
         labelCustomerDLastName.setText("Etternavn");
 
         labelDDescription.setText("Beskrivelse / Annet");
+
+        dateFieldInspectDate.setDate(this.checkup_date);
 
         labelDStatus.setText("Status");
 
@@ -276,6 +323,36 @@ public class DetailedView extends javax.swing.JFrame {
         labelDReqDate.setText("Ønsket oppstart");
 
         comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(this.users.getUsers()));
+
+        // borgar mix, skal finne en id som stemmer overens med combo box ut i fra database, works?
+
+        ComboBoxModel model = comboBoxCreateCaseSupervisor.getModel();
+
+        int size = model.getSize();
+        boolean found = false;
+
+        for (int i = 0; i < size; i++) {
+            System.out.println("HHHEEELLLO");
+            // instanceof?
+            String tempStringUser = (String)model.getElementAt(i);
+            System.out.println(tempStringUser + " " + this.users.getUserIdByFullName(tempStringUser));
+
+            int tempUserId = this.users.getUserIdByFullName(tempStringUser);
+            if(tempUserId == this.currentCase.getSupervisorId()) {
+                System.out.println("I DONT WANT TO LIVE IN THIS WORLD");
+                found = true;
+                comboBoxCreateCaseSupervisor.setSelectedIndex(i
+        );
+                i = size;
+            }
+        }
+
+        if(!found) {
+            comboBoxCreateCaseSupervisor.setSelectedIndex(-1
+        );
+        }
+
+        
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxCreateCaseSupervisorActionPerformed(evt);
@@ -505,7 +582,7 @@ public class DetailedView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
