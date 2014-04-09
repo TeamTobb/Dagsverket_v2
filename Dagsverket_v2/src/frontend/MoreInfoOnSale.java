@@ -1,19 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package frontend;
 
 import backend.Database;
 import backend.Sales;
 import backend.Woods;
 
-/**
- *
- * @author Hoxmark
- */
 public class MoreInfoOnSale extends javax.swing.JFrame {
      private Sales sales;
      private Woods woods;

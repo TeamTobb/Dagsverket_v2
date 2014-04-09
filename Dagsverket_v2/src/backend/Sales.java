@@ -8,8 +8,6 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-
-
 public class Sales {
     public static int WRONG_PHONE_FORMAT = 1;
     public static int WRONG_POSTALCODE_FORMAT = 2;

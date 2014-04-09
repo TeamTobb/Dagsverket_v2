@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package frontend;
 
 import backend.*;
 import java.util.*;
-import frontend.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
 import javax.swing.*;
 import static javax.swing.JOptionPane.*;
 
-/**
- *
- * @author borgarlie
- */
 public class DetailedView extends javax.swing.JFrame {
     
     private JPanel casePanel;

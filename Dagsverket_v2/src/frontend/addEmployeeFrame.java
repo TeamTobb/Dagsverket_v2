@@ -1,19 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package frontend;
 
 import backend.Employees;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.ListSelectionModel;
 
-/**
- *
- * @author Jorgen
- */
 public class addEmployeeFrame extends javax.swing.JFrame {
     private int caseId;
     private Employees employees;

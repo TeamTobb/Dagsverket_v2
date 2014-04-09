@@ -1,19 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package frontend;
 
 import backend.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 
-/**
- *
- * @author Jorgen
- */
 public class ViewHistoryTab extends javax.swing.JPanel {
     private Cases cases;
     private Users users;
