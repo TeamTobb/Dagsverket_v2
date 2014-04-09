@@ -17,6 +17,8 @@ public class SaleTab extends javax.swing.JPanel {
     
      private Sales sales;
      private Woods woods;
+     private Cases cases;
+     
      
      private int saleTableView = sales.ALLDELIVERIESVIEW; 
 
@@ -28,6 +30,7 @@ public class SaleTab extends javax.swing.JPanel {
        this.woods.updateWoodList(); //TODO Flytte til gui 
        initComponents();
        this.sales.updateWoodSaleList(jTable2);
+       this.cases = new Cases();
        
 
     }
@@ -393,6 +396,9 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouthLeft.setPreferredSize(new java.awt.Dimension(512, 62));
     panelSouthLeft.setSize(new java.awt.Dimension(512, 62));
 
+    ButtonGetURLButton.setBackground(new java.awt.Color(51, 51, 51));
+    ButtonGetURLButton.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+    ButtonGetURLButton.setForeground(new java.awt.Color(204, 204, 204));
     ButtonGetURLButton.setText("Kart");
     ButtonGetURLButton.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -496,11 +502,12 @@ public class SaleTab extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldPostnrPropertyChange
 
     private void textFieldPostnrInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_textFieldPostnrInputMethodTextChanged
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_textFieldPostnrInputMethodTextChanged
 
     private void textFieldPostnrFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldPostnrFocusLost
-        // TODO add your handling code here:
+        String newAddress = cases.getPostAddressFromDb(textFieldPostnr.getText());
+        textFieldPostPlace.setText(newAddress);
     }//GEN-LAST:event_textFieldPostnrFocusLost
 
     private void textFieldPostnrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPostnrActionPerformed
