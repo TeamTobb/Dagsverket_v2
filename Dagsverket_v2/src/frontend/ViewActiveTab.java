@@ -95,6 +95,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
         panelCenter.setSize(new java.awt.Dimension(1024, 582));
         panelCenter.setLayout(new javax.swing.BoxLayout(panelCenter, javax.swing.BoxLayout.LINE_AXIS));
 
+        jTable2.setAutoCreateRowSorter(true);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},

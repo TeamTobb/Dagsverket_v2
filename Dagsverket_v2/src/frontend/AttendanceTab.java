@@ -154,28 +154,27 @@ public class AttendanceTab extends javax.swing.JPanel {
         panelCenterLayout.setHorizontalGroup(
             panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCenterLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonRegisterNewEmployer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(buttonRegisterNewEmployer))
-                    .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
+                        .addGap(47, 47, 47)
+                        .addGroup(panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelCenterLayout.setVerticalGroup(
             panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCenterLayout.createSequentialGroup()
-                .addGap(180, 180, 180)
+                .addGap(189, 189, 189)
                 .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonRegisterNewEmployer, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonRegisterNewEmployer, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         panelBottom.add(panelCenter, java.awt.BorderLayout.CENTER);
@@ -183,6 +182,7 @@ public class AttendanceTab extends javax.swing.JPanel {
         panelLeft.setPreferredSize(new java.awt.Dimension(425, 690));
         panelLeft.setLayout(new javax.swing.BoxLayout(panelLeft, javax.swing.BoxLayout.LINE_AXIS));
 
+        tableLeft.setAutoCreateRowSorter(true);
         tableLeft.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -193,7 +193,15 @@ public class AttendanceTab extends javax.swing.JPanel {
             new String [] {
                 "ID", "Fornavn", "Etternavn", "Sist reg", "Ant uten"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tableNotAttending.setViewportView(tableLeft);
         tableLeft.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
