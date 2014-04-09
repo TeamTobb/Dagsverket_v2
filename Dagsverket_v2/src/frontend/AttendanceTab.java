@@ -99,6 +99,7 @@ public class AttendanceTab extends javax.swing.JPanel {
         panelRight.setPreferredSize(new java.awt.Dimension(425, 690));
         panelRight.setLayout(new javax.swing.BoxLayout(panelRight, javax.swing.BoxLayout.LINE_AXIS));
 
+        tableRight.setAutoCreateRowSorter(true);
         tableRight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -109,7 +110,15 @@ public class AttendanceTab extends javax.swing.JPanel {
             new String [] {
                 "ID", "Fornavn", "Etternavn", "Sist reg", "Ant uten"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tableAttending.setViewportView(tableRight);
         tableRight.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 

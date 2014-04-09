@@ -141,6 +141,7 @@ public class ViewDraftTab extends javax.swing.JPanel {
         panelCenter.setRequestFocusEnabled(false);
         panelCenter.setLayout(new javax.swing.BoxLayout(panelCenter, javax.swing.BoxLayout.LINE_AXIS));
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -151,7 +152,15 @@ public class ViewDraftTab extends javax.swing.JPanel {
             new String [] {
                 "Saksnummer", "Emne", "K. fornavn", "K. etternavn", "Utførelsesdato", "Ansvarlig"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(85);
