@@ -4,7 +4,8 @@ DROP TABLE cases;
 DROP TABLE customers;
 DROP TABLE users; 
 DROP TABLE wood; 
-DROP TABLE employees; 
+DROP TABLE employees;
+DROP TABLE postnr;
 
 CREATE TABLE users(
 id INTEGER GENERATED ALWAYS AS IDENTITY,
@@ -79,6 +80,12 @@ woodType VARCHAR(30),
 bagSize INTEGER, 
 price INTEGER, 
 CONSTRAINT wood_pk PRIMARY KEY(woodType)
+);
+
+CREATE TABLE postnr(
+id INTEGER GENERATED ALWAYS AS IDENTITY,
+postnr VARCHAR(30),
+postadresse VARCHAR(30)
 );
 
 ALTER TABLE events_has_employees ADD CONSTRAINT case_id_fk FOREIGN KEY(case_id) REFERENCES cases(id);
