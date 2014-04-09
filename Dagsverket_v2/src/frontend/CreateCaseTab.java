@@ -381,9 +381,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldPostalCodeActionPerformed
 
     private void textFieldPostalCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldPostalCodeFocusLost
-        // TODO add your handling code here:
-        textFieldPostPlace.setText(textFieldPostalCode.getText());
-        // set Field ut i fra postnr = poststed i database!!!
+        String newAddress = this.cases.getPostAddressFromDb(textFieldPostalCode.getText());
+        textFieldPostPlace.setText(newAddress);
     }//GEN-LAST:event_textFieldPostalCodeFocusLost
 
     private void textFieldPostalCodeInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_textFieldPostalCodeInputMethodTextChanged

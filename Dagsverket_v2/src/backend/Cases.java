@@ -366,6 +366,22 @@ public class Cases {
         return errors;
     }
 
+    public String getPostAddressFromDb(String postnr) {
+        String temp = "";
+        String sqlStatement = "SELECT postadresse FROM postnr WHERE postnr = '" + postnr + "'";
+        ResultSet rs = db.executeQuery(sqlStatement);
+        try {
+            while(rs.next()) {
+                temp = rs.getString("postadresse");
+            }
+        } catch(SQLException e) {
+            System.out.println("SQLError: " + e);
+        } finally {
+            db.closeAll();
+        }
+        return temp;
+    }
+
     public static void main(String[] args) {
         Database db = new Database();
         Cases c = new Cases();
