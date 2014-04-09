@@ -148,6 +148,8 @@ public class SaleTab extends javax.swing.JPanel {
 
         labelDFirstName.setText("Fornavn");
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldFirstName.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
         textFieldFirstName.setToolTipText("");
         textFieldFirstName.setVerifyInputWhenFocusTarget(false);
         textFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +160,8 @@ public class SaleTab extends javax.swing.JPanel {
 
         labelDAddress.setText("Adresse");
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
         textFieldAddress.setToolTipText("...");
         textFieldAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +171,8 @@ public class SaleTab extends javax.swing.JPanel {
 
         labelDPostnr.setText("Postnr");
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldPostnr.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
         textFieldPostnr.setToolTipText("...");
         textFieldPostnr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +204,8 @@ public class SaleTab extends javax.swing.JPanel {
             }
         });
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldPhone.setDocument(new JTextFieldLimit(8)); // endre tallet for å endre limit
         textFieldPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPhoneActionPerformed(evt);
@@ -206,6 +214,8 @@ public class SaleTab extends javax.swing.JPanel {
 
         labelDPhone.setText("Telefon");
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldLastName.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
         textFieldLastName.setToolTipText("");
         textFieldLastName.setVerifyInputWhenFocusTarget(false);
         textFieldLastName.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +228,8 @@ public class SaleTab extends javax.swing.JPanel {
 
         labelDQuanitity.setText("Antall");
 
+        /* limit for hvor mange characters som kan skrives inn */
+        textFieldQuantity.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
         textFieldQuantity.setToolTipText("...");
         textFieldQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -577,7 +589,12 @@ public class SaleTab extends javax.swing.JPanel {
       JTextField textfieldWoodType = new JTextField(10);
       JTextField textfieldPrice = new JTextField(5);
       JTextField textfieldBagSize = new JTextField(5);
-      
+      /* limit for hvor mange characters som kan skrives inn */
+      textfieldWoodType.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
+      /* limit for hvor mange characters som kan skrives inn */
+      textfieldPrice.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
+      /* limit for hvor mange characters som kan skrives inn */
+      textfieldBagSize.setDocument(new JTextFieldLimit(5)); // endre tallet for å endre limit
       JPanel panelWood = new JPanel();
       panelWood.add(new JLabel("Vedtype:"));
       panelWood.add(textfieldWoodType);

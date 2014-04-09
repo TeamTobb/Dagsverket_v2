@@ -314,6 +314,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldFirstNameActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldFirstName.setDocument(new JTextFieldLimit(30)); // endre tallet for &#xe5; endre limit"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelDAddress">
                   <Properties>
@@ -327,6 +330,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldAddressActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for &#xe5; endre limit"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelDPostnr">
                   <Properties>
@@ -343,6 +349,9 @@
                     <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="textFieldPostnrInputMethodTextChanged"/>
                     <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="textFieldPostnrPropertyChange"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldPostnr.setDocument(new JTextFieldLimit(4)); // endre tallet for &#xe5; endre limit"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldPostPlace">
                   <Properties>
@@ -356,6 +365,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPhoneActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldPhone.setDocument(new JTextFieldLimit(8)); // endre tallet for &#xe5; endre limit"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelDPhone">
                   <Properties>
@@ -370,6 +382,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldLastNameActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldLastName.setDocument(new JTextFieldLimit(30)); // endre tallet for &#xe5; endre limit"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelDLastName">
                   <Properties>
@@ -391,6 +406,9 @@
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textFieldQuantityKeyTyped"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textFieldQuantityKeyReleased"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldQuantity.setDocument(new JTextFieldLimit(4)); // endre tallet for &#xe5; endre limit"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="comboBoxWoodType">
                   <Properties>
