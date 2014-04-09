@@ -34,8 +34,22 @@ public class Sales {
     	return this.sales;
     }
     
-    public void deleteSale(){
-        //add delete data TODO
+    public void deleteSale(String idString){
+       
+        
+        try{
+            this.db.createConnection();            
+            PreparedStatement deleteTuple = this.db.getConnection().prepareStatement(
+                    "DELETE FROM sales " +
+                    "WHERE id="+ idString); 
+            this.db.executeUpdate(deleteTuple);
+        } catch(SQLException e){
+            System.out.println("feil i deleteSale()"+e);
+        }
+        finally{
+            this.db.closeAll();
+        }       
+        
     }   
 
     public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
@@ -212,26 +226,26 @@ public class Sales {
      }
      
       public void updateWoodSaleList(JTable table){
-          System.out.println(sales.size());
-       DefaultTableModel model = (DefaultTableModel) table.getModel();
-       model.setRowCount(0);
-       
-       updateSaleList();
-       if (!sales.isEmpty()){
-            Object[] insertTable = new Object[4];
+        System.out.println(sales.size());
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+
+        updateSaleList();
+        if (!sales.isEmpty()){
+             Object[] insertTable = new Object[4];
 
 
 
 
-            for(int i = 0; i<this.sales.size(); i++){
+             for(int i = 0; i<this.sales.size(); i++){
 
-                insertTable[0] = this.sales.get(i).getId();          
-                insertTable[1] = this.sales.get(i).getBuyer().getFullName();          
-                insertTable[2] = this.sales.get(i).getQuantity();
-                insertTable[3] = this.sales.get(i).getStatus();
-                model.insertRow(table.getRowCount(), insertTable);                     
-            } 
-       }
+                 insertTable[0] = this.sales.get(i).getId();          
+                 insertTable[1] = this.sales.get(i).getBuyer().getFullName();          
+                 insertTable[2] = this.sales.get(i).getQuantity();
+                 insertTable[3] = this.sales.get(i).getStatus();
+                 model.insertRow(table.getRowCount(), insertTable);                     
+             } 
+        }
     }
       
       

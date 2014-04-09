@@ -54,6 +54,7 @@ public class SaleTab extends javax.swing.JPanel {
         buttonDeliver = new javax.swing.JButton();
         buttonSwapDeliverSale = new javax.swing.JButton();
         buttonSwapDeliverSale1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -121,6 +122,13 @@ public class SaleTab extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Slett Line? ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -134,7 +142,8 @@ public class SaleTab extends javax.swing.JPanel {
                 .addGap(171, 171, 171)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonDeliver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonMoreInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+                    .addComponent(buttonMoreInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,7 +158,9 @@ public class SaleTab extends javax.swing.JPanel {
                     .addComponent(buttonMoreInfo)
                     .addComponent(buttonSwapDeliverSale))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSwapDeliverSale1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonSwapDeliverSale1)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -650,6 +661,19 @@ public class SaleTab extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonSwapDeliverSale1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        int result = JOptionPane.showConfirmDialog(null, "Er du sikker på at du ønsker å slette salget? ");
+        System.out.println("Res: "+result);
+        
+        if (result == JOptionPane.YES_OPTION){
+            sales.deleteSale(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());
+            sales.updateWoodSaleList(jTable2);
+            
+        } 
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddWoodType;
@@ -660,6 +684,7 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JButton buttonSwapDeliverSale1;
     private javax.swing.JButton buttonUpdateTable;
     private javax.swing.JComboBox comboBoxWoodType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
