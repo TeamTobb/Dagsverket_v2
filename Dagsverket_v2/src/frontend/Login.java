@@ -145,7 +145,6 @@ public class Login extends javax.swing.JFrame {
         try{
             User selectedUser = users.getUserByIndex(listUserNames.getSelectedIndex());
             users.setCurrentUser(selectedUser);
-            System.out.println(selectedUser.toString());
             GUI.main(selectedUser);
             this.dispose();
         }catch(ArrayIndexOutOfBoundsException e){
@@ -202,7 +201,7 @@ public class Login extends javax.swing.JFrame {
                 listUserNames.setListData(users.getUsers());
                 listUserNames.updateUI();
             }catch(SQLException e){
-                System.out.println("feil i delete user: " +e);
+                showMessageDialog(null, "feil i delete user: " +e);
             }
             finally{
                 db.closeAll();
