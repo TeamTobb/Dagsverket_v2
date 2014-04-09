@@ -43,25 +43,54 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        panelLeft = new javax.swing.JPanel();
+        panelBackground = new javax.swing.JPanel();
+        panelNorth = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        panelCenter = new javax.swing.JPanel();
+        panelCenterLeft = new javax.swing.JPanel();
         tableNotAttending = new javax.swing.JScrollPane();
         tableLeft = new javax.swing.JTable();
-        panelCenter = new javax.swing.JPanel();
+        panelCenterCenter = new javax.swing.JPanel();
         buttonAddToCase = new javax.swing.JButton();
         buttonRemoveFromCase = new javax.swing.JButton();
         buttonFinish = new javax.swing.JButton();
-        panelRight = new javax.swing.JPanel();
+        panelCenterRight = new javax.swing.JPanel();
         tableAttending = new javax.swing.JScrollPane();
         tableRight = new javax.swing.JTable();
+        panelSouth = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 0, 204));
+        setMaximumSize(new java.awt.Dimension(1024, 706));
+        setMinimumSize(new java.awt.Dimension(1024, 706));
+        setPreferredSize(new java.awt.Dimension(1024, 706));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        panelBackground.setBackground(new java.awt.Color(255, 255, 0));
+        panelBackground.setMaximumSize(new java.awt.Dimension(1024, 706));
+        panelBackground.setMinimumSize(new java.awt.Dimension(1024, 706));
+        panelBackground.setPreferredSize(new java.awt.Dimension(1024, 706));
+        panelBackground.setSize(new java.awt.Dimension(1024, 706));
+        panelBackground.setLayout(new java.awt.BorderLayout());
 
-        panelLeft.setPreferredSize(new java.awt.Dimension(425, 690));
-        panelLeft.setLayout(new javax.swing.BoxLayout(panelLeft, javax.swing.BoxLayout.LINE_AXIS));
+        panelNorth.setMaximumSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setMinimumSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setPreferredSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setSize(new java.awt.Dimension(1024, 62));
+
+        jLabel1.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
+        jLabel1.setText("AddEmployeeFrame");
+        panelNorth.add(jLabel1);
+
+        panelBackground.add(panelNorth, java.awt.BorderLayout.NORTH);
+
+        panelCenter.setMaximumSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setMinimumSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setPreferredSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setLayout(new java.awt.BorderLayout());
+
+        panelCenterLeft.setPreferredSize(new java.awt.Dimension(425, 690));
+        panelCenterLeft.setLayout(new javax.swing.BoxLayout(panelCenterLeft, javax.swing.BoxLayout.LINE_AXIS));
 
         tableLeft.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,12 +105,11 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         ));
         tableNotAttending.setViewportView(tableLeft);
 
-        panelLeft.add(tableNotAttending);
+        panelCenterLeft.add(tableNotAttending);
 
-        jPanel1.add(panelLeft, java.awt.BorderLayout.WEST);
+        panelCenter.add(panelCenterLeft, java.awt.BorderLayout.WEST);
 
-        panelCenter.setBackground(new java.awt.Color(153, 153, 153));
-        panelCenter.setPreferredSize(new java.awt.Dimension(174, 690));
+        panelCenterCenter.setPreferredSize(new java.awt.Dimension(174, 690));
 
         buttonAddToCase.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonAddToCase.setText("->");
@@ -107,25 +135,25 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelCenterLayout = new javax.swing.GroupLayout(panelCenter);
-        panelCenter.setLayout(panelCenterLayout);
-        panelCenterLayout.setHorizontalGroup(
-            panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCenterLayout.createSequentialGroup()
-                .addGroup(panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCenterLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelCenterCenterLayout = new javax.swing.GroupLayout(panelCenterCenter);
+        panelCenterCenter.setLayout(panelCenterCenterLayout);
+        panelCenterCenterLayout.setHorizontalGroup(
+            panelCenterCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCenterCenterLayout.createSequentialGroup()
+                .addGroup(panelCenterCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCenterCenterLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addGroup(panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelCenterCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonAddToCase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonRemoveFromCase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelCenterLayout.createSequentialGroup()
+                    .addGroup(panelCenterCenterLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(buttonFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(68, 68, 68))
         );
-        panelCenterLayout.setVerticalGroup(
-            panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCenterLayout.createSequentialGroup()
+        panelCenterCenterLayout.setVerticalGroup(
+            panelCenterCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCenterCenterLayout.createSequentialGroup()
                 .addGap(238, 238, 238)
                 .addComponent(buttonAddToCase, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -135,10 +163,10 @@ public class addEmployeeFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(panelCenter, java.awt.BorderLayout.CENTER);
+        panelCenter.add(panelCenterCenter, java.awt.BorderLayout.CENTER);
 
-        panelRight.setPreferredSize(new java.awt.Dimension(425, 690));
-        panelRight.setLayout(new javax.swing.BoxLayout(panelRight, javax.swing.BoxLayout.LINE_AXIS));
+        panelCenterRight.setPreferredSize(new java.awt.Dimension(425, 690));
+        panelCenterRight.setLayout(new javax.swing.BoxLayout(panelCenterRight, javax.swing.BoxLayout.LINE_AXIS));
 
         tableRight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,9 +181,30 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         ));
         tableAttending.setViewportView(tableRight);
 
-        panelRight.add(tableAttending);
+        panelCenterRight.add(tableAttending);
 
-        jPanel1.add(panelRight, java.awt.BorderLayout.EAST);
+        panelCenter.add(panelCenterRight, java.awt.BorderLayout.EAST);
+
+        panelBackground.add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelSouth.setBackground(new java.awt.Color(153, 153, 153));
+        panelSouth.setMaximumSize(new java.awt.Dimension(1024, 62));
+        panelSouth.setMinimumSize(new java.awt.Dimension(1024, 62));
+        panelSouth.setPreferredSize(new java.awt.Dimension(1024, 62));
+        panelSouth.setSize(new java.awt.Dimension(1024, 62));
+
+        javax.swing.GroupLayout panelSouthLayout = new javax.swing.GroupLayout(panelSouth);
+        panelSouth.setLayout(panelSouthLayout);
+        panelSouthLayout.setHorizontalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1024, Short.MAX_VALUE)
+        );
+        panelSouthLayout.setVerticalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 62, Short.MAX_VALUE)
+        );
+
+        panelBackground.add(panelSouth, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,16 +214,16 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 706, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -246,10 +295,14 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JButton buttonAddToCase;
     private javax.swing.JButton buttonFinish;
     private javax.swing.JButton buttonRemoveFromCase;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel panelBackground;
     private javax.swing.JPanel panelCenter;
-    private javax.swing.JPanel panelLeft;
-    private javax.swing.JPanel panelRight;
+    private javax.swing.JPanel panelCenterCenter;
+    private javax.swing.JPanel panelCenterLeft;
+    private javax.swing.JPanel panelCenterRight;
+    private javax.swing.JPanel panelNorth;
+    private javax.swing.JPanel panelSouth;
     private javax.swing.JScrollPane tableAttending;
     private javax.swing.JTable tableLeft;
     private javax.swing.JScrollPane tableNotAttending;
