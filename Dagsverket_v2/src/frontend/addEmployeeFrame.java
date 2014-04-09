@@ -128,7 +128,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         buttonAddToCase.setBackground(new java.awt.Color(51, 51, 51));
         buttonAddToCase.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonAddToCase.setForeground(new java.awt.Color(204, 204, 204));
-        buttonAddToCase.setText("->");
+        buttonAddToCase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrowRight.png"))); // NOI18N
         buttonAddToCase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAddToCaseActionPerformed(evt);
@@ -138,7 +138,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         buttonRemoveFromCase.setBackground(new java.awt.Color(51, 51, 51));
         buttonRemoveFromCase.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonRemoveFromCase.setForeground(new java.awt.Color(204, 204, 204));
-        buttonRemoveFromCase.setText("<-");
+        buttonRemoveFromCase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrowLeft.png"))); // NOI18N
         buttonRemoveFromCase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRemoveFromCaseActionPerformed(evt);

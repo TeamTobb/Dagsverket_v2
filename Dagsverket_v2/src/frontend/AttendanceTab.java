@@ -122,7 +122,7 @@ public class AttendanceTab extends javax.swing.JPanel {
         buttonMoveToAttending.setBackground(new java.awt.Color(51, 51, 51));
         buttonMoveToAttending.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonMoveToAttending.setForeground(new java.awt.Color(204, 204, 204));
-        buttonMoveToAttending.setText("->");
+        buttonMoveToAttending.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrowRight.png"))); // NOI18N
         buttonMoveToAttending.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonMoveToAttendingActionPerformed(evt);
@@ -132,7 +132,7 @@ public class AttendanceTab extends javax.swing.JPanel {
         buttonMoveToNotAttending.setBackground(new java.awt.Color(51, 51, 51));
         buttonMoveToNotAttending.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonMoveToNotAttending.setForeground(new java.awt.Color(204, 204, 204));
-        buttonMoveToNotAttending.setText("<-");
+        buttonMoveToNotAttending.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrowLeft.png"))); // NOI18N
         buttonMoveToNotAttending.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonMoveToNotAttendingActionPerformed(evt);
@@ -159,21 +159,21 @@ public class AttendanceTab extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(buttonRegisterNewEmployer))
                     .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52)
+                        .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelCenterLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(53, 53, 53)
+                        .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37))
         );
         panelCenterLayout.setVerticalGroup(
             panelCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCenterLayout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(180, 180, 180)
                 .addComponent(buttonMoveToAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonRegisterNewEmployer, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addComponent(buttonMoveToNotAttending, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
