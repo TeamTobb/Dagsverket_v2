@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -33,7 +34,6 @@ public class Woods {
         
         for (int i = 0; i<woods.size(); i ++){
             tempWoodList[i] = woods.get(i).getWoodType(); 
-            System.out.println(tempWoodList[i]);
         }        
         
         return tempWoodList;
@@ -45,7 +45,6 @@ public class Woods {
         ResultSet rs = db.executeQuery(sqlStatement);
         
         try {
-            //System.out.println(rs.getInt("sales.ID"));
             while(rs.next()) {
                 woods.add(new Wood(
                     rs.getString("woodtype"),
@@ -54,11 +53,9 @@ public class Woods {
                     ));
             }
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+           showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
         } finally {
-            db.closeAll();
-            System.out.println("updateWoodList OK.");
-            
+            db.closeAll();            
         }
     }
     
@@ -71,7 +68,6 @@ public class Woods {
         //Checks if the input is valid
         
         if ((woodType.equals(""))||(bagSizeString.equals(""))||(priceString.equals(""))){
-            System.out.println("BLANK");
             return false; 
         }
         
@@ -100,12 +96,10 @@ public class Woods {
         addWoodStatement.setString(1, woodType);
         addWoodStatement.setInt(2, bagSize); 
         addWoodStatement.setInt(3, price);
-            System.out.println("price = " +price);
-            System.out.println("bagSize = "+ bagSize);
         addWoodStatement.executeUpdate();
         db.closeAll();                        
         } catch(SQLException e){
-             System.out.println("add wood error" + e);
+           showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
                 
         }
         
@@ -118,15 +112,13 @@ public class Woods {
         ResultSet rs = db.executeQuery(sqlStatement);
         int result =0; 
         try {
-            //System.out.println(rs.getInt("sales.ID"));
             while(rs.next()) {
                    result = rs.getInt("price");
             }
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+           showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
         } finally {
             db.closeAll();
-            System.out.println("ok");
             
         }
            
@@ -144,7 +136,7 @@ public class Woods {
         try{
             quanitityWood = Integer.parseInt(quantity.trim());
         } catch(NumberFormatException e){
-            System.out.println("Feil antall. Bare tall" + e);  //OVERFLADISK, skal sjekket når den blir lagd
+             //OVERFLADISK, skal sjekket når den blir lagd
         }
          
         
@@ -177,7 +169,7 @@ public class Woods {
         listen = testWoods.getWoodsStringList();
         
         for (int i = 0; i<1;i++){
-            System.out.println(listen[i]);            
+            //System.out.println(listen[i]);            
         }
         
        

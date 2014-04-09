@@ -45,9 +45,4 @@ public class Wood {
         this.price = price;
     }
     
-    
-    
-    
-    
-    
 }
