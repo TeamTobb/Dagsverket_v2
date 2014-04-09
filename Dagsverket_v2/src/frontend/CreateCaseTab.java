@@ -502,8 +502,17 @@ public class CreateCaseTab extends javax.swing.JPanel {
         if(errors.isEmpty()){
             showMessageDialog(null, "Oppdrag registrert");     
             this.gui.getCardLayout().show(this.gui.getPanelContent(), comboBoxStatus.getSelectedItem().toString());
-            this.gui.getViewActiveTab().updateList();
-            this.resetFields();
+            if(comboBoxStatus.getSelectedItem().toString().equals("Aktiv")){
+                this.gui.getViewActiveTab().updateList();
+                this.gui.setAllDarkGray();
+                this.gui.getButtonViewActiveCases().setBackground(Color.black);
+            }
+            else if(comboBoxStatus.getSelectedItem().toString().equals("Uferdig")){
+                this.gui.getViewDraftTab().updateList();      
+                this.gui.setAllDarkGray();                
+                this.gui.getButtonViewDraftCases().setBackground(Color.black);                
+            }
+            this.resetFields();            
         }
     }
     

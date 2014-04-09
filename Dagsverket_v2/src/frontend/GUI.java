@@ -2,6 +2,7 @@ package frontend;
 import backend.*;
 import java.awt.CardLayout;
 import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -32,6 +33,16 @@ public class GUI extends javax.swing.JFrame {
     public ViewActiveTab getViewActiveTab() {
         return viewActiveTab;
     }
+
+    public JButton getButtonViewActiveCases() {
+        return buttonViewActiveCases;
+    }
+
+    public JButton getButtonViewDraftCases() {
+        return buttonViewDraftCases;
+    }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -257,6 +268,10 @@ public class GUI extends javax.swing.JFrame {
         buttonAttendance.setBackground(Color.black);
     }//GEN-LAST:event_buttonAttendanceActionPerformed
 
+    public ViewDraftTab getViewDraftTab() {
+        return viewDraftTab;
+    }
+    
     private void addPanels(){
         this.createCaseTab = new CreateCaseTab(this);
         this.viewActiveTab = new ViewActiveTab(); 
@@ -274,7 +289,7 @@ public class GUI extends javax.swing.JFrame {
         panelContent.add(this.attendanceTab, "AttendanceTab");
     }
     
-    private void setAllDarkGray(){
+    public void setAllDarkGray(){
         buttonAttendance.setBackground(Color.darkGray);
         buttonSales.setBackground(Color.darkGray);
         buttonViewActiveCases.setBackground(Color.darkGray);

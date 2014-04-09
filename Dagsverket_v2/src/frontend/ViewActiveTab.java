@@ -209,7 +209,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
             Case currentCase = cases.getCaseById(id);
             this.detailedView = new DetailedView(currentCase, this);
             this.detailedView.setVisible(true);
-        }catch(ArrayIndexOutOfBoundsException e){
+        }catch(Exception e){
             showMessageDialog(null, "Vennligst velg et oppdrag");
         }
     }//GEN-LAST:event_buttonToggle1ActionPerformed
@@ -219,7 +219,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
             int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
             this.addEmployeeFrame = new addEmployeeFrame(id);
             this.addEmployeeFrame.setVisible(true);
-        }catch(ArrayIndexOutOfBoundsException e){
+        }catch(Exception e){
             showMessageDialog(null, "Vennligst velg et oppdrag");
         }
     }//GEN-LAST:event_buttonAddEmployee1ActionPerformed
@@ -229,7 +229,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
             int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
             URLGenerator.generateMapURL(this.cases.getCaseById(id).getAddress(), this.cases.getCaseById(id).getPostalCode(),
                                     this.cases.getCaseById(id).getPostPlace());
-        }catch(ArrayIndexOutOfBoundsException e){
+        }catch(Exception e){
             showMessageDialog(null, "Vennligst velg et oppdrag");
         }
     }//GEN-LAST:event_buttonDrivingRouteActionPerformed
