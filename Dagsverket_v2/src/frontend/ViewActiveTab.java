@@ -37,18 +37,25 @@ public class ViewActiveTab extends javax.swing.JPanel {
     }
     
     public void updateList(){    
-    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-    model.setRowCount(0);
-    Object[] insertTable = new Object[4];
-    this.cases.updateCaseList("Aktiv");
+        String startDate = ""; 
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        Object[] insertTable = new Object[6];
+        this.cases.updateCaseList("Aktiv");
 
-    for(int i = 0; i<this.cases.getCases().size(); i++){
-        insertTable[0] = this.cases.getCases().get(i).getId();
-        insertTable[1] = this.cases.getCases().get(i).getSubject();
-        insertTable[2] = this.cases.getCases().get(i).getStartDate();
-        insertTable[3] = this.users.getUserById(this.cases.getCases().get(i).getSupervisorId()).toString();
-        model.insertRow(jTable2.getRowCount(), insertTable);                     
-       }    
+        for(int i = 0; i<this.cases.getCases().size(); i++){
+            insertTable[0] = this.cases.getCases().get(i).getId();
+            insertTable[1] = this.cases.getCases().get(i).getSubject();
+            insertTable[2] = this.cases.getCases().get(i).getEmployer().getFirstname();
+            insertTable[3] = this.cases.getCases().get(i).getEmployer().getLastname();
+            if(this.cases.getCases().get(i).getStartDate().equals("null-null-null")){        
+                insertTable[4] = "";
+            }else{
+                insertTable[4] = this.cases.getCases().get(i).getStartDate();                
+            }
+            insertTable[5] = this.users.getUserById(this.cases.getCases().get(i).getSupervisorId()).toString();
+            model.insertRow(jTable2.getRowCount(), insertTable);                     
+           }    
     }
     
     

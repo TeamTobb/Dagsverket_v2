@@ -35,9 +35,9 @@ public class GUI extends javax.swing.JFrame {
         this.employees = new Employees();
         this.users = new Users();
     }
-    
-    public static void showActiveCases(){
-        
+
+    public ViewActiveTab getViewActiveTab() {
+        return viewActiveTab;
     }
     
     /**
@@ -213,8 +213,8 @@ public class GUI extends javax.swing.JFrame {
     private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
         JFrame confirmFrame = new JFrame();
         String[] options = new String[2];
-        options[0] = new String("Nei");
-        options[1] = new String("Ja");
+        options[0] = "Nei";
+        options[1] = "Ja";
         int result = JOptionPane.showOptionDialog(confirmFrame.getContentPane(),"Er du sikker på at du vil logge ut?","Konfirmasjon", 
                 0,JOptionPane.INFORMATION_MESSAGE,null,options,null); 
         

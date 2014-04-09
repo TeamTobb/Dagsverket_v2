@@ -507,8 +507,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDPrice.setForeground(Color.black);   
         setErrors(errors);
         if(errors.isEmpty()){
-            showMessageDialog(null, "Oppdrag registrert.");     
+            showMessageDialog(null, "Oppdrag registrert");     
             this.gui.getCardLayout().show(this.gui.getPanelContent(), comboBoxStatus.getSelectedItem().toString());
+            this.gui.getViewActiveTab().updateList();
             this.resetFields();
         }
     }
