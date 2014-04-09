@@ -105,6 +105,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelCenterLeft.setPreferredSize(new java.awt.Dimension(425, 690));
         panelCenterLeft.setLayout(new javax.swing.BoxLayout(panelCenterLeft, javax.swing.BoxLayout.LINE_AXIS));
 
+        tableLeft.setAutoCreateRowSorter(true);
         tableLeft.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -115,7 +116,15 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             new String [] {
                 "ID", "Fornavn", "Etternavn", "Sist reg", "Ant uten"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tableNotAttending.setViewportView(tableLeft);
         tableLeft.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -188,6 +197,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelCenterRight.setPreferredSize(new java.awt.Dimension(425, 690));
         panelCenterRight.setLayout(new javax.swing.BoxLayout(panelCenterRight, javax.swing.BoxLayout.LINE_AXIS));
 
+        tableRight.setAutoCreateRowSorter(true);
         tableRight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -198,7 +208,15 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             new String [] {
                 "ID", "Fornavn", "Etternavn", "Sist reg", "Ant uten"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tableAttending.setViewportView(tableRight);
         tableRight.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
