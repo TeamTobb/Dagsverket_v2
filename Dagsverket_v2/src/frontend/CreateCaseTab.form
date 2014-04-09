@@ -273,7 +273,8 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBoxCreateCaseReqTimeActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] tider = new String[48];&#xa;int teller = 0;&#xa;String time = &quot;&quot;;&#xa;String minutt = &quot;&quot;;&#xa;for(int i = 0; i&lt;24; i++){&#xa;    for(int j = 0; j&lt;31; j+=30){&#xa;        time = String.valueOf(i);  &#xa;        if(i&lt;10){&#xa;            time =&quot;0&quot;+time;&#xa;        }&#xa;        minutt = String.valueOf(j);&#xa;        if(j==0){&#xa;            minutt += &quot;0&quot;;&#xa;        }&#xa;        tider[teller] = time + &quot;:&quot; + minutt;&#xa;        teller++;&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ComboBoxCreateCaseReqTime.setSelectedIndex(16);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] tider = new String[48];&#xa;int teller = 0;&#xa;String time = &quot;&quot;;&#xa;String minutt = &quot;&quot;;&#xa;for(int i = 0; i&lt;24; i++){&#xa;    for(int j = 0; j&lt;31; j+=30){&#xa;        time = String.valueOf(i);  &#xa;        if(i&lt;10){&#xa;            time =&quot;0&quot;+time;&#xa;        }&#xa;        minutt = String.valueOf(j);&#xa;        if(j==0){&#xa;            minutt += &quot;0&quot;;&#xa;        }&#xa;        tider[teller] = time + &quot;:&quot; + minutt;&#xa;        teller++;&#xa;    }&#xa;&#xa;}"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

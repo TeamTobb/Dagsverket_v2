@@ -244,8 +244,10 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 tider[teller] = time + ":" + minutt;
                 teller++;
             }
+
         }
         ComboBoxCreateCaseReqTime.setModel(new javax.swing.DefaultComboBoxModel(tider));
+        ComboBoxCreateCaseReqTime.setSelectedIndex(16);
         ComboBoxCreateCaseReqTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxCreateCaseReqTimeActionPerformed(evt);
@@ -513,7 +515,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         textFieldPhone.setText("");
         textFieldSubject.setText("");
         dateFieldReqDate.setCalendar(null);
-        ComboBoxCreateCaseReqTime.setSelectedIndex(0);
+        ComboBoxCreateCaseReqTime.setSelectedIndex(16);
         textAreaDescription.setText("");
         comboBoxCreateCaseSupervisor.setSelectedIndex(0);
         textFieldPrice.setText("");
