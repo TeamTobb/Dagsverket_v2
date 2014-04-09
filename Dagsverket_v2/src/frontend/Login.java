@@ -99,7 +99,9 @@ public class Login extends javax.swing.JFrame {
         panelSouth.setBackground(new java.awt.Color(153, 153, 153));
         panelSouth.setPreferredSize(new java.awt.Dimension(530, 62));
 
+        buttonLogIn.setBackground(new java.awt.Color(51, 51, 51));
         buttonLogIn.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonLogIn.setForeground(new java.awt.Color(204, 204, 204));
         buttonLogIn.setText("Logg inn");
         buttonLogIn.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +111,9 @@ public class Login extends javax.swing.JFrame {
         });
         panelSouth.add(buttonLogIn);
 
+        buttonNewUser.setBackground(new java.awt.Color(51, 51, 51));
         buttonNewUser.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonNewUser.setForeground(new java.awt.Color(204, 204, 204));
         buttonNewUser.setText("Ny bruker");
         buttonNewUser.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonNewUser.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +123,9 @@ public class Login extends javax.swing.JFrame {
         });
         panelSouth.add(buttonNewUser);
 
+        buttonDeleteUser.setBackground(new java.awt.Color(51, 51, 51));
         buttonDeleteUser.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonDeleteUser.setForeground(new java.awt.Color(204, 204, 204));
         buttonDeleteUser.setText("Slett bruker");
         buttonDeleteUser.setPreferredSize(new java.awt.Dimension(150, 50));
         buttonDeleteUser.addActionListener(new java.awt.event.ActionListener() {

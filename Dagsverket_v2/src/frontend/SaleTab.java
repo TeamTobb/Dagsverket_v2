@@ -377,6 +377,9 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouthLeft.setPreferredSize(new java.awt.Dimension(512, 62));
     panelSouthLeft.setSize(new java.awt.Dimension(512, 62));
 
+    buttonDelete.setBackground(new java.awt.Color(51, 51, 51));
+    buttonDelete.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+    buttonDelete.setForeground(new java.awt.Color(204, 204, 204));
     buttonDelete.setText("Slett salg ");
     buttonDelete.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,6 +388,9 @@ public class SaleTab extends javax.swing.JPanel {
     });
     panelSouthLeft.add(buttonDelete);
 
+    buttonMoreInfo.setBackground(new java.awt.Color(51, 51, 51));
+    buttonMoreInfo.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+    buttonMoreInfo.setForeground(new java.awt.Color(204, 204, 204));
     buttonMoreInfo.setText("Mer info");
     buttonMoreInfo.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,6 +399,9 @@ public class SaleTab extends javax.swing.JPanel {
     });
     panelSouthLeft.add(buttonMoreInfo);
 
+    buttonDeliver.setBackground(new java.awt.Color(51, 51, 51));
+    buttonDeliver.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+    buttonDeliver.setForeground(new java.awt.Color(204, 204, 204));
     buttonDeliver.setText("Levert");
     buttonDeliver.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,6 +410,9 @@ public class SaleTab extends javax.swing.JPanel {
     });
     panelSouthLeft.add(buttonDeliver);
 
+    comboBoxTableView.setBackground(new java.awt.Color(51, 51, 51));
+    comboBoxTableView.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+    comboBoxTableView.setForeground(new java.awt.Color(204, 204, 204));
     comboBoxTableView.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle salg", "Levert", "Ikke levert" }));
     comboBoxTableView.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,6 +428,9 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouthRight.setMinimumSize(new java.awt.Dimension(512, 62));
     panelSouthRight.setSize(new java.awt.Dimension(512, 62));
 
+    buttonAddWoodType.setBackground(new java.awt.Color(51, 51, 51));
+    buttonAddWoodType.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+    buttonAddWoodType.setForeground(new java.awt.Color(204, 204, 204));
     buttonAddWoodType.setText("Legg til vedtype");
     buttonAddWoodType.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,6 +439,9 @@ public class SaleTab extends javax.swing.JPanel {
     });
     panelSouthRight.add(buttonAddWoodType);
 
+    buttonDone.setBackground(new java.awt.Color(51, 51, 51));
+    buttonDone.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+    buttonDone.setForeground(new java.awt.Color(204, 204, 204));
     buttonDone.setText("Ferdig");
     buttonDone.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
