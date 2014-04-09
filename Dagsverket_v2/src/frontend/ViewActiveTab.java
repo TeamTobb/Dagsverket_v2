@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -139,6 +140,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
             jTable2.getColumnModel().getColumn(4).setPreferredWidth(140);
             jTable2.getColumnModel().getColumn(4).setMaxWidth(140);
         }
+        jTable2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         panelCenter.add(jScrollPane2);
 

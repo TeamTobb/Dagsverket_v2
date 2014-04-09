@@ -131,7 +131,7 @@
                             <Column editable="false" title="Status" type="java.lang.Object"/>
                           </Table>
                         </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="jTable2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="60" minWidth="60" prefWidth="60" resizable="true">
                               <Title/>

@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package frontend;
 
 import backend.*;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.JLabel;
@@ -17,12 +9,8 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 
-/**
- *
- * @author Jorgen
- */
 public class AttendanceTab extends javax.swing.JPanel {
     private Employees employees;
     /**
@@ -123,6 +111,7 @@ public class AttendanceTab extends javax.swing.JPanel {
             }
         ));
         tableAttending.setViewportView(tableRight);
+        tableRight.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         panelRight.add(tableAttending);
 
@@ -206,6 +195,7 @@ public class AttendanceTab extends javax.swing.JPanel {
             }
         ));
         tableNotAttending.setViewportView(tableLeft);
+        tableLeft.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         panelLeft.add(tableNotAttending);
 

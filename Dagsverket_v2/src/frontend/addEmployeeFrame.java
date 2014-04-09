@@ -7,14 +7,8 @@
 package frontend;
 
 import backend.Employees;
-import java.util.ArrayList;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -133,6 +127,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             }
         ));
         tableNotAttending.setViewportView(tableLeft);
+        tableLeft.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         panelCenterLeft.add(tableNotAttending);
 
@@ -215,6 +210,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             }
         ));
         tableAttending.setViewportView(tableRight);
+        tableRight.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         panelCenterRight.add(tableAttending);
 

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import javax.swing.ListSelectionModel;
 
 public class SaleTab extends javax.swing.JPanel {
     
@@ -128,6 +128,7 @@ public class SaleTab extends javax.swing.JPanel {
             jTable2.getColumnModel().getColumn(0).setPreferredWidth(60);
             jTable2.getColumnModel().getColumn(0).setMaxWidth(60);
         }
+        jTable2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

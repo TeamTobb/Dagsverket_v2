@@ -7,8 +7,8 @@
 package frontend;
 
 import backend.*;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -93,6 +93,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         panelCenter.add(jScrollPane1);
 
