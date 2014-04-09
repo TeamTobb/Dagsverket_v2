@@ -149,7 +149,6 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(textFieldAddress);
         textFieldAddress.setBounds(135, 180, 360, 28);
 
-        textFieldPostPlace.setText("updateOnPostnr");
         textFieldPostPlace.setToolTipText("...");
         textFieldPostPlace.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
