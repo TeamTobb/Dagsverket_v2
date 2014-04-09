@@ -74,6 +74,7 @@ public class GUI extends javax.swing.JFrame {
         buttonLogOut.setBackground(new java.awt.Color(51, 51, 51));
         buttonLogOut.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonLogOut.setForeground(new java.awt.Color(204, 204, 204));
+        buttonLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logout-button.png"))); // NOI18N
         buttonLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLogOutActionPerformed(evt);
