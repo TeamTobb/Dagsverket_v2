@@ -7,6 +7,9 @@
 package frontend;
 import backend.*;
 import java.awt.CardLayout;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -31,6 +34,10 @@ public class GUI extends javax.swing.JFrame {
         addPanels();
         this.employees = new Employees();
         this.users = new Users();
+    }
+    
+    public static void showActiveCases(){
+        
     }
     
     /**
@@ -74,7 +81,8 @@ public class GUI extends javax.swing.JFrame {
         buttonLogOut.setBackground(new java.awt.Color(51, 51, 51));
         buttonLogOut.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonLogOut.setForeground(new java.awt.Color(204, 204, 204));
-        buttonLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logout-button.png"))); // NOI18N
+        // Icon taken from http://www.visualpharm.com
+        buttonLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logout-button.png")));
         buttonLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLogOutActionPerformed(evt);
@@ -203,17 +211,35 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonViewHistoryActionPerformed
 
     private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
-        this.dispose();
-        Login.main(null);
+        JFrame confirmFrame = new JFrame();
+        String[] options = new String[2];
+        options[0] = new String("Nei");
+        options[1] = new String("Ja");
+        int result = JOptionPane.showOptionDialog(confirmFrame.getContentPane(),"Er du sikker på at du vil logge ut?","Konfirmasjon", 
+                0,JOptionPane.INFORMATION_MESSAGE,null,options,null); 
+        
+        if(result == 1){
+            this.dispose();
+            Login.main(null);        
+        }
     }//GEN-LAST:event_buttonLogOutActionPerformed
 
     private void buttonViewDraftCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewDraftCasesActionPerformed
+        
         this.viewDraftTab.updateList();
-        this.cardLayout.show(panelContent, "DraftTab");
+        this.cardLayout.show(panelContent, "Uferdig");
     }//GEN-LAST:event_buttonViewDraftCasesActionPerformed
 
+    public CardLayout getCardLayout() {
+        return cardLayout;
+    }
+    
+    public JPanel getPanelContent(){
+        return this.panelContent;
+    }
+
     private void buttonViewActiveCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActiveCasesActionPerformed
-        this.cardLayout.show(panelContent, "ActiveTab");
+        this.cardLayout.show(panelContent, "Aktiv");
         this.viewActiveTab.updateList();
         //op.updateList(this.viewActiveTab.getTable(), "Aktiv");
     }//GEN-LAST:event_buttonViewActiveCasesActionPerformed
@@ -228,7 +254,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAttendanceActionPerformed
 
     private void addPanels(){
-        this.createCaseTab = new CreateCaseTab();
+        this.createCaseTab = new CreateCaseTab(this);
         this.viewActiveTab = new ViewActiveTab(); 
         this.viewDraftTab = new ViewDraftTab(); 
         this.viewHistoryTab = new ViewHistoryTab();
@@ -237,8 +263,8 @@ public class GUI extends javax.swing.JFrame {
         
         cardLayout = (CardLayout) panelContent.getLayout();
         panelContent.add(this.createCaseTab, "CreateCaseTab");        
-        panelContent.add(this.viewActiveTab, "ActiveTab");
-        panelContent.add(this.viewDraftTab, "DraftTab");
+        panelContent.add(this.viewActiveTab, "Aktiv");
+        panelContent.add(this.viewDraftTab, "Uferdig");
         panelContent.add(this.viewHistoryTab, "HistoryTab");        
         panelContent.add(this.saleTab, "SaleTab");     
         panelContent.add(this.attendanceTab, "AttendanceTab");

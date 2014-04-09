@@ -6,12 +6,13 @@
 
 package frontend;
 import backend.*;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -23,14 +24,16 @@ public class CreateCaseTab extends javax.swing.JPanel {
     private String currentDate;
     public static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     public static Calendar today = Calendar.getInstance();
+    private GUI gui; 
 
     /**
      * Creates new form CreateCaseTab
      */
-    public CreateCaseTab() {
+    public CreateCaseTab(GUI gui) {
         this.cases = new Cases();
         this.users = new Users();
         this.currentDate = dateFormat.format(today.getTime());
+        this.gui = gui; 
         initComponents();
     }
 
@@ -316,7 +319,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelDStatus);
         labelDStatus.setBounds(580, 580, 60, 16);
 
-        comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Uferdig", "Aktiv", "Ferdig" }));
+        comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Uferdig", "Aktiv"}));
         add(comboBoxStatus);
         comboBoxStatus.setBounds(630, 580, 280, 27);
 
@@ -503,6 +506,31 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDPostalCode.setForeground(Color.black);            
         labelDPrice.setForeground(Color.black);   
         setErrors(errors);
+        if(errors.isEmpty()){
+            showMessageDialog(null, "Oppdrag registrert.");     
+            this.gui.getCardLayout().show(this.gui.getPanelContent(), comboBoxStatus.getSelectedItem().toString());
+            this.resetFields();
+        }
+    }
+    
+    public void resetFields(){
+        textFieldCustomerFirstName.setText("");
+        textFieldCustomerLastName.setText("");
+        textFieldAddress.setText("");
+        textFieldPostalCode.setText("");
+        textFieldPostPlace.setText("");
+        textFieldPhone.setText("");
+        textFieldSubject.setText("");
+        dateFieldReqDate.setCalendar(null);
+        ComboBoxCreateCaseReqTime.setSelectedIndex(0);
+        textAreaDescription.setText("");
+        comboBoxCreateCaseSupervisor.setSelectedIndex(0);
+        textFieldPrice.setText("");
+        dateFieldInspectDate.setCalendar(null);
+        dateFieldStartDate.setCalendar(null);
+        textAreaToolList.setText("");
+        textAreaContacts.setText("");
+        comboBoxStatus.setSelectedIndex(0); 
     }
     
     

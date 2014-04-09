@@ -416,12 +416,8 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="comboBoxStatus">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Uferdig"/>
-            <StringItem index="1" value="Aktiv"/>
-            <StringItem index="2" value="Ferdig"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Uferdig&quot;, &quot;Aktiv&quot;})" type="code"/>
         </Property>
       </Properties>
       <Constraints>
