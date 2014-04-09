@@ -17,17 +17,17 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Sales {
-    public static int WRONG_PHONE_FORMAT = 1;
-    public static int WRONG_POSTALCODE_FORMAT = 2;
-    public static int WRONG_QUANTITY_FORMAT = 3;
-    public static int NO_CUSTOMER_FIRSTNAME = 4;
-    public static int NO_CUSTOMER_LASTNAME = 5;
-    public static int NO_ADDRESS_INFO = 6;
-    public static int NO_QUANTITY = 7; 
-    public static int NO_POSTNUMBER = 8; 
-    public static int NO_WOODTYPE = 9; 
-    public static int NO_PHONENUMBER = 10;
-    public static int WRONG_POSTNUMBER = 11; 
+    public static final int WRONG_PHONE_FORMAT = 1;
+    public static final int WRONG_POSTALCODE_FORMAT = 2;
+    public static final int WRONG_QUANTITY_FORMAT = 3;
+    public static final int NO_CUSTOMER_FIRSTNAME = 4;
+    public static final int NO_CUSTOMER_LASTNAME = 5;
+    public static final int NO_ADDRESS_INFO = 6;
+    public static final int NO_QUANTITY = 7; 
+    public static final int NO_POSTNUMBER = 8; 
+    public static final int NO_WOODTYPE = 9; 
+    public static final int NO_PHONENUMBER = 10;
+    public static final int WRONG_POSTNUMBER = 11; 
     
     public static final int ALLDELIVERIESVIEW = 1; 
     public static final int NOTDELIVEREDVIEW = 2;

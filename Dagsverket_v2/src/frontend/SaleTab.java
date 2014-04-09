@@ -66,6 +66,7 @@ public class SaleTab extends javax.swing.JPanel {
         labelHeader = new javax.swing.JLabel();
         panelSouth = new javax.swing.JPanel();
         panelSouthLeft = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
         buttonMoreInfo = new javax.swing.JButton();
         buttonDeliver = new javax.swing.JButton();
@@ -384,6 +385,9 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouthLeft.setPreferredSize(new java.awt.Dimension(512, 62));
     panelSouthLeft.setSize(new java.awt.Dimension(512, 62));
 
+    jButton1.setText("Kart");
+    panelSouthLeft.add(jButton1);
+
     buttonDelete.setBackground(new java.awt.Color(51, 51, 51));
     buttonDelete.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
     buttonDelete.setForeground(new java.awt.Color(204, 204, 204));
@@ -697,6 +701,7 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JButton buttonMoreInfo;
     private javax.swing.JComboBox comboBoxTableView;
     private javax.swing.JComboBox comboBoxWoodType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
