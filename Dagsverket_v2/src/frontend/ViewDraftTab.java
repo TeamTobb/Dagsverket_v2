@@ -149,7 +149,7 @@ public class ViewDraftTab extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Emne", "K. fornavn", "K. etternavn", "Utførelsesdato", "Ansvarlig"
+                "Saksnummer", "Emne", "K. fornavn", "K. etternavn", "Utførelsesdato", "Ansvarlig"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
