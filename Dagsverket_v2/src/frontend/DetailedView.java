@@ -139,7 +139,6 @@ public class DetailedView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1024, 706));
-        setPreferredSize(new java.awt.Dimension(1024, 706));
         getContentPane().setLayout(null);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 706));
@@ -252,6 +251,7 @@ public class DetailedView extends javax.swing.JFrame {
         });
 
         buttonComplete.setBackground(new java.awt.Color(51, 51, 51));
+        buttonComplete.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonComplete.setForeground(new java.awt.Color(204, 204, 204));
         buttonComplete.setText("Oppdater info");
         buttonComplete.setToolTipText("");
@@ -353,6 +353,7 @@ public class DetailedView extends javax.swing.JFrame {
         labelCreateCaseHeader.setText("Detaljer Sak nr: " + this.currentCase.getId());
 
         buttonLukk.setBackground(new java.awt.Color(51, 51, 51));
+        buttonLukk.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
         buttonLukk.setForeground(new java.awt.Color(204, 204, 204));
         buttonLukk.setText("Lukk");
         buttonLukk.setToolTipText("");
