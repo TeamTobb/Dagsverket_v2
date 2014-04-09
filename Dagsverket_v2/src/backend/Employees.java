@@ -1,9 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+  _______ ______          __  __   _______ ____  ____  ____  
+ |__   __|  ____|   /\   |  \/  | |__   __/ __ \|  _ \|  _ \ 
+    | |  | |__     /  \  | \  / |    | | | |  | | |_) | |_) |
+    | |  |  __|   / /\ \ | |\/| |    | | | |  | |  _ <|  _ < 
+    | |  | |____ / ____ \| |  | |    | | | |__| | |_) | |_) |
+    |_|  |______/_/    \_\_|  |_|    |_|  \____/|____/|____/                                                            
+*/
 package backend;
 
 import java.sql.PreparedStatement;
@@ -12,15 +14,10 @@ import java.sql.SQLException;
 import java.util.*;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- *
- * @author borgarlie
- */
 public class Employees {
     DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
     Calendar cal = Calendar.getInstance();

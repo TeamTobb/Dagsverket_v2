@@ -1,12 +1,16 @@
+/*
+  _______ ______          __  __   _______ ____  ____  ____  
+ |__   __|  ____|   /\   |  \/  | |__   __/ __ \|  _ \|  _ \ 
+    | |  | |__     /  \  | \  / |    | | | |  | | |_) | |_) |
+    | |  |  __|   / /\ \ | |\/| |    | | | |  | |  _ <|  _ < 
+    | |  | |____ / ____ \| |  | |    | | | |__| | |_) | |_) |
+    |_|  |______/_/    \_\_|  |_|    |_|  \____/|____/|____/                                                            
+*/
 package backend;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-/**
- *
- * @author Thomas
- */
 public class JTextFieldLimit extends PlainDocument {
   private final int limit;
 

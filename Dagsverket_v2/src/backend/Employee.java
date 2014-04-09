@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+  _______ ______          __  __   _______ ____  ____  ____  
+ |__   __|  ____|   /\   |  \/  | |__   __/ __ \|  _ \|  _ \ 
+    | |  | |__     /  \  | \  / |    | | | |  | | |_) | |_) |
+    | |  |  __|   / /\ \ | |\/| |    | | | |  | |  _ <|  _ < 
+    | |  | |____ / ____ \| |  | |    | | | |__| | |_) | |_) |
+    |_|  |______/_/    \_\_|  |_|    |_|  \____/|____/|____/                                                            
+*/
 package backend;
 
-/**
- *
- * @author borgarlie
- */
 public class Employee {
 	private int id;
 	private String firstName;
