@@ -108,7 +108,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
 
-        panelCenter.setBackground(new java.awt.Color(255, 255, 255));
         panelCenter.setMaximumSize(new java.awt.Dimension(1024, 582));
         panelCenter.setMinimumSize(new java.awt.Dimension(1024, 582));
         panelCenter.setPreferredSize(new java.awt.Dimension(1024, 582));
