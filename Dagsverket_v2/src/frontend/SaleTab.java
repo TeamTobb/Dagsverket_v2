@@ -40,18 +40,14 @@ public class SaleTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLeft = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        buttonUpdateTable = new javax.swing.JButton();
-        buttonMoreInfo = new javax.swing.JButton();
-        buttonDeliver = new javax.swing.JButton();
-        buttonSwapDeliverSale = new javax.swing.JButton();
-        buttonSwapDeliverSale1 = new javax.swing.JButton();
-        buttonDelete = new javax.swing.JButton();
+        panelNorth = new javax.swing.JPanel();
+        textHeader = new javax.swing.JLabel();
+        panelCenter = new javax.swing.JPanel();
+        panelCenterLeft = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        panelRight = new javax.swing.JPanel();
+        panelCenterRight = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         labelDFirstName = new javax.swing.JLabel();
         textFieldFirstName = new javax.swing.JTextField();
@@ -72,92 +68,42 @@ public class SaleTab extends javax.swing.JPanel {
         textFieldPrice = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         labelHeader = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        panelSouth = new javax.swing.JPanel();
+        panelSouthLeft = new javax.swing.JPanel();
+        buttonDelete = new javax.swing.JButton();
+        buttonMoreInfo = new javax.swing.JButton();
+        buttonDeliver = new javax.swing.JButton();
+        buttonUpdateTable = new javax.swing.JButton();
+        buttonSwapDeliverSale = new javax.swing.JButton();
+        buttonSwapDeliverSale1 = new javax.swing.JButton();
+        panelSouthRight = new javax.swing.JPanel();
         buttonDone = new javax.swing.JButton();
         buttonAddWoodType = new javax.swing.JButton();
 
-        setLayout(new java.awt.GridLayout(1, 0));
+        setMaximumSize(new java.awt.Dimension(1024, 706));
+        setMinimumSize(new java.awt.Dimension(1024, 706));
+        setPreferredSize(new java.awt.Dimension(1024, 706));
+        setSize(new java.awt.Dimension(1024, 706));
+        setLayout(new java.awt.BorderLayout());
 
-        panelLeft.setLayout(new java.awt.BorderLayout());
+        panelNorth.setMaximumSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setMinimumSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setPreferredSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setSize(new java.awt.Dimension(1024, 62));
 
-        buttonUpdateTable.setText("Oppdater hele listen");
-        buttonUpdateTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonUpdateTableActionPerformed(evt);
-            }
-        });
+        textHeader.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
+        textHeader.setText("Ved bestilling");
+        panelNorth.add(textHeader);
 
-        buttonMoreInfo.setText("Mer info");
-        buttonMoreInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMoreInfoActionPerformed(evt);
-            }
-        });
+        add(panelNorth, java.awt.BorderLayout.NORTH);
 
-        buttonDeliver.setText("Levert");
-        buttonDeliver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonDeliverActionPerformed(evt);
-            }
-        });
+        panelCenter.setMaximumSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setMinimumSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setPreferredSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setLayout(new java.awt.GridLayout());
 
-        buttonSwapDeliverSale.setText("Se leverte salg");
-        buttonSwapDeliverSale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSwapDeliverSaleActionPerformed(evt);
-            }
-        });
-
-        buttonSwapDeliverSale1.setText("Se ikke leverte salg");
-        buttonSwapDeliverSale1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSwapDeliverSale1ActionPerformed(evt);
-            }
-        });
-
-        buttonDelete.setText("Slett Line? ");
-        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonDeleteActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonSwapDeliverSale1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonSwapDeliverSale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonUpdateTable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(171, 171, 171)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonDeliver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonMoreInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(buttonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonUpdateTable)
-                    .addComponent(buttonDeliver))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonMoreInfo)
-                    .addComponent(buttonSwapDeliverSale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonSwapDeliverSale1)
-                    .addComponent(buttonDelete))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelLeft.add(jPanel1, java.awt.BorderLayout.PAGE_END);
+        panelCenterLeft.setLayout(new java.awt.BorderLayout());
 
         jTable2.setAutoCreateRowSorter(true);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -191,14 +137,14 @@ public class SaleTab extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
         );
 
-        panelLeft.add(jPanel2, java.awt.BorderLayout.CENTER);
+        panelCenterLeft.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        add(panelLeft);
+        panelCenter.add(panelCenterLeft);
 
-        panelRight.setLayout(new java.awt.BorderLayout());
+        panelCenterRight.setLayout(new java.awt.BorderLayout());
 
         labelDFirstName.setText("Fornavn");
 
@@ -403,16 +349,88 @@ public class SaleTab extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(labelDPrice)
                 .addComponent(textFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(136, Short.MAX_VALUE))
+            .addContainerGap(161, Short.MAX_VALUE))
     );
 
-    panelRight.add(jPanel3, java.awt.BorderLayout.LINE_START);
+    panelCenterRight.add(jPanel3, java.awt.BorderLayout.LINE_START);
 
     labelHeader.setFont(new java.awt.Font("Optima", 1, 36)); // NOI18N
     labelHeader.setText("Ved bestilling");
     jPanel4.add(labelHeader);
 
-    panelRight.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+    panelCenterRight.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+
+    panelCenter.add(panelCenterRight);
+
+    add(panelCenter, java.awt.BorderLayout.CENTER);
+
+    panelSouth.setBackground(new java.awt.Color(153, 153, 153));
+    panelSouth.setMaximumSize(new java.awt.Dimension(1024, 62));
+    panelSouth.setMinimumSize(new java.awt.Dimension(1024, 62));
+    panelSouth.setPreferredSize(new java.awt.Dimension(1024, 62));
+    panelSouth.setSize(new java.awt.Dimension(1024, 62));
+    panelSouth.setLayout(new java.awt.GridLayout());
+
+    panelSouthLeft.setBackground(new java.awt.Color(153, 153, 153));
+    panelSouthLeft.setMaximumSize(new java.awt.Dimension(512, 62));
+    panelSouthLeft.setMinimumSize(new java.awt.Dimension(512, 62));
+    panelSouthLeft.setPreferredSize(new java.awt.Dimension(512, 62));
+    panelSouthLeft.setSize(new java.awt.Dimension(512, 62));
+
+    buttonDelete.setText("Slett Line? ");
+    buttonDelete.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonDeleteActionPerformed(evt);
+        }
+    });
+    panelSouthLeft.add(buttonDelete);
+
+    buttonMoreInfo.setText("Mer info");
+    buttonMoreInfo.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonMoreInfoActionPerformed(evt);
+        }
+    });
+    panelSouthLeft.add(buttonMoreInfo);
+
+    buttonDeliver.setText("Levert");
+    buttonDeliver.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonDeliverActionPerformed(evt);
+        }
+    });
+    panelSouthLeft.add(buttonDeliver);
+
+    buttonUpdateTable.setText("Oppdater hele listen");
+    buttonUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonUpdateTableActionPerformed(evt);
+        }
+    });
+    panelSouthLeft.add(buttonUpdateTable);
+
+    buttonSwapDeliverSale.setText("Se leverte salg");
+    buttonSwapDeliverSale.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonSwapDeliverSaleActionPerformed(evt);
+        }
+    });
+    panelSouthLeft.add(buttonSwapDeliverSale);
+
+    buttonSwapDeliverSale1.setText("Se ikke leverte salg");
+    buttonSwapDeliverSale1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonSwapDeliverSale1ActionPerformed(evt);
+        }
+    });
+    panelSouthLeft.add(buttonSwapDeliverSale1);
+
+    panelSouth.add(panelSouthLeft);
+
+    panelSouthRight.setBackground(new java.awt.Color(153, 153, 153));
+    panelSouthRight.setMaximumSize(new java.awt.Dimension(512, 62));
+    panelSouthRight.setMinimumSize(new java.awt.Dimension(512, 62));
+    panelSouthRight.setSize(new java.awt.Dimension(512, 62));
 
     buttonDone.setText("Ferdig");
     buttonDone.addActionListener(new java.awt.event.ActionListener() {
@@ -420,6 +438,7 @@ public class SaleTab extends javax.swing.JPanel {
             buttonDoneActionPerformed(evt);
         }
     });
+    panelSouthRight.add(buttonDone);
 
     buttonAddWoodType.setText("Legg til vedtype");
     buttonAddWoodType.addActionListener(new java.awt.event.ActionListener() {
@@ -427,30 +446,11 @@ public class SaleTab extends javax.swing.JPanel {
             buttonAddWoodTypeActionPerformed(evt);
         }
     });
+    panelSouthRight.add(buttonAddWoodType);
 
-    javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-    jPanel5.setLayout(jPanel5Layout);
-    jPanel5Layout.setHorizontalGroup(
-        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(buttonAddWoodType)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
-            .addComponent(buttonDone)
-            .addGap(44, 44, 44))
-    );
-    jPanel5Layout.setVerticalGroup(
-        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel5Layout.createSequentialGroup()
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonAddWoodType)
-                .addComponent(buttonDone))
-            .addGap(0, 70, Short.MAX_VALUE))
-    );
+    panelSouth.add(panelSouthRight);
 
-    panelRight.add(jPanel5, java.awt.BorderLayout.PAGE_END);
-
-    add(panelRight);
+    add(panelSouth, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldQuantityActionPerformed
@@ -677,11 +677,9 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JButton buttonSwapDeliverSale1;
     private javax.swing.JButton buttonUpdateTable;
     private javax.swing.JComboBox comboBoxWoodType;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelDAddress;
@@ -693,8 +691,13 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JLabel labelDQuanitity;
     private javax.swing.JLabel labelDWoodType;
     private javax.swing.JLabel labelHeader;
-    private javax.swing.JPanel panelLeft;
-    private javax.swing.JPanel panelRight;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelCenterLeft;
+    private javax.swing.JPanel panelCenterRight;
+    private javax.swing.JPanel panelNorth;
+    private javax.swing.JPanel panelSouth;
+    private javax.swing.JPanel panelSouthLeft;
+    private javax.swing.JPanel panelSouthRight;
     private javax.swing.JTextField textFieldAddress;
     private javax.swing.JTextField textFieldFirstName;
     private javax.swing.JTextField textFieldLastName;
@@ -703,5 +706,6 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldPostnr;
     private javax.swing.JTextField textFieldPrice;
     private javax.swing.JTextField textFieldQuantity;
+    private javax.swing.JLabel textHeader;
     // End of variables declaration//GEN-END:variables
 }
