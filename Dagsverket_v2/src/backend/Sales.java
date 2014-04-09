@@ -1,9 +1,10 @@
 package backend;
 
 import frontend.MoreInfoOnSale;
-import java.awt.Color;
+
 import java.util.*;
 import java.sql.*;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,9 +35,8 @@ public class Sales {
     	return this.sales;
     }
     
+    //method to delete a sale of wood. 
     public void deleteSale(String idString){
-       
-        
         try{
             this.db.createConnection();            
             PreparedStatement deleteTuple = this.db.getConnection().prepareStatement(
@@ -44,14 +44,14 @@ public class Sales {
                     "WHERE id="+ idString); 
             this.db.executeUpdate(deleteTuple);
         } catch(SQLException e){
-            System.out.println("feil i deleteSale()"+e);
+           showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
         }
         finally{
             this.db.closeAll();
         }       
         
     }   
-
+    //method to create a new sale of wood.
     public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
                                          String postnr, String address, String quantity, String postalPlace, String status) {
         ArrayList<Integer> errors = new ArrayList<Integer>(); 
@@ -64,7 +64,7 @@ public class Sales {
         try{
             telephone = Integer.parseInt(phoneNumber.trim());
         } catch(NumberFormatException e){
-            System.out.println("Feil telefonnumer. Bare tall" + e);
+            
             errors.add(WRONG_PHONE_FORMAT);
         }
         
@@ -72,7 +72,7 @@ public class Sales {
             postCode = Integer.parseInt(postnr.trim());
         }
         catch(NumberFormatException e){
-            System.out.println("Feil postnummer. Bare tall"+e);
+            
             errors.add(WRONG_POSTALCODE_FORMAT);
         }
         
@@ -80,7 +80,7 @@ public class Sales {
             quantityNr = Integer.parseInt(quantity.trim());
         }
         catch(NumberFormatException e){
-            System.out.println("Feil antall. Bare tall"+e);
+           
             errors.add(WRONG_QUANTITY_FORMAT);
         }
         
@@ -107,8 +107,7 @@ public class Sales {
                 db.executeUpdate(sqlStatement);
             }        
             catch(SQLException e){
-                System.out.println("feil i createSale preparedStatement: " + e);
-
+               showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
             }     
             finally{
                 db.closeAll();
@@ -117,16 +116,14 @@ public class Sales {
             }
         return errors;
     }
-
+    //method to update the sale of wood arrayList called sales.
     public void updateSaleList() {
         sales = new ArrayList<Sale>();
         String sqlStatement = "Select sales.ID, sales.QUANTITY, sales.CUSTOMER, customers.FIRSTNAME, customers.LASTNAME, customers.PHONENUMBER, sales.ADDRESS, sales.POSTALCODE, sales.POSTPLACE, wood.WOODTYPE, wood.BAGSIZE, wood.PRICE, sales.STATUS FROM sales inner join customers on sales.CUSTOMER = customers.id INNER JOIN WOOD ON sales.WOOD = WOOD.WOODTYPE";
         ResultSet rs = db.executeQuery(sqlStatement);
         
-        try {
-            //System.out.println(rs.getInt("sales.ID"));
-            while(rs.next()) {
-                System.out.println("en Next i UpdateSaleList");
+        try {            
+            while(rs.next()) {                
                 sales.add(new Sale(
                     rs.getInt("ID"),
                     rs.getInt("QUANTITY"),
@@ -143,16 +140,15 @@ public class Sales {
                     rs.getString("STATUS")));
             }
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+            showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
         } finally {
-            db.closeAll();
-            System.out.println("ok");
+            db.closeAll();            
         }
     }
     
     
     
-    
+    //method to check all the inputs to see if they are blank or is invalid. 
      private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber, 
                                             String woodType, int postnr, String adresse, int quantity) {
         ArrayList<Integer> errors = new ArrayList<Integer>();
@@ -182,7 +178,9 @@ public class Sales {
         return errors;
 	}
      
-     
+     /*method to add customers to the Database. First it checks if the customer exists,
+     if it existed it uses the old customer, if it does not exist it creates a new customer in the DB. 
+     */
      private int addCustomer(String customerFirstName, String customerLastName, int telephone){
         int customerId =0;
                 
@@ -213,20 +211,19 @@ public class Sales {
                             }                        
                         }
                         catch(SQLException e){
-                            System.out.println("feil 1 " + e);                            
+                           showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");                           
                         }
                     }
                 }catch(SQLException e){
-                    System.out.println("feil 2 " + e);
+                    showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
                 }
                 finally{                    
                     db.closeAll();
                 }
          return customerId;
      }
-     
+      //method to update the table with all wood sale.
       public void updateWoodSaleList(JTable table){
-        System.out.println(sales.size());
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
 
@@ -248,10 +245,8 @@ public class Sales {
         }
     }
       
-      
+      //method to create a new frame that gives the user addition information about the selected sale.
       public boolean getMoreInfoFromSale(String saleId){
-          
-          System.out.println("saleId = "+saleId);
           int index = getIndexFromId(saleId);
           
           MoreInfoOnSale moreInfoView = new MoreInfoOnSale(
@@ -267,7 +262,7 @@ public class Sales {
           
           return true;
       }
-      
+      //method to the index in the arraylist when we have the ID of the sale. 
       private int getIndexFromId(String idString){
           int id = 0;
           id = Integer.parseInt(idString);
@@ -280,8 +275,9 @@ public class Sales {
          }
           return -1;
       }
-      
+      //method to set the wood sale as delivered. 
       public boolean deliverWood(String idString){
+          
          try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
@@ -289,7 +285,7 @@ public class Sales {
                     "' WHERE id = " + idString); 
             this.db.executeUpdate(updateEmployeeRegDate);
         } catch(SQLException e){
-            System.out.println("feil i deliverWood()"+e);
+            showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
         }
         finally{
             this.db.closeAll();
@@ -301,9 +297,11 @@ public class Sales {
       }
      
      
-     
-     public void updateWoodSaleListDelivered(JTable table, String sort){
-        System.out.println(sales.size());
+     /*method to update wood sale table. This takes the sort as a parameter. 
+        Sort will decide if the table will display delivered sales or
+        not delivered sales. 
+      */
+      public void updateWoodSaleListDelivered(JTable table, String sort){        
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
 
@@ -322,7 +320,7 @@ public class Sales {
         }
         //updateSaleList();
     }
-     
+     //method to update arraylist to either delivered or not delivered.
      public void updateSaleListWhere(String sort){
         sales = new ArrayList<Sale>();
         String sqlStatement = "Select sales.ID, sales.QUANTITY, sales.CUSTOMER, "
@@ -334,10 +332,8 @@ public class Sales {
                 + "'";
         ResultSet rs = db.executeQuery(sqlStatement);
         
-        try {
-            //System.out.println(rs.getInt("sales.ID"));
-            while(rs.next()) {
-                System.out.println("en Next i UpdateSaleList");
+        try {            
+            while(rs.next()) {                
                 sales.add(new Sale(
                     rs.getInt("ID"),
                     rs.getInt("QUANTITY"),
@@ -354,10 +350,9 @@ public class Sales {
                     rs.getString("STATUS")));
             }
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+           showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
         } finally {
-            db.closeAll();
-            System.out.println("ok");
+            db.closeAll();            
         }
     }
     
@@ -369,10 +364,7 @@ public class Sales {
         allSales.updateSaleList();
         
         
-        for(Sale d:allSales.getSales()) {
-            System.out.println(d);
-           
-        }
+       
       
     }
     
