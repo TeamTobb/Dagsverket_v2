@@ -62,7 +62,7 @@ public class ViewDraftTab extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         panelNorth = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        textHeader = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -119,25 +119,9 @@ public class ViewDraftTab extends javax.swing.JPanel {
         panelNorth.setMinimumSize(new java.awt.Dimension(1024, 62));
         panelNorth.setPreferredSize(new java.awt.Dimension(1024, 62));
 
-        jLabel1.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
-        jLabel1.setText("ViewDraftTab");
-
-        javax.swing.GroupLayout panelNorthLayout = new javax.swing.GroupLayout(panelNorth);
-        panelNorth.setLayout(panelNorthLayout);
-        panelNorthLayout.setHorizontalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNorthLayout.createSequentialGroup()
-                .addContainerGap(410, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(466, 466, 466))
-        );
-        panelNorthLayout.setVerticalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNorthLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(14, 14, 14))
-        );
+        textHeader.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
+        textHeader.setText("ViewDraftTab");
+        panelNorth.add(textHeader);
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -186,7 +170,6 @@ public class ViewDraftTab extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -197,5 +180,6 @@ public class ViewDraftTab extends javax.swing.JPanel {
     private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelSouth;
     private javax.swing.JPanel panelTop1;
+    private javax.swing.JLabel textHeader;
     // End of variables declaration//GEN-END:variables
 }

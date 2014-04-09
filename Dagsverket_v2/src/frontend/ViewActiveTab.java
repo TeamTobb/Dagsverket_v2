@@ -66,7 +66,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         panelNorth = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        textHeader = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -86,25 +86,9 @@ public class ViewActiveTab extends javax.swing.JPanel {
         panelNorth.setPreferredSize(new java.awt.Dimension(1024, 62));
         panelNorth.setSize(new java.awt.Dimension(1024, 62));
 
-        jLabel1.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
-        jLabel1.setText("ViewActiveTab");
-
-        javax.swing.GroupLayout panelNorthLayout = new javax.swing.GroupLayout(panelNorth);
-        panelNorth.setLayout(panelNorthLayout);
-        panelNorthLayout.setHorizontalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelNorthLayout.createSequentialGroup()
-                .addGap(408, 408, 408)
-                .addComponent(jLabel1)
-                .addContainerGap(457, Short.MAX_VALUE))
-        );
-        panelNorthLayout.setVerticalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNorthLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
+        textHeader.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
+        textHeader.setText("ViewActiveTab");
+        panelNorth.add(textHeader);
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -245,11 +229,11 @@ public class ViewActiveTab extends javax.swing.JPanel {
     private javax.swing.JButton buttonDrivingRoute;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonToggle1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelSouth;
+    private javax.swing.JLabel textHeader;
     // End of variables declaration//GEN-END:variables
 }

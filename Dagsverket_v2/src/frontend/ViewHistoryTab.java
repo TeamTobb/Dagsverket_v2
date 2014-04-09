@@ -52,7 +52,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
     private void initComponents() {
 
         panelNorth = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        textHeader = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -69,25 +69,9 @@ public class ViewHistoryTab extends javax.swing.JPanel {
         panelNorth.setPreferredSize(new java.awt.Dimension(1024, 62));
         panelNorth.setSize(new java.awt.Dimension(1024, 62));
 
-        jLabel1.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
-        jLabel1.setText("ViewHistoryTab");
-
-        javax.swing.GroupLayout panelNorthLayout = new javax.swing.GroupLayout(panelNorth);
-        panelNorth.setLayout(panelNorthLayout);
-        panelNorthLayout.setHorizontalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelNorthLayout.createSequentialGroup()
-                .addGap(420, 420, 420)
-                .addComponent(jLabel1)
-                .addContainerGap(435, Short.MAX_VALUE))
-        );
-        panelNorthLayout.setVerticalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNorthLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        textHeader.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
+        textHeader.setText("ViewHistoryTab");
+        panelNorth.add(textHeader);
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -136,11 +120,11 @@ public class ViewHistoryTab extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelSouth;
+    private javax.swing.JLabel textHeader;
     // End of variables declaration//GEN-END:variables
 }
