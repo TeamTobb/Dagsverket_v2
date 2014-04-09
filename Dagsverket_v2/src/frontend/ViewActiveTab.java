@@ -201,7 +201,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
     private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
         int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
         Case currentCase = cases.getCaseById(id);
-        this.detailedView = new DetailedView(currentCase);
+        this.detailedView = new DetailedView(currentCase, this);
         this.detailedView.setVisible(true);
     }//GEN-LAST:event_buttonToggle1ActionPerformed
 

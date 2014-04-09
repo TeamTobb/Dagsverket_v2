@@ -13,12 +13,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
 import javax.swing.*;
+import static javax.swing.JOptionPane.*;
 
 /**
  *
  * @author borgarlie
  */
 public class DetailedView extends javax.swing.JFrame {
+    
+    private JPanel casePanel;
     
     private DateFormat formatter;
     private Date req_date;
@@ -34,7 +37,8 @@ public class DetailedView extends javax.swing.JFrame {
     /**
      * Creates new form DetailedView
      */
-    public DetailedView(Case currentCase) {
+    public DetailedView(Case currentCase, JPanel casePanel) {
+        this.casePanel = casePanel;
         this.cases = new Cases();
         this.users = new Users();
         this.currentCase = currentCase;
@@ -128,10 +132,12 @@ public class DetailedView extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         textAreaToolList = new javax.swing.JTextArea();
         labelCreateCaseHeader = new javax.swing.JLabel();
+        buttonLukk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1024, 706));
         setPreferredSize(new java.awt.Dimension(1024, 706));
+        getContentPane().setLayout(null);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 706));
 
@@ -242,7 +248,8 @@ public class DetailedView extends javax.swing.JFrame {
             }
         });
 
-        buttonComplete.setBackground(new java.awt.Color(0, 153, 51));
+        buttonComplete.setBackground(new java.awt.Color(51, 51, 51));
+        buttonComplete.setForeground(new java.awt.Color(204, 204, 204));
         buttonComplete.setText("Oppdater info");
         buttonComplete.setToolTipText("");
         buttonComplete.addActionListener(new java.awt.event.ActionListener() {
@@ -342,14 +349,29 @@ public class DetailedView extends javax.swing.JFrame {
         labelCreateCaseHeader.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         labelCreateCaseHeader.setText("Detaljer Sak nr: " + this.currentCase.getId());
 
+        buttonLukk.setBackground(new java.awt.Color(51, 51, 51));
+        buttonLukk.setForeground(new java.awt.Color(204, 204, 204));
+        buttonLukk.setText("Lukk");
+        buttonLukk.setToolTipText("");
+        buttonLukk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLukkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(422, Short.MAX_VALUE)
-                .addComponent(labelCreateCaseHeader)
-                .addGap(444, 444, 444))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelCreateCaseHeader)
+                        .addGap(444, 444, 444))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonLukk, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(189, 189, 189))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -448,21 +470,24 @@ public class DetailedView extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGap(50, 50, 50)
                                             .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(labelDStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(620, 620, 620)
-                            .addComponent(buttonComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(labelDStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(836, 836, 836)
+                    .addComponent(buttonComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(38, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(labelCreateCaseHeader)
-                .addContainerGap(658, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 554, Short.MAX_VALUE)
+                .addComponent(buttonLukk, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 53, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(labelCreateCaseDNameHeader)
@@ -546,25 +571,11 @@ public class DetailedView extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGap(20, 20, 20)
                     .addComponent(buttonComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 53, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93))
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(6, 6, 1024, 706);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -616,7 +627,7 @@ public class DetailedView extends javax.swing.JFrame {
         String inspectDateString = String.format("%1$td-%1$tm-%1$tY", inspectDate);
         String startDateString = String.format("%1$td-%1$tm-%1$tY", startDate);
 
-        ArrayList<Integer> errors = this.cases.createCase(
+        ArrayList<Integer> errors = this.cases.updateCase(
             users.currentUser.getId(),
             textFieldCustomerFirstName.getText().trim(),
             textFieldCustomerLastName.getText().trim(),
@@ -634,7 +645,8 @@ public class DetailedView extends javax.swing.JFrame {
             startDateString,
             textAreaToolList.getText().trim(),
             textAreaContacts.getText().trim(),
-            comboBoxStatus.getSelectedItem().toString()
+            comboBoxStatus.getSelectedItem().toString(),
+            this.currentCase.getId()
         );
 
         labelCustomerDFirstName.setForeground(Color.black);
@@ -644,33 +656,39 @@ public class DetailedView extends javax.swing.JFrame {
         labelDPhone.setForeground(Color.black);
         labelDPostalCode.setForeground(Color.black);
         labelDPrice.setForeground(Color.black);
-        setErrors(errors);
+        if(errors.size() == 0) {
+            showMessageDialog(null, "Informasjonen ble oppdatert");
         }
+        else {
+            setErrors(errors);
+            showMessageDialog(null, "Informasjonen ble ikke oppdatert, noen felt mangler eller har feil verdier i seg.");
+        }
+    }
 
-        public void setErrors(ArrayList<Integer> errors){
-            for(Integer i : errors){
-                if(i == Cases.NO_CONTRACTOR_FIRSTNAME){
-                    labelCustomerDFirstName.setForeground(Color.red);
-                }
-                if(i == Cases.NO_CONTRACTOR_LASTNAME){
-                    labelCustomerDLastName.setForeground(Color.red);
-                }
-                if(i == Cases.NO_CONTACT_INFO){
-                    // labelCustomerDFirstName.setForeground(Color.red);
-                }
-                if(i == Cases.NO_SUBJECT){
-                    labelDSubject.setForeground(Color.red);
-                }
-                if(i == Cases.WRONG_PHONE_FORMAT){
-                    labelDPhone.setForeground(Color.red);
-                }
-                if(i == Cases.WRONG_POSTALCODE_FORMAT){
-                    labelDPostalCode.setForeground(Color.red);
-                }
-                if(i == Cases.WRONG_PRICE_FORMAT){
-                    labelDPrice.setForeground(Color.red);
-                }
+    public void setErrors(ArrayList<Integer> errors){
+        for(Integer i : errors){
+            if(i == Cases.NO_CONTRACTOR_FIRSTNAME){
+                labelCustomerDFirstName.setForeground(Color.red);
             }
+            if(i == Cases.NO_CONTRACTOR_LASTNAME){
+                labelCustomerDLastName.setForeground(Color.red);
+            }
+            if(i == Cases.NO_CONTACT_INFO){
+                // labelCustomerDFirstName.setForeground(Color.red);
+            }
+            if(i == Cases.NO_SUBJECT){
+                labelDSubject.setForeground(Color.red);
+            }
+            if(i == Cases.WRONG_PHONE_FORMAT){
+                labelDPhone.setForeground(Color.red);
+            }
+            if(i == Cases.WRONG_POSTALCODE_FORMAT){
+                labelDPostalCode.setForeground(Color.red);
+            }
+            if(i == Cases.WRONG_PRICE_FORMAT){
+                labelDPrice.setForeground(Color.red);
+            }
+        }
     }//GEN-LAST:event_buttonCompleteActionPerformed
 
     private void textFieldSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSubjectActionPerformed
@@ -689,6 +707,16 @@ public class DetailedView extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxCreateCaseSupervisorActionPerformed
+
+    private void buttonLukkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLukkActionPerformed
+
+        if (casePanel instanceof ViewActiveTab) {
+            ViewActiveTab casePanelTemp = (ViewActiveTab)casePanel;
+            casePanelTemp.updateList();
+        }
+        // make one if for each panel
+        this.dispose();
+    }//GEN-LAST:event_buttonLukkActionPerformed
 
     private int getSupervisorIdFromCombobox() {
         // borgar mix, skal finne en id som stemmer overens med combo box ut i fra database, works?
@@ -736,7 +764,7 @@ public class DetailedView extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(final Case currentCase) {
+    public static void main(final Case currentCase, final JPanel casePanel) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -763,7 +791,7 @@ public class DetailedView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetailedView(currentCase).setVisible(true);
+                new DetailedView(currentCase, casePanel).setVisible(true);
             }
         });
     }
@@ -771,6 +799,7 @@ public class DetailedView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBoxCreateCaseReqTime;
     private javax.swing.JButton buttonComplete;
+    private javax.swing.JButton buttonLukk;
     private javax.swing.JComboBox comboBoxCreateCaseSupervisor;
     private javax.swing.JComboBox comboBoxStatus;
     private com.toedter.calendar.JDateChooser dateFieldInspectDate;

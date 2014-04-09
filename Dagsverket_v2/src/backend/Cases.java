@@ -243,7 +243,7 @@ public class Cases {
                                             String postalCode, String postPlace, String phoneNumber, String subject, 
                                             String reqDate, String reqTime, String description, int supervisor,
                                             String price, String checkupDate, String startDate, String toolList,
-                                            String contactPerson, String status) {
+                                            String contactPerson, String status, int currentCaseId) {
         int phoneNumberInt = 0;
         int priceInt = 0; 
         int postalCodeInt = 0;
@@ -314,7 +314,7 @@ public class Cases {
 
                 // skift til en update statement -- done
 
-                PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("UPDATE cases SET address = ?, postalcode = ?, postplace = ?, subject = ?, req_date = ?, req_time = ?, description = ?, price = ?, checkup_date = ?, startdate = ?, toollist = ?, contactperson = ?, status = ?, creator = ?, supervisor = ?, customerId = ?");
+                PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("UPDATE cases SET address = ?, postalcode = ?, postplace = ?, subject = ?, req_date = ?, req_time = ?, description = ?, price = ?, checkup_date = ?, startdate = ?, toollist = ?, contactperson = ?, status = ?, creator = ?, supervisor = ?, customer = ? WHERE id = " + currentCaseId);
                 insertCaseStatement.setString(1, caseAddress);
                 insertCaseStatement.setInt(2, postalCodeInt);
                 insertCaseStatement.setString(3, postPlace);
