@@ -57,10 +57,8 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelCenterRight = new javax.swing.JPanel();
         tableAttending = new javax.swing.JScrollPane();
         tableRight = new javax.swing.JTable();
-        panelSouth = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1024, 706));
         setMinimumSize(new java.awt.Dimension(1024, 706));
 
         panelBackground.setBackground(new java.awt.Color(255, 255, 0));
@@ -109,7 +107,9 @@ public class addEmployeeFrame extends javax.swing.JFrame {
 
         panelCenterCenter.setPreferredSize(new java.awt.Dimension(174, 690));
 
+        buttonAddToCase.setBackground(new java.awt.Color(51, 51, 51));
         buttonAddToCase.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonAddToCase.setForeground(new java.awt.Color(204, 204, 204));
         buttonAddToCase.setText("->");
         buttonAddToCase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +117,9 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonRemoveFromCase.setBackground(new java.awt.Color(51, 51, 51));
         buttonRemoveFromCase.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonRemoveFromCase.setForeground(new java.awt.Color(204, 204, 204));
         buttonRemoveFromCase.setText("<-");
         buttonRemoveFromCase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +127,9 @@ public class addEmployeeFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonFinish.setBackground(new java.awt.Color(51, 51, 51));
         buttonFinish.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonFinish.setForeground(new java.awt.Color(204, 204, 204));
         buttonFinish.setText("Ferdig");
         buttonFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,25 +188,6 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelCenter.add(panelCenterRight, java.awt.BorderLayout.EAST);
 
         panelBackground.add(panelCenter, java.awt.BorderLayout.CENTER);
-
-        panelSouth.setBackground(new java.awt.Color(153, 153, 153));
-        panelSouth.setMaximumSize(new java.awt.Dimension(1024, 62));
-        panelSouth.setMinimumSize(new java.awt.Dimension(1024, 62));
-        panelSouth.setPreferredSize(new java.awt.Dimension(1024, 62));
-        panelSouth.setSize(new java.awt.Dimension(1024, 62));
-
-        javax.swing.GroupLayout panelSouthLayout = new javax.swing.GroupLayout(panelSouth);
-        panelSouth.setLayout(panelSouthLayout);
-        panelSouthLayout.setHorizontalGroup(
-            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
-        );
-        panelSouthLayout.setVerticalGroup(
-            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 62, Short.MAX_VALUE)
-        );
-
-        panelBackground.add(panelSouth, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -300,7 +285,6 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelCenterLeft;
     private javax.swing.JPanel panelCenterRight;
     private javax.swing.JPanel panelNorth;
-    private javax.swing.JPanel panelSouth;
     private javax.swing.JScrollPane tableAttending;
     private javax.swing.JTable tableLeft;
     private javax.swing.JScrollPane tableNotAttending;

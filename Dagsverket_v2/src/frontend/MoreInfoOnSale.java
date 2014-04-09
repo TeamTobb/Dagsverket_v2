@@ -265,6 +265,9 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
+        buttonClose.setBackground(new java.awt.Color(51, 51, 51));
+        buttonClose.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonClose.setForeground(new java.awt.Color(204, 204, 204));
         buttonClose.setText("Lukk");
         buttonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,7 +299,7 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonClose)
-                .addGap(0, 44, Short.MAX_VALUE))
+                .addGap(0, 42, Short.MAX_VALUE))
         );
 
         pack();

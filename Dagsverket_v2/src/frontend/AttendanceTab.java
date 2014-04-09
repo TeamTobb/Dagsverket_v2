@@ -132,7 +132,9 @@ public class AttendanceTab extends javax.swing.JPanel {
 
         panelCenter.setPreferredSize(new java.awt.Dimension(174, 690));
 
+        buttonMoveToAttending.setBackground(new java.awt.Color(51, 51, 51));
         buttonMoveToAttending.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonMoveToAttending.setForeground(new java.awt.Color(204, 204, 204));
         buttonMoveToAttending.setText("->");
         buttonMoveToAttending.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +142,9 @@ public class AttendanceTab extends javax.swing.JPanel {
             }
         });
 
+        buttonMoveToNotAttending.setBackground(new java.awt.Color(51, 51, 51));
         buttonMoveToNotAttending.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonMoveToNotAttending.setForeground(new java.awt.Color(204, 204, 204));
         buttonMoveToNotAttending.setText("<-");
         buttonMoveToNotAttending.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +152,9 @@ public class AttendanceTab extends javax.swing.JPanel {
             }
         });
 
+        buttonRegisterNewEmployer.setBackground(new java.awt.Color(51, 51, 51));
         buttonRegisterNewEmployer.setFont(new java.awt.Font("Optima", 1, 14)); // NOI18N
+        buttonRegisterNewEmployer.setForeground(new java.awt.Color(204, 204, 204));
         buttonRegisterNewEmployer.setText("Registrer ny person");
         buttonRegisterNewEmployer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

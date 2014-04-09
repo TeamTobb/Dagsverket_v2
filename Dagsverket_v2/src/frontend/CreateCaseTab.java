@@ -318,7 +318,9 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(comboBoxStatus);
         comboBoxStatus.setBounds(630, 580, 280, 27);
 
-        buttonComplete.setBackground(new java.awt.Color(0, 153, 51));
+        buttonComplete.setBackground(new java.awt.Color(51, 51, 51));
+        buttonComplete.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonComplete.setForeground(new java.awt.Color(204, 204, 204));
         buttonComplete.setText("Ferdig");
         buttonComplete.setToolTipText("");
         buttonComplete.addActionListener(new java.awt.event.ActionListener() {

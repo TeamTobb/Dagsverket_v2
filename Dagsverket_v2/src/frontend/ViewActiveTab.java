@@ -137,6 +137,9 @@ public class ViewActiveTab extends javax.swing.JPanel {
         panelSouth.setPreferredSize(new java.awt.Dimension(1024, 62));
         panelSouth.setSize(new java.awt.Dimension(1024, 62));
 
+        buttonToggle1.setBackground(new java.awt.Color(51, 51, 51));
+        buttonToggle1.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonToggle1.setForeground(new java.awt.Color(204, 204, 204));
         buttonToggle1.setText("Detaljer");
         buttonToggle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +148,9 @@ public class ViewActiveTab extends javax.swing.JPanel {
         });
         panelSouth.add(buttonToggle1);
 
+        buttonAddEmployee1.setBackground(new java.awt.Color(51, 51, 51));
+        buttonAddEmployee1.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonAddEmployee1.setForeground(new java.awt.Color(204, 204, 204));
         buttonAddEmployee1.setText("Legg til arbeidere");
         buttonAddEmployee1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +159,9 @@ public class ViewActiveTab extends javax.swing.JPanel {
         });
         panelSouth.add(buttonAddEmployee1);
 
+        buttonDrivingRoute.setBackground(new java.awt.Color(51, 51, 51));
+        buttonDrivingRoute.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonDrivingRoute.setForeground(new java.awt.Color(204, 204, 204));
         buttonDrivingRoute.setText("Se kjørerute");
         buttonDrivingRoute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
