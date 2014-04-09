@@ -60,10 +60,8 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelSouth = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 0, 204));
         setMaximumSize(new java.awt.Dimension(1024, 706));
         setMinimumSize(new java.awt.Dimension(1024, 706));
-        setPreferredSize(new java.awt.Dimension(1024, 706));
 
         panelBackground.setBackground(new java.awt.Color(255, 255, 0));
         panelBackground.setMaximumSize(new java.awt.Dimension(1024, 706));
