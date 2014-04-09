@@ -46,6 +46,8 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelBackground = new javax.swing.JPanel();
         panelNorth = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
         panelCenterLeft = new javax.swing.JPanel();
         tableNotAttending = new javax.swing.JScrollPane();
@@ -74,8 +76,39 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         panelNorth.setSize(new java.awt.Dimension(1024, 62));
 
         jLabel1.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
-        jLabel1.setText("AddEmployeeFrame");
-        panelNorth.add(jLabel1);
+        jLabel1.setText("Legg arbeidstakere til sak");
+
+        jLabel3.setFont(new java.awt.Font("Optima", 1, 14)); // NOI18N
+        jLabel3.setText("Oppmøtte arbeidstakere");
+
+        jLabel4.setFont(new java.awt.Font("Optima", 1, 14)); // NOI18N
+        jLabel4.setText("Registrerte arbeidstakere til dette oppdraget");
+
+        javax.swing.GroupLayout panelNorthLayout = new javax.swing.GroupLayout(panelNorth);
+        panelNorth.setLayout(panelNorthLayout);
+        panelNorthLayout.setHorizontalGroup(
+            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNorthLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(79, 79, 79))
+            .addGroup(panelNorthLayout.createSequentialGroup()
+                .addGap(365, 365, 365)
+                .addComponent(jLabel1)
+                .addContainerGap(395, Short.MAX_VALUE))
+        );
+        panelNorthLayout.setVerticalGroup(
+            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNorthLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)))
+        );
 
         panelBackground.add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -279,6 +312,8 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JButton buttonFinish;
     private javax.swing.JButton buttonRemoveFromCase;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel panelBackground;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelCenterCenter;

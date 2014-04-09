@@ -87,7 +87,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
         panelNorth.setSize(new java.awt.Dimension(1024, 62));
 
         textHeader.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
-        textHeader.setText("ViewActiveTab");
+        textHeader.setText("Aktive oppdrag");
         panelNorth.add(textHeader);
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
@@ -100,17 +100,17 @@ public class ViewActiveTab extends javax.swing.JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Saksnummer", "Emne", "Utførelsesdato", "Ansvarlig"
+                "Saksnummer", "Emne", "K. fornavn", "K. etternavn", "Utførelsesdato", "Ansvarlig"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -119,12 +119,18 @@ public class ViewActiveTab extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setMinWidth(80);
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(80);
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(80);
+            jTable2.getColumnModel().getColumn(0).setMinWidth(85);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(85);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(85);
             jTable2.getColumnModel().getColumn(2).setMinWidth(140);
             jTable2.getColumnModel().getColumn(2).setPreferredWidth(140);
             jTable2.getColumnModel().getColumn(2).setMaxWidth(140);
+            jTable2.getColumnModel().getColumn(3).setMinWidth(140);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(140);
+            jTable2.getColumnModel().getColumn(3).setMaxWidth(140);
+            jTable2.getColumnModel().getColumn(4).setMinWidth(140);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(140);
+            jTable2.getColumnModel().getColumn(4).setMaxWidth(140);
         }
 
         panelCenter.add(jScrollPane2);
