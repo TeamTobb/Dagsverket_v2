@@ -15,6 +15,7 @@ import java.sql.*;
  */
 public class Case {
     private int id;
+    private String createdDate;
     private String address;
     private int postalCode;
     private String postPlace;
@@ -39,8 +40,9 @@ public class Case {
 
     private Customer employer;
 
-    public Case(int id, String address, int postalCode, String postPlace, String subject, String reqDate, String reqTime, String description, int price, String checkup_date, String startDate, String toolList, String contactPerson, String status, int creatorId, int supervisorId, int customerId, String customerFirstName, String customerLastName, int customerPhoneNumber) {
+    public Case(int id, String createdDate, String address, int postalCode, String postPlace, String subject, String reqDate, String reqTime, String description, int price, String checkup_date, String startDate, String toolList, String contactPerson, String status, int creatorId, int supervisorId, int customerId, String customerFirstName, String customerLastName, int customerPhoneNumber) {
         this.id = id;
+        this.createdDate = createdDate;
         this.address = address;
         this.postalCode = postalCode;
         this.postPlace = postPlace;
@@ -61,6 +63,10 @@ public class Case {
 
     public int getId() {
         return id;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
     }
 
     public String getAddress() {

@@ -86,6 +86,7 @@ public class Cases {
             while(rs.next()) {
                 this.cases.add(new Case(
                         rs.getInt("id"),
+                        rs.getString("createdDate"),
                         rs.getString("address"),
                         rs.getInt("postalcode"),
                         rs.getString("postplace"),
@@ -118,7 +119,7 @@ public class Cases {
 		return this.cases;
 	}
 
-	public ArrayList<Integer> createCase(int creator, String customerFirstName, String customerLastName, String caseAddress, 
+	public ArrayList<Integer> createCase(int creator, String createdDate, String customerFirstName, String customerLastName, String caseAddress, 
                                             String postalCode, String postPlace, String phoneNumber, String subject, 
                                             String reqDate, String reqTime, String description, int supervisor,
                                             String price, String checkupDate, String startDate, String toolList,
@@ -189,25 +190,25 @@ public class Cases {
                 this.db.createConnection();
                 try{
                     PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("INSERT INTO cases VALUES("
-                                                        + "DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    insertCaseStatement.setString(1, caseAddress);
-                    insertCaseStatement.setInt(2, postalCodeInt);
-                    insertCaseStatement.setString(3, postPlace);
-                    insertCaseStatement.setString(4, subject);
-                    insertCaseStatement.setString(5, reqDate);
-                    insertCaseStatement.setString(6, reqTime);
-                    insertCaseStatement.setString(7, description);
-                    insertCaseStatement.setInt(8, priceInt);
-                    insertCaseStatement.setString(9, checkupDate);
-                    insertCaseStatement.setString(10, startDate);
-                    insertCaseStatement.setString(11, toolList);
-                    insertCaseStatement.setString(12, contactPerson);
-                    insertCaseStatement.setString(13, status);
-                    insertCaseStatement.setInt(14, creator);
-                    insertCaseStatement.setInt(15, supervisor);
-                    insertCaseStatement.setInt(16, customerId);
+                                                        + "DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    insertCaseStatement.setString(1, createdDate);
+                    insertCaseStatement.setString(2, caseAddress);
+                    insertCaseStatement.setInt(3, postalCodeInt);
+                    insertCaseStatement.setString(4, postPlace);
+                    insertCaseStatement.setString(5, subject);
+                    insertCaseStatement.setString(6, reqDate);
+                    insertCaseStatement.setString(7, reqTime);
+                    insertCaseStatement.setString(8, description);
+                    insertCaseStatement.setInt(9, priceInt);
+                    insertCaseStatement.setString(10, checkupDate);
+                    insertCaseStatement.setString(11, startDate);
+                    insertCaseStatement.setString(12, toolList);
+                    insertCaseStatement.setString(13, contactPerson);
+                    insertCaseStatement.setString(14, status);
+                    insertCaseStatement.setInt(15, creator);
+                    insertCaseStatement.setInt(16, supervisor);
+                    insertCaseStatement.setInt(17, customerId);
                     
-                   // insertCaseStatement.executeUpdate();
                     db.executeUpdate(insertCaseStatement);
                     
                 }catch(SQLException e){
@@ -239,7 +240,7 @@ public class Cases {
         return errors;
 	}
 
-    public ArrayList<Integer> updateCase(int creator, String customerFirstName, String customerLastName, String caseAddress, 
+    public ArrayList<Integer> updateCase(int creator, String createdDate, String customerFirstName, String customerLastName, String caseAddress, 
                                             String postalCode, String postPlace, String phoneNumber, String subject, 
                                             String reqDate, String reqTime, String description, int supervisor,
                                             String price, String checkupDate, String startDate, String toolList,
@@ -314,23 +315,24 @@ public class Cases {
 
                 // skift til en update statement -- done
 
-                PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("UPDATE cases SET address = ?, postalcode = ?, postplace = ?, subject = ?, req_date = ?, req_time = ?, description = ?, price = ?, checkup_date = ?, startdate = ?, toollist = ?, contactperson = ?, status = ?, creator = ?, supervisor = ?, customer = ? WHERE id = " + currentCaseId);
-                insertCaseStatement.setString(1, caseAddress);
-                insertCaseStatement.setInt(2, postalCodeInt);
-                insertCaseStatement.setString(3, postPlace);
-                insertCaseStatement.setString(4, subject);
-                insertCaseStatement.setString(5, reqDate);
-                insertCaseStatement.setString(6, reqTime);
-                insertCaseStatement.setString(7, description);
-                insertCaseStatement.setInt(8, priceInt);
-                insertCaseStatement.setString(9, checkupDate);
-                insertCaseStatement.setString(10, startDate);
-                insertCaseStatement.setString(11, toolList);
-                insertCaseStatement.setString(12, contactPerson);
-                insertCaseStatement.setString(13, status);
-                insertCaseStatement.setInt(14, creator);
-                insertCaseStatement.setInt(15, supervisor);
-                insertCaseStatement.setInt(16, customerId);
+                PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("UPDATE cases SET createdDate = ?, address = ?, postalcode = ?, postplace = ?, subject = ?, req_date = ?, req_time = ?, description = ?, price = ?, checkup_date = ?, startdate = ?, toollist = ?, contactperson = ?, status = ?, creator = ?, supervisor = ?, customer = ? WHERE id = " + currentCaseId);
+                insertCaseStatement.setString(1, createdDate);
+                insertCaseStatement.setString(2, caseAddress);
+                insertCaseStatement.setInt(3, postalCodeInt);
+                insertCaseStatement.setString(4, postPlace);
+                insertCaseStatement.setString(5, subject);
+                insertCaseStatement.setString(6, reqDate);
+                insertCaseStatement.setString(7, reqTime);
+                insertCaseStatement.setString(8, description);
+                insertCaseStatement.setInt(9, priceInt);
+                insertCaseStatement.setString(10, checkupDate);
+                insertCaseStatement.setString(11, startDate);
+                insertCaseStatement.setString(12, toolList);
+                insertCaseStatement.setString(13, contactPerson);
+                insertCaseStatement.setString(14, status);
+                insertCaseStatement.setInt(15, creator);
+                insertCaseStatement.setInt(16, supervisor);
+                insertCaseStatement.setInt(17, customerId);
 
                 // rs.getInt("id"),
                 // rs.getString("address"),

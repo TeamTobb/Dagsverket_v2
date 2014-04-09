@@ -20,6 +20,7 @@ import java.util.Calendar;
 public class CreateCaseTab extends javax.swing.JPanel {
     private Cases cases;
     private Users users;
+    private String currentDate;
     public static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     public static Calendar today = Calendar.getInstance();
 
@@ -29,6 +30,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
     public CreateCaseTab() {
         this.cases = new Cases();
         this.users = new Users();
+        this.currentDate = dateFormat.format(today.getTime());
         initComponents();
     }
 
@@ -113,7 +115,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCreateCaseDSupervisorHeader);
         labelCreateCaseDSupervisorHeader.setBounds(570, 90, 59, 16);
 
-        labelDate.setText("get case info.."
+        labelDate.setText(this.currentDate
         );
         add(labelDate);
         labelDate.setBounds(150, 100, 84, 16);
@@ -473,6 +475,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         
         ArrayList<Integer> errors = this.cases.createCase(
         users.currentUser.getId(),
+        currentDate,
         textFieldCustomerFirstName.getText().trim(),
         textFieldCustomerLastName.getText().trim(),
         textFieldAddress.getText().trim(),

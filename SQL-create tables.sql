@@ -15,7 +15,8 @@ CONSTRAINT users_pk PRIMARY KEY(id)
 );
 
 CREATE TABLE cases(
-id INTEGER GENERATED ALWAYS AS IDENTITY, 
+id INTEGER GENERATED ALWAYS AS IDENTITY,
+createdDate VARCHAR(30), 
 address VARCHAR(30), 
 postalCode INTEGER, 
 postPlace VARCHAR(30),
@@ -106,10 +107,10 @@ INSERT INTO employees VALUES (DEFAULT, 'Arne', 'Gunnarson', '', '', 0, '', 0);
 INSERT INTO employees VALUES (DEFAULT, 'masdm', 'Hoppla', '', '', 0, '', 0);
 
 
-INSERT INTO cases VALUES (DEFAULT, '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
-INSERT INTO cases VALUES (DEFAULT, '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
-INSERT INTO cases VALUES (DEFAULT, '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
-INSERT INTO cases VALUES (DEFAULT, '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
+INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
+INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
+INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
+INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
 
 INSERT INTO events_has_employees VALUES(1, 1);
 INSERT INTO events_has_employees VALUES(2, 1);

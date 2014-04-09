@@ -28,6 +28,8 @@ public class DetailedView extends javax.swing.JFrame {
     private Date checkup_date;
     private Date startDate;
     
+    private String currentDate;
+    
     private Cases cases;
     private Users users;
     private Case currentCase;
@@ -42,6 +44,7 @@ public class DetailedView extends javax.swing.JFrame {
         this.cases = new Cases();
         this.users = new Users();
         this.currentCase = currentCase;
+        this.currentDate = currentCase.getCreatedDate();
         this.formatter = new SimpleDateFormat("dd-MM-yy");
         // format reqDate
         if(!this.currentCase.getReqDate().trim().equals("")) {
@@ -222,7 +225,7 @@ public class DetailedView extends javax.swing.JFrame {
         labelCustomerDFirstName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelCustomerDFirstName.setText("Kunde");
 
-        labelDate.setText("fuck this shit..");
+        labelDate.setText(this.currentDate);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
@@ -629,6 +632,7 @@ public class DetailedView extends javax.swing.JFrame {
 
         ArrayList<Integer> errors = this.cases.updateCase(
             users.currentUser.getId(),
+            currentDate,
             textFieldCustomerFirstName.getText().trim(),
             textFieldCustomerLastName.getText().trim(),
             textFieldAddress.getText().trim(),
