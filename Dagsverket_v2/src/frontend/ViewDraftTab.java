@@ -56,8 +56,95 @@ public class ViewDraftTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        panelTop1 = new javax.swing.JPanel();
+        panelBottom1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        panelNorth = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        panelCenter = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        panelSouth = new javax.swing.JPanel();
+
+        jPanel1.setSize(new java.awt.Dimension(1024, 846));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        panelTop1.setMaximumSize(new java.awt.Dimension(32767, 785));
+        panelTop1.setMinimumSize(new java.awt.Dimension(100, 785));
+        panelTop1.setRequestFocusEnabled(false);
+        panelTop1.setLayout(new javax.swing.BoxLayout(panelTop1, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel1.add(panelTop1, java.awt.BorderLayout.NORTH);
+
+        panelBottom1.setBackground(new java.awt.Color(153, 153, 153));
+        panelBottom1.setMaximumSize(new java.awt.Dimension(1024, 62));
+        panelBottom1.setMinimumSize(new java.awt.Dimension(1024, 62));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        javax.swing.GroupLayout panelBottom1Layout = new javax.swing.GroupLayout(panelBottom1);
+        panelBottom1.setLayout(panelBottom1Layout);
+        panelBottom1Layout.setHorizontalGroup(
+            panelBottom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+        );
+        panelBottom1Layout.setVerticalGroup(
+            panelBottom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBottom1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(panelBottom1, java.awt.BorderLayout.CENTER);
+
+        setSize(new java.awt.Dimension(1024, 846));
+        setLayout(new java.awt.BorderLayout());
+
+        panelNorth.setMaximumSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setMinimumSize(new java.awt.Dimension(1024, 62));
+        panelNorth.setPreferredSize(new java.awt.Dimension(1024, 62));
+
+        jLabel1.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
+        jLabel1.setText("ViewDraftTab");
+
+        javax.swing.GroupLayout panelNorthLayout = new javax.swing.GroupLayout(panelNorth);
+        panelNorth.setLayout(panelNorthLayout);
+        panelNorthLayout.setHorizontalGroup(
+            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNorthLayout.createSequentialGroup()
+                .addContainerGap(410, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(466, 466, 466))
+        );
+        panelNorthLayout.setVerticalGroup(
+            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNorthLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14))
+        );
+
+        add(panelNorth, java.awt.BorderLayout.NORTH);
+
+        panelCenter.setMaximumSize(new java.awt.Dimension(1024, 722));
+        panelCenter.setMinimumSize(new java.awt.Dimension(1024, 722));
+        panelCenter.setPreferredSize(new java.awt.Dimension(1024, 722));
+        panelCenter.setRequestFocusEnabled(false);
+        panelCenter.setSize(new java.awt.Dimension(1024, 722));
+        panelCenter.setLayout(new javax.swing.BoxLayout(panelCenter, javax.swing.BoxLayout.LINE_AXIS));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,21 +159,41 @@ public class ViewDraftTab extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+        panelCenter.add(jScrollPane1);
+
+        add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelSouth.setBackground(new java.awt.Color(153, 153, 153));
+        panelSouth.setToolTipText("");
+        panelSouth.setMaximumSize(new java.awt.Dimension(1024, 62));
+        panelSouth.setPreferredSize(new java.awt.Dimension(1024, 62));
+
+        javax.swing.GroupLayout panelSouthLayout = new javax.swing.GroupLayout(panelSouth);
+        panelSouth.setLayout(panelSouthLayout);
+        panelSouthLayout.setHorizontalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+        panelSouthLayout.setVerticalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 62, Short.MAX_VALUE)
         );
+
+        add(panelSouth, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JPanel panelBottom1;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelNorth;
+    private javax.swing.JPanel panelSouth;
+    private javax.swing.JPanel panelTop1;
     // End of variables declaration//GEN-END:variables
 }
