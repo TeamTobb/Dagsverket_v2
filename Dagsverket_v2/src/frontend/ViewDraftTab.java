@@ -110,7 +110,9 @@ public class ViewDraftTab extends javax.swing.JPanel {
 
         jPanel1.add(panelBottom1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(1024, 846));
+        setBounds(new java.awt.Rectangle(0, 0, 1024, 706));
+        setMinimumSize(new java.awt.Dimension(1024, 706));
+        setPreferredSize(new java.awt.Dimension(1024, 706));
         setLayout(new java.awt.BorderLayout());
 
         panelNorth.setMaximumSize(new java.awt.Dimension(1024, 62));
@@ -139,11 +141,11 @@ public class ViewDraftTab extends javax.swing.JPanel {
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
 
-        panelCenter.setMaximumSize(new java.awt.Dimension(1024, 722));
-        panelCenter.setMinimumSize(new java.awt.Dimension(1024, 722));
-        panelCenter.setPreferredSize(new java.awt.Dimension(1024, 722));
+        panelCenter.setBounds(new java.awt.Rectangle(0, 0, 1024, 582));
+        panelCenter.setMaximumSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setMinimumSize(new java.awt.Dimension(1024, 582));
+        panelCenter.setPreferredSize(new java.awt.Dimension(1024, 582));
         panelCenter.setRequestFocusEnabled(false);
-        panelCenter.setSize(new java.awt.Dimension(1024, 722));
         panelCenter.setLayout(new javax.swing.BoxLayout(panelCenter, javax.swing.BoxLayout.LINE_AXIS));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
