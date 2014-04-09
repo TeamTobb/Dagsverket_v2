@@ -1,6 +1,7 @@
 package frontend;
 import backend.*;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,6 +17,8 @@ public class GUI extends javax.swing.JFrame {
     private Database db;   
     private Employees employees;
     private Users users;
+    private int selectedTab = 1;
+    
     /**
      * Creates new form GUI
      */
@@ -193,11 +196,15 @@ public class GUI extends javax.swing.JFrame {
 
     private void buttonRegisterCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterCaseActionPerformed
         this.cardLayout.show(panelContent, "CreateCaseTab");
+        setAllDarkGray();
+        buttonRegisterCase.setBackground(Color.black);        
     }//GEN-LAST:event_buttonRegisterCaseActionPerformed
 
     private void buttonViewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewHistoryActionPerformed
         this.viewHistoryTab.updateList();
         this.cardLayout.show(panelContent, "HistoryTab");
+        setAllDarkGray();
+        buttonViewHistory.setBackground(Color.black);
     }//GEN-LAST:event_buttonViewHistoryActionPerformed
 
     private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
@@ -218,6 +225,8 @@ public class GUI extends javax.swing.JFrame {
         
         this.viewDraftTab.updateList();
         this.cardLayout.show(panelContent, "Uferdig");
+        setAllDarkGray();
+        buttonViewDraftCases.setBackground(Color.black);
     }//GEN-LAST:event_buttonViewDraftCasesActionPerformed
 
     public CardLayout getCardLayout() {
@@ -231,16 +240,21 @@ public class GUI extends javax.swing.JFrame {
     private void buttonViewActiveCasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActiveCasesActionPerformed
         this.cardLayout.show(panelContent, "Aktiv");
         this.viewActiveTab.updateList();
-        //op.updateList(this.viewActiveTab.getTable(), "Aktiv");
+        setAllDarkGray();
+        buttonViewActiveCases.setBackground(Color.black);
     }//GEN-LAST:event_buttonViewActiveCasesActionPerformed
 
     private void buttonSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalesActionPerformed
         this.cardLayout.show(panelContent, "SaleTab");
+        setAllDarkGray();
+        buttonSales.setBackground(Color.black);
     }//GEN-LAST:event_buttonSalesActionPerformed
 
     private void buttonAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAttendanceActionPerformed
         this.cardLayout.show(panelContent, "AttendanceTab");
         this.employees.updateGUILists(this.attendanceTab.getTableLeft(), this.attendanceTab.getTableRight());
+        setAllDarkGray();
+        buttonAttendance.setBackground(Color.black);
     }//GEN-LAST:event_buttonAttendanceActionPerformed
 
     private void addPanels(){
@@ -260,9 +274,20 @@ public class GUI extends javax.swing.JFrame {
         panelContent.add(this.attendanceTab, "AttendanceTab");
     }
     
+    private void setAllDarkGray(){
+        buttonAttendance.setBackground(Color.darkGray);
+        buttonSales.setBackground(Color.darkGray);
+        buttonViewActiveCases.setBackground(Color.darkGray);
+        buttonViewDraftCases.setBackground(Color.darkGray);
+        buttonViewHistory.setBackground(Color.darkGray);
+        buttonRegisterCase.setBackground(Color.darkGray);
+    }
+    
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(final User currentUser) {  
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
