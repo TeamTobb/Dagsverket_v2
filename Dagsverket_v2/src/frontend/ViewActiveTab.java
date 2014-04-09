@@ -188,8 +188,8 @@ public class ViewActiveTab extends javax.swing.JPanel {
         addressURL = addressURL.replaceAll("ø", "ae");
         addressURL = addressURL.replaceAll("å", "ae");
         addressURL = addressURL.replaceAll("Æ", "AE");
-        addressURL = addressURL.replaceAll("Ø", "Ø");
-        addressURL = addressURL.replaceAll("Å", "Å");                
+        addressURL = addressURL.replaceAll("Ø", "O");
+        addressURL = addressURL.replaceAll("Å", "AA");                
         try {
             Desktop d = Desktop.getDesktop();
             d.browse(new URI(addressURL)); 
