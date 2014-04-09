@@ -184,8 +184,9 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     private void buttonAddToCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddToCaseActionPerformed
         try{
             int employeeId = (int)tableLeft.getValueAt(tableLeft.getSelectedRow(), 0);        
-        employees.addToCase(caseId, employeeId);  
-        employees.updateEmployeeAvailable(tableLeft, tableRight, caseId);
+            employees.addToCase(caseId, employeeId);  
+            employees.setAntUtenZero(employeeId);        
+            employees.updateEmployeeAvailable(tableLeft, tableRight, caseId);
         }catch(ArrayIndexOutOfBoundsException e){
             showMessageDialog(null, "Vennligst velg en arbeider"); 
         }
@@ -195,6 +196,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
         try{
             int employeeId = (int)tableRight.getValueAt(tableRight.getSelectedRow(), 0);        
             employees.removeFromCase(caseId, employeeId);  
+            employees.resetAntUten(employeeId);
             employees.updateEmployeeAvailable(tableLeft, tableRight, caseId);
         }catch(ArrayIndexOutOfBoundsException e){
             showMessageDialog(null, "Vennligst velg en arbeider");
@@ -202,12 +204,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonRemoveFromCaseActionPerformed
 
     private void buttonFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinishActionPerformed
-        int employeeId;
-        for(int i = 0; i<tableRight.getRowCount(); i++){
-            employeeId = (int)tableRight.getValueAt(i, 0);
-            employees.setAntUtenZero(employeeId);
-        }
-        this.setVisible(false);
+         this.dispose();
     }//GEN-LAST:event_buttonFinishActionPerformed
 
     /**

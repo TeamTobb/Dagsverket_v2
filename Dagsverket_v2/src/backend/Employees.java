@@ -81,11 +81,31 @@ public class Employees {
         }
     }
     
+    public void resetAntUten(int employeeId){
+        db.createConnection();
+        try{
+            PreparedStatement sqlStatement = db.getConnection().prepareStatement(
+                                            "UPDATE employees SET "
+                                                    + "attendanceWithoutWork = attendanceWithoutWorkBackup "
+                                                    + "WHERE employees.id = ?");
+            sqlStatement.setInt(1, employeeId);
+            db.executeUpdate(sqlStatement);
+        }
+        catch(SQLException e){
+            System.out.println("feil i setAntUtenZero: " + e);
+        }
+        finally{
+            db.closeAll();
+        }        
+    }
+    
     public void setAntUtenZero(int employeeId){
         db.createConnection();
         try{
             PreparedStatement sqlStatement = db.getConnection().prepareStatement(
-                                            "UPDATE employees SET attendanceWithoutWork = 0 "
+                                            "UPDATE employees SET "
+                                                    + "attendanceWithoutWorkBackup = attendanceWithoutWork, "
+                                                    + "attendanceWithoutWork = 0 "
                                                     + "WHERE employees.id = ?");
             sqlStatement.setInt(1, employeeId);
             db.executeUpdate(sqlStatement);
@@ -219,7 +239,7 @@ public class Employees {
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
-                    "UPDATE employees SET lastRegDate='" + currentDate + 
+                    "UPDATE employees SET lastRegDatebackup = lastRegDate, lastRegDate='" + currentDate + 
                     "' WHERE id = " + employeeId); 
             this.db.executeUpdate(updateEmployeeRegDate);
         }
@@ -249,7 +269,7 @@ public class Employees {
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
-                    "UPDATE employees SET lastRegDate ='' WHERE id = " + employeeId); 
+                    "UPDATE employees SET lastRegDate =lastRegDateBackup WHERE id = " + employeeId); 
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
