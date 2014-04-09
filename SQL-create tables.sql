@@ -42,6 +42,8 @@ lastName VARCHAR(30),
 lastWorkDate VARCHAR(30),
 lastRegDate VARCHAR(30),
 attendanceWithoutWork INTEGER,
+lastRegDateBackup VARCHAR(30),
+attendanceWithoutWorkBackup INTEGER,
 CONSTRAINT employees_pk PRIMARY KEY(id)
 );
 
@@ -95,13 +97,13 @@ INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen', 1);
 
 INSERT INTO wood VALUES('Eik', 50, 800);
 INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324);
-INSERT INTO sales VALUES(default, 30, 1, 'Eik', 1400, 'Ski', 'humleveien 13');
+INSERT INTO sales VALUES(default, 30, 1, 'Eik', 1400, 'Ski', 'humleveien 13', 'Ikke levert');
 --INSERT INTO cases VALUES(default, 'jobbAdresseveien 1', 7001, 'Trondheim',1, 'activ', '10.04.2014','09.04.2014', '11.04.2014', 2, 2);
  
 
-INSERT INTO employees VALUES (DEFAULT, 'Hei', 'Heisen', '', '', 0);
-INSERT INTO employees VALUES (DEFAULT, 'Arne', 'Gunnarson', '', '', 0);
-INSERT INTO employees VALUES (DEFAULT, 'masdm', 'Hoppla', '', '', 0);
+INSERT INTO employees VALUES (DEFAULT, 'Hei', 'Heisen', '', '', 0, '', 0);
+INSERT INTO employees VALUES (DEFAULT, 'Arne', 'Gunnarson', '', '', 0, '', 0);
+INSERT INTO employees VALUES (DEFAULT, 'masdm', 'Hoppla', '', '', 0, '', 0);
 
 
 INSERT INTO cases VALUES (DEFAULT, '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);

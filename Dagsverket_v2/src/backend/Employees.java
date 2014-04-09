@@ -287,7 +287,7 @@ public class Employees {
             try{
                 this.db.createConnection();
                 PreparedStatement insertEmployeeStatement = this.db.getConnection().prepareStatement(
-                                "INSERT INTO employees VALUES(DEFAULT, ?, ?, ' ', ' ', 0)");   
+                                "INSERT INTO employees VALUES(DEFAULT, ?, ?, ' ', ' ', 0, ' ', 0)");   
                 insertEmployeeStatement.setString(1, firstName);
                 insertEmployeeStatement.setString(2, lastName);                
                 db.executeUpdate(insertEmployeeStatement);                
