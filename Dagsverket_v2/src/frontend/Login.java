@@ -146,14 +146,19 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogInActionPerformed
-        this.dispose();
-        User selectedUser = users.getUserByIndex(listUserNames.getSelectedIndex());
-        users.setCurrentUser(selectedUser);
-        System.out.println(selectedUser.toString());
-        GUI.main(selectedUser);
+        try{
+            User selectedUser = users.getUserByIndex(listUserNames.getSelectedIndex());
+            users.setCurrentUser(selectedUser);
+            System.out.println(selectedUser.toString());
+            GUI.main(selectedUser);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg en bruker"); 
+        }                
     }//GEN-LAST:event_buttonLogInActionPerformed
 
     private void buttonNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewUserActionPerformed
+      int error = 0; 
       JTextField textfieldFirstName = new JTextField(8);
       JTextField textfieldLastName = new JTextField(8);
       JPanel panelNewUser = new JPanel();
@@ -169,40 +174,46 @@ public class Login extends javax.swing.JFrame {
       
       int result = JOptionPane.showConfirmDialog(null, panelNewUser, 
                "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
-      if (result == JOptionPane.OK_OPTION) {
-          int error = users.createUser(textfieldFirstName.getText(), textfieldLastName.getText());
-          if(error == 0){
-              showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
+      if (result == JOptionPane.OK_OPTION){
+          if(textfieldFirstName.getText().trim().equals("") || textfieldLastName.getText().trim().equals("")){
+              showMessageDialog(null, "Vennligst skriv inn minst én bokstav i hvert felt");
+          }else{
+              error = users.createUser(textfieldFirstName.getText(), textfieldLastName.getText());
+              if(error == 0){
+                 showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
+              }else{
+                users.updateUserList(1);
+                listUserNames.setListData(users.getUsers());
+                listUserNames.updateUI();
+              }
           }
-          else{
-              users.updateUserList(1);
-              listUserNames.setListData(users.getUsers());
-              listUserNames.updateUI();
-          }          
       }
     }//GEN-LAST:event_buttonNewUserActionPerformed
 
     private void buttonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteUserActionPerformed
-        System.out.println(listUserNames.getSelectedValue()); 
         this.users.updateUserList(1);
-        String[] names = ((String)listUserNames.getSelectedValue()).split(" ");
-        try{
-            db.createConnection();
-            PreparedStatement updateUser = db.getConnection().prepareStatement(
-                    "UPDATE users SET status = 0 WHERE firstName = ? AND lastNAme = ?");
-            updateUser.setString(1, names[0]);
-            updateUser.setString(2, names[1]);  
-            db.executeUpdate(updateUser);
-            users.updateUserList(1);
-            listUserNames.setListData(users.getUsers());
-            listUserNames.updateUI();
-        }
-        catch(SQLException e){
-            System.out.println("feil i delete user: " +e);
-        }
-        finally{
-            db.closeAll();
-        }
+        String[]names = null;
+        try{        
+            names = ((String)listUserNames.getSelectedValue()).split(" ");
+            try{
+                db.createConnection();
+                PreparedStatement updateUser = db.getConnection().prepareStatement(
+                        "UPDATE users SET status = 0 WHERE firstName = ? AND lastNAme = ?");
+                updateUser.setString(1, names[0]);
+                updateUser.setString(2, names[1]);  
+                db.executeUpdate(updateUser);
+                users.updateUserList(1);
+                listUserNames.setListData(users.getUsers());
+                listUserNames.updateUI();
+            }catch(SQLException e){
+                System.out.println("feil i delete user: " +e);
+            }
+            finally{
+                db.closeAll();
+            }
+        }catch(NullPointerException e){
+            showMessageDialog(null, "Vennligst velg en bruker"); 
+        }        
     }//GEN-LAST:event_buttonDeleteUserActionPerformed
 
     /**
