@@ -28,6 +28,7 @@ public class SaleTab extends javax.swing.JPanel {
        this.woods.updateWoodList(); //TODO Flytte til gui 
        initComponents();
        this.sales.updateWoodSaleList(jTable2);
+       
 
     }
 
@@ -66,7 +67,7 @@ public class SaleTab extends javax.swing.JPanel {
         labelHeader = new javax.swing.JLabel();
         panelSouth = new javax.swing.JPanel();
         panelSouthLeft = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ButtonGetURLButton = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
         buttonMoreInfo = new javax.swing.JButton();
         buttonDeliver = new javax.swing.JButton();
@@ -109,9 +110,16 @@ public class SaleTab extends javax.swing.JPanel {
                 "Salg ID", "Kjøper", "Antall", "Status"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -385,8 +393,13 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouthLeft.setPreferredSize(new java.awt.Dimension(512, 62));
     panelSouthLeft.setSize(new java.awt.Dimension(512, 62));
 
-    jButton1.setText("Kart");
-    panelSouthLeft.add(jButton1);
+    ButtonGetURLButton.setText("Kart");
+    ButtonGetURLButton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonGetURLButtonActionPerformed(evt);
+        }
+    });
+    panelSouthLeft.add(ButtonGetURLButton);
 
     buttonDelete.setBackground(new java.awt.Color(51, 51, 51));
     buttonDelete.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
@@ -692,8 +705,19 @@ public class SaleTab extends javax.swing.JPanel {
         
     }//GEN-LAST:event_comboBoxTableViewActionPerformed
 
+    private void ButtonGetURLButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGetURLButtonActionPerformed
+        if (jTable2.getSelectedRow()!=-1){
+            sales.getURLToMap(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());            
+        } else {
+            showMessageDialog(null, "Vennligst velg element i tabellen");
+        }
+        
+        
+    }//GEN-LAST:event_ButtonGetURLButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonGetURLButton;
     private javax.swing.JButton buttonAddWoodType;
     private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonDeliver;
@@ -701,7 +725,6 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JButton buttonMoreInfo;
     private javax.swing.JComboBox comboBoxTableView;
     private javax.swing.JComboBox comboBoxWoodType;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

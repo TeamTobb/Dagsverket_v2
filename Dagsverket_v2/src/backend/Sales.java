@@ -378,6 +378,14 @@ public class Sales {
         }
     }
     
+    public void getURLToMap(String idString){
+        int id = getIndexFromId(idString);
+        
+        URLGenerator.generateMapURL(sales.get(id).getAddress(), 
+                                    sales.get(id).getPostalCode(),
+                                    sales.get(id).getPostPlace());        
+    }
+    
    
      
     
