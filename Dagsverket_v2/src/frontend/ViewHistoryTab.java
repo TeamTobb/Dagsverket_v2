@@ -27,17 +27,24 @@ public class ViewHistoryTab extends javax.swing.JPanel {
         initComponents();
     }    
     
+    
     public void updateList(){    
+        String startDate = ""; 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        Object[] insertTable = new Object[4];
+        Object[] insertTable = new Object[6];
         this.cases.updateCaseList("Ferdig");
-
         for(int i = 0; i<this.cases.getCases().size(); i++){
             insertTable[0] = this.cases.getCases().get(i).getId();
             insertTable[1] = this.cases.getCases().get(i).getSubject();
-            insertTable[2] = this.cases.getCases().get(i).getStartDate();
-            insertTable[3] = this.users.getUserById(this.cases.getCases().get(i).getSupervisorId()).toString();
+            insertTable[2] = this.cases.getCases().get(i).getEmployer().getFirstname();
+            insertTable[3] = this.cases.getCases().get(i).getEmployer().getLastname();
+            if(this.cases.getCases().get(i).getStartDate().equals("null-null-null")){        
+                insertTable[4] = "";
+            }else{
+                insertTable[4] = this.cases.getCases().get(i).getStartDate();                
+            }
+            insertTable[5] = this.users.getUserById(this.cases.getCases().get(i).getSupervisorId()).toString();
             model.insertRow(jTable1.getRowCount(), insertTable);                     
         }    
     }
@@ -86,16 +93,30 @@ public class ViewHistoryTab extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Saksnummer", "Emne", "K. fornavn", "K. etternavn", "Utførelsesdato", "Ansvarlig"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(85);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(85);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(85);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(140);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(140);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(140);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(140);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(140);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(140);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(140);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(140);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(140);
+        }
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         panelCenter.add(jScrollPane1);

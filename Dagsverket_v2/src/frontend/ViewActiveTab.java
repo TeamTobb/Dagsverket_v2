@@ -33,7 +33,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
         model.setRowCount(0);
         Object[] insertTable = new Object[6];
         this.cases.updateCaseList("Aktiv");
-
         for(int i = 0; i<this.cases.getCases().size(); i++){
             insertTable[0] = this.cases.getCases().get(i).getId();
             insertTable[1] = this.cases.getCases().get(i).getSubject();
@@ -46,7 +45,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
             }
             insertTable[5] = this.users.getUserById(this.cases.getCases().get(i).getSupervisorId()).toString();
             model.insertRow(jTable2.getRowCount(), insertTable);                     
-           }    
+        }    
     }
     
     
