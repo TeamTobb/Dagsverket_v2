@@ -714,12 +714,18 @@ public class DetailedView extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxCreateCaseSupervisorActionPerformed
 
     private void buttonLukkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLukkActionPerformed
-
         if (casePanel instanceof ViewActiveTab) {
             ViewActiveTab casePanelTemp = (ViewActiveTab)casePanel;
             casePanelTemp.updateList();
         }
-        // make one if for each panel
+        else if (casePanel instanceof ViewDraftTab) {
+            ViewDraftTab casePanelTemp = (ViewDraftTab)casePanel;
+            casePanelTemp.updateList();
+        }
+        else if (casePanel instanceof ViewHistoryTab) {
+            ViewHistoryTab casePanelTemp = (ViewHistoryTab)casePanel;
+            casePanelTemp.updateList();
+        }
         this.dispose();
     }//GEN-LAST:event_buttonLukkActionPerformed
 
