@@ -241,7 +241,8 @@ public class AttendanceTab extends javax.swing.JPanel {
       panelNewEmployee.add(Box.createHorizontalStrut(15));
       panelNewEmployee.add(new JLabel("Etternavn:"));
       panelNewEmployee.add(textfieldLastName);
-            
+      textfieldFirstName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
+      textfieldLastName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
       int result = JOptionPane.showConfirmDialog(null, panelNewEmployee, 
                "Skriv inn fornavn og etternavn", JOptionPane.OK_CANCEL_OPTION);
       if (result == JOptionPane.OK_OPTION) { 

@@ -344,7 +344,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="textAreaDescription">
               <Properties>
-                <Property name="columns" type="int" value="20"/>
+                <Property name="columns" type="int" value="20" postCode="textAreaDescription.setDocument(new JTextFieldLimit(29)); // endre tallet for &#xe5; endre limit"/>
                 <Property name="rows" type="int" value="5"/>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="this.currentCase.getDescription()" type="code"/>
@@ -364,7 +364,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldAddressActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for &#xe5; endre limit"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldAddress.setDocument(new JTextFieldLimit(29)); // endre tallet for &#xe5; endre limit"/>
           </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="dateFieldStartDate">
@@ -398,9 +398,9 @@
             <Property name="toolTipText" type="java.lang.String" value="..."/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPostalCodeActionPerformed"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldPostalCodeFocusLost"/>
             <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="textFieldPostalCodeInputMethodTextChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPostalCodeActionPerformed"/>
             <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="textFieldPostalCodePropertyChange"/>
           </Events>
           <AuxValues>
@@ -471,7 +471,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCustomerLastNameActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for &#xe5; endre limit"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldCustomerLastName.setDocument(new JTextFieldLimit(29)); // endre tallet for &#xe5; endre limit"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="labelDPrice">
@@ -491,7 +491,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCustomerFirstNameActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for &#xe5; endre limit"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldCustomerFirstName.setDocument(new JTextFieldLimit(29)); // endre tallet for &#xe5; endre limit"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="buttonComplete">
@@ -559,7 +559,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldSubjectActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldSubject.setDocument(new JTextFieldLimit(30)); // endre tallet for &#xe5; endre limit"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldSubject.setDocument(new JTextFieldLimit(29)); // endre tallet for &#xe5; endre limit"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="labelDStartDate">
@@ -576,7 +576,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="textAreaContacts">
               <Properties>
-                <Property name="columns" type="int" value="20"/>
+                <Property name="columns" type="int" value="20" postCode="textAreaContacts.setDocument(new JTextFieldLimit(199)); // endre tallet for &#xe5; endre limit"/>
                 <Property name="rows" type="int" value="5"/>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="this.currentCase.getContactPerson()" type="code"/>
@@ -595,7 +595,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPriceActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldPrice.setDocument(new JTextFieldLimit(6)); // endre tallet for &#xe5; endre limit"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldPrice.setDocument(new JTextFieldLimit(7)); // endre tallet for &#xe5; endre limit"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="labelDSubject">
@@ -665,7 +665,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textAreaToolList.setDocument(new JTextFieldLimit(100));"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textAreaToolList.setDocument(new JTextFieldLimit(199));"/>
               </AuxValues>
             </Component>
           </SubComponents>

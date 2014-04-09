@@ -141,12 +141,13 @@ public class DetailedView extends javax.swing.JFrame {
         labelCreateCaseDSupervisorHeader.setText("Ansvarlig");
 
         textAreaDescription.setColumns(20);
+        textAreaDescription.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textAreaDescription.setRows(5);
         textAreaDescription.setText(this.currentCase.getDescription());
         jScrollPane1.setViewportView(textAreaDescription);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
+        textFieldAddress.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textFieldAddress.setText(this.currentCase.getAddress());
         textFieldAddress.setToolTipText("...");
         textFieldAddress.addActionListener(new java.awt.event.ActionListener() {
@@ -171,11 +172,6 @@ public class DetailedView extends javax.swing.JFrame {
         textFieldPostalCode.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
         textFieldPostalCode.setText("" + this.currentCase.getPostalCode());
         textFieldPostalCode.setToolTipText("...");
-        textFieldPostalCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPostalCodeActionPerformed(evt);
-            }
-        });
         textFieldPostalCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldPostalCodeFocusLost(evt);
@@ -186,6 +182,11 @@ public class DetailedView extends javax.swing.JFrame {
                 textFieldPostalCodeInputMethodTextChanged(evt);
             }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        textFieldPostalCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPostalCodeActionPerformed(evt);
             }
         });
         textFieldPostalCode.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -216,7 +217,7 @@ public class DetailedView extends javax.swing.JFrame {
         labelDate.setText(this.currentDate);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
+        textFieldCustomerLastName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textFieldCustomerLastName.setText(this.currentCase.getEmployer().getLastname());
         textFieldCustomerLastName.setToolTipText("");
         textFieldCustomerLastName.setVerifyInputWhenFocusTarget(false);
@@ -229,7 +230,7 @@ public class DetailedView extends javax.swing.JFrame {
         labelDPrice.setText("Pris");
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
+        textFieldCustomerFirstName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textFieldCustomerFirstName.setText(this.currentCase.getEmployer().getFirstname());
         textFieldCustomerFirstName.setToolTipText("");
         textFieldCustomerFirstName.setVerifyInputWhenFocusTarget(false);
@@ -265,7 +266,7 @@ public class DetailedView extends javax.swing.JFrame {
         labelDStatus.setText("Status");
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldSubject.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
+        textFieldSubject.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textFieldSubject.setText(this.currentCase.getSubject());
         textFieldSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,12 +277,13 @@ public class DetailedView extends javax.swing.JFrame {
         labelDStartDate.setText("Avtalt oppstart");
 
         textAreaContacts.setColumns(20);
+        textAreaContacts.setDocument(new JTextFieldLimit(199)); // endre tallet for å endre limit
         textAreaContacts.setRows(5);
         textAreaContacts.setText(this.currentCase.getContactPerson());
         jScrollPane7.setViewportView(textAreaContacts);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldPrice.setDocument(new JTextFieldLimit(6)); // endre tallet for å endre limit
+        textFieldPrice.setDocument(new JTextFieldLimit(7)); // endre tallet for å endre limit
         textFieldPrice.setText("" + this.currentCase.getPrice());
         textFieldPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,7 +334,7 @@ public class DetailedView extends javax.swing.JFrame {
             }
         });
 
-        textAreaToolList.setDocument(new JTextFieldLimit(100));
+        textAreaToolList.setDocument(new JTextFieldLimit(199));
         textAreaToolList.setColumns(20);
         textAreaToolList.setRows(5);
         textAreaToolList.setText(this.currentCase.getToolList());

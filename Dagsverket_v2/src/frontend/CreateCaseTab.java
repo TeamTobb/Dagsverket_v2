@@ -123,7 +123,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelCustomerDFirstName.setBounds(30, 150, 100, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldCustomerFirstName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
+        textFieldCustomerFirstName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textFieldCustomerFirstName.setToolTipText("");
         textFieldCustomerFirstName.setVerifyInputWhenFocusTarget(false);
         textFieldCustomerFirstName.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +210,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDSubject.setBounds(50, 340, 81, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldSubject.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
+        textFieldSubject.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textFieldSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldSubjectActionPerformed(evt);
@@ -262,6 +262,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelDDescription);
         labelDDescription.setBounds(10, 450, 122, 16);
 
+        textAreaDescription.setDocument(new JTextFieldLimit(199)); // endre tallet for å endre limit
         textAreaDescription.setColumns(20);
         textAreaDescription.setRows(5);
         jScrollPane1.setViewportView(textAreaDescription);
@@ -274,7 +275,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDPrice.setBounds(610, 150, 23, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldPrice.setDocument(new JTextFieldLimit(6)); // endre tallet for å endre limit
+        textFieldPrice.setDocument(new JTextFieldLimit(9)); // endre tallet for å endre limit
         textFieldPrice.setText("1750");
         textFieldPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,6 +301,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelDContacts);
         labelDContacts.setBounds(530, 410, 104, 16);
 
+        textAreaContacts.setDocument(new JTextFieldLimit(199)); // endre tallet for å endre limit
         textAreaContacts.setColumns(20);
         textAreaContacts.setRows(5);
         jScrollPane7.setViewportView(textAreaContacts);
@@ -335,7 +337,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         dateFieldStartDate.setBounds(640, 250, 280, 28);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldCustomerLastName.setDocument(new JTextFieldLimit(12)); // endre tallet for å endre limit
+        textFieldCustomerLastName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
         textFieldCustomerLastName.setToolTipText("");
         textFieldCustomerLastName.setVerifyInputWhenFocusTarget(false);
         textFieldCustomerLastName.addActionListener(new java.awt.event.ActionListener() {
@@ -350,7 +352,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         add(labelCustomerDLastName);
         labelCustomerDLastName.setBounds(270, 150, 80, 16);
 
-        textAreaToolList.setDocument(new JTextFieldLimit(100));
+        textAreaToolList.setDocument(new JTextFieldLimit(199));
         textAreaToolList.setColumns(20);
         textAreaToolList.setRows(5);
         jScrollPane8.setViewportView(textAreaToolList);
