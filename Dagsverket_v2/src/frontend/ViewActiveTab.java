@@ -151,7 +151,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
                 buttonToggle1ActionPerformed(evt);
             }
         });
-        panelSouth.add(buttonToggle1);
 
         buttonAddEmployee1.setBackground(new java.awt.Color(51, 51, 51));
         buttonAddEmployee1.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
@@ -162,7 +161,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
                 buttonAddEmployee1ActionPerformed(evt);
             }
         });
-        panelSouth.add(buttonAddEmployee1);
 
         buttonDrivingRoute.setBackground(new java.awt.Color(51, 51, 51));
         buttonDrivingRoute.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
@@ -173,48 +171,37 @@ public class ViewActiveTab extends javax.swing.JPanel {
                 buttonDrivingRouteActionPerformed(evt);
             }
         });
-        panelSouth.add(buttonDrivingRoute);
+
+        javax.swing.GroupLayout panelSouthLayout = new javax.swing.GroupLayout(panelSouth);
+        panelSouth.setLayout(panelSouthLayout);
+        panelSouthLayout.setHorizontalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelSouthLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(buttonToggle1)
+                    .addGap(5, 5, 5)
+                    .addComponent(buttonAddEmployee1)
+                    .addGap(5, 5, 5)
+                    .addComponent(buttonDrivingRoute)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        panelSouthLayout.setVerticalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 62, Short.MAX_VALUE)
+            .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelSouthLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(buttonToggle1)
+                        .addComponent(buttonAddEmployee1)
+                        .addComponent(buttonDrivingRoute))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         add(panelSouth, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buttonDrivingRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDrivingRouteActionPerformed
-        try{
-            int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0); 
-            String address = this.cases.getCaseById(id).getAddress();
-            String[] addressArray = address.split(" ");
-            String addressURL = "http://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";        
-            for(int i = 0; i<addressArray.length; i++){
-                if(i<addressArray.length-1){
-                    addressURL+= addressArray[i] + "+";            
-                }
-                else{
-                    addressURL += addressArray[i];
-                }
-            }  
-            addressURL += ",";        
-            String postalCode = "+"+this.cases.getCaseById(id).getPostalCode();
-            addressURL += postalCode;
-            addressURL += "+";   
-            addressURL += this.cases.getCaseById(id).getPostPlace();
-            addressURL+="/";
-            addressURL = addressURL.replaceAll("æ", "ae");
-            addressURL = addressURL.replaceAll("ø", "ae");
-            addressURL = addressURL.replaceAll("å", "ae");
-            addressURL = addressURL.replaceAll("Æ", "AE");
-            addressURL = addressURL.replaceAll("Ø", "O");
-            addressURL = addressURL.replaceAll("Å", "AA");                
-            try {
-                Desktop d = Desktop.getDesktop();
-                d.browse(new URI(addressURL)); 
-            } catch(IOException | URISyntaxException ex) {
-                ex.printStackTrace();
-            } 
-        }catch(ArrayIndexOutOfBoundsException e){
-            showMessageDialog(null, "Vennligst velg et oppdrag");
-        }
-
-    }//GEN-LAST:event_buttonDrivingRouteActionPerformed
 
     private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
         try{
@@ -223,7 +210,7 @@ public class ViewActiveTab extends javax.swing.JPanel {
             this.detailedView = new DetailedView(currentCase, this);
             this.detailedView.setVisible(true);
         }catch(ArrayIndexOutOfBoundsException e){
-            showMessageDialog(null, "Vennligst velg et oppdrag"); 
+            showMessageDialog(null, "Vennligst velg et oppdrag");
         }
     }//GEN-LAST:event_buttonToggle1ActionPerformed
 
@@ -233,9 +220,46 @@ public class ViewActiveTab extends javax.swing.JPanel {
             this.addEmployeeFrame = new addEmployeeFrame(id);
             this.addEmployeeFrame.setVisible(true);
         }catch(ArrayIndexOutOfBoundsException e){
-            showMessageDialog(null, "Vennligst velg et oppdrag"); 
+            showMessageDialog(null, "Vennligst velg et oppdrag");
         }
     }//GEN-LAST:event_buttonAddEmployee1ActionPerformed
+
+    private void buttonDrivingRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDrivingRouteActionPerformed
+        try{
+            int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+            String address = this.cases.getCaseById(id).getAddress();
+            String[] addressArray = address.split(" ");
+            String addressURL = "http://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";
+            for(int i = 0; i<addressArray.length; i++){
+                if(i<addressArray.length-1){
+                    addressURL+= addressArray[i] + "+";
+                }
+                else{
+                    addressURL += addressArray[i];
+                }
+            }
+            addressURL += ",";
+            String postalCode = "+"+this.cases.getCaseById(id).getPostalCode();
+            addressURL += postalCode;
+            addressURL += "+";
+            addressURL += this.cases.getCaseById(id).getPostPlace();
+            addressURL+="/";
+            addressURL = addressURL.replaceAll("æ", "ae");
+            addressURL = addressURL.replaceAll("ø", "ae");
+            addressURL = addressURL.replaceAll("å", "ae");
+            addressURL = addressURL.replaceAll("Æ", "AE");
+            addressURL = addressURL.replaceAll("Ø", "O");
+            addressURL = addressURL.replaceAll("Å", "AA");
+            try {
+                Desktop d = Desktop.getDesktop();
+                d.browse(new URI(addressURL));
+            } catch(IOException | URISyntaxException ex) {
+                ex.printStackTrace();
+            }
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg et oppdrag");
+        }
+    }//GEN-LAST:event_buttonDrivingRouteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

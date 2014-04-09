@@ -1,6 +1,11 @@
 package frontend;
 
 import backend.*;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
@@ -8,6 +13,9 @@ import javax.swing.ListSelectionModel;
 public class ViewDraftTab extends javax.swing.JPanel {
     private Cases cases;
     private Users users;
+    private addEmployeeFrame addEmployeeFrame;  
+    private Employees employees;
+    private DetailedView detailedView;
 
     /**
      * Creates new form ViewDraftTab
@@ -16,6 +24,7 @@ public class ViewDraftTab extends javax.swing.JPanel {
         initComponents();
         this.cases = new Cases();
         this.users = new Users();
+        this.employees = new Employees();
     }
     
     public JTable getTable(){
@@ -58,6 +67,9 @@ public class ViewDraftTab extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         panelSouth = new javax.swing.JPanel();
+        buttonToggle1 = new javax.swing.JButton();
+        buttonAddEmployee1 = new javax.swing.JButton();
+        buttonDrivingRoute = new javax.swing.JButton();
 
         jPanel1.setSize(new java.awt.Dimension(1024, 846));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -146,22 +158,130 @@ public class ViewDraftTab extends javax.swing.JPanel {
         panelSouth.setMaximumSize(new java.awt.Dimension(1024, 62));
         panelSouth.setPreferredSize(new java.awt.Dimension(1024, 62));
 
+        buttonToggle1.setBackground(new java.awt.Color(51, 51, 51));
+        buttonToggle1.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonToggle1.setForeground(new java.awt.Color(204, 204, 204));
+        buttonToggle1.setText("Detaljer");
+        buttonToggle1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonToggle1ActionPerformed(evt);
+            }
+        });
+
+        buttonAddEmployee1.setBackground(new java.awt.Color(51, 51, 51));
+        buttonAddEmployee1.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonAddEmployee1.setForeground(new java.awt.Color(204, 204, 204));
+        buttonAddEmployee1.setText("Legg til arbeidere");
+        buttonAddEmployee1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddEmployee1ActionPerformed(evt);
+            }
+        });
+
+        buttonDrivingRoute.setBackground(new java.awt.Color(51, 51, 51));
+        buttonDrivingRoute.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonDrivingRoute.setForeground(new java.awt.Color(204, 204, 204));
+        buttonDrivingRoute.setText("Se kjørerute");
+        buttonDrivingRoute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDrivingRouteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelSouthLayout = new javax.swing.GroupLayout(panelSouth);
         panelSouth.setLayout(panelSouthLayout);
         panelSouthLayout.setHorizontalGroup(
             panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelSouthLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(buttonToggle1)
+                    .addGap(5, 5, 5)
+                    .addComponent(buttonAddEmployee1)
+                    .addGap(5, 5, 5)
+                    .addComponent(buttonDrivingRoute)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         panelSouthLayout.setVerticalGroup(
             panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 62, Short.MAX_VALUE)
+            .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelSouthLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(buttonToggle1)
+                        .addComponent(buttonAddEmployee1)
+                        .addComponent(buttonDrivingRoute))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         add(panelSouth, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
+        try{
+            int id = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            Case currentCase = cases.getCaseById(id);
+            this.detailedView = new DetailedView(currentCase, this);
+            this.detailedView.setVisible(true);
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg et oppdrag");
+        }
+    }//GEN-LAST:event_buttonToggle1ActionPerformed
+
+    private void buttonAddEmployee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddEmployee1ActionPerformed
+        try{
+            int id = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            this.addEmployeeFrame = new addEmployeeFrame(id);
+            this.addEmployeeFrame.setVisible(true);
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg et oppdrag");
+        }
+    }//GEN-LAST:event_buttonAddEmployee1ActionPerformed
+
+    private void buttonDrivingRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDrivingRouteActionPerformed
+        try{
+            int id = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            String address = this.cases.getCaseById(id).getAddress();
+            String[] addressArray = address.split(" ");
+            String addressURL = "http://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";
+            for(int i = 0; i<addressArray.length; i++){
+                if(i<addressArray.length-1){
+                    addressURL+= addressArray[i] + "+";
+                }
+                else{
+                    addressURL += addressArray[i];
+                }
+            }
+            addressURL += ",";
+            String postalCode = "+"+this.cases.getCaseById(id).getPostalCode();
+            addressURL += postalCode;
+            addressURL += "+";
+            addressURL += this.cases.getCaseById(id).getPostPlace();
+            addressURL+="/";
+            addressURL = addressURL.replaceAll("æ", "ae");
+            addressURL = addressURL.replaceAll("ø", "ae");
+            addressURL = addressURL.replaceAll("å", "ae");
+            addressURL = addressURL.replaceAll("Æ", "AE");
+            addressURL = addressURL.replaceAll("Ø", "O");
+            addressURL = addressURL.replaceAll("Å", "AA");
+            try {
+                Desktop d = Desktop.getDesktop();
+                d.browse(new URI(addressURL));
+            } catch(IOException | URISyntaxException ex) {
+                ex.printStackTrace();
+            }
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg et oppdrag");
+        }
+    }//GEN-LAST:event_buttonDrivingRouteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAddEmployee1;
+    private javax.swing.JButton buttonDrivingRoute;
+    private javax.swing.JButton buttonToggle1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
