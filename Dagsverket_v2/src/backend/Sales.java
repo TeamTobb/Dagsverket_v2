@@ -23,6 +23,10 @@ public class Sales {
     public static int NO_PHONENUMBER = 10;
     public static int WRONG_POSTNUMBER = 11; 
     
+    public static final int ALLDELIVERIESVIEW = 1; 
+    public static final int NOTDELIVEREDVIEW = 2;
+    public static final int DELIVEREDVIEW = 3;
+    
     private ArrayList<Sale> sales;
     private Database db;
     
@@ -318,7 +322,7 @@ public class Sales {
                  model.insertRow(table.getRowCount(), insertTable);                     
              } 
         }
-        //updateSaleList();
+        
     }
      //method to update arraylist to either delivered or not delivered.
      public void updateSaleListWhere(String sort){
@@ -355,6 +359,21 @@ public class Sales {
             db.closeAll();            
         }
     }
+     
+    public void updateSaleWoodTable(JTable table, int currentView){
+        switch (currentView){
+            case ALLDELIVERIESVIEW: updateWoodSaleList(table);
+                break;
+            case NOTDELIVEREDVIEW: updateWoodSaleListDelivered(table, "Ikke levert");                
+                break;
+            case DELIVEREDVIEW: updateWoodSaleListDelivered(table,"levert");
+                break;
+            default:                    
+        }
+    }
+    
+   
+     
     
     public static void main(String args[]){
         Database db = new Database();

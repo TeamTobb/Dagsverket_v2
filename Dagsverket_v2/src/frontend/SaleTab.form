@@ -498,7 +498,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="buttonDelete">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Slett Line? "/>
+                <Property name="text" type="java.lang.String" value="Slett salg "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDeleteActionPerformed"/>
@@ -520,28 +520,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDeliverActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="buttonUpdateTable">
+            <Component class="javax.swing.JComboBox" name="comboBoxTableView">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Oppdater hele listen"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Alle salg&quot;, &quot;Levert&quot;, &quot;Ikke levert&quot; })" type="code"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonUpdateTableActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="buttonSwapDeliverSale">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Se leverte salg"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSwapDeliverSaleActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="buttonSwapDeliverSale1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Se ikke leverte salg"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSwapDeliverSale1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxTableViewActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -564,20 +550,20 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="buttonDone">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ferdig"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDoneActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="buttonAddWoodType">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Legg til vedtype"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddWoodTypeActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonDone">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ferdig"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDoneActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

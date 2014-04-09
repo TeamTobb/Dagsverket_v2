@@ -23,6 +23,8 @@ public class SaleTab extends javax.swing.JPanel {
     
      private Sales sales;
      private Woods woods;
+     
+     private int saleTableView = sales.ALLDELIVERIESVIEW; 
 
     
     public SaleTab() {
@@ -73,12 +75,10 @@ public class SaleTab extends javax.swing.JPanel {
         buttonDelete = new javax.swing.JButton();
         buttonMoreInfo = new javax.swing.JButton();
         buttonDeliver = new javax.swing.JButton();
-        buttonUpdateTable = new javax.swing.JButton();
-        buttonSwapDeliverSale = new javax.swing.JButton();
-        buttonSwapDeliverSale1 = new javax.swing.JButton();
+        comboBoxTableView = new javax.swing.JComboBox();
         panelSouthRight = new javax.swing.JPanel();
-        buttonDone = new javax.swing.JButton();
         buttonAddWoodType = new javax.swing.JButton();
+        buttonDone = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1024, 706));
         setMinimumSize(new java.awt.Dimension(1024, 706));
@@ -101,7 +101,7 @@ public class SaleTab extends javax.swing.JPanel {
         panelCenter.setMinimumSize(new java.awt.Dimension(1024, 582));
         panelCenter.setPreferredSize(new java.awt.Dimension(1024, 582));
         panelCenter.setSize(new java.awt.Dimension(1024, 582));
-        panelCenter.setLayout(new java.awt.GridLayout());
+        panelCenter.setLayout(new java.awt.GridLayout(1, 0));
 
         panelCenterLeft.setLayout(new java.awt.BorderLayout());
 
@@ -369,7 +369,7 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouth.setMinimumSize(new java.awt.Dimension(1024, 62));
     panelSouth.setPreferredSize(new java.awt.Dimension(1024, 62));
     panelSouth.setSize(new java.awt.Dimension(1024, 62));
-    panelSouth.setLayout(new java.awt.GridLayout());
+    panelSouth.setLayout(new java.awt.GridLayout(1, 0));
 
     panelSouthLeft.setBackground(new java.awt.Color(153, 153, 153));
     panelSouthLeft.setMaximumSize(new java.awt.Dimension(512, 62));
@@ -377,7 +377,7 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouthLeft.setPreferredSize(new java.awt.Dimension(512, 62));
     panelSouthLeft.setSize(new java.awt.Dimension(512, 62));
 
-    buttonDelete.setText("Slett Line? ");
+    buttonDelete.setText("Slett salg ");
     buttonDelete.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             buttonDeleteActionPerformed(evt);
@@ -401,29 +401,13 @@ public class SaleTab extends javax.swing.JPanel {
     });
     panelSouthLeft.add(buttonDeliver);
 
-    buttonUpdateTable.setText("Oppdater hele listen");
-    buttonUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+    comboBoxTableView.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle salg", "Levert", "Ikke levert" }));
+    comboBoxTableView.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            buttonUpdateTableActionPerformed(evt);
+            comboBoxTableViewActionPerformed(evt);
         }
     });
-    panelSouthLeft.add(buttonUpdateTable);
-
-    buttonSwapDeliverSale.setText("Se leverte salg");
-    buttonSwapDeliverSale.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            buttonSwapDeliverSaleActionPerformed(evt);
-        }
-    });
-    panelSouthLeft.add(buttonSwapDeliverSale);
-
-    buttonSwapDeliverSale1.setText("Se ikke leverte salg");
-    buttonSwapDeliverSale1.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            buttonSwapDeliverSale1ActionPerformed(evt);
-        }
-    });
-    panelSouthLeft.add(buttonSwapDeliverSale1);
+    panelSouthLeft.add(comboBoxTableView);
 
     panelSouth.add(panelSouthLeft);
 
@@ -432,14 +416,6 @@ public class SaleTab extends javax.swing.JPanel {
     panelSouthRight.setMinimumSize(new java.awt.Dimension(512, 62));
     panelSouthRight.setSize(new java.awt.Dimension(512, 62));
 
-    buttonDone.setText("Ferdig");
-    buttonDone.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            buttonDoneActionPerformed(evt);
-        }
-    });
-    panelSouthRight.add(buttonDone);
-
     buttonAddWoodType.setText("Legg til vedtype");
     buttonAddWoodType.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -447,6 +423,14 @@ public class SaleTab extends javax.swing.JPanel {
         }
     });
     panelSouthRight.add(buttonAddWoodType);
+
+    buttonDone.setText("Ferdig");
+    buttonDone.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonDoneActionPerformed(evt);
+        }
+    });
+    panelSouthRight.add(buttonDone);
 
     panelSouth.add(panelSouthRight);
 
@@ -617,12 +601,6 @@ public class SaleTab extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldQuantityKeyReleased
 
-    private void buttonUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateTableActionPerformed
-        this.sales.updateWoodSaleList(jTable2);
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_buttonUpdateTableActionPerformed
-
     private void buttonMoreInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoreInfoActionPerformed
         if (jTable2.getSelectedRow()!=-1){
             sales.getMoreInfoFromSale(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());            
@@ -636,21 +614,12 @@ public class SaleTab extends javax.swing.JPanel {
     private void buttonDeliverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeliverActionPerformed
        if (jTable2.getSelectedRow()!=-1){
             sales.deliverWood(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());  
-             this.sales.updateWoodSaleList(jTable2);             
+                sales.updateSaleWoodTable(jTable2,saleTableView);
         } else {
             showMessageDialog(null, "Vennligst velg element i tabellen");
         }
         
     }//GEN-LAST:event_buttonDeliverActionPerformed
-
-    private void buttonSwapDeliverSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSwapDeliverSaleActionPerformed
-      sales.updateWoodSaleListDelivered(jTable2,"levert");
-    }//GEN-LAST:event_buttonSwapDeliverSaleActionPerformed
-
-    private void buttonSwapDeliverSale1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSwapDeliverSale1ActionPerformed
-        sales.updateWoodSaleListDelivered(jTable2, "Ikke levert");
-        
-    }//GEN-LAST:event_buttonSwapDeliverSale1ActionPerformed
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         if (jTable2.getSelectedRow()!=-1){
@@ -658,13 +627,36 @@ public class SaleTab extends javax.swing.JPanel {
 
             if (result == JOptionPane.YES_OPTION){
                 sales.deleteSale(jTable2.getValueAt(jTable2.getSelectedRow(),0).toString());
-                sales.updateWoodSaleList(jTable2);
+                sales.updateSaleWoodTable(jTable2,saleTableView);
 
             } 
         } else {
             showMessageDialog(null, "Vennligst velg element i tabellen");
         }
     }//GEN-LAST:event_buttonDeleteActionPerformed
+
+    private void comboBoxTableViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTableViewActionPerformed
+        
+      String view = comboBoxTableView.getSelectedItem().toString(); 
+       
+      switch (view) {
+            case "Alle salg": sales.updateWoodSaleList(jTable2);
+                saleTableView = sales.ALLDELIVERIESVIEW;
+                     break;
+            case "Ikke levert": sales.updateWoodSaleListDelivered(jTable2, "Ikke levert");  
+                saleTableView = sales.NOTDELIVEREDVIEW; 
+                     break;
+            case "Levert":  sales.updateWoodSaleListDelivered(jTable2,"levert");
+                saleTableView = sales.DELIVEREDVIEW; 
+                     break;
+            default: showMessageDialog(null,"Default kjørt"); //TODO
+                     break;
+      }
+      
+    
+
+        
+    }//GEN-LAST:event_comboBoxTableViewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -673,9 +665,7 @@ public class SaleTab extends javax.swing.JPanel {
     private javax.swing.JButton buttonDeliver;
     private javax.swing.JButton buttonDone;
     private javax.swing.JButton buttonMoreInfo;
-    private javax.swing.JButton buttonSwapDeliverSale;
-    private javax.swing.JButton buttonSwapDeliverSale1;
-    private javax.swing.JButton buttonUpdateTable;
+    private javax.swing.JComboBox comboBoxTableView;
     private javax.swing.JComboBox comboBoxWoodType;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
