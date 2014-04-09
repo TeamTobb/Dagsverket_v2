@@ -54,7 +54,7 @@ public class Employees {
                         rs.getInt("id"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
-                        rs.getString("lastWorkDate"),
+                        rs.getString("removedFromAttendance"),
                         rs.getString("lastRegDate"),
                         rs.getInt("attendanceWithoutWork")
                 ));
@@ -82,21 +82,42 @@ public class Employees {
     }
     
     public void resetAntUten(int employeeId){
+        currentDate = dateFormat.format(cal.getTime());           
         db.createConnection();
-        try{
-            PreparedStatement sqlStatement = db.getConnection().prepareStatement(
-                                            "UPDATE employees SET "
-                                                    + "attendanceWithoutWork = attendanceWithoutWorkBackup "
-                                                    + "WHERE employees.id = ?");
-            sqlStatement.setInt(1, employeeId);
-            db.executeUpdate(sqlStatement);
+        //If not todays date, attendancewithoutworkbackup-1
+        Employee employee = this.getEmployeeById(employeeId);
+        if(!employee.getRemovedFromAttendance().equals("true")) {
+            try{
+                PreparedStatement sqlStatement = db.getConnection().prepareStatement(
+                                                "UPDATE employees SET "
+                                                        + "attendanceWithoutWork = attendanceWithoutWorkBackup "
+                                                        + "WHERE employees.id = ?");
+                sqlStatement.setInt(1, employeeId);
+                db.executeUpdate(sqlStatement);
+            }
+            catch(SQLException e){
+                System.out.println("feil i setAntUtenZero: " + e);
+            }
+            finally{
+                db.closeAll();
+            }                    
+            
+        }else{
+            try{
+                PreparedStatement sqlStatement = db.getConnection().prepareStatement(
+                                                "UPDATE employees SET "
+                                                        + "attendanceWithoutWork = attendanceWithoutWorkBackup -1 "
+                                                        + "WHERE employees.id = ?");
+                sqlStatement.setInt(1, employeeId);
+                db.executeUpdate(sqlStatement);
+            }
+            catch(SQLException e){
+                System.out.println("feil i setAntUtenZero: " + e);
+            }
+            finally{
+                db.closeAll();
+            }        
         }
-        catch(SQLException e){
-            System.out.println("feil i setAntUtenZero: " + e);
-        }
-        finally{
-            db.closeAll();
-        }        
     }
     
     public void setAntUtenZero(int employeeId){
@@ -148,7 +169,7 @@ public class Employees {
                     rs.getInt("id"),
                     rs.getString("firstName"),
                     rs.getString("lastName"),
-                    rs.getString("lastWorkDate"),
+                    rs.getString("removedFromAttendance"),
                     rs.getString("lastRegDate"),
                     rs.getInt("attendanceWithoutWork")));                                
             }
@@ -167,7 +188,7 @@ public class Employees {
             insertTable[0] = employee.getId();
             insertTable[1] = employee.getFirstName();
             insertTable[2] = employee.getLastName();
-            insertTable[5] = employee.getLastWorkDate();
+            insertTable[5] = employee.getRemovedFromAttendance();
             insertTable[3] = employee.getLastRegDate();
             insertTable[4] = employee.getAttendanceWithoutWork(); 
             modelLeft.insertRow(left.getRowCount(), insertTable);
@@ -184,7 +205,7 @@ public class Employees {
                     rs2.getInt("id"),
                     rs2.getString("firstName"),
                     rs2.getString("lastName"),
-                    rs2.getString("lastWorkDate"),
+                    rs2.getString("removedFromAttendance"),
                     rs2.getString("lastRegDate"),
                     rs2.getInt("attendanceWithoutWork")));                                
             }
@@ -203,7 +224,7 @@ public class Employees {
             insertTable[0] = employee.getId();
             insertTable[1] = employee.getFirstName();
             insertTable[2] = employee.getLastName();
-            insertTable[5] = employee.getLastWorkDate();
+            insertTable[5] = employee.getRemovedFromAttendance();
             insertTable[3] = employee.getLastRegDate();
             insertTable[4] = employee.getAttendanceWithoutWork(); 
             modelRight.insertRow(right.getRowCount(), insertTable);
@@ -223,7 +244,7 @@ public class Employees {
             insertTable[0] = employee.getId();
             insertTable[1] = employee.getFirstName();
             insertTable[2] = employee.getLastName();
-            insertTable[5] = employee.getLastWorkDate();
+            insertTable[5] = employee.getRemovedFromAttendance();
             insertTable[3] = employee.getLastRegDate();
             insertTable[4] = employee.getAttendanceWithoutWork();
             if (employee.getLastRegDate().equals(currentDate)) {
@@ -240,7 +261,7 @@ public class Employees {
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
                     "UPDATE employees SET lastRegDatebackup = lastRegDate, lastRegDate='" + currentDate + 
-                    "' WHERE id = " + employeeId); 
+                    "', removedFromAttendance = 'false' WHERE id = " + employeeId); 
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
@@ -269,7 +290,7 @@ public class Employees {
         try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
-                    "UPDATE employees SET lastRegDate =lastRegDateBackup WHERE id = " + employeeId); 
+                    "UPDATE employees SET lastRegDate = lastRegDateBackup, removedFromAttendance = 'true' WHERE id = " + employeeId); 
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
@@ -331,5 +352,5 @@ public class Employees {
             errors.add(WRONG_LASTNAME);
         }
     	return errors;
-    }
+    }    
 }

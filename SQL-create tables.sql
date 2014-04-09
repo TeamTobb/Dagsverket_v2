@@ -39,7 +39,7 @@ CREATE TABLE employees(
 id INTEGER GENERATED ALWAYS AS IDENTITY, 
 firstName VARCHAR(30),
 lastName VARCHAR(30),
-lastWorkDate VARCHAR(30),
+removedFromAttendance VARCHAR(30),
 lastRegDate VARCHAR(30),
 attendanceWithoutWork INTEGER,
 lastRegDateBackup VARCHAR(30),

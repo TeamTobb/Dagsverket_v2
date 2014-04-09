@@ -14,15 +14,15 @@ public class Employee {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private String lastWorkDate;
+	private String removedFromAttendance;
 	private String lastRegDate;
 	private int attendanceWithoutWork; // legg til denne i databasen
 
-            public Employee(int id, String firstName, String lastName, String lastWorkDate, String lastRegDate, int attendanceWithoutWork) {
+            public Employee(int id, String firstName, String lastName, String removedFromAttendance, String lastRegDate, int attendanceWithoutWork) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.lastWorkDate = lastWorkDate;
+		this.removedFromAttendance = removedFromAttendance;
 		this.lastRegDate = lastRegDate;
 		this.attendanceWithoutWork = attendanceWithoutWork;
 	}
@@ -39,8 +39,8 @@ public class Employee {
         return lastName;
     }
 
-    public String getLastWorkDate() {
-        return lastWorkDate;
+    public String getRemovedFromAttendance() {
+        return removedFromAttendance;
     }
 
     public String getLastRegDate() {
