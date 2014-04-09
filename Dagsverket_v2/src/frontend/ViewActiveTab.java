@@ -11,6 +11,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -166,49 +167,62 @@ public class ViewActiveTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonDrivingRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDrivingRouteActionPerformed
-        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0); 
-        String address = this.cases.getCaseById(id).getAddress();
-        String[] addressArray = address.split(" ");
-        String addressURL = "http://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";        
-        for(int i = 0; i<addressArray.length; i++){
-            if(i<addressArray.length-1){
-                addressURL+= addressArray[i] + "+";            
-            }
-            else{
-                addressURL += addressArray[i];
-            }
-        }        
-        addressURL += ",";        
-        String postalCode = "+"+this.cases.getCaseById(id).getPostalCode();
-        addressURL += postalCode;
-        addressURL += "+";   
-        addressURL += this.cases.getCaseById(id).getPostPlace();
-        addressURL+="/";
-        addressURL = addressURL.replaceAll("æ", "ae");
-        addressURL = addressURL.replaceAll("ø", "ae");
-        addressURL = addressURL.replaceAll("å", "ae");
-        addressURL = addressURL.replaceAll("Æ", "AE");
-        addressURL = addressURL.replaceAll("Ø", "O");
-        addressURL = addressURL.replaceAll("Å", "AA");                
-        try {
-            Desktop d = Desktop.getDesktop();
-            d.browse(new URI(addressURL)); 
-        } catch(IOException | URISyntaxException ex) {
-            ex.printStackTrace();
-         } 
+        try{
+            int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0); 
+            String address = this.cases.getCaseById(id).getAddress();
+            String[] addressArray = address.split(" ");
+            String addressURL = "http://www.google.no/maps/dir/Hornebergveien+5,+7038+Trondheim/";        
+            for(int i = 0; i<addressArray.length; i++){
+                if(i<addressArray.length-1){
+                    addressURL+= addressArray[i] + "+";            
+                }
+                else{
+                    addressURL += addressArray[i];
+                }
+            }  
+            addressURL += ",";        
+            String postalCode = "+"+this.cases.getCaseById(id).getPostalCode();
+            addressURL += postalCode;
+            addressURL += "+";   
+            addressURL += this.cases.getCaseById(id).getPostPlace();
+            addressURL+="/";
+            addressURL = addressURL.replaceAll("æ", "ae");
+            addressURL = addressURL.replaceAll("ø", "ae");
+            addressURL = addressURL.replaceAll("å", "ae");
+            addressURL = addressURL.replaceAll("Æ", "AE");
+            addressURL = addressURL.replaceAll("Ø", "O");
+            addressURL = addressURL.replaceAll("Å", "AA");                
+            try {
+                Desktop d = Desktop.getDesktop();
+                d.browse(new URI(addressURL)); 
+            } catch(IOException | URISyntaxException ex) {
+                ex.printStackTrace();
+            } 
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg et oppdrag");
+        }
+
     }//GEN-LAST:event_buttonDrivingRouteActionPerformed
 
     private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
-        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
-        Case currentCase = cases.getCaseById(id);
-        this.detailedView = new DetailedView(currentCase, this);
-        this.detailedView.setVisible(true);
+        try{
+            int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+            Case currentCase = cases.getCaseById(id);
+            this.detailedView = new DetailedView(currentCase, this);
+            this.detailedView.setVisible(true);
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg et oppdrag"); 
+        }
     }//GEN-LAST:event_buttonToggle1ActionPerformed
 
     private void buttonAddEmployee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddEmployee1ActionPerformed
-        int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
-        this.addEmployeeFrame = new addEmployeeFrame(id);
-        this.addEmployeeFrame.setVisible(true);
+        try{
+            int id = (int)jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+            this.addEmployeeFrame = new addEmployeeFrame(id);
+            this.addEmployeeFrame.setVisible(true);
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "Vennligst velg et oppdrag"); 
+        }
     }//GEN-LAST:event_buttonAddEmployee1ActionPerformed
 
 
