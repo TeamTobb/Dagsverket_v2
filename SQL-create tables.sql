@@ -98,6 +98,8 @@ ALTER TABLE cases ADD CONSTRAINT customer_fk FOREIGN KEY(customer) REFERENCES cu
 ALTER TABLE sales ADD CONSTRAINT sales_customer_fk FOREIGN KEY(customer) REFERENCES customers(id);
 ALTER TABLE sales ADD CONSTRAINT wood_fk FOREIGN KEY(wood) REFERENCES wood(woodType);
 
+-- Inserts are used for test purposes.
+
 INSERT INTO users VALUES(DEFAULT, 'Borgar', 'Lie', 1);
 INSERT INTO users VALUES(DEFAULT, 'Bjørn', 'Hoxmark', 1);
 INSERT INTO users VALUES(DEFAULT, 'Thomas', 'Haugrud', 1);
@@ -106,8 +108,8 @@ INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen', 1);
 INSERT INTO wood VALUES('Eik', 50, 800);
 INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324);
 INSERT INTO sales VALUES(default, 30, 1, 'Eik', 1400, 'Ski', 'humleveien 13', 'Ikke levert');
+-- need to change this one to work.
 --INSERT INTO cases VALUES(default, 'jobbAdresseveien 1', 7001, 'Trondheim',1, 'activ', '10.04.2014','09.04.2014', '11.04.2014', 2, 2);
- 
 
 INSERT INTO employees VALUES (DEFAULT, 'Hei', 'Heisen', '', '', 0, '', 0);
 INSERT INTO employees VALUES (DEFAULT, 'Arne', 'Gunnarson', '', '', 0, '', 0);
