@@ -92,7 +92,7 @@ public class SaleTab extends javax.swing.JPanel {
         panelNorth.setSize(new java.awt.Dimension(1024, 62));
 
         textHeader.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
-        textHeader.setText("Ved bestilling");
+        textHeader.setText("Vedbestilling");
         panelNorth.add(textHeader);
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
