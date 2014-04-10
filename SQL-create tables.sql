@@ -28,8 +28,8 @@ description VARCHAR(200),
 price INTEGER,
 checkup_date VARCHAR(30),
 startDate VARCHAR(30), 
-toolList VARCHAR(30),
-contactPerson VARCHAR(30),
+toolList VARCHAR(200),
+contactPerson VARCHAR(200),
 status VARCHAR(30),
 creator INTEGER,
 supervisor INTEGER,
@@ -105,24 +105,35 @@ INSERT INTO users VALUES(DEFAULT, 'Bjørn', 'Hoxmark', 1);
 INSERT INTO users VALUES(DEFAULT, 'Thomas', 'Haugrud', 1);
 INSERT INTO users VALUES(DEFAULT, 'Jørgen', 'Wilhelmsen', 1);
 
-INSERT INTO wood VALUES('Eik', 50, 800);
-INSERT INTO customers VALUES(DEFAULT, 'fornavn', 'etternavn', 91323324);
-INSERT INTO sales VALUES(default, 30, 1, 'Eik', 1400, 'Ski', 'humleveien 13', 'Ikke levert');
--- need to change this one to work.
---INSERT INTO cases VALUES(default, 'jobbAdresseveien 1', 7001, 'Trondheim',1, 'activ', '10.04.2014','09.04.2014', '11.04.2014', 2, 2);
+INSERT INTO wood VALUES('Eik 50', 50, 800);
+INSERT INTO wood VALUES('Furu 50', 50, 900);
+INSERT INTO wood VALUES('Bjørk 50', 50, 1000);
+INSERT INTO wood VALUES('Bjørk 40', 40, 850);
+INSERT INTO wood VALUES('Bjørk 30', 20, 500);
 
-INSERT INTO employees VALUES (DEFAULT, 'Hei', 'Heisen', '', '', 0, '', 0);
-INSERT INTO employees VALUES (DEFAULT, 'Arne', 'Gunnarson', '', '', 0, '', 0);
-INSERT INTO employees VALUES (DEFAULT, 'masdm', 'Hoppla', '', '', 0, '', 0);
+INSERT INTO customers VALUES(DEFAULT, 'Per', 'Persen', 91323324);
+INSERT INTO customers VALUES(DEFAULT, 'Ola', 'Olsen', 91101020);
+INSERT INTO customers VALUES(DEFAULT, 'Karl', 'Karlsen', 40502531);
 
+INSERT INTO sales VALUES(default, 30, 1, 'Eik 50', 1400, 'Ski', 'Humleveien 13', 'Ikke levert');
+INSERT INTO sales VALUES(default, 2, 2, 'Bjørk 30', 7710, 'Sparbu', 'Mære', 'Ikke levert');
+INSERT INTO sales VALUES(default, 5, 3, 'Bjørk 40', 7540, 'Klæbu', 'Klokkarvegen 2', 'levert');
 
-INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
-INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
-INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
-INSERT INTO cases VALUES (DEFAULT, '', '', 0, '', '', '', '', '', 0, '', '', '', '', '', 1, 1, 1);
+INSERT INTO cases VALUES(DEFAULT, '10-04-2014', 'Klokkarvegen 2', 7540, 'Klæbu', 'Maling UTE', '20-05-2014', '08:00', 'Maling av hus, 4 vegger', 2000, '10-05-2014', '20-05-2014', 'Malingskoster. Maling har kunden', 'Ingar 99933999', 'Aktiv', 1, 3, 1);
+
+INSERT INTO cases VALUES(DEFAULT, '10-04-2014', 'Klokkarvegen 2', 7540, 'Klæbu', 'Maling INNE', '21-05-2014', '10:00', 'Maling av 2 rom', 1000, '10-05-2014', '21-05-2014', 'Malingskoster. Maling har kunden', 'Lars 90224323', 'Aktiv', 1, 2, 1);
+
+INSERT INTO cases VALUES(DEFAULT, '12-04-2014', 'Humleveien 13', 1400, 'Ski', 'Vedstabling UTE', '30-05-2014', '09:00', 'Vedbæring og stabling', 1750, '22-05-2014', '29-05-2014', 'Godt humør', 'Kåre 22334433', 'Uferdig', 3, 4, 3);
+
+INSERT INTO cases VALUES(DEFAULT, '05-04-2014', 'Mære', 7710, 'Sparbu', 'Maling UTE', '11-04-2014', '07:00', 'Maling av hus, 2 vegger', 1750, '07-04-2014', '11-04-2014', 'Malingskoster. Maling har kunden', 'Nils Arne 99004400', 'Ferdig', 4, 3, 2);
+
+INSERT INTO employees VALUES (DEFAULT, 'Lars', 'Larsen', '', '', 0, '', 0);
+INSERT INTO employees VALUES (DEFAULT, 'Arne', 'Gunnarson', '10.04.2014', '10.04.2014', 3, '', 3);
+INSERT INTO employees VALUES (DEFAULT, 'Mats', 'Hoppla', '', '', 0, '', 0);
+INSERT INTO employees VALUES (DEFAULT, 'Magnus', 'Kristiansen', '', '', 0, '', 0);
 
 INSERT INTO events_has_employees VALUES(1, 1);
-INSERT INTO events_has_employees VALUES(2, 1);
-INSERT INTO events_has_employees VALUES(3, 1);
-INSERT INTO events_has_employees VALUES(3, 2);
-
+INSERT INTO events_has_employees VALUES(1, 3);
+INSERT INTO events_has_employees VALUES(4, 1);
+INSERT INTO events_has_employees VALUES(4, 3);
+INSERT INTO events_has_employees VALUES(4, 4);
