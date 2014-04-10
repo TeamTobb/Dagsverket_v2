@@ -376,13 +376,13 @@ public class SaleTab extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(labelDPrice)
                 .addComponent(textFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(161, Short.MAX_VALUE))
+            .addContainerGap(176, Short.MAX_VALUE))
     );
 
     panelCenterRight.add(jPanel3, java.awt.BorderLayout.LINE_START);
 
-    labelHeader.setFont(new java.awt.Font("Optima", 1, 36)); // NOI18N
-    labelHeader.setText("Ved bestilling");
+    labelHeader.setFont(new java.awt.Font("Optima", 1, 24)); // NOI18N
+    labelHeader.setText("Ny bestilling");
     jPanel4.add(labelHeader);
 
     panelCenterRight.add(jPanel4, java.awt.BorderLayout.PAGE_START);
