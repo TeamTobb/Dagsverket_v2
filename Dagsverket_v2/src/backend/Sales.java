@@ -173,10 +173,10 @@ public class Sales {
         if(phoneNumber <= 0) {
             errors.add(NO_PHONENUMBER);
         }
-        if(quantity<0) {
+        if(quantity<=0) {
             errors.add(NO_QUANTITY);            
         }
-        if((postnr <0) || (postnr>10000)){
+        if((postnr <=0) || (postnr>=10000)){
             errors.add(WRONG_POSTNUMBER);
         }
         
@@ -187,7 +187,7 @@ public class Sales {
      if it existed it uses the old customer, if it does not exist it creates a new customer in the DB. 
      */
      private int addCustomer(String customerFirstName, String customerLastName, int telephone){
-        int customerId =0;
+        int customerId = 0;
                 
          String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
                                        "' AND lastName = '" + customerLastName + "' AND phoneNumber = " + telephone;
