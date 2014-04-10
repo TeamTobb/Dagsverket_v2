@@ -68,7 +68,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
         panelSouth = new javax.swing.JPanel();
         buttonDrivingRoute = new javax.swing.JButton();
         buttonAddEmployee1 = new javax.swing.JButton();
-        buttonToggle1 = new javax.swing.JButton();
+        buttonViewDetails = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1024, 706));
         setMinimumSize(new java.awt.Dimension(1024, 706));
@@ -160,13 +160,13 @@ public class ViewHistoryTab extends javax.swing.JPanel {
             }
         });
 
-        buttonToggle1.setBackground(new java.awt.Color(51, 51, 51));
-        buttonToggle1.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
-        buttonToggle1.setForeground(new java.awt.Color(204, 204, 204));
-        buttonToggle1.setText("Detaljer");
-        buttonToggle1.addActionListener(new java.awt.event.ActionListener() {
+        buttonViewDetails.setBackground(new java.awt.Color(51, 51, 51));
+        buttonViewDetails.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
+        buttonViewDetails.setForeground(new java.awt.Color(204, 204, 204));
+        buttonViewDetails.setText("Detaljer");
+        buttonViewDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonToggle1ActionPerformed(evt);
+                buttonViewDetailsActionPerformed(evt);
             }
         });
 
@@ -178,7 +178,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
             .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelSouthLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(buttonToggle1)
+                    .addComponent(buttonViewDetails)
                     .addGap(5, 5, 5)
                     .addComponent(buttonAddEmployee1)
                     .addGap(5, 5, 5)
@@ -192,7 +192,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
                 .addGroup(panelSouthLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(buttonToggle1)
+                        .addComponent(buttonViewDetails)
                         .addComponent(buttonAddEmployee1)
                         .addComponent(buttonDrivingRoute))
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -221,7 +221,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buttonAddEmployee1ActionPerformed
 
-    private void buttonToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonToggle1ActionPerformed
+    private void buttonViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewDetailsActionPerformed
         try{
             int id = (int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             Case currentCase = cases.getCaseById(id);
@@ -230,13 +230,13 @@ public class ViewHistoryTab extends javax.swing.JPanel {
         }catch(Exception e){
             showMessageDialog(null, "Vennligst velg et oppdrag");
         }
-    }//GEN-LAST:event_buttonToggle1ActionPerformed
+    }//GEN-LAST:event_buttonViewDetailsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddEmployee1;
     private javax.swing.JButton buttonDrivingRoute;
-    private javax.swing.JButton buttonToggle1;
+    private javax.swing.JButton buttonViewDetails;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelCenter;

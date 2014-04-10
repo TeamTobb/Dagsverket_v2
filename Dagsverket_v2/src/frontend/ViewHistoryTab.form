@@ -183,7 +183,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="buttonToggle1" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonViewDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                       <Component id="buttonAddEmployee1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
@@ -200,7 +200,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="buttonToggle1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonViewDetails" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonAddEmployee1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonDrivingRoute" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -245,7 +245,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddEmployee1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonToggle1">
+        <Component class="javax.swing.JButton" name="buttonViewDetails">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -259,7 +259,7 @@
             <Property name="text" type="java.lang.String" value="Detaljer"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonToggle1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonViewDetailsActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
