@@ -115,7 +115,7 @@ public class Cases {
             errors.addAll(checkFields(customerFirstName, customerLastName, phoneNumberInt, subject));
             
             if(errors.size()==0){
-                System.out.println("errors == null");
+                // System.out.println("errors == null");
                 String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
                                        "' AND lastName = '" + customerLastName + "' AND phoneNumber = " + phoneNumberInt;
                 ResultSet rs = this.db.executeQuery(sqlStatement);
