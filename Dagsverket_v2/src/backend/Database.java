@@ -23,7 +23,7 @@ public class Database {
     
     public void createConnection() {
         try {
-            String databasenavn = "jdbc:derby://localhost:1527/Dagsverket;user=root;password=root"; // no username / pw
+            String databasenavn = "jdbc:derby://localhost:1527/Dagsverket;user=root;password=root";
             this.conn  = DriverManager.getConnection(databasenavn);
         } catch (Exception e) {
             System.out.println("Feil i database.createConnection: " + e);
@@ -73,11 +73,11 @@ public class Database {
         }
         return result;        
     }
+    
     public void closeAll(){
         try{
             if(this.rs!=null){
-                this.rs.close();
-                //this.rs = null; 
+                this.rs.close(); 
             }
         }
         catch(SQLException e){
@@ -87,7 +87,6 @@ public class Database {
         try{
             if(this.stm!=null){
                 this.stm.close();
-                //this.stm = null;
             }
         }
         catch(SQLException e){
@@ -97,7 +96,6 @@ public class Database {
         try{
             if(this.conn!= null){
                 this.conn.close();
-                //this.conn = null;
             }
         }
         catch(SQLException e){
@@ -116,7 +114,9 @@ public class Database {
         }
         return false;
     }
-    
+
+    // currenctly not in use, since we have no use for closing autocommit for the time beeing.
+    // keeping the method in case of later implementation
     public boolean rollBack(){
         try{
             this.conn.rollback();

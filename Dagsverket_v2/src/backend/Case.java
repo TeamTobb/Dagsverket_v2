@@ -27,12 +27,6 @@ public class Case {
     private int creatorId; // user which created the case, reference to id from "users" arraylist
     private int supervisorId; // user which is going attending the case, reference to id from "users" arraylist
 
-    // last variables for customer
-    // customerId
-    // customerFirstName
-    // customerLastName
-    // customerPhoneNumber
-
     private Customer employer;
 
     public Case(int id, String createdDate, String address, int postalCode, String postPlace, String subject, String reqDate, String reqTime, String description, int price, String checkup_date, String startDate, String toolList, String contactPerson, String status, int creatorId, int supervisorId, int customerId, String customerFirstName, String customerLastName, int customerPhoneNumber) {

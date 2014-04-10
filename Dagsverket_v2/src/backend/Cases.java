@@ -22,50 +22,10 @@ public class Cases {
     private Database db; 
     private ArrayList<Case> cases;
 
-    public Cases() { // remove max
+    public Cases() {
         this.db = new Database();
         this.cases = new ArrayList<Case>();
     }
-
-	// public boolean updateCaseList(String status, int start, int end) {
-	// 	this.cases = new ArrayList<Case>();
- //        // UPDATE WHOLE LIST FROM DB WITH CORRECT STATUS...
-	// 	// FROM START TO END?
-	// 	return false;
-	// }
-
-	// DETTE ER LURT, SLIK AT NAAR VI SKAL SE PAA DETALJER SAA KAN VI HENTE EN CASE FRA LISTEN.
-
-	// public ResultSet getCasesFromDatabase(int max) {
-	// 	// hent all data fra database
-	// 	// MAX angir hvor mange du vil hente
-	// 	Statement setning = this.conn.createStatement();
-    //  String SQL = "select * from events";
-    //  ResultSet test123 = setning.executeQuery(SQL);
-    //  DETTE SKAL EGENTLIG GJORES I DATABASE
-	// 	return test123;
-
-    // select * from cases natural join customers;
-
-    //  public void updateUserList() {
-    //     this.users = new ArrayList<User>();
-    //     String sqlStatement = "Select * from users";
-    //     ResultSet rs = db.executeQuery(sqlStatement);
-    //     try {
-    //         while(rs.next()) {
-    //             users.add(new User(
-    //                 rs.getInt("id"),
-    //                 rs.getString("firstName"),
-    //                 rs.getString("lastName")
-    //                 ));
-    //         }            
-    //     } catch(SQLException e) {
-    //         System.out.println("SQLError: " + e);
-    //     } 
-    //     finally{
-    //         db.closeAll();
-    //     }
-    // }
 
     public Case getCaseById(int id) {
         for (Case c : this.cases) {
@@ -290,29 +250,21 @@ public class Cases {
                     db.executeUpdate(insertCustomerStatement);
                     db.closeAll();                        
                     ResultSet res = this.db.executeQuery(sqlStatement);
-                    
                     try{
                         while(res.next()){
                             customerId = res.getInt("id");
                         }                        
-                    }
-                    catch(SQLException e){
+                    } catch(SQLException e){
                         System.out.println("feil 1 " + e);                            
                     }
                 }
-            }catch(SQLException e){
+            } catch(SQLException e){
                 System.out.println("feil 2 " + e);
-            }
-            finally{                    
+            } finally{                    
                 db.closeAll();
             }
             this.db.createConnection();
-            try{
-
-                // i "viewet" maa vi oppdatere alle felt naar vi gaar inn paa en case, slik at de stemmer med det gamle
-
-                // skift til en update statement -- done
-
+            try {
                 PreparedStatement insertCaseStatement = db.getConnection().prepareStatement("UPDATE cases SET createdDate = ?, address = ?, postalcode = ?, postplace = ?, subject = ?, req_date = ?, req_time = ?, description = ?, price = ?, checkup_date = ?, startdate = ?, toollist = ?, contactperson = ?, status = ?, creator = ?, supervisor = ?, customer = ? WHERE id = " + currentCaseId);
                 insertCaseStatement.setString(1, createdDate);
                 insertCaseStatement.setString(2, caseAddress);
@@ -331,35 +283,10 @@ public class Cases {
                 insertCaseStatement.setInt(15, creator);
                 insertCaseStatement.setInt(16, supervisor);
                 insertCaseStatement.setInt(17, customerId);
-
-                // rs.getInt("id"),
-                // rs.getString("address"),
-                // rs.getInt("postalcode"),
-                // rs.getString("postplace"),
-                // rs.getString("subject"),
-                // rs.getString("req_date"),
-                // rs.getString("req_time"),
-                // rs.getString("description"),
-                // rs.getInt("price"),
-                // rs.getString("checkup_date"),
-                // rs.getString("startdate"),
-                // rs.getString("toollist"),
-                // rs.getString("contactperson"),
-                // rs.getString("status"),
-                // rs.getInt("creator"),
-                // rs.getInt("supervisor"),
-                // rs.getInt("customer"),
-                // rs.getString("firstname"),
-                // rs.getString("lastname"),
-                // rs.getInt("phonenumber")
-                
-               // insertCaseStatement.executeUpdate();
                 db.executeUpdate(insertCaseStatement);
-                
-            }catch(SQLException e){
+            } catch(SQLException e){
                 System.out.println("feil i updateCase: " + e);
-            }     
-            finally{
+            } finally{
                 db.closeAll();
             }
         }
@@ -382,15 +309,14 @@ public class Cases {
         return temp;
     }
 
+    // Test metode
     public static void main(String[] args) {
         Database db = new Database();
         Cases c = new Cases();
-      //  c.updateCaseList();
         Case n1 = c.getCaseById(4);
         if(n1 != null) {
             System.out.println("Description: " + n1.getDescription());
             System.out.println("Price: " + n1.getPrice());
         }
     }
-    
 }

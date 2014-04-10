@@ -9,7 +9,7 @@
 package backend;
 
 public class Customer {
-	private int id; // dont need id here? just in database?
+	private int id;
 	private String firstname;
 	private String lastname;
 	private int phoneNumber;
@@ -21,33 +21,22 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 
-    /**
-     * @return the id
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * @return the firstname
-     */
     public String getFirstname() {
         return firstname;
     }
 
-    /**
-     * @return the lastname
-     */
     public String getLastname() {
         return lastname;
     }
 
-    /**
-     * @return the phoneNumber
-     */
     public int getPhoneNumber() {
         return phoneNumber;
     }
+    
     public String getFullName(){
         return this.firstname + " " + this.lastname;
     }
