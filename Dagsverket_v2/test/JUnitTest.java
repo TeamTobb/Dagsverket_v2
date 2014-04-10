@@ -70,4 +70,22 @@ public class JUnitTest {
         assertEquals("Skal være 0.", expected, size);
     }
     
+    @Test
+    public void testCreateCaseError1() {
+        // Cases is tested
+        Cases cases = new Cases();
+        // characters in the phonenumber
+        ArrayList<Integer> errors = cases.createCase(1, "10-04-2014", "Kjell", "Tuff", "Klokkarvegen 2", "7540", "Klæbu", "22a","Maling UTE", "20-05-2014", "08:00", "Maling av hus, 4 vegger", 2, "1000", "10-05-2014", "20-05-2014", "Malingskoster. Maling har kunden", "Ingar 99933999", "Aktiv");
+        
+        int size = errors.size();
+        int expected = 2;
+        // check if we got 2 errors (phonenumber parse and check if more then 0(after parse))
+        assertEquals("Skal være 2.", expected, size);
+    }
+    
+    // registrer oppmøte
+    
+    // display case
+    
+    // sale...
 }
