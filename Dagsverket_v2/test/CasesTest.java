@@ -20,9 +20,9 @@ import static org.junit.Assert.*;
  *
  * @author borgarlie
  */
-public class JUnitTest {
+public class CasesTest {
     
-    public JUnitTest() {
+    public CasesTest() {
     }
     
     @BeforeClass
@@ -66,7 +66,7 @@ public class JUnitTest {
         
         int size = errors.size();
         int expected = 0;
-        // check if we got 7 errors (7 specific fields need to be inserted)
+        // check if we got 0 errors (everything is filled in correctly)
         assertEquals("Skal være 0.", expected, size);
     }
     
@@ -83,9 +83,27 @@ public class JUnitTest {
         assertEquals("Skal være 2.", expected, size);
     }
     
-    // registrer oppmøte
+    // registrer oppmøte - ny klasse
     
     // display case
     
-    // sale...
+    @Test
+    public void testUpdateCaseList() {
+        Cases cases = new Cases();
+        cases.updateCaseList("Aktiv");
+        
+        Case testCase = cases.getCaseById(1);
+        String fornavn = testCase.getEmployer().getFirstname();
+        assertEquals("Skal bli Per", fornavn, "Per");
+    }
+    
+    @Test
+    public void testUpdateCaseListEtternavn() {
+        Cases cases = new Cases();
+        cases.updateCaseList("Aktiv");
+        
+        Case testCase = cases.getCaseById(1);
+        String etternavn = testCase.getEmployer().getLastname();
+        assertEquals("Skal bli Persen", etternavn, "Persen");
+    }
 }
