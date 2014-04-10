@@ -18,6 +18,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form addEmployeeFrame
+     * @param caseId
      */
     public addEmployeeFrame(int caseId) {
         this.caseId = caseId;
@@ -284,9 +285,6 @@ public class addEmployeeFrame extends javax.swing.JFrame {
          this.dispose();
     }//GEN-LAST:event_buttonFinishActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(final int caseId) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -313,6 +311,7 @@ public class addEmployeeFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new addEmployeeFrame(caseId).setVisible(true);
             }
