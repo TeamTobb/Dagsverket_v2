@@ -12,6 +12,7 @@ import backend.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.Box;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -194,29 +195,38 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonNewUserActionPerformed
 
     private void buttonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteUserActionPerformed
-        this.users.updateUserList(1);
-        String[]names = null;
-        try{        
-            names = ((String)listUserNames.getSelectedValue()).split(" ");
-            try{
-                db.createConnection();
-                PreparedStatement updateUser = db.getConnection().prepareStatement(
-                        "UPDATE users SET status = 0 WHERE firstName = ? AND lastNAme = ?");
-                updateUser.setString(1, names[0]);
-                updateUser.setString(2, names[1]);  
-                db.executeUpdate(updateUser);
-                users.updateUserList(1);
-                listUserNames.setListData(users.getUsers());
-                listUserNames.updateUI();
-            }catch(SQLException e){
-                showMessageDialog(null, "feil i delete user: " +e);
-            }
-            finally{
-                db.closeAll();
-            }
-        }catch(NullPointerException e){
-            showMessageDialog(null, "Vennligst velg en bruker"); 
-        }        
+        JFrame confirmFrame = new JFrame();
+        String[] options = new String[2];
+        options[0] = "Nei";
+        options[1] = "Ja";
+        int result = JOptionPane.showOptionDialog(confirmFrame.getContentPane(),"Er du sikker på at du vil slette brukeren?","Konfirmasjon", 
+                0,JOptionPane.INFORMATION_MESSAGE,null,options,null); 
+        
+        if(result == 1){
+            this.users.updateUserList(1);
+            String[]names = null;
+            try{        
+                names = ((String)listUserNames.getSelectedValue()).split(" ");
+                try{
+                    db.createConnection();
+                    PreparedStatement updateUser = db.getConnection().prepareStatement(
+                            "UPDATE users SET status = 0 WHERE firstName = ? AND lastNAme = ?");
+                    updateUser.setString(1, names[0]);
+                    updateUser.setString(2, names[1]);  
+                    db.executeUpdate(updateUser);
+                    users.updateUserList(1);
+                    listUserNames.setListData(users.getUsers());
+                    listUserNames.updateUI();
+                }catch(SQLException e){
+                    showMessageDialog(null, "feil i delete user: " +e);
+                }
+                finally{
+                    db.closeAll();
+                }
+            }catch(NullPointerException e){
+                showMessageDialog(null, "Vennligst velg en bruker"); 
+            }        
+        }       
     }//GEN-LAST:event_buttonDeleteUserActionPerformed
 
     /**
