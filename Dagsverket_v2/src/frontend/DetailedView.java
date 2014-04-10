@@ -597,7 +597,8 @@ public class DetailedView extends javax.swing.JFrame {
 
     private void textFieldPostalCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldPostalCodeFocusLost
         // TODO add your handling code here:
-        textFieldPostPlace.setText(textFieldPostalCode.getText());
+        String newAddress = this.cases.getPostAddressFromDb(textFieldPostalCode.getText());
+        textFieldPostPlace.setText(newAddress);
         // set Field ut i fra postnr = poststed i database!!!
     }//GEN-LAST:event_textFieldPostalCodeFocusLost
 
