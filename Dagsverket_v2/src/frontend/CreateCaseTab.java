@@ -88,20 +88,12 @@ public class CreateCaseTab extends javax.swing.JPanel {
         jScrollPane8 = new javax.swing.JScrollPane();
         textAreaToolList = new javax.swing.JTextArea();
 
-        setLayout(null);
-
         labelCreateCaseName.setText(users.currentUser.toString());
-        add(labelCreateCaseName);
-        labelCreateCaseName.setBounds(150, 80, 180, 16);
 
         labelCreateCaseDNameHeader.setText("Mottatt av");
-        add(labelCreateCaseDNameHeader);
-        labelCreateCaseDNameHeader.setBounds(70, 80, 64, 16);
 
         labelCreateCaseHeader.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         labelCreateCaseHeader.setText("Oppdragsregistrering");
-        add(labelCreateCaseHeader);
-        labelCreateCaseHeader.setBounds(410, 30, 280, 29);
 
         comboBoxCreateCaseSupervisor.setModel(new javax.swing.DefaultComboBoxModel(this.users.getUsers()));
         comboBoxCreateCaseSupervisor.addActionListener(new java.awt.event.ActionListener() {
@@ -109,26 +101,16 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 comboBoxCreateCaseSupervisorActionPerformed(evt);
             }
         });
-        add(comboBoxCreateCaseSupervisor);
-        comboBoxCreateCaseSupervisor.setBounds(640, 90, 280, 27);
 
         labelCreateCaseDSupervisorHeader.setText("Ansvarlig");
-        add(labelCreateCaseDSupervisorHeader);
-        labelCreateCaseDSupervisorHeader.setBounds(570, 90, 59, 16);
 
         labelDate.setText(this.currentDate
         );
-        add(labelDate);
-        labelDate.setBounds(150, 100, 84, 16);
 
         labelDDate.setText("Dato");
-        add(labelDDate);
-        labelDDate.setBounds(100, 100, 30, 16);
 
         labelCustomerDFirstName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelCustomerDFirstName.setText("Kunde");
-        add(labelCustomerDFirstName);
-        labelCustomerDFirstName.setBounds(30, 150, 100, 16);
+        labelCustomerDFirstName.setText("Fornavn");
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerFirstName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
@@ -139,12 +121,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldCustomerFirstNameActionPerformed(evt);
             }
         });
-        add(textFieldCustomerFirstName);
-        textFieldCustomerFirstName.setBounds(135, 151, 120, 28);
 
         labelDAddress.setText("Adresse");
-        add(labelDAddress);
-        labelDAddress.setBounds(80, 180, 50, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldAddress.setDocument(new JTextFieldLimit(30)); // endre tallet for å endre limit
@@ -154,8 +132,6 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldAddressActionPerformed(evt);
             }
         });
-        add(textFieldAddress);
-        textFieldAddress.setBounds(135, 180, 360, 28);
 
         textFieldPostPlace.setToolTipText("...");
         textFieldPostPlace.addActionListener(new java.awt.event.ActionListener() {
@@ -163,8 +139,6 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldPostPlaceActionPerformed(evt);
             }
         });
-        add(textFieldPostPlace);
-        textFieldPostPlace.setBounds(233, 214, 260, 28);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPostalCode.setDocument(new JTextFieldLimit(4)); // endre tallet for å endre limit
@@ -191,12 +165,8 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldPostalCodePropertyChange(evt);
             }
         });
-        add(textFieldPostalCode);
-        textFieldPostalCode.setBounds(135, 214, 92, 28);
 
         labelDPostalCode.setText("Postnr");
-        add(labelDPostalCode);
-        labelDPostalCode.setBounds(90, 220, 40, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPhone.setDocument(new JTextFieldLimit(8)); // endre tallet for å endre limit
@@ -205,16 +175,10 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldPhoneActionPerformed(evt);
             }
         });
-        add(textFieldPhone);
-        textFieldPhone.setBounds(135, 248, 360, 28);
 
-        labelDPhone.setText("Telefon:");
-        add(labelDPhone);
-        labelDPhone.setBounds(80, 250, 51, 16);
+        labelDPhone.setText("Telefon");
 
         labelDSubject.setText("Arbeidets art");
-        add(labelDSubject);
-        labelDSubject.setBounds(50, 340, 81, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldSubject.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
@@ -223,16 +187,10 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldSubjectActionPerformed(evt);
             }
         });
-        add(textFieldSubject);
-        textFieldSubject.setBounds(135, 332, 360, 28);
 
         labelDReqDate.setText("Ønsket oppstart");
-        add(labelDReqDate);
-        labelDReqDate.setBounds(30, 370, 102, 16);
 
         labelCreateCaseDReqTime.setText("Kl");
-        add(labelCreateCaseDReqTime);
-        labelCreateCaseDReqTime.setBounds(400, 370, 20, 16);
 
         String[] tider = new String[48];
         int teller = 0;
@@ -260,26 +218,15 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 ComboBoxCreateCaseReqTimeActionPerformed(evt);
             }
         });
-        add(ComboBoxCreateCaseReqTime);
-        ComboBoxCreateCaseReqTime.setBounds(420, 370, 72, 27);
-        add(labelCreateCaseReqDate);
-        labelCreateCaseReqDate.setBounds(287, 391, 120, 16);
 
         labelDDescription.setText("Beskrivelse / Annet");
-        add(labelDDescription);
-        labelDDescription.setBounds(10, 450, 122, 16);
 
         textAreaDescription.setDocument(new JTextFieldLimit(199)); // endre tallet for å endre limit
         textAreaDescription.setColumns(20);
         textAreaDescription.setRows(5);
         jScrollPane1.setViewportView(textAreaDescription);
 
-        add(jScrollPane1);
-        jScrollPane1.setBounds(140, 450, 350, 160);
-
         labelDPrice.setText("Pris");
-        add(labelDPrice);
-        labelDPrice.setBounds(610, 150, 23, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldPrice.setDocument(new JTextFieldLimit(7)); // endre tallet for å endre limit
@@ -289,40 +236,23 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldPriceActionPerformed(evt);
             }
         });
-        add(textFieldPrice);
-        textFieldPrice.setBounds(640, 150, 280, 28);
 
         labelCreateCaseDInspectDate.setText("Befaring");
-        add(labelCreateCaseDInspectDate);
-        labelCreateCaseDInspectDate.setBounds(580, 180, 80, 16);
 
         labelDStartDate.setText("Avtalt oppstart");
-        add(labelDStartDate);
-        labelDStartDate.setBounds(540, 260, 94, 16);
 
         labelDEquipment.setText("Utstyrsliste");
-        add(labelDEquipment);
-        labelDEquipment.setBounds(560, 300, 72, 16);
 
         labelDContacts.setText("Kontaktpersoner");
-        add(labelDContacts);
-        labelDContacts.setBounds(530, 410, 104, 16);
 
         textAreaContacts.setDocument(new JTextFieldLimit(199)); // endre tallet for å endre limit
         textAreaContacts.setColumns(20);
         textAreaContacts.setRows(5);
         jScrollPane7.setViewportView(textAreaContacts);
 
-        add(jScrollPane7);
-        jScrollPane7.setBounds(640, 410, 270, 100);
-
         labelDStatus.setText("Status");
-        add(labelDStatus);
-        labelDStatus.setBounds(580, 580, 60, 16);
 
         comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Uferdig", "Aktiv"}));
-        add(comboBoxStatus);
-        comboBoxStatus.setBounds(630, 580, 280, 27);
 
         buttonComplete.setBackground(new java.awt.Color(51, 51, 51));
         buttonComplete.setFont(new java.awt.Font("Optima", 1, 18)); // NOI18N
@@ -334,14 +264,6 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 buttonCompleteActionPerformed(evt);
             }
         });
-        add(buttonComplete);
-        buttonComplete.setBounds(630, 630, 290, 50);
-        add(dateFieldInspectDate);
-        dateFieldInspectDate.setBounds(640, 180, 280, 28);
-        add(dateFieldReqDate);
-        dateFieldReqDate.setBounds(140, 370, 250, 28);
-        add(dateFieldStartDate);
-        dateFieldStartDate.setBounds(640, 250, 280, 28);
 
         /* limit for hvor mange characters som kan skrives inn */
         textFieldCustomerLastName.setDocument(new JTextFieldLimit(29)); // endre tallet for å endre limit
@@ -352,20 +274,213 @@ public class CreateCaseTab extends javax.swing.JPanel {
                 textFieldCustomerLastNameActionPerformed(evt);
             }
         });
-        add(textFieldCustomerLastName);
-        textFieldCustomerLastName.setBounds(330, 150, 170, 28);
 
         labelCustomerDLastName.setText("Etternavn");
-        add(labelCustomerDLastName);
-        labelCustomerDLastName.setBounds(270, 150, 80, 16);
 
         textAreaToolList.setDocument(new JTextFieldLimit(199));
         textAreaToolList.setColumns(20);
         textAreaToolList.setRows(5);
         jScrollPane8.setViewportView(textAreaToolList);
 
-        add(jScrollPane8);
-        jScrollPane8.setBounds(640, 300, 270, 100);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(410, 410, 410)
+                        .addComponent(labelCreateCaseHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(labelDSubject))
+                            .addComponent(labelDReqDate))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(labelCreateCaseReqDate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labelCreateCaseDReqTime, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ComboBoxCreateCaseReqTime, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textFieldSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(labelDDescription)
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateFieldReqDate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(101, 101, 101)
+                                .addComponent(labelDStatus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(78, 78, 78)
+                                        .addComponent(labelDPhone)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(textFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labelCustomerDFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textFieldCustomerFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(labelCustomerDLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textFieldCustomerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labelDPostalCode)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textFieldPostalCode, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textFieldPostPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labelDAddress)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelDEquipment)
+                                    .addComponent(labelDStartDate)
+                                    .addComponent(labelDContacts)
+                                    .addComponent(labelCreateCaseDInspectDate)
+                                    .addComponent(labelDPrice)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelCreateCaseDNameHeader)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(labelDDate)))
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelCreateCaseName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labelDate)
+                                        .addGap(96, 96, 96)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelCreateCaseDSupervisorHeader)))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(dateFieldInspectDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateFieldStartDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldPrice, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboBoxCreateCaseSupervisor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(636, 636, 636)
+                        .addComponent(buttonComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(219, 219, 219))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(labelCreateCaseHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelCreateCaseDNameHeader)
+                                .addGap(4, 4, 4)
+                                .addComponent(labelDDate))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelCreateCaseName)
+                                .addGap(4, 4, 4)
+                                .addComponent(labelDate))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboBoxCreateCaseSupervisor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCreateCaseDSupervisorHeader))))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textFieldCustomerFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCustomerDFirstName)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textFieldCustomerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelCustomerDLastName))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textFieldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelDPrice)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelDAddress)
+                        .addComponent(labelCreateCaseDInspectDate))
+                    .addComponent(dateFieldInspectDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldPostalCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldPostPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDPostalCode))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelDPhone)
+                        .addComponent(labelDStartDate))
+                    .addComponent(dateFieldStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelDEquipment)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelDSubject)
+                            .addComponent(textFieldSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addComponent(labelDReqDate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelCreateCaseDReqTime)
+                                    .addComponent(ComboBoxCreateCaseReqTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(3, 3, 3)
+                                .addComponent(labelCreateCaseReqDate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dateFieldReqDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelDContacts)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(88, 88, 88)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelDStatus)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelDDescription)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20)
+                .addComponent(buttonComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxCreateCaseSupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCreateCaseSupervisorActionPerformed
