@@ -339,7 +339,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPriceActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldPrice.setDocument(new JTextFieldLimit(9)); // endre tallet for &#xe5; endre limit"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/* limit for hvor mange characters som kan skrives inn */&#xa;textFieldPrice.setDocument(new JTextFieldLimit(7)); // endre tallet for &#xe5; endre limit"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

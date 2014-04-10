@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import static javax.swing.JOptionPane.*;
 
 public class Employees {
     DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
@@ -41,6 +42,7 @@ public class Employees {
     	return null; // treat nulls in GUI etc... incase of null pointer ---> if(e != null)) {}
     }
 
+    // updates the list of employees from the database, that way the user can access the employees from the object.
     public void updateEmployeeList() {
     	this.employees = new ArrayList<Employee>();
         String sqlStatement = "SELECT * from employees";
@@ -57,11 +59,14 @@ public class Employees {
                 ));
             }
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+            // System.out.println("SQLError: " + e);
+            // No need for error handling here since its not visible to the user.
         } finally {
             db.closeAll();
         }
     }
+
+    // adds an employee to a case.
     public void addToCase(int caseId, int employeeId){
         try{
             db.createConnection();
@@ -71,17 +76,19 @@ public class Employees {
             sqlStatement.setInt(2, employeeId);            
             db.executeUpdate(sqlStatement);
         }catch(SQLException e){
-            System.out.println("feil i addToCase: " + e);
+            // System.out.println("feil i addToCase: " + e);
+            showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
+            // this should be handled by GUI, and not in the backend, but because of time limits we have to do it this way for the time beeing
         }
         finally{
             db.closeAll();
         }
     }
     
+    // method to reset the ant uten field in the database incase the user moved the wrong employee.
     public void resetAntUten(int employeeId){
         currentDate = dateFormat.format(cal.getTime());           
         db.createConnection();
-        //If not todays date, attendancewithoutworkbackup-1
         Employee employee = this.getEmployeeById(employeeId);
         if(!employee.getRemovedFromAttendance().equals("true")) {
             try{
@@ -93,7 +100,9 @@ public class Employees {
                 db.executeUpdate(sqlStatement);
             }
             catch(SQLException e){
-                System.out.println("feil i setAntUtenZero: " + e);
+                // System.out.println("feil i setAntUtenZero: " + e);
+                // No need to display errors for the user here.
+                // might need to be handled differently if error caused here. Time limit.
             }
             finally{
                 db.closeAll();
@@ -109,7 +118,8 @@ public class Employees {
                 db.executeUpdate(sqlStatement);
             }
             catch(SQLException e){
-                System.out.println("feil i setAntUtenZero: " + e);
+                // System.out.println("feil i setAntUtenZero: " + e);
+                // same as previous comment.
             }
             finally{
                 db.closeAll();
@@ -117,6 +127,7 @@ public class Employees {
         }
     }
     
+    // sets attendance without work field in the database back to 0 and adds a backup of previous number when an employee got work
     public void setAntUtenZero(int employeeId){
         db.createConnection();
         try{
@@ -129,13 +140,15 @@ public class Employees {
             db.executeUpdate(sqlStatement);
         }
         catch(SQLException e){
-            System.out.println("feil i setAntUtenZero: " + e);
+            // System.out.println("feil i setAntUtenZero: " + e);
+            // same as comments in previous method
         }
         finally{
             db.closeAll();
         }
     }
 
+    // removes an employee of a case
     public void removeFromCase(int caseId, int employeeId){
         db.createConnection(); 
         try{
@@ -144,13 +157,15 @@ public class Employees {
             sqlStatement.setInt(2, employeeId);
             db.executeUpdate(sqlStatement);            
         }catch(SQLException e){
-            System.out.println("feil i removeFromCase: " + e);
+            // System.out.println("feil i removeFromCase: " + e);
+            // no need for error handling here.
         }
         finally{
             db.closeAll(); 
         }
     }
     
+    // method to update 2 JTables with employees
     public void updateEmployeeAvailable(JTable left, JTable right, int caseId){
         currentDate = dateFormat.format(cal.getTime());           
         this.employees = new ArrayList<Employee>();
@@ -172,7 +187,8 @@ public class Employees {
             }
         }
         catch(SQLException e){
-            System.out.println("feil i udateEmployeeAvailable: " + e);
+            // System.out.println("feil i udateEmployeeAvailable: " + e);
+            // no need for error handling here.
         }
         finally{
             db.closeAll();
@@ -208,7 +224,8 @@ public class Employees {
             }
         }
         catch(SQLException e){
-            System.out.println("feil i udateEmployeeAvailable: " + e);
+            // System.out.println("feil i udateEmployeeAvailable: " + e);
+            // no need for error handling here since its not visible to the user.
         }
         finally{
             db.closeAll();
@@ -228,6 +245,7 @@ public class Employees {
         }    
     }
     
+    // method to update 2 JTables in the GUI with employees.
     public void updateGUILists(JTable left, JTable right){ 
         currentDate = dateFormat.format(cal.getTime());   
         DefaultTableModel modelLeft = (DefaultTableModel) left.getModel();
@@ -252,6 +270,7 @@ public class Employees {
         }    
     }
     
+    // moves an employee to attended both in the GUI and in the database.
     public void moveToAttended(int employeeId, JTable tableLeft, JTable tableRight){   
     currentDate = dateFormat.format(cal.getTime());           
         try{
@@ -262,7 +281,8 @@ public class Employees {
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
-            System.out.println("feil i attendancetab.move" + e);
+            // System.out.println("feil i attendancetab.move" + e);
+            // no need for error handling here.
         }
         finally{
             this.db.closeAll();
@@ -275,7 +295,8 @@ public class Employees {
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
-            System.out.println("feil i attendancetab.move" + e);
+            // System.out.println("feil i attendancetab.move" + e);
+            // no need for error handling here.
         }
         finally{
             this.updateGUILists(tableLeft, tableRight);
@@ -283,6 +304,7 @@ public class Employees {
         }     
     }
     
+    // removed an employee from attended both in the GUI and in the database.
     public void moveToNotAttended(int employeeId, JTable tableLeft, JTable tableRight){
         try{
             this.db.createConnection();            
@@ -291,7 +313,9 @@ public class Employees {
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
-            System.out.println("feil i attendancetab.move" + e);
+            // System.out.println("feil i attendancetab.move" + e);
+            showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
+            // this should be handled by GUI, and not in the backend, but because of time limits we have to do it this way for the time beeing
         }
         finally{
             this.db.closeAll();
@@ -305,7 +329,8 @@ public class Employees {
             this.db.executeUpdate(updateEmployeeRegDate);
         }
         catch(SQLException e){
-            System.out.println("feil i attendancetab.move" + e);
+            // System.out.println("feil i attendancetab.move" + e);
+            // no need for error handling here.
         }
         finally{
             this.updateGUILists(tableLeft, tableRight);
@@ -317,7 +342,8 @@ public class Employees {
     	return this.employees;
     }
 
-    public ArrayList<Integer> createEmployee(String firstName, String lastName) { // what should be input first time to employee?
+    // method to creat a new employee and add it to the database.
+    public ArrayList<Integer> createEmployee(String firstName, String lastName) {
     	// check for errors, return them, or add a new employee to database
     	ArrayList<Integer> errors = checkFields(firstName, lastName);
 
@@ -331,7 +357,8 @@ public class Employees {
                 db.executeUpdate(insertEmployeeStatement);                
             }
             catch(SQLException e){
-                System.out.println("feil i employees.createEmployee" + e);
+                // System.out.println("feil i employees.createEmployee" + e);
+                // no need for errorhandling here?
             }
             finally{
                 db.closeAll();

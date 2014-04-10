@@ -54,13 +54,15 @@ public class Sales {
                     "WHERE id="+ idString); 
             this.db.executeUpdate(deleteTuple);
         } catch(SQLException e){
-           showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
+            showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
+            // this should be handled by GUI, and not in the backend, but because of time limits we have to do it this way for the time beeing
         }
         finally{
             this.db.closeAll();
         }       
         
-    }   
+    }
+
     //method to create a new sale of wood.
     public ArrayList<Integer> createSale(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
                                          String postnr, String address, String quantity, String postalPlace, String status) {
@@ -70,11 +72,9 @@ public class Sales {
         int postCode = 0; 
         int customerId = 0;
         
-        
         try{
             telephone = Integer.parseInt(phoneNumber.trim());
         } catch(NumberFormatException e){
-            
             errors.add(WRONG_PHONE_FORMAT);
         }
         
@@ -82,7 +82,6 @@ public class Sales {
             postCode = Integer.parseInt(postnr.trim());
         }
         catch(NumberFormatException e){
-            
             errors.add(WRONG_POSTALCODE_FORMAT);
         }
         
@@ -90,19 +89,16 @@ public class Sales {
             quantityNr = Integer.parseInt(quantity.trim());
         }
         catch(NumberFormatException e){
-           
             errors.add(WRONG_QUANTITY_FORMAT);
         }
         
-       //fills up the arraylist "errors" with the the value of the issue. 
+        //fills up the arraylist "errors" with the the value of the issue. 
         errors.addAll(checkFields(customerFirstName, customerLastName, telephone, woodType, postCode, address, quantityNr));
         
         //return errors;
         if (errors.isEmpty()==true){
-        
-            //legg til Customer DB eller/og hent ut customer ID. 
+            // imput customer to DB and/or get customer ID.
             customerId = addCustomer(customerFirstName, customerLastName, telephone);
-
 
             db.createConnection();
             try{
@@ -126,6 +122,7 @@ public class Sales {
             }
         return errors;
     }
+
     //method to update the sale of wood arrayList called sales.
     public void updateSaleList() {
         sales = new ArrayList<Sale>();
@@ -154,9 +151,7 @@ public class Sales {
         } finally {
             db.closeAll();            
         }
-    }
-    
-    
+    } 
     
     //method to check all the inputs to see if they are blank or is invalid. 
      private ArrayList<Integer> checkFields(String customerFirstName, String customerLastName, int phoneNumber, 
@@ -213,8 +208,6 @@ public class Sales {
                         db.closeAll();                        
                         ResultSet res = this.db.executeQuery(sqlStatement);
                         
-                       
-                        
                         try{
                             while(res.next()){
                                 customerId = res.getInt("id");
@@ -240,9 +233,6 @@ public class Sales {
         updateSaleList();
         if (!sales.isEmpty()){
              Object[] insertTable = new Object[4];
-
-
-
 
              for(int i = 0; i<this.sales.size(); i++){
 
@@ -272,6 +262,7 @@ public class Sales {
           
           return true;
       }
+
       //method to the index in the arraylist when we have the ID of the sale. 
       private int getIndexFromId(String idString){
           int id = 0;
@@ -285,10 +276,10 @@ public class Sales {
          }
           return -1;
       }
+
       //method to set the wood sale as delivered. 
       public boolean deliverWood(String idString){
-          
-         try{
+        try{
             this.db.createConnection();            
             PreparedStatement updateEmployeeRegDate = this.db.getConnection().prepareStatement(
                     "UPDATE sales SET status ='" + "levert" + 
@@ -300,10 +291,8 @@ public class Sales {
         finally{
             this.db.closeAll();
         }       
-        
           
-          
-          return true;
+        return true;
       }
      
      
@@ -330,6 +319,7 @@ public class Sales {
         }
         
     }
+
      //method to update arraylist to either delivered or not delivered.
      public void updateSaleListWhere(String sort){
         sales = new ArrayList<Sale>();
@@ -378,6 +368,7 @@ public class Sales {
         }
     }
     
+    // URL generator for google maps.
     public void getURLToMap(String idString){
         int id = getIndexFromId(idString);
         
@@ -386,21 +377,11 @@ public class Sales {
                                     sales.get(id).getPostPlace());        
     }
     
-   
-     
-    
+    // test method.
     public static void main(String args[]){
         Database db = new Database();
         Sales allSales = new Sales();
         db.createConnection();
-      
-        allSales.updateSaleList();
-        
-        
-       
-      
+        allSales.updateSaleList();   
     }
-    
-    
-   
 }

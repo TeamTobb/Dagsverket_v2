@@ -10,6 +10,7 @@ package backend;
 
 import java.util.*;
 import java.sql.*;
+import static javax.swing.JOptionPane.*;
 
 public class Cases {
     public static final int NO_CONTRACTOR_FIRSTNAME = 1;
@@ -36,6 +37,7 @@ public class Cases {
         return null;
     }
     
+    // update the arraylist of cases from database, that way all cases are avible to the user.
     public void updateCaseList(String status) {
         this.cases = new ArrayList<Case>();
         String sqlStatement = "SELECT * from cases,customers WHERE customer = customers.id AND status = '" + status + "'";
@@ -67,7 +69,8 @@ public class Cases {
                     ));
             }
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+            // System.out.println("SQLError: " + e);
+            // dont need error handling here, since it wont be visual to the user.
         } finally {
             db.closeAll();
         }
@@ -77,6 +80,7 @@ public class Cases {
 		return this.cases;
 	}
 
+    // created a new case and adds it to the database, returns an arraylist of integer errors if something went wrong.
 	public ArrayList<Integer> createCase(int creator, String createdDate, String customerFirstName, String customerLastName, String caseAddress, 
                                             String postalCode, String postPlace, String phoneNumber, String subject, 
                                             String reqDate, String reqTime, String description, int supervisor,
@@ -91,28 +95,28 @@ public class Cases {
                 priceInt = Integer.parseInt(price);
             }
             catch(NumberFormatException e){
-                System.out.println("feil i price parseint" + e);
+                // System.out.println("feil i price parseint" + e);
                 errors.add(WRONG_PRICE_FORMAT);
             }            
             try{
                 postalCodeInt = Integer.parseInt(postalCode);
             }
             catch(NumberFormatException e){
-                System.out.println("feil i postalcode parseint" + e);
+                // System.out.println("feil i postalcode parseint" + e);
                 errors.add(WRONG_POSTALCODE_FORMAT);                
             }            
               try{
                 phoneNumberInt = Integer.parseInt(phoneNumber);
             }
             catch(NumberFormatException e){
-                System.out.println("feil i phonenumber parseint" + e);
+                // System.out.println("feil i phonenumber parseint" + e);
                 errors.add(WRONG_PHONE_FORMAT);                
             }
             errors.addAll(checkFields(customerFirstName, customerLastName, phoneNumberInt, subject));
             
             if(errors.size()==0){
                 System.out.println("errors == null");
-                 String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
+                String sqlStatement = "SELECT id FROM customers WHERE firstName = '" + customerFirstName +
                                        "' AND lastName = '" + customerLastName + "' AND phoneNumber = " + phoneNumberInt;
                 ResultSet rs = this.db.executeQuery(sqlStatement);
                 try{
@@ -136,11 +140,13 @@ public class Cases {
                             }                        
                         }
                         catch(SQLException e){
-                            System.out.println("feil 1 " + e);                            
+                            // System.out.println("feil 1 " + e);   
+                            // no need for error handling here.                         
                         }
                     }
                 }catch(SQLException e){
-                    System.out.println("feil 2 " + e);
+                    // System.out.println("feil 2 " + e);
+                    // no need for error handling here.
                 }
                 finally{                    
                     db.closeAll();
@@ -170,7 +176,9 @@ public class Cases {
                     db.executeUpdate(insertCaseStatement);
                     
                 }catch(SQLException e){
-                    System.out.println("feil i insertCase: " + e);
+                    // System.out.println("feil i insertCase: " + e);
+                    showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
+                    // this should be handled by GUI, and not in the backend, but because of time limits we have to do it this way for the time beeing
                 }     
                 finally{
                     db.closeAll();
@@ -198,6 +206,7 @@ public class Cases {
         return errors;
 	}
 
+    // updates the details about a case. updates every field in the database.
     public ArrayList<Integer> updateCase(int creator, String createdDate, String customerFirstName, String customerLastName, String caseAddress, 
                                             String postalCode, String postPlace, String phoneNumber, String subject, 
                                             String reqDate, String reqTime, String description, int supervisor,
@@ -212,21 +221,21 @@ public class Cases {
             priceInt = Integer.parseInt(price);
         }
         catch(NumberFormatException e){
-            System.out.println("feil i price parseint" + e);
+            // System.out.println("feil i price parseint" + e);
             errors.add(WRONG_PRICE_FORMAT);
         }            
         try{
             postalCodeInt = Integer.parseInt(postalCode);
         }
         catch(NumberFormatException e){
-            System.out.println("feil i postalcode parseint" + e);
+            // System.out.println("feil i postalcode parseint" + e);
             errors.add(WRONG_POSTALCODE_FORMAT);                
         }            
           try{
             phoneNumberInt = Integer.parseInt(phoneNumber);
         }
         catch(NumberFormatException e){
-            System.out.println("feil i phonenumber parseint" + e);
+            // System.out.println("feil i phonenumber parseint" + e);
             errors.add(WRONG_PHONE_FORMAT);                
         }
         errors.addAll(checkFields(customerFirstName, customerLastName, phoneNumberInt, subject));
@@ -259,7 +268,7 @@ public class Cases {
                     }
                 }
             } catch(SQLException e){
-                System.out.println("feil 2 " + e);
+                // System.out.println("feil 2 " + e);
             } finally{                    
                 db.closeAll();
             }
@@ -285,7 +294,9 @@ public class Cases {
                 insertCaseStatement.setInt(17, customerId);
                 db.executeUpdate(insertCaseStatement);
             } catch(SQLException e){
-                System.out.println("feil i updateCase: " + e);
+                // System.out.println("feil i updateCase: " + e);
+                showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
+                // this should be handled by GUI, and not in the backend, but because of time limits we have to do it this way for the time beeing
             } finally{
                 db.closeAll();
             }
@@ -302,7 +313,8 @@ public class Cases {
                 temp = rs.getString("postadresse");
             }
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+            // System.out.println("SQLError: " + e);
+            // no need for error handling here
         } finally {
             db.closeAll();
         }

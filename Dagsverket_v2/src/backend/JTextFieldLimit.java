@@ -11,6 +11,7 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+// create objects of this class to set limits to text field in the GUI.
 public class JTextFieldLimit extends PlainDocument {
   private final int limit;
 
@@ -18,7 +19,7 @@ public class JTextFieldLimit extends PlainDocument {
      *
      * @param limit
      */
-    public JTextFieldLimit(int limit) {
+  public JTextFieldLimit(int limit) {
     super();
     this.limit = limit;
   }

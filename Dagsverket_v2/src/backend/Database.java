@@ -20,6 +20,9 @@ public class Database {
         this.rs = null; 
         this.stm = null;
     }
+
+    // should we remove printing to the console here?
+    // might be ok to display these kind of errors to the user, even if in the console?
     
     public void createConnection() {
         try {

@@ -282,7 +282,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
         labelDPrice.setBounds(610, 150, 23, 16);
 
         /* limit for hvor mange characters som kan skrives inn */
-        textFieldPrice.setDocument(new JTextFieldLimit(9)); // endre tallet for å endre limit
+        textFieldPrice.setDocument(new JTextFieldLimit(7)); // endre tallet for å endre limit
         textFieldPrice.setText("1750");
         textFieldPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

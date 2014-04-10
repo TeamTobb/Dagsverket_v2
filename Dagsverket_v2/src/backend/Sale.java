@@ -18,11 +18,10 @@ public class Sale {
     private String postPlace;
     private String status;
 
-    // firstname -> postPlace = customer data
     public Sale(int id, int quantity, int customerId, String firstname, String lastname, int phoneNumber, String address, int postalCode, String postPlace, String woodType, int bagSize, int price, String status) {
     	this.id = id;
     	this.quantity = quantity;
-    	this.buyer = new Customer(customerId, firstname, lastname, phoneNumber); //hvor er adressen? 
+    	this.buyer = new Customer(customerId, firstname, lastname, phoneNumber);
     	this.wood = new Wood(woodType, bagSize, price);
         this.address = address;
         this.postalCode = postalCode;
@@ -61,8 +60,6 @@ public class Sale {
     public String getStatus() {
         return status;
     }
-    
-    
     
     public String toString(){
         return id + ", " + quantity + ", "+ buyer + ", "+ wood;

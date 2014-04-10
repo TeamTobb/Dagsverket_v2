@@ -25,8 +25,6 @@ public class Woods {
     }
     
     public String[] getWoodsStringList(){
-       
-
         String[] tempWoodList = new String[woods.size()];
         
         for (int i = 0; i<woods.size(); i ++){
@@ -36,8 +34,8 @@ public class Woods {
         return tempWoodList;
     }
     
+    // updates the list of wood form the database.
     public void updateWoodList() {
-        
         String sqlStatement = "Select woodtype, bagsize, price FROM wood";
         ResultSet rs = db.executeQuery(sqlStatement);
         
@@ -50,40 +48,35 @@ public class Woods {
                     ));
             }
         } catch(SQLException e) {
+            // perhaps not needed to handle errors here? not visible to user.
            showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
         } finally {
             db.closeAll();            
         }
     }
     
-    
-    
+    // add a type of wood to the database.
     public boolean addWood(String woodType, String bagSizeString, String priceString){
         int bagSize = 0;
         int price = 0;
         
         //Checks if the input is valid
-        
         if ((woodType.equals(""))||(bagSizeString.equals(""))||(priceString.equals(""))){
             return false; 
         }
         
-        
-        
         try{
             bagSize = Integer.parseInt(bagSizeString.trim());
         } catch(NumberFormatException e){
-            System.out.println("error in bagSize" + e);
+            //System.out.println("error in bagSize" + e);
             return false;
-           
         }
         
         try{
             price = Integer.parseInt(priceString.trim());
         } catch(NumberFormatException e){
-            System.out.println("error in price" + e);
+            // System.out.println("error in price" + e);
             return false;
-           
         }
         
         try{
@@ -97,11 +90,9 @@ public class Woods {
         db.closeAll();                        
         } catch(SQLException e){
            showMessageDialog(null, "Noe gikk galt under kontakt med databasen. \nPrøv på nytt, om feilen gjenoppstår kontakt system ansvarlig.");
-                
         }
         
         return true;
-        
      }
     
      public int getWoodTypePrice(String woodType){
@@ -122,22 +113,19 @@ public class Woods {
         return result;
      }
      
-     public String getPrice(String Combobox, String quantity){
+     public String getPrice(String woodTypeFromCombobox, String quantity){
         double cost = 0; 
         String costString = ""; 
-        int woodTypePrice = getWoodTypePrice(Combobox);
+        int woodTypePrice = getWoodTypePrice(woodTypeFromCombobox);
         int quanitityWood = 0; 
-        
         
         //Check the values and Parse.  
         try{
             quanitityWood = Integer.parseInt(quantity.trim());
         } catch(NumberFormatException e){
-             //OVERFLADISK, skal sjekket når den blir lagd
+             // no need for any error handling here, since its basicly handled when created.
         }
          
-        
-        
          cost = woodTypePrice*quanitityWood;
          
          if (cost==0.0){
@@ -152,9 +140,8 @@ public class Woods {
     public ArrayList<Wood> getWoods() {
         return woods;
     }
-     
-     
     
+    // test method.
     public static void main(String[] args) {
         Database db = new Database();
         Woods testWoods = new Woods(db);
@@ -167,12 +154,8 @@ public class Woods {
         
         for (int i = 0; i<1;i++){
             //System.out.println(listen[i]);            
-        }
-        
-       
-        
+        } 
     }
-    
 }
 
  

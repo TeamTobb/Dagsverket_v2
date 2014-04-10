@@ -30,12 +30,11 @@ public class Users {
         return currentUser;
     }
     
-    
-
     public boolean deleteUser() {
     	return false;
     }
-       
+    
+    // updates the arraylist of users from database.
     public void updateUserList(int status) {
         this.users = new ArrayList<User>();
         String sqlStatement = "Select * from users WHERE status = " + status;
@@ -50,13 +49,16 @@ public class Users {
                 ));
             }            
         } catch(SQLException e) {
-            System.out.println("SQLError: " + e);
+            // System.out.println("SQLError: " + e);
+            // no need to handle errors here since its not visible to the user.
+            // altough, the user wont see any users at all. Might need to say something? Time limit.
         } 
         finally{
             db.closeAll();
         }
     }
 
+    // creates a new user and add it to the database.
     public int createUser(String firstname, String lastname) {
         int error = 0; 
         db.createConnection();
@@ -80,6 +82,7 @@ public class Users {
     	return this.users;
     }
 
+    // returns the list of users with firstname + lastname as a string table.
     public String[] getUsers() {
         String[] tempUsers = new String[users.size()];
         for (int i = 0; i < this.users.size(); i++) {
