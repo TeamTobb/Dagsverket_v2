@@ -1,12 +1,16 @@
+/*
+  _______ ______          __  __   _______ ____  ____  ____  
+ |__   __|  ____|   /\   |  \/  | |__   __/ __ \|  _ \|  _ \ 
+    | |  | |__     /  \  | \  / |    | | | |  | | |_) | |_) |
+    | |  |  __|   / /\ \ | |\/| |    | | | |  | |  _ <|  _ < 
+    | |  | |____ / ____ \| |  | |    | | | |__| | |_) | |_) |
+    |_|  |______/_/    \_\_|  |_|    |_|  \____/|____/|____/                                                            
+*/
 package postNr;
 
 import java.io.*;
 import java.sql.*;
 
-/**
- *
- * @author borgarlie
- */
 public class PostNrInsert {
 	public static Connection getConnection() throws Exception {
 	    String databasenavn = "jdbc:derby://localhost:1527/Dagsverket;user=root;password=root";

@@ -1,12 +1,15 @@
+/*
+  _______ ______          __  __   _______ ____  ____  ____  
+ |__   __|  ____|   /\   |  \/  | |__   __/ __ \|  _ \|  _ \ 
+    | |  | |__     /  \  | \  / |    | | | |  | | |_) | |_) |
+    | |  |  __|   / /\ \ | |\/| |    | | | |  | |  _ <|  _ < 
+    | |  | |____ / ____ \| |  | |    | | | |__| | |_) | |_) |
+    |_|  |______/_/    \_\_|  |_|    |_|  \____/|____/|____/                                                            
+*/
 package frontend;
 
 import backend.*;
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 
