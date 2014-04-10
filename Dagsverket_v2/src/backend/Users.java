@@ -35,6 +35,7 @@ public class Users {
     }
     
     // updates the arraylist of users from database.
+    // status 1 = active, other then 1 is deleted user.
     public void updateUserList(int status) {
         this.users = new ArrayList<User>();
         String sqlStatement = "Select * from users WHERE status = " + status;

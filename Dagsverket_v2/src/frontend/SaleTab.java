@@ -22,25 +22,18 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 public class SaleTab extends javax.swing.JPanel {
-    
      private Sales sales;
      private Woods woods;
      private Cases cases;
-     
-     
      private int saleTableView = sales.ALLDELIVERIESVIEW; 
-
     
     public SaleTab() {
-       
        this.sales = new Sales();
        this.woods = new Woods(new Database());
        this.woods.updateWoodList(); //TODO Flytte til gui 
        initComponents();
        this.sales.updateWoodSaleList(jTable2);
        this.cases = new Cases();
-       
-
     }
 
     
@@ -549,10 +542,6 @@ public class SaleTab extends javax.swing.JPanel {
                          textFieldPhone.getText().trim(), (String)comboBoxWoodType.getSelectedItem(),
                          textFieldPostnr.getText().trim(), textFieldAddress.getText().trim(), 
                          textFieldQuantity.getText().trim(), textFieldPostPlace.getText().trim(), "Ikke levert");
-       
-        
-       
-      
        
        if (errors.isEmpty()){
             

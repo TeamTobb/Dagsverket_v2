@@ -11,6 +11,11 @@ package postNr;
 import java.io.*;
 import java.sql.*;
 
+// After creating the database, or if postens postnumbers are updated, run this class.
+// If posten has updated its postnumbers, a new file need to be downloaded from: (Bring.no)
+// http://www.bring.no/hele-bring/produkter-og-tjenester/brev-og-postreklame/andre-tjenester/postnummertabeller;jsessionid=K14nTFnpMZLvC2bdKrTDcH264DH13Hxyk0tQL9nKnR0zV9vLpDPc!553458109
+// the file need to be saved as .txt and placed inside the main folder of the project, along with the src folder and lib folder, etc.
+
 public class PostNrInsert {
 	public static Connection getConnection() throws Exception {
 	    String databasenavn = "jdbc:derby://localhost:1527/Dagsverket;user=root;password=root";

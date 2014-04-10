@@ -52,7 +52,6 @@ public class ViewActiveTab extends javax.swing.JPanel {
         }    
     }
     
-    
     public JTable getTable(){
         return jTable2;
     }

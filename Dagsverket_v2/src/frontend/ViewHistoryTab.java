@@ -28,8 +28,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
         this.users = new Users();
         this.employees = new Employees();
         initComponents();
-    }    
-    
+    }
     
     public void updateList(){    
         String startDate = ""; 

@@ -26,8 +26,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
         woods.updateWoodList();
         fillInAllData(customerFirstName, customerLastName, phoneNumber, woodType, 
                            postnr,  address,  quantity, postalPlace);
-    
-         
     }
     
 
@@ -395,8 +393,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
 
         /* Create and display the form */
         
-        System.out.println("MoreInfoOnSale");
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //new MoreInfoOnSale().setVisible(true);
@@ -406,7 +402,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
     
     private void fillInAllData(String customerFirstName, String customerLastName, String phoneNumber, String woodType, 
                           String postnr, String address, String quantity, String postalPlace){
-        
          textFieldPhone.setText(phoneNumber);
          textFieldPostPlace.setText(postalPlace);
          textFieldLastName.setText(customerLastName);
@@ -416,10 +411,6 @@ public class MoreInfoOnSale extends javax.swing.JFrame {
          textFieldQuantity.setText(quantity);
          textFieldWoodType.setText(woodType);
          textFieldPrice.setText(woods.getPrice(woodType, textFieldQuantity.getText()));
-         
-         
-         System.out.println("fillInAllData OK");
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

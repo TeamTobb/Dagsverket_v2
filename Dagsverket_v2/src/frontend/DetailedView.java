@@ -48,7 +48,8 @@ public class DetailedView extends javax.swing.JFrame {
             try {
                 this.req_date = this.formatter.parse(this.currentCase.getReqDate());
             } catch(Exception e) {
-                System.out.println("ERROR in parse date");
+                // System.out.println("ERROR in parse date");
+                // no need for error handling
             }
         }
         else {
@@ -59,7 +60,8 @@ public class DetailedView extends javax.swing.JFrame {
             try {
                 this.checkup_date = this.formatter.parse(this.currentCase.getCheckup_date());
             } catch(Exception e) {
-                System.out.println("ERROR in parse date");
+                // System.out.println("ERROR in parse date");
+                // no need for error handling
             }
         }
         else {
@@ -69,7 +71,8 @@ public class DetailedView extends javax.swing.JFrame {
             try {
                 this.startDate = this.formatter.parse(this.currentCase.getStartDate());
             } catch(Exception e) {
-                System.out.println("ERROR in parse date");
+                // System.out.println("ERROR in parse date");
+                // no need for error handling
             }
         }
         else {
@@ -705,7 +708,7 @@ public class DetailedView extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldPriceActionPerformed
 
     private void ComboBoxCreateCaseReqTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxCreateCaseReqTimeActionPerformed
-        System.out.println(ComboBoxCreateCaseReqTime.getSelectedItem());        // TODO add your handling code here:
+        // System.out.println(ComboBoxCreateCaseReqTime.getSelectedItem());        // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxCreateCaseReqTimeActionPerformed
 
     private void comboBoxCreateCaseSupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCreateCaseSupervisorActionPerformed

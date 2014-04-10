@@ -29,7 +29,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         this.db = new Database();
         this.users = new Users();
-        users.updateUserList(1);
+        users.updateUserList(1); // 1 = active users (not deleted)
         initComponents();
     }
 

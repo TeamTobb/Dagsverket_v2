@@ -15,6 +15,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+// we dont use this class for the project for the time beeing. But might be used in an later implementation to create a smoother background.
 
 class Background extends JPanel {
 

@@ -421,7 +421,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
     private void calCreateCaseReqDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calCreateCaseReqDatePropertyChange
         if (evt.getNewValue() instanceof Date){
             Date dato = (Date)evt.getNewValue();
-            System.out.println(dato.toString());
+            // System.out.println(dato.toString());
             SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
             String date = DATE_FORMAT.format(dato);
             labelCreateCaseReqDate.setText(date);
@@ -429,7 +429,7 @@ public class CreateCaseTab extends javax.swing.JPanel {
     }//GEN-LAST:event_calCreateCaseReqDatePropertyChange
 
     private void ComboBoxCreateCaseReqTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxCreateCaseReqTimeActionPerformed
-        System.out.println(ComboBoxCreateCaseReqTime.getSelectedItem());        // TODO add your handling code here:
+        // System.out.println(ComboBoxCreateCaseReqTime.getSelectedItem());        // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxCreateCaseReqTimeActionPerformed
 
     private void textFieldPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPriceActionPerformed
