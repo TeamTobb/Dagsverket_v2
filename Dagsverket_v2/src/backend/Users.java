@@ -19,7 +19,7 @@ public class Users {
     public Users() {
         this.users = new ArrayList<User>();
         this.db = new Database();        
-        updateUserList(1);
+        updateUserListByStatus(1);
     }
     
     public void setCurrentUser(User newCurrentUser){
@@ -34,11 +34,35 @@ public class Users {
     	return false;
     }
     
-    // updates the arraylist of users from database.
-    // status 1 = active, other then 1 is deleted user.
-    public void updateUserList(int status) {
+    public void updateUserListByStatus(int status){
         this.users = new ArrayList<User>();
         String sqlStatement = "Select * from users WHERE status = " + status;
+        ResultSet rs = db.executeQuery(sqlStatement);
+        try {
+            while(rs.next()) {
+                users.add(new User(
+                    rs.getInt("id"),
+                    rs.getString("firstName"),
+                    rs.getString("lastName"), 
+                    rs.getInt("status")
+                ));
+            }            
+        } catch(SQLException e) {
+            // System.out.println("SQLError: " + e);
+            // no need to handle errors here since its not visible to the user.
+            // altough, the user wont see any users at all. Might need to say something? Time limit.
+        } 
+        finally{
+            db.closeAll();
+        }
+    }
+    
+    
+    // updates the arraylist of users from database.
+    // status 1 = active, other then 1 is deleted user.
+    public void updateUserList() {
+        this.users = new ArrayList<User>();
+        String sqlStatement = "Select * from users";        
         ResultSet rs = db.executeQuery(sqlStatement);
         try {
             while(rs.next()) {

@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         this.db = new Database();
         this.users = new Users();
-        users.updateUserList(1); // 1 = active users (not deleted)
+        users.updateUserListByStatus(1); // 1 = active users (not deleted)
         initComponents();
     }
 
@@ -186,7 +186,7 @@ public class Login extends javax.swing.JFrame {
               if(error == 0){
                  showMessageDialog(null, "FEIL: Databasen ikke oppdatert"); 
               }else{
-                users.updateUserList(1);
+                users.updateUserListByStatus(1);
                 listUserNames.setListData(users.getUsers());
                 listUserNames.updateUI();
               }
@@ -203,18 +203,19 @@ public class Login extends javax.swing.JFrame {
                 0,JOptionPane.INFORMATION_MESSAGE,null,options,null); 
         
         if(result == 1){
-            this.users.updateUserList(1);
+            this.users.updateUserListByStatus(1);
             String[]names = null;
-            try{        
-                names = ((String)listUserNames.getSelectedValue()).split(" ");
+            try{
+                User userToBeDeleted = users.getUserByIndex(listUserNames.getSelectedIndex());
+                //names = ((String)listUserNames.getSelectedValue()).split(" ");
                 try{
                     db.createConnection();
                     PreparedStatement updateUser = db.getConnection().prepareStatement(
                             "UPDATE users SET status = 0 WHERE firstName = ? AND lastNAme = ?");
-                    updateUser.setString(1, names[0]);
-                    updateUser.setString(2, names[1]);  
+                    updateUser.setString(1, userToBeDeleted.getFirstname());
+                    updateUser.setString(2, userToBeDeleted.getLastname());  
                     db.executeUpdate(updateUser);
-                    users.updateUserList(1);
+                    users.updateUserListByStatus(1);
                     listUserNames.setListData(users.getUsers());
                     listUserNames.updateUI();
                 }catch(SQLException e){

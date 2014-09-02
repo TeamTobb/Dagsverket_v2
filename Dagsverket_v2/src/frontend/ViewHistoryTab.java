@@ -35,6 +35,7 @@ public class ViewHistoryTab extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         Object[] insertTable = new Object[6];
+        this.users.updateUserList();
         this.cases.updateCaseList("Ferdig");
         for(int i = 0; i<this.cases.getCases().size(); i++){
             insertTable[0] = this.cases.getCases().get(i).getId();
